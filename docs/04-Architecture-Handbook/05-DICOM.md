@@ -1,77 +1,35 @@
-05-DICOM.md
+# 05 — DICOM (Imaging)
 
-1. Executive Summary
+## Stato attuale: NON implementato (roadmap)
 
-2. Imaging Vision
+Il supporto **DICOM nativo** non è ancora presente nella piattaforma. Questa
+sezione documenta lo stato reale e la direzione pianificata, per evitare
+disallineamenti tra documentazione e codice.
 
-3. Imaging Philosophy
+## 1. Cosa c'è oggi
 
-4. Medical Imaging Principles
+- L'analisi radiologica AI (vedi [04-AI](04-AI.md)) opera su **immagini in
+  formato standard** (JPG/PNG) caricate come documenti paziente su MinIO.
+- I risultati (numerazione FDI, patologie) vengono riconciliati con
+  l'odontogramma del paziente.
+- Nessun parsing di file `.dcm`, nessun tag DICOM, nessuna integrazione PACS.
 
-5. DICOM Fundamentals
+## 2. Cosa manca (per il supporto DICOM)
 
-6. Imaging Platform Overview
+- Ingest di file DICOM (`.dcm`): parsing header/tag, estrazione pixel data.
+- Gestione metadati DICOM (studio, serie, istanza; anagrafica paziente nei tag).
+- Viewer DICOM lato frontend (finestratura, misure, MPR per CBCT).
+- Eventuale interoperabilità PACS / DICOMweb (WADO/QIDO/STOW).
+- Conversione DICOM → immagine per il pipeline AI esistente.
 
-7. DICOM Architecture
+## 3. Note di progettazione (quando verrà affrontato)
 
-8. Imaging Workflow
+- Gli asset DICOM, essendo grandi, andranno su MinIO con naming per-tenant
+  coerente con l'attuale gestione documenti.
+- I metadati paziente presenti nei tag DICOM sono dati personali: rientrano
+  nella strategia di cifratura/minimizzazione GDPR (vedi [07-Security](07-Security.md)).
+- L'inferenza AI resterebbe nel servizio Python, aggiungendo uno step di
+  decodifica DICOM a monte.
 
-9. DICOM Services
-
-10. DICOMweb Services
-
-11. PACS Strategy
-
-12. VNA Strategy
-
-13. Imaging Storage
-
-14. Imaging Metadata
-
-15. Image Viewer
-
-16. Annotation Platform
-
-17. AI Imaging Platform
-
-18. Image Processing Pipeline
-
-19. AI Inference Pipeline
-
-20. Dataset Management
-
-21. Imaging Quality
-
-22. Clinical Validation
-
-23. Interoperability
-
-24. Device Integration
-
-25. Vendor Neutrality
-
-26. Security
-
-27. Privacy
-
-28. Compliance
-
-29. Performance
-
-30. Scalability
-
-31. Backup & Disaster Recovery
-
-32. Imaging Analytics
-
-33. Research Platform
-
-34. Enterprise Imaging
-
-35. Imaging APIs
-
-36. DICOM Coding Standards
-
-37. Roadmap
-
-38. Vision 2035
+> Riferimento roadmap: elemento **#8 (DICOM)** — pianificato, non schedulato in
+> una release corrente.

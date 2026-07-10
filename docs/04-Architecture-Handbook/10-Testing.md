@@ -1,77 +1,44 @@
-10-Testing.md
+# 10 — Testing
 
-1. Executive Summary
+## 1. Backend
 
-2. Quality Vision
+- **Framework**: `spring-boot-starter-test` (JUnit 5 + Mockito + AssertJ).
+- **Stile**: prevalentemente **unit test mockati** (nessun Testcontainers): i
+  service sono testati con `NamedParameterJdbcTemplate`/dipendenze mockate,
+  asserendo SQL, parametri e comportamento. ~14 classi di test.
+- **Copertura mirata** sulle aree a rischio:
+  - crypto: `TenantEncryptionServiceTest` (round-trip encrypt/decrypt,
+    blind index deterministico e case-insensitive, chiavi schema-bound, HKDF),
+    `ConfigMasterKeyProviderTest` (fail-fast);
+  - migrazione cifratura: `EncryptionMigrationServiceTest` (idempotenza, path
+    positivi/negativi);
+  - provisioning: `TenantProvisioningServiceTest` (patchSchema al provisioning,
+    best-effort);
+  - dominio: `PatientServiceTest`, `ProductCategoryServiceTest`,
+    `FiscalCodeValidatorTest`, ecc.
+- **Gate**: `./mvnw test` deve essere verde prima di merge; la build è il gate
+  principale.
 
-3. Testing Philosophy
+## 2. Validazione su DB reale
 
-4. Quality Principles
+Le aree con SQL/viste/schema (multi-tenant, cifratura) sono validate **anche
+manualmente su DB dev** dopo l'implementazione, perché i test unit sono mockati e
+non esercitano lo schema reale. Procedura tipica:
+1. riavvio backend → `patchSchema` applica colonne/viste;
+2. `POST /api/admin/encryption/migrate` → verifica conteggi e idempotenza;
+3. lettura via API (dettaglio/lista/ricerca) → confronto con il valore atteso;
+4. verifica su schema fresco (`install.sql` + `create_tenant()`).
 
-5. Testing Pyramid
+Questo approccio ha intercettato bug non coglibili dai test mockati (es. ordering
+colonne/viste in `patchSchema`).
 
-6. Quality Architecture
+## 3. Frontend
 
-7. Test Strategy
+Test Angular (componenti/service/guard/pipe) da configurare/estendere secondo la
+configurazione reale del progetto. Priorità su validazione form e guard.
 
-8. Test Automation
+## 4. Direzione
 
-9. Unit Testing
-
-10. Integration Testing
-
-11. Contract Testing
-
-12. API Testing
-
-13. Frontend Testing
-
-14. End-to-End Testing
-
-15. Performance Testing
-
-16. Load Testing
-
-17. Stress Testing
-
-18. Chaos Engineering
-
-19. Security Testing
-
-20. AI Testing
-
-21. DICOM Testing
-
-22. Clinical Validation Testing
-
-23. Accessibility Testing
-
-24. Usability Testing
-
-25. Compatibility Testing
-
-26. Mobile & Browser Testing
-
-27. Test Data Management
-
-28. Synthetic Data
-
-29. Test Environment
-
-30. Test Reporting
-
-31. Quality Gates
-
-32. Defect Management
-
-33. Regression Strategy
-
-34. Continuous Testing
-
-35. Observability for Testing
-
-36. KPI
-
-37. Testing Roadmap
-
-38. Vision 2035
+- Introduzione di **Testcontainers** per integration test su schema reale
+  (chiuderebbe il gap oggi coperto dalla validazione manuale).
+- Test di contratto tra service Angular e DTO backend.

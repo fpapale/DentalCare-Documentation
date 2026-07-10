@@ -1,99 +1,94 @@
-02-Backend.md
+# 02 — Backend (Spring Boot)
 
-1. Executive Summary
+## 1. Panoramica
 
-2. Backend Vision
+API REST Spring Boot 3.5 su Java 25. Architettura **layered** classica con DTO
+separati dalle entity. Persistenza prevalentemente via SQL esplicito
+(`NamedParameterJdbcTemplate`), non ORM: scelta deliberata per controllo su
+query multi-tenant e viste. JPA/Hibernate è presente ma limitato a 6 entity.
 
-3. Backend Philosophy
+## 2. Struttura dei package
 
-4. Architectural Principles
+```
+com.dentalcare
+├── config/       configurazioni Spring, EstimateSchemaInitializer (patch schema)
+├── controller/   REST controllers (~29) + controller/ai
+├── dto/          record di request/response (Java records)
+├── entity/       6 entity JPA: Appointment, Clinic, Patient, Provider, TenantUser, User
+├── exception/    eccezioni applicative + GlobalExceptionHandler
+├── mapper/       conversione entity/row ↔ DTO (dove serve)
+├── security/     JWT, TenantContext, SecurityConfig, crypto/
+├── service/      logica applicativa (~40 service) + service/ai
+├── util/         helper (es. TempPasswordGenerator)
+└── validation/   Bean Validation custom (@ValidFiscalCode)
+```
 
-5. Domain Driven Design
+## 3. Flusso di una richiesta
 
-6. Bounded Context
+```
+HTTP → JwtAuthenticationFilter (valida token, popola SecurityContext + TenantContext)
+     → Controller (@Valid DTO, delega)
+     → Service (@Transactional, logica, TenantContext.validatedSchema())
+     → NamedParameterJdbcTemplate (SQL su schema tenant) → PostgreSQL
+     ← DTO ← mapping row → JSON
+```
 
-7. Microservice Architecture
+## 4. Controller
 
-8. Core Business Services
+Sottili: ricevono/restituiscono DTO, validano con `@Valid`, delegano al service,
+usano status HTTP coerenti (201 + `Location` in creazione, 204 in delete). Nessuna
+logica di business. Esempi: `PatientController`, `AppointmentController`,
+`EstimateController`, `InvoiceController`, `TreatmentPlanController`,
+`OdontogramController`, `ProductController` (magazzino), `RecallController`
+(richiami), `CopilotController`, `ChatController`, `TenantAdminController`.
 
-9. Clinical Services
+## 5. Service
 
-10. AI Services
+Contengono la logica e le transazioni. Pattern ricorrenti:
+- `private String s()` → `TenantContext.validatedSchema()` (schema tenant validato regex).
+- SQL con parametri bindati (`MapSqlParameterSource`), mai concatenazione di input.
+- Mapping riga→DTO in metodi `mapXxxRow`.
+- Lettura anagrafica pazienti via viste (`v_patient_dashboard`,
+  `v_patient_clinical_card`, `v_patient_estimates_summary`).
 
-11. Imaging Services
+## 6. Persistenza
 
-12. Workflow Services
+- **SQL-first**: `NamedParameterJdbcTemplate` su schema tenant. Le viste
+  incapsulano join e aggregazioni ricorrenti.
+- **JPA/Hibernate**: solo per 6 entity core; `ddl-auto=none`, `open-in-view=false`.
+- **Migrazioni**: schema creato/aggiornato da `database/install.sql` (installer)
+  + funzione `dentalcare.create_tenant()` per nuovi tenant + patch idempotente
+  a runtime (vedi [06-Multitenancy](06-Multitenancy.md)).
 
-13. Integration Services
+## 7. DTO e validazione
 
-14. Identity Services
+- Request/response sono `record` Java. Nessuna entity JPA esposta.
+- Bean Validation su DTO (`@NotBlank`, `@Email`, `@Size`, `@ValidFiscalCode`
+  custom per il codice fiscale italiano — validatore in `validation/`).
 
-15. Notification Services
+## 8. Gestione errori
 
-16. Analytics Services
+`GlobalExceptionHandler` (`@RestControllerAdvice`) centralizza:
+- `ResourceNotFoundException` → 404
+- `MethodArgumentNotValidException` → 400 con elenco campi
+- eccezioni di business dedicate (es. `PatientNotDeletableException` → 409/422)
+- `EncryptionException` → 500 senza mai esporre plaintext
 
-17. Research Services
+In dev i messaggi d'errore sono inclusi nel JSON; in prod sono soppressi
+(`server.error.include-message=never`).
 
-18. Marketplace Services
+## 9. Integrazioni server-side
 
-19. API Gateway
+- **n8n**: endpoint `POST /api/public/service-token` autenticato con header
+  `X-N8N-Key`; rilascia un JWT di servizio per i workflow (prenotazioni).
+- **Servizio AI Python**: chiamate outbound + callback firmati HMAC
+  (`HmacVerifier`) per l'esito delle analisi immagini.
+- **SSE**: streaming eventi (suggerimenti copilot, analisi documenti,
+  eventi agenda) via `SseEmitterRegistry`.
 
-20. Event Driven Architecture
+## 10. Configurazione
 
-21. Messaging Platform
-
-22. Data Architecture
-
-23. Persistence Strategy
-
-24. Object Storage
-
-25. Vector Database
-
-26. Caching Strategy
-
-27. Search Platform
-
-28. Security
-
-29. Authorization
-
-30. Audit
-
-31. Configuration
-
-32. Feature Flags
-
-33. Error Handling
-
-34. Logging
-
-35. Observability
-
-36. Monitoring
-
-37. Tracing
-
-38. Testing Strategy
-
-39. Performance
-
-40. Scalability
-
-41. Reliability
-
-42. Resilience
-
-43. CI/CD
-
-44. DevSecOps
-
-45. Backend Coding Standards
-
-46. Package Organization
-
-47. ADR
-
-48. Backend Roadmap
-
-49. Vision 2035
+Profili Spring `default` (dev) e `prod`. I segreti reali stanno in file esterni
+gitignored (`backend/config/` in dev, `config/application-prod.properties`
+montata in prod), che sovrascrivono i default del classpath. Vedi
+[08-DevOps](08-DevOps.md) e [09-Deployment](09-Deployment.md).

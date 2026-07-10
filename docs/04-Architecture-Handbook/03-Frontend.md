@@ -1,87 +1,63 @@
-03-Frontend.md
+# 03 — Frontend (Angular)
 
-1. Executive Summary
+## 1. Panoramica
 
-2. Frontend Vision
+SPA Angular 21 con **standalone components** e **signals**. Styling
+esclusivamente con **Tailwind CSS** (classi inline, nessun file CSS per
+componente). Servita in produzione da nginx che fa da reverse proxy verso l'API.
 
-3. UX Philosophy
+## 2. Struttura
 
-4. Design Principles
+```
+src/app/
+├── core/          singleton: auth, interceptor, guard, services HTTP
+│   └── services/  un service per dominio (patient, appointment, estimate,
+│                  invoice, treatment-plan, odontogram, recall, product,
+│                  copilot, chat, layout, ...)
+├── shared/        componenti, pipe, direttive riutilizzabili
+├── features/      una cartella per modulo funzionale
+└── layout/        shell applicativa (menu, header, pannello destro)
+```
 
-5. Human-Centered Design
+## 3. Feature
 
-6. Product Experience Strategy
+`dashboard`, `agenda`, `pazienti`, `preventivi`, `fatturazione`, `magazzino`,
+`richiami`, `prestazioni`, `impostazioni`, `admin-tenant`, `segretaria`, `login`,
+`public`. Ogni feature è caricata in lazy loading per route.
 
-7. Information Architecture
+## 4. Service HTTP
 
-8. Navigation Architecture
+Un service Angular per dominio, che:
+- incapsula le chiamate `HttpClient`, restituisce `Observable<T>`;
+- tipizza request/response con interfacce allineate ai DTO backend;
+- usa `environment.apiBaseUrl` come base configurabile per ambiente.
 
-9. Angular Architecture
+## 5. Layout a tre colonne
 
-10. Module Architecture
+Layout: **menu laterale | contenuto centrale | pannello destro opzionale**
+(KPI/indicatori/shortcut). Il pannello destro è gestito da `LayoutService`: ogni
+feature registra un `TemplateRef` in `ngAfterViewInit` (`setRightPanel(tpl)`) e
+lo pulisce in `ngOnDestroy` (`setRightPanel(null)`). Visibile solo da breakpoint
+`lg` in su; se nessuno registra un template la colonna centrale si estende.
 
-11. Micro Frontend Strategy
+## 6. Cross-cutting
 
-12. State Management
+- **Interceptor HTTP**: aggiunge il JWT (Bearer), intercetta `401/403/500` per
+  gestione centralizzata (sessione scaduta, accesso negato).
+- **Guard**: autenticazione e autorizzazione per ruolo (protezione aree
+  amministrative).
+- **Locale**: registrata la locale `it` in `app.config.ts`
+  (`registerLocaleData(localeIt)` + `LOCALE_ID='it'`), obbligatorio: senza,
+  `DatePipe`/`number`/`currency` con locale `it` falliscono a runtime.
 
-13. Routing Strategy
+## 7. Form e stato
 
-14. Design System
+- Reactive Forms per i form complessi; validazioni client allineate al backend.
+- Gestione esplicita degli stati loading / errore / vuoto / successo.
+- Streaming realtime (copilot, chat, notifiche agenda) via SSE.
 
-15. Component Library
+## 8. Copilot nel frontend
 
-16. Layout System
-
-17. Responsive Strategy
-
-18. Accessibility
-
-19. Internationalization
-
-20. Theme Management
-
-21. AI User Experience
-
-22. AI Copilot UX
-
-23. Voice UX
-
-24. Imaging UX
-
-25. Dashboard Strategy
-
-26. Forms Strategy
-
-27. Data Grid Strategy
-
-28. Charts & Analytics
-
-29. Notification Center
-
-30. Document Management UX
-
-31. Clinical Workspace
-
-32. Reception Workspace
-
-33. Enterprise Workspace
-
-34. Offline Strategy
-
-35. Performance
-
-36. Security
-
-37. Testing Strategy
-
-38. Frontend DevOps
-
-39. Coding Standards
-
-40. Storybook
-
-41. Design Tokens
-
-42. Frontend Roadmap
-
-43. Vision 2035
+Il copilot AI è integrato come pannello/chat contestuale: invia il contesto del
+paziente/schermata corrente e riceve risposte in streaming. Lato backend usa
+Spring AI + tool (vedi [04-AI](04-AI.md)).

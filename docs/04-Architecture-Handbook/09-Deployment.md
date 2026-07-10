@@ -1,83 +1,69 @@
-09-Deployment.md
+# 09 — Deployment
 
-1. Executive Summary
+## 1. Topologia di produzione
 
-2. Deployment Vision
+- **Macchina applicativa**: `192.168.0.72`, cartella `~/docker/dentalcarepro`.
+- **Database**: `dentalcare_prod` su PostgreSQL `192.168.0.173`.
+- **Backend** non esposto sull'host: l'nginx del frontend proxa `/api` al
+  backend interno. Solo il **frontend** è pubblicato (`http://<host>:8181`).
 
-3. Deployment Philosophy
+## 2. Servizi (docker-compose)
 
-4. Cloud Strategy
+| Servizio | Porta | Note |
+|----------|-------|------|
+| `dentalcarepro-backend` | 8080 (interna) | profilo `prod`, config montata, healthcheck |
+| `dentalcarepro-frontend` | `8181:4200` | nginx, `depends_on` backend healthy |
+| `dentalcare-ai-service` | interna | FastAPI + ONNX |
+| MinIO | — | object storage documenti |
 
-5. Supported Deployment Models
+## 3. Script di deploy
 
-6. Environment Architecture
+- **`setup.sh`**: bootstrap — prepara `~/docker/dentalcarepro`, clona/aggiorna il
+  repo, lancia `install.sh`.
+- **`install.sh`**:
+  1. verifica requisiti (docker, git, compose);
+  2. clone o `git pull origin master`;
+  3. crea `config/application-prod.properties` da `.example` se assente
+     (avvisa di configurare password DB, `app.jwt.secret`, **`app.encryption.master-key`**);
+  4. (opzionale, con doppia conferma) drop+ricrea `dentalcare_prod` da
+     `database/install.sql`;
+  5. copia i modelli AI ONNX se assenti;
+  6. `docker compose up -d --build` + attesa healthcheck.
 
-7. Local Development
+Comandi tipici sul server:
+```bash
+cd ~/docker/dentalcarepro
+./setup.sh            # aggiornamento completo (pull + install)
+./setup.sh --update   # solo pull + rebuild app (no config, no DB)
+```
 
-8. Docker Deployment
+## 4. Creazione database
 
-9. Kubernetes Deployment
+```bash
+psql -U postgres -h 192.168.0.173 -d postgres \
+     -v dbname=dentalcare_prod -f database/install.sql
+```
+`install.sql` è parametrico (`-v dbname=...`), self-contained (crea il DB, lo
+schema globale, la funzione `create_tenant`, il tenant demo con dati di esempio).
 
-10. Edge Deployment
+## 5. Deploy della cifratura GDPR (#7)
 
-11. Hybrid Cloud
+Prerequisito **critico**: la master key deve essere in
+`config/application-prod.properties` **prima** del deploy, altrimenti il backend
+va in crash-loop (fail-fast). Sequenza:
+1. backup DB;
+2. genera master key prod (`openssl rand -hex 32`, in secret store sicuro);
+3. `./setup.sh --update` (patch schema a startup);
+4. `POST /api/admin/encryption/migrate` per tenant (JWT admin) → cifra i dati
+   esistenti (`{"birthDate":N,"fiscalCode":M}`, idempotente);
+5. verifica (pending = 0, decrypt corretto in app).
 
-12. Enterprise Deployment
+Runbook dettagliato nel repo applicativo:
+`directives/deploy-gdpr-slice1-prod.md`. Rollback: il codice precedente legge
+ancora il plaintext (colonne mantenute) → nessuna perdita dati.
 
-13. Infrastructure Topology
+## 6. Rollback applicativo
 
-14. Network Architecture
-
-15. DNS Strategy
-
-16. TLS & Certificates
-
-17. Identity Integration
-
-18. Storage Architecture
-
-19. Database Deployment
-
-20. AI Deployment
-
-21. GPU Strategy
-
-22. DICOM Deployment
-
-23. Multi-Tenant Deployment
-
-24. High Availability
-
-25. Scalability
-
-26. Backup Strategy
-
-27. Disaster Recovery
-
-28. Upgrade Strategy
-
-29. Rollback Strategy
-
-30. Blue-Green & Canary Deployments
-
-31. GitOps Deployment
-
-32. Monitoring
-
-33. Logging
-
-34. Observability
-
-35. Capacity Planning
-
-36. Security
-
-37. Compliance
-
-38. Deployment Automation
-
-39. Operational Runbooks
-
-40. Deployment Roadmap
-
-41. Vision 2035
+`git checkout <commit>` + `./setup.sh --update`. Le migrazioni di cifratura non
+cancellano il plaintext, quindi il downgrade è sicuro finché le colonne
+plaintext esistono.

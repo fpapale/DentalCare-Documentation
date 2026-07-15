@@ -1,14 +1,18 @@
 # 09 — Deployment
 
+> **Nota:** `<app-server-lan>` e `<db-host-lan>` sono segnaposto per gli indirizzi
+> LAN reali (macchina applicativa e host DB), volutamente non pubblicati. I valori
+> effettivi sono documentati internamente.
+
 ## 1. Topologia di produzione
 
-- **Macchina applicativa**: `192.168.0.72`, cartella `~/docker/dentalcarepro`.
-- **Database**: `dentalcare_prod` su PostgreSQL `192.168.0.173`.
+- **Macchina applicativa**: `<app-server-lan>`, cartella `~/docker/dentalcarepro`.
+- **Database**: `dentalcare_prod` su PostgreSQL `<db-host-lan>`.
 - **Backend** non esposto sull'host: l'nginx del frontend proxa `/api` al
   backend interno. Solo il **frontend** è pubblicato, via due percorsi verso lo
   stesso container:
   - **pubblico**: `https://paaplef.duckdns.org:8181` (HTTPS, reverse proxy TLS);
-  - **diretto (server o LAN)**: `http://192.168.0.72:<FRONTEND_PORT>` (HTTP,
+  - **diretto (server o LAN)**: `http://<app-server-lan>:<FRONTEND_PORT>` (HTTP,
     `8081` in prod, mapping `0.0.0.0:8081->4200`). Usare questa via HTTP per
     script/migrate (evita il proxy TLS pubblico).
 
@@ -45,7 +49,7 @@ cd ~/docker/dentalcarepro
 ## 4. Creazione database
 
 ```bash
-psql -U postgres -h 192.168.0.173 -d postgres \
+psql -U postgres -h <db-host-lan> -d postgres \
      -v dbname=dentalcare_prod -f database/install.sql
 ```
 `install.sql` è parametrico (`-v dbname=...`), self-contained (crea il DB, lo

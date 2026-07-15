@@ -20,7 +20,7 @@ livelli con separazione netta UI / API / persistenza.
 | AI Radiologia | Servizio Python FastAPI + ONNX Runtime (modelli YOLO) |
 | Object storage | MinIO (S3-compatible) per documenti paziente |
 | Automazione | n8n (prenotazioni via WhatsApp/voce, webhook) |
-| Deploy | Docker Compose (macchina 192.168.0.72), DB `dentalcare_prod` su 192.168.0.173 |
+| Deploy | Docker Compose (macchina <app-server-lan>), DB `dentalcare_prod` su <db-host-lan> |
 
 ## 3. Componenti e flusso
 

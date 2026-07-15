@@ -47,8 +47,8 @@ immagini via `${VERSION}` da `.env`.
 
 | Ambiente | Backend | DB | Frontend |
 |----------|---------|----|----------|
-| dev | `mvnw spring-boot:run` (:8080, profilo default) | `dentalcarepro` @ 192.168.0.173 | `npm start` (:4200) |
-| prod | container (profilo `prod`, non esposto) | `dentalcare_prod` @ 192.168.0.173 | nginx :4200 → host :`FRONTEND_PORT` (8081) |
+| dev | `mvnw spring-boot:run` (:8080, profilo default) | `dentalcarepro` @ <db-host-lan> | `npm start` (:4200) |
+| prod | container (profilo `prod`, non esposto) | `dentalcare_prod` @ <db-host-lan> | nginx :4200 → host :`FRONTEND_PORT` (8081) |
 
 ## 5. Versioning e convenzioni
 

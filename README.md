@@ -8,6 +8,7 @@ Official documentation of DentalCare Pro.
 - Business Plan
 - Product Roadmap
 - Architecture Handbook
+- [User Manual (demo tenant)](docs/05-Manuale-Utente/README.md) — role-based tutorials (Dottoressa / Segretaria / Amministratore)
 
 ## Vision
 

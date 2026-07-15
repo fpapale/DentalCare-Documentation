@@ -35,6 +35,10 @@ frontend. `401` = non autenticato, `403` = non autorizzato.
 Dati personali sensibili cifrati **a riposo**, con **chiavi derivate
 per-tenant**, così che un breach del solo database non esponga il chiaro.
 
+> Questa sezione descrive la **meccanica**. Le **motivazioni** delle scelte
+> (modello di minaccia, perché il nome resta in chiaro, alternative scartate,
+> roadmap TDE) sono in [11 — Cifratura dati & GDPR](11-Data-Encryption.md).
+
 ### Primitive (`security/crypto`)
 - **`TenantEncryptionService`**:
   - `enc_key = HKDF-SHA256(masterKey, salt=schema, info="dental-enc-v1", 32)` →

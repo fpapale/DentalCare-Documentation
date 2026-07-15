@@ -18,6 +18,7 @@ ciò che è pianificato/non ancora presente.
 | 08 | [DevOps](08-DevOps.md) | Build, Docker, config/segreti, ambienti |
 | 09 | [Deployment](09-Deployment.md) | Compose, install.sh/setup.sh, deploy cifratura |
 | 10 | [Testing](10-Testing.md) | Unit-first + validazione DB reale |
+| 11 | [Cifratura dati & GDPR](11-Data-Encryption.md) | Scelte di progetto, modello di minaccia, trade-off, roadmap |
 
 ## Sintesi tecnica
 
@@ -52,3 +53,5 @@ studi dentistici:
 - DICOM nativo / PACS (#8) — imaging oggi su formati standard.
 - `VaultMasterKeyProvider` (secret store esterno).
 - Cifratura Slice 2b (phone/email/address) e drop delle colonne plaintext.
+- TDE / disk-encryption a valutazione per il dato a riposo su disco/backup
+  (vedi [11-Data-Encryption §6](11-Data-Encryption.md)).

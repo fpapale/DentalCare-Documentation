@@ -5,14 +5,14 @@
 - **Macchina applicativa**: `192.168.0.72`, cartella `~/docker/dentalcarepro`.
 - **Database**: `dentalcare_prod` su PostgreSQL `192.168.0.173`.
 - **Backend** non esposto sull'host: l'nginx del frontend proxa `/api` al
-  backend interno. Solo il **frontend** è pubblicato (`http://<host>:8181`).
+  backend interno. Solo il **frontend** è pubblicato (`http://<host>:<FRONTEND_PORT>` (in prod HTTP su **8081**)).
 
 ## 2. Servizi (docker-compose)
 
 | Servizio | Porta | Note |
 |----------|-------|------|
 | `dentalcarepro-backend` | 8080 (interna) | profilo `prod`, config montata, healthcheck |
-| `dentalcarepro-frontend` | `8181:4200` | nginx, `depends_on` backend healthy |
+| `dentalcarepro-frontend` | `${FRONTEND_PORT}:4200` (8081 in prod) | nginx, `depends_on` backend healthy |
 | `dentalcare-ai-service` | interna | FastAPI + ONNX |
 | MinIO | — | object storage documenti |
 

@@ -8,8 +8,9 @@
   backend interno. Solo il **frontend** è pubblicato, via due percorsi verso lo
   stesso container:
   - **pubblico**: `https://paaplef.duckdns.org:8181` (HTTPS, reverse proxy TLS);
-  - **diretto sul server**: `http://127.0.0.1:<FRONTEND_PORT>` (HTTP, `8081` in
-    prod, mapping `8081->4200`). Usare la via diretta HTTP per script/migrate.
+  - **diretto (server o LAN)**: `http://192.168.0.72:<FRONTEND_PORT>` (HTTP,
+    `8081` in prod, mapping `0.0.0.0:8081->4200`). Usare questa via HTTP per
+    script/migrate (evita il proxy TLS pubblico).
 
 ## 2. Servizi (docker-compose)
 

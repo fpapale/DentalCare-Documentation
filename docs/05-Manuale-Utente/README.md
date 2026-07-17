@@ -15,6 +15,15 @@ esempi usano il **tenant demo** e sono riproducibili passo-passo.
 | 2 | [Guida Segretaria](02-Guida-Segretaria.md) | Segreteria / Front-office | Appuntamenti, anagrafica pazienti, richiami, preventivi, fatturazione, magazzino, Copilot AI |
 | 3 | [Guida Amministratore](03-Guida-Amministratore.md) | Titolare / Responsabile studio | Dashboard, impostazioni, listino prestazioni, Prompt Manager AI, gestione completa |
 
+## Manuale con schermate reali (per la presentazione)
+
+Manuale a **percorsi guidati** con le **schermate reali** dell'applicazione per i tre ruoli, pensato come materiale di presentazione:
+
+- **[Manuale-Completo.md](Manuale-Completo.md)** — versione consultabile su GitHub, con gli screenshot embedded.
+- **[Manuale_Utente_DentalCare_Pro.docx](Manuale_Utente_DentalCare_Pro.docx)** — versione Word (12 schermate), pronta da stampare o inviare.
+
+Le schermate provengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
+
 ## Accesso all'applicazione
 
 - **Indirizzo pubblico (browser):** `https://paaplef.duckdns.org:8181`

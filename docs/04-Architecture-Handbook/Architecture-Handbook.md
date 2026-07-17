@@ -19,6 +19,7 @@ ciò che è pianificato/non ancora presente.
 | 09 | [Deployment](09-Deployment.md) | Compose, install.sh/setup.sh, deploy cifratura |
 | 10 | [Testing](10-Testing.md) | Unit-first + validazione DB reale |
 | 11 | [Cifratura dati & GDPR](11-Data-Encryption.md) | Scelte di progetto, modello di minaccia, trade-off, roadmap |
+| 12 | [Modello cartella clinica](12-Clinical-Record-Model.md) | Entità, encounter, finalizzazione e addendum, audit, mappatura FHIR |
 
 ## Sintesi tecnica
 
@@ -50,8 +51,28 @@ studi dentistici:
 
 ### Non ancora implementato (roadmap)
 
-- DICOM nativo / PACS (#8) — imaging oggi su formati standard.
+**Release 1.x** — prerequisiti del go-live clinico (vedi
+[Release 1.x](../03-Product-Roadmap/Release-1.x.md)):
+
+- **audit trail clinico**, **finalizzazione delle note + addendum**, **consensi
+  versionati**, **encounter**: il livello del *valore probatorio* della cartella
+  (vedi [12-Clinical-Record-Model](12-Clinical-Record-Model.md));
+- MFA, merge dei duplicati, integrità dei documenti (SHA-256, malware scan),
+  export paziente art. 15.
+
+**Successive:**
+
+- DICOM nativo / PACS — imaging oggi su formati standard.
+- Conservazione a norma, firma qualificata/PAdES, FHIR API, connettore FSE 2.0,
+  portale paziente, terminology service.
 - `VaultMasterKeyProvider` (secret store esterno).
 - Cifratura Slice 2b (phone/email/address) e drop delle colonne plaintext.
 - TDE / disk-encryption a valutazione per il dato a riposo su disco/backup
   (vedi [11-Data-Encryption §6](11-Data-Encryption.md)).
+
+### Stato del prodotto
+
+La piattaforma è in **stato dimostrativo**: nessuno studio la usa su pazienti reali.
+Il modulo di **analisi radiologica** è disattivato in produzione clinica in attesa del
+percorso MDR ([Release 2.x](../03-Product-Roadmap/Release-2.x.md)). Il piano completo è in
+[Product Roadmap](../03-Product-Roadmap/Product-Roadmap.md).

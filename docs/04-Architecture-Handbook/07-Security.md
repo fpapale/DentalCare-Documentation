@@ -84,9 +84,48 @@ dev.** Perdita della chiave = dati cifrati **irrecuperabili**. Generazione:
 - Nessun dato sensibile nei log; stack trace non esposti in prod.
 - Validazione input server-side (Bean Validation, `@ValidFiscalCode`).
 
-## 5. Roadmap sicurezza
+## 5. Postura regolatoria (AI Act, MDR, GDPR)
 
-- `VaultMasterKeyProvider` (rotazione/gestione centralizzata chiavi).
-- Slice 2b cifratura: `phone` / `email` / `address` (normalizzazione blind
-  index dedicata).
-- `DROP` delle colonne plaintext dopo verifica prod prolungata.
+La piattaforma è oggi in **stato dimostrativo**: nessuno studio la usa su pazienti reali.
+Questo determina il regime applicabile.
+
+- **AI Act** — si applica quando un sistema è immesso sul mercato o messo in servizio.
+  Finché DentalCare è una demo con dati fittizi gli obblighi non sono ancora scattati;
+  scattano **tutti insieme al primo paziente reale**. Per questo la conformità è
+  organizzata come **gate di go-live** e non come scadenza di calendario: vedi i criteri
+  in [Release 1.x §29](../03-Product-Roadmap/Release-1.x.md#29-criteri-go-live--gate-1).
+- **Perimetro non high-risk** — Copilot e assistente vocale sono AI **amministrative**:
+  obblighi di trasparenza (art. 50), AI literacy (art. 4), governance, registro AI,
+  policy d'uso. Il confine da non superare: un'AI che suggerisce diagnosi, terapia o
+  priorità clinica cambia classificazione.
+- **MDR** — il modulo di analisi radiologica è probabile Medical Device Software e resta
+  **disattivato in produzione clinica** fino alla marcatura CE
+  ([Release 2.x](../03-Product-Roadmap/Release-2.x.md)). La separazione tecnica del modulo
+  è ciò che rende dimostrabile quale parte del prodotto è soggetta a MDR.
+- **GDPR** — cifratura a riposo già attiva (§3); DPIA, informative, DPA con i fornitori
+  AI, diritti dell'interessato: Release 1.x.
+- **L. 132/2025** — il paziente ha diritto di essere informato dell'uso dell'AI in sanità;
+  la decisione resta al professionista.
+
+Il dettaglio dei controlli di supervisione umana implementati (conferma obbligatoria delle
+scritture del Copilot, tracciabilità della versione dei modelli, distinzione tra output AI
+e osservazione umana) è in [04-AI](04-AI.md).
+
+## 6. Roadmap sicurezza
+
+**Release 1.x** (prerequisiti di go-live):
+- **audit trail clinico** append-only — accessi, letture, scritture, export
+  (vedi [12-Clinical-Record-Model §4](12-Clinical-Record-Model.md#4-audit-trail));
+- **MFA** per professionisti e amministratori;
+- verifica end-to-end della segregazione dei ruoli, con test automatici;
+- **integrità dei documenti**: impronta SHA-256, verifica MIME, scansione malware;
+- test cross-tenant automatici;
+- **pen test** e restore test documentati.
+
+**Successive:**
+- `VaultMasterKeyProvider` (rotazione/gestione centralizzata chiavi);
+- Slice 2b cifratura: `phone` / `email` / `address` (normalizzazione blind index dedicata);
+- `DROP` delle colonne plaintext dopo verifica prod prolungata;
+- valutazione TDE / cifratura del volume per il dato a riposo su disco e backup
+  (vedi [11-Data-Encryption §6](11-Data-Encryption.md));
+- SSO OIDC/SAML per clienti enterprise.

@@ -1,5 +1,3 @@
-AI-Roadmap.md
-
 1. Executive Summary
 
 2. Visione AI

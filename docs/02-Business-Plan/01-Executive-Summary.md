@@ -1,59 +1,52 @@
-01-Executive-Summary.md
+# Executive Summary
 
-1. Executive Summary
-   1.1 Elevator Pitch
-   1.2 Vision
-   1.3 Mission
+DentalCare Pro deve essere posizionata come piattaforma cloud per la gestione clinica e operativa dello studio odontoiatrico, con cartella clinica probatoria, automazione intelligente della segreteria e percorso progressivo verso interoperabilità e AI clinica certificata.
 
-2. Il problema
-   2.1 Le criticità degli studi odontoiatrici
-   2.2 Evoluzione del mercato
-   2.3 Perché i software attuali non sono sufficienti
+La tesi di business è divisa in due linee economiche distinte:
 
-3. La soluzione
-   3.1 DentalCare Pro Platform
-   3.2 AI-Native Dental Practice
-   3.3 Elementi distintivi
+- **DentalCare SaaS**, vendibile dal 2027 come gestionale clinico-amministrativo con AI non medica.
+- **DentalCare Imaging**, futuro modulo radiologico certificato, finanziabile solo dopo validazione commerciale del gestionale.
 
-4. Perché adesso (Why Now?)
-   4.1 Digitalizzazione della sanità
-   4.2 Crescita dell'AI
-   4.3 Evoluzione normativa
-   4.4 Opportunità di mercato
+Questa separazione evita di bloccare il go-to-market del prodotto principale dietro al percorso MDR dell'imaging AI.
 
-5. Il mercato
-   5.1 Mercato italiano
-   5.2 Mercato europeo
-   5.3 TAM
-   5.4 SAM
-   5.5 SOM
+## Obiettivo 2027
 
-6. La piattaforma
-   6.1 DentalCare Core
-   6.2 Copilot AI
-   6.3 Segretaria AI
-   6.4 AI Radiology
-   6.5 Analytics
-   6.6 Academy
+L'obiettivo operativo è arrivare al primo studio pagante a gennaio 2027 con un'offerta limitata ma solida:
 
-7. Vantaggio competitivo
-   7.1 Competitor
-   7.2 Perché DentalCare Pro
-   7.3 Barriere all'ingresso
+- piano Essential;
+- piano Professional;
+- add-on Giulia Voice;
+- Copilot amministrativo;
+- onboarding e migrazione assistita.
 
-8. Strategia commerciale
-   8.1 Go-To-Market
-   8.2 Target
-   8.3 Pricing
-   8.4 Partnership
+Il rilascio commerciale deve avvenire solo dopo il completamento dei gate minimi: DPIA, DPA fornitori, MFA, audit trail, consensi versionati, segregazione dei ruoli, penetration test, restore test e contratti con gli studi.
 
-9. Roadmap triennale
-   2026
-   2027
-   2028
+## Posizionamento
 
-10. KPI principali
+DentalCare Pro non deve competere solo come "gestionale per dentisti". Il posizionamento più difendibile è:
 
-11. Investment Highlights
+> Piattaforma AI-native per lo studio odontoiatrico moderno, capace di integrare gestione clinica, automazione operativa, compliance, analytics e futuro percorso di AI clinica certificata.
 
-12. Conclusioni
+## Piani commerciali
+
+| Piano | Target | Prezzo indicativo | Disponibilità |
+| --- | --- | ---: | --- |
+| Essential | giovane odontoiatra, studio monoprofessionale | 59 euro/mese | gennaio 2027 |
+| Professional | studio con più professionisti e segreteria | 149 euro/mese per sede | gennaio 2027 |
+| Clinic | cliniche e studi multi-sede | 399 euro/mese per sede | secondo semestre 2027 |
+| Enterprise / Network | catene, università, ospedali | personalizzato | 2028 |
+
+I prezzi sono ipotesi di posizionamento da validare con i primi studi pilota.
+
+## Principio regolatorio
+
+Le funzionalità AI amministrative possono essere vendute se restano fuori da triage, diagnosi, prescrizione e supporto decisionale clinico. Le funzionalità radiologiche AI con intended purpose clinico devono invece restare in demo, ricerca autorizzata o percorso certificativo fino alla marcatura CE.
+
+## Sintesi strategica
+
+La strategia sostenibile è:
+
+- **2026:** compliance, cartella clinica, sicurezza e preparazione al go-live.
+- **2027:** vendita controllata di Essential e Professional, validazione commerciale, avvio Clinic.
+- **2028:** interoperabilità, reti, Enterprise e prime integrazioni sanitarie avanzate.
+- **2029:** eventuale Imaging AI certificato, se finanziato da ricavi, partnership o investimento dedicato.

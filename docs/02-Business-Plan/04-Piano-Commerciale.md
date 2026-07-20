@@ -1,43 +1,70 @@
-04-Piano-Commerciale.md
+# Piano Commerciale
 
-1. Executive Summary
+## Obiettivi
 
-2. Visione Commerciale
+| Periodo | Obiettivo |
+| --- | --- |
+| Q1 2027 | 3-5 design partner paganti o semi-paganti |
+| Q2 2027 | 10 studi paganti e processo di onboarding ripetibile |
+| H2 2027 | 25-40 studi paganti, primi clienti Clinic |
+| 2028 | apertura Enterprise e partnership di integrazione |
 
-3. Obiettivi Commerciali
+## Offerta di lancio
 
-4. Piano Commerciale Triennale
+La vendita iniziale deve proporre un perimetro chiaro:
 
-5. Target Commerciali
+- Essential per studi piccoli.
+- Professional per studi con segreteria e più professionisti.
+- Giulia Voice come add-on.
+- Copilot amministrativo incluso o add-on.
+- Setup iniziale e migrazione assistita.
 
-6. Segmentazione Clienti
+Non devono essere vendute funzioni cliniche AI, triage, diagnosi o imaging radiologico AI come funzionalità operative.
 
-7. Processo di Vendita
+## Processo di vendita
 
-8. Canali Commerciali
+1. Qualificazione del lead.
+2. Demo su dati fittizi.
+3. Assessment dei flussi dello studio.
+4. Proposta del piano.
+5. Contratto, DPA e documentazione privacy.
+6. Setup e migrazione.
+7. Formazione.
+8. Go-live.
+9. Review dopo 30 giorni.
 
-9. Strategia AI-Driven Sales
+## Packaging commerciale
 
-10. Piano Marketing Integrato
+| Piano | Trigger di vendita | Argomento principale |
+| --- | --- | --- |
+| Essential | nuovo studio o gestione semplice | partire bene, spendere poco, avere basi solide |
+| Professional | studio con team | coordinare agenda, clinica, segreteria e report |
+| Clinic | più sedi o governance avanzata | controllo centralizzato e analytics |
+| Enterprise | rete o struttura complessa | integrazioni, SLA, compliance e progetto dedicato |
 
-11. Sales Funnel
+## Customer Success
 
-12. Customer Success
+Il successo del cliente deve essere misurato entro i primi 60 giorni:
 
-13. Piano Partnership
+- pazienti importati;
+- agenda usata ogni giorno;
+- documenti e immagini caricati correttamente;
+- note finalizzate;
+- richiami configurati;
+- riduzione telefonate o no-show, se Giulia è attiva;
+- almeno una review operativa con il titolare.
 
-14. Piano Università e Ricerca
+## Partnership
 
-15. Piano Enterprise
+Priorità:
 
-16. Piano Internazionale
+- consulenti di gestione studio;
+- odontoiatri advisor;
+- provider firma/conservazione;
+- provider telefonia;
+- università per validazione;
+- partner DPO/legal/compliance.
 
-17. Organizzazione Commerciale
+## Regola commerciale
 
-18. KPI Commerciali
-
-19. Budget Commerciale
-
-20. Roadmap Commerciale
-
-21. Allegati
+Meglio vendere meno studi ma corretti nei primi sei mesi. I design partner devono aiutare a validare prodotto, pricing, onboarding, supporto e willingness to pay.

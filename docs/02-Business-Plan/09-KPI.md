@@ -1,51 +1,89 @@
-09-KPI.md
+# KPI
 
-1. Executive Summary
+## Dashboard executive
 
-2. KPI Philosophy
+| Area | KPI | Frequenza |
+| --- | --- | --- |
+| Ricavi | MRR, ARR, ARPA | mensile |
+| Crescita | nuovi studi, upgrade, add-on attach rate | mensile |
+| Retention | churn logo, churn MRR, NRR | mensile |
+| Vendite | lead, demo, proposte, win rate | settimanale |
+| Onboarding | tempo go-live, ticket per nuovo studio | settimanale |
+| Prodotto | utenti attivi, uso agenda, note finalizzate | settimanale |
+| Supporto | ticket/studio, tempo risposta, tempo risoluzione | settimanale |
+| AI | conversazioni Giulia, fallback umano, errori, costo/uso | settimanale |
+| Compliance | audit, restore test, incidenti, access report | mensile |
+| Security | vulnerabilità aperte, remediation time | mensile |
 
-3. Performance Management Framework
+## KPI 2027
 
-4. Company Dashboard
+Obiettivi da validare:
 
-5. Financial KPI
+- 3-5 design partner entro Q1.
+- 10 studi paganti entro Q2.
+- 25-40 studi paganti entro fine anno.
+- onboarding medio sotto 10 giorni.
+- utilizzo settimanale sopra 70%.
+- churn logo inferiore al 3% mensile dopo il periodo pilota.
+- attach rate Giulia sopra 25% sui clienti Professional.
 
-6. SaaS KPI
+## SaaS Metrics
 
-7. Sales KPI
+- MRR.
+- ARR.
+- ARPA.
+- CAC.
+- LTV.
+- Payback period.
+- Gross margin.
+- Logo churn.
+- Revenue churn.
+- Net Revenue Retention.
+- Expansion MRR.
 
-8. Marketing KPI
+## Product KPI
 
-9. Customer Success KPI
+- appuntamenti creati;
+- richiami inviati;
+- preventivi generati;
+- cartelle esportate;
+- note finalizzate;
+- addendum creati;
+- documenti caricati;
+- pazienti duplicati risolti;
+- accessi clinici tracciati.
 
-10. Product KPI
+## AI KPI
 
-11. AI KPI
+Per Giulia e Copilot amministrativo:
 
-12. Clinical KPI
+- numero interazioni;
+- percentuale completata senza escalation;
+- fallback umano;
+- errori bloccati dalle policy;
+- costo per interazione;
+- soddisfazione dello studio;
+- casi fuori policy;
+- tempo medio risparmiato stimato.
 
-13. Software Quality KPI
+## Clinical e compliance KPI
 
-14. DevOps KPI
+- percentuale note finalizzate;
+- consensi versionati correttamente;
+- audit trail senza gap;
+- report accessi disponibili;
+- export cartella completato;
+- restore test superato;
+- incidenti privacy;
+- richieste interessati gestite nei tempi.
 
-15. Cybersecurity KPI
+## Gate Imaging AI
 
-16. Operational KPI
+KPI per aprire il percorso:
 
-17. HR KPI
-
-18. Innovation KPI
-
-19. ESG KPI
-
-20. Executive Dashboard
-
-21. Quarterly Business Review
-
-22. OKR Framework
-
-23. Balanced Scorecard
-
-24. KPI Roadmap
-
-25. Conclusioni
+- 20-30 studi paganti;
+- 8-10 lettere di interesse per AI radiologica;
+- partner clinico o universitario;
+- budget MDR identificato;
+- SOP di annotazione approvate;
+- dataset governance definita.

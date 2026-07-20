@@ -1,45 +1,75 @@
-03-Market-Strategy.md
+# Market Strategy
 
-1. Executive Summary
+## Obiettivo
 
-2. Visione Commerciale
+Entrare nel mercato italiano con una vendita controllata, evitando la guerra sul prezzo dei gestionali tradizionali e puntando su qualità clinica, automazione e compliance.
 
-3. Perché il mercato è pronto
+## Ideal Customer Profile iniziale
 
-4. Analisi del cliente
+Il primo ICP è lo studio odontoiatrico giovane o in modernizzazione, con:
 
-5. Segmentazione del mercato
+- 1-5 professionisti;
+- segreteria interna o part-time;
+- forte bisogno di ridurre telefonate, no-show e lavoro manuale;
+- apertura verso cloud e strumenti AI;
+- sensibilità alla qualità della cartella clinica;
+- disponibilità a partecipare a feedback strutturato.
 
-6. ICP (Ideal Customer Profile)
+## Segmentazione
 
-7. Buyer Personas
+| Segmento | Priorità 2027 | Strategia |
+| --- | --- | --- |
+| Giovani dentisti | alta | Essential, onboarding semplice, prezzo accessibile |
+| Studi strutturati | alta | Professional, reportistica, segreteria AI |
+| Cliniche multi-sede | media | programma pilota Clinic nel secondo semestre |
+| Catene | bassa nel breve | relazione enterprise e roadmap 2028 |
+| Università | strategica | validazione, advisory, ricerca AI non commerciale |
 
-8. Customer Journey
+## Posizionamento competitivo
 
-9. Value Proposition
+DentalCare Pro deve differenziarsi su:
 
-10. Posizionamento
+- cartella clinica probatoria;
+- audit, finalizzazione e addendum;
+- segregazione reale tra segreteria e dati clinici;
+- AI amministrativa controllata;
+- architettura multi-tenant moderna;
+- percorso credibile verso FHIR, DICOMweb e AI certificata.
 
-11. Pricing Strategy
+## Go-To-Market
 
-12. Go-To-Market
+### Gennaio-marzo 2027: Design Partner Program
 
-13. Canali Commerciali
+- 3-5 studi selezionati.
+- Prezzo agevolato per 12 mesi.
+- Onboarding incluso.
+- Feedback mensile.
+- Nessuna promessa commerciale sull'AI radiologica.
 
-14. Marketing Strategy
+### Aprile-giugno 2027: vendita controllata
 
-15. Sales Strategy
+- Obiettivo: almeno 10 studi paganti.
+- Onboarding inferiore a 10 giorni.
+- Utilizzo settimanale superiore al 70%.
+- Misurazione del supporto per studio.
+- Validazione della disponibilità a pagare per Giulia.
 
-16. Customer Success
+### Secondo semestre 2027: espansione
 
-17. Community Strategy
+- Lancio Clinic.
+- Partnership con consulenti odontoiatrici.
+- Campagne per giovani dentisti.
+- Avvio canale referral.
 
-18. Partnership Strategy
+## Canali
 
-19. International Expansion
+- Vendita diretta founder-led.
+- Webinar tematici su AI, segreteria e cartella clinica.
+- Advisor odontoiatrici.
+- Partnership con consulenti di studio.
+- Referral da design partner.
+- Contenuti educativi e Academy.
 
-20. KPI
+## Messaggio chiave
 
-21. Roadmap Commerciale
-
-22. Conclusioni
+DentalCare Pro non è solo un gestionale: è il sistema operativo dello studio odontoiatrico AI-native, costruito per rendere più ordinati i processi clinici, più efficiente la segreteria e più misurabile la crescita dello studio.

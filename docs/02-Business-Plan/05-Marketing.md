@@ -1,65 +1,73 @@
-05-Marketing.md
+# Marketing
 
-1. Executive Summary
+## Posizionamento
 
-2. Marketing Vision
+DentalCare Pro deve comunicare un'idea semplice: meno caos operativo, più controllo clinico, più tempo per il paziente.
 
-3. Brand Positioning
+Il brand deve evitare promesse mediche non certificate. L'AI va descritta come supporto amministrativo e operativo, non come sostituto del professionista.
 
-4. Brand Identity
+## Messaggi principali
 
-5. Value Proposition
+- Cartella clinica ordinata, tracciabile e professionale.
+- Agenda e segreteria più efficienti.
+- AI amministrativa con controllo umano.
+- Dati economici e operativi leggibili.
+- Piattaforma pronta a crescere con lo studio.
 
-6. Target Personas
+## Personas
 
-7. Marketing Funnel
+| Persona | Problema | Messaggio |
+| --- | --- | --- |
+| Giovane odontoiatra | aprire uno studio senza sistemi vecchi | parti con una piattaforma moderna |
+| Titolare studio | troppa operatività manuale | riduci caos, telefonate e attività ripetitive |
+| Segreteria | agenda, richiami, comunicazioni | lavora con strumenti più ordinati |
+| Direttore clinica | controllo multi-team | monitora processi, produttività e compliance |
 
-8. Content Strategy
+## Funnel
 
-9. AI Marketing Strategy
+1. Contenuti educativi su gestione digitale e AI amministrativa.
+2. Webinar dimostrativi.
+3. Checklist di readiness per lo studio.
+4. Demo personalizzata.
+5. Design Partner Program.
+6. Case study e referral.
 
-10. Community Strategy
+## Content Strategy
 
-11. DentalCare Academy
+Temi prioritari:
 
-12. Digital Marketing
+- come scegliere un gestionale odontoiatrico moderno;
+- cartella clinica digitale e tracciabilità;
+- segreteria AI: cosa può e non può fare;
+- no-show, richiami e automazione;
+- KPI per studi odontoiatrici;
+- roadmap verso interoperabilità e AI certificata.
 
-13. Social Media Strategy
+## Canali
 
-14. SEO Strategy
+- LinkedIn per posizionamento founder-led.
+- YouTube o webinar per demo e formazione.
+- Newsletter per lead nurturing.
+- Eventi odontoiatrici selezionati.
+- Partnership con consulenti e advisor.
+- Academy come asset educativo.
 
-15. Video Marketing
+## Vincoli comunicativi
 
-16. Podcast Strategy
+Da evitare:
 
-17. Newsletter Strategy
+- claim diagnostici;
+- promesse su AI radiologica prima della certificazione;
+- messaggi che suggeriscano sostituzione del medico;
+- riduzione della responsabilità clinica del professionista.
 
-18. Webinar Strategy
+## KPI Marketing
 
-19. Event Strategy
-
-20. Partnership Marketing
-
-21. Influencer Strategy
-
-22. University Marketing
-
-23. PR & Media Strategy
-
-24. Employer Branding
-
-25. Customer Advocacy
-
-26. Referral Program
-
-27. Growth Marketing
-
-28. Marketing Automation
-
-29. KPI
-
-30. Budget
-
-31. Marketing Roadmap
-
-32. Conclusioni
+- lead qualificati al mese;
+- tasso demo/lead;
+- tasso proposta/demo;
+- CAC per canale;
+- costo per design partner;
+- conversione webinar;
+- referral rate;
+- traffico organico su contenuti core.

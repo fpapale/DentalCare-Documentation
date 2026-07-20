@@ -1,53 +1,70 @@
-08-Investimenti.md
+# Investimenti
 
-1. Executive Summary
+## Filosofia
 
-2. Visione degli Investimenti
+Investire prima nella solidità del prodotto vendibile: cartella clinica, sicurezza, compliance, onboarding, supporto e AI amministrativa. L'Imaging AI certificato deve essere una seconda linea, attivata solo quando esistono segnali commerciali e finanziari sufficienti.
 
-3. Filosofia di Crescita
+## Priorità 2026
 
-4. Strategia di Autofinanziamento
+- DPO e DPIA.
+- Contratti e DPA fornitori.
+- Audit trail e integrità clinica.
+- MFA e sicurezza.
+- Penetration test.
+- Restore test.
+- Evidence pack per go-live.
+- Preparazione onboarding.
 
-5. Piano degli Investimenti
+## Priorità 2027
 
-6. Piano di Impiego del Capitale
+- Stabilizzazione SaaS.
+- Customer success.
+- Sales founder-led.
+- Giulia Voice e Copilot amministrativo.
+- Migrazione dati.
+- Help center.
+- Partnership con consulenti e advisor.
+- Prime integrazioni TS/SDI se necessarie per competitività.
 
-7. Investimenti Tecnologici
+## Priorità 2028
 
-8. Investimenti AI
+- API enterprise.
+- FHIR/DICOM integration.
+- FSE proof of concept.
+- Analytics avanzati.
+- SSO e governance multi-sede.
+- Team enterprise e partner system integrator.
 
-9. Investimenti Commerciali
+## Budget separato Imaging AI
 
-10. Investimenti Marketing
+Voci principali:
 
-11. Investimenti in Ricerca
+- Regulatory Affairs.
+- QMS secondo standard medical software.
+- definizione intended purpose;
+- dataset governance;
+- annotazione clinica;
+- validazione multicentrica;
+- cybersecurity e lifecycle AI;
+- conformity assessment;
+- post-market surveillance.
 
-12. Investimenti Clinici
+## Fonti di finanziamento
 
-13. Investimenti Regolatori
+- ricavi SaaS;
+- design partner;
+- bandi innovazione e sanità digitale;
+- partnership universitarie;
+- investimento seed;
+- contratti enterprise;
+- co-sviluppo con partner imaging.
 
-14. Investimenti Internazionali
+## Stop/Go
 
-15. Piano delle Assunzioni
+Il percorso MDR deve partire solo se:
 
-16. Scenari di Investimento
-
-17. Fonti di Finanziamento
-
-18. Strategia Venture Capital
-
-19. Partnership Strategiche
-
-20. Utilizzo dei Fondi
-
-21. KPI degli Investimenti
-
-22. Analisi del ROI
-
-23. Milestone
-
-24. Roadmap
-
-25. Exit Strategy
-
-26. Allegati
+- il gestionale genera ricavi ricorrenti;
+- i clienti chiedono concretamente il modulo imaging;
+- esiste copertura finanziaria;
+- la governance dati è corretta;
+- il rischio regolatorio è stato valutato da specialisti.

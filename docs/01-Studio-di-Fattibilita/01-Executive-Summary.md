@@ -135,7 +135,7 @@ Sistema conversazionale capace di:
 
 ---
 
-## AI Radiology
+## AI Radiology (Dopo certificazione)
 
 Sistema di supporto alla valutazione radiografica basato su modelli di Computer Vision.
 

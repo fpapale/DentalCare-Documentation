@@ -1,11 +1,11 @@
 # Graph Report - DentalCare-Pro-Documentation  (2026-07-21)
 
 ## Corpus Check
-- 95 files · ~109,079 words
+- 96 files · ~110,311 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 865 nodes · 826 edges · 104 communities (102 shown, 2 thin omitted)
+- 881 nodes · 841 edges · 106 communities (104 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -72,6 +72,8 @@
 - 7. Digital dentistry e AI in dentistry
 - rules/graphify.md
 - workflows/graphify.md
+- Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network
+- 03 - Analisi di Mercato
 
 ## God Nodes (most connected - your core abstractions)
 1. `AI Roadmap — DentalCare Pro` - 34 edges
@@ -88,7 +90,7 @@
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (104 total, 2 thin omitted)
+## Communities (106 total, 2 thin omitted)
 
 ### Community 0 - "Studio-di-Fattibilita.md"
 Cohesion: 0.05
@@ -159,8 +161,8 @@ Cohesion: 0.05
 Nodes (35): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 1. Agenda: la giornata clinica, 2. Scheda paziente, 3. Anamnesi, 4. Odontogramma (+27 more)
 
 ### Community 17 - "03-Analisi-Mercato.md"
-Cohesion: 0.17
-Nodes (11): 03 - Analisi di Mercato, 17. Conclusioni, 18. Fonti, 1. Executive Summary del mercato, 2.1 Driver principali, 2.2 Opportunità specifica per DentalCare Pro, 2. Perché il mercato è interessante oggi, DentalCare Pro (+3 more)
+Cohesion: 0.25
+Nodes (7): 17. Conclusioni, 18. Fonti, 1. Executive Summary del mercato, 2.1 Driver principali, 2.2 Opportunità specifica per DentalCare Pro, 2. Perché il mercato è interessante oggi, Nota metodologica
 
 ### Community 18 - "Market Strategy"
 Cohesion: 0.17
@@ -310,8 +312,16 @@ Nodes (4): 16.1 Priorità prodotto per Italia, 16.2 Priorità commerciale, 16.3 
 Cohesion: 0.50
 Nodes (4): 7.1 Digital dentistry, 7.2 AI in dentistry, 7.3 Implicazioni regolatorie, 7. Digital dentistry e AI in dentistry
 
+### Community 104 - "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network"
+Cohesion: 0.12
+Nodes (15): 1. Executive Summary & Vision, 2.1 Sistema di Incentivazione ("DentalCare Credits"), 2.2 Reputazione Clinica e Ranking ("Peer Reputation Score"), 2. Requisiti di Prodotto e Gamification, 3.1 Client-Side DICOM Anonymizer Engine, 3.2 Peer Consensus Validation Engine (Multi-Reviewer), 3.3 Anonymized Clinical Cases Feed & Peer-Consultation, 3. Architettura Funzionale del Modulo (+7 more)
+
+### Community 105 - "03 - Analisi di Mercato"
+Cohesion: 0.50
+Nodes (4): 03 - Analisi di Mercato, DentalCare Pro, Focus Italia ed Europa per piattaforma SaaS AI-Native odontoiatrica, Indice
+
 ## Knowledge Gaps
-- **651 isolated node(s):** `graphify`, `Workflow: graphify`, `Contents`, `Vision`, `Studio di Fattibilità` (+646 more)
+- **662 isolated node(s):** `graphify`, `Workflow: graphify`, `Contents`, `Vision`, `Studio di Fattibilità` (+657 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -319,13 +329,13 @@ Nodes (4): 7.1 Digital dentistry, 7.2 AI in dentistry, 7.3 Implicazioni regolato
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Release 1.x — Gestionale odontoiatrico con AI amministrativa` connect `Release 1.x — Gestionale odontoiatrico con AI amministrativa` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+  _High betweenness centrality (0.033) - this node is a cross-community bridge._
 - **Why does `AI Roadmap — DentalCare Pro` connect `AI Roadmap — DentalCare Pro` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Why does `Release 2.x — AI radiologica certificata (percorso MDR)` connect `Release 2.x — AI radiologica certificata (percorso MDR)` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **What connects `graphify`, `Workflow: graphify`, `Contents` to the rest of the system?**
-  _651 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _662 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Studio-di-Fattibilita.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Release 1.x — Gestionale odontoiatrico con AI amministrativa` be split into smaller, more focused modules?**

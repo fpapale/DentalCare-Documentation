@@ -54,42 +54,108 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "readme",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "readme.md"
     },
     {
-      "label": "DentalCare Pro Documentation",
+      "label": "Documentazione Ufficiale DentalCare Pro",
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "readme_dentalcare_pro_documentation",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
-      "norm_label": "dentalcare pro documentation"
+      "id": "readme_documentazione_ufficiale_dentalcare_pro",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "documentazione ufficiale dentalcare pro"
     },
     {
-      "label": "Contents",
+      "label": "\ud83d\udcda Indice della Documentazione",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L5",
+      "source_location": "L7",
       "_origin": "ast",
-      "id": "readme_contents",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
-      "norm_label": "contents"
+      "id": "readme_indice_della_documentazione",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "\ud83d\udcda indice della documentazione"
     },
     {
-      "label": "Vision",
+      "label": "1. Studio di Fattibilit\u00e0 & Visione (`docs/01-Studio-di-Fattibilita/`)",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L13",
+      "source_location": "L9",
       "_origin": "ast",
-      "id": "readme_vision",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
-      "norm_label": "vision"
+      "id": "readme_1_studio_di_fattibilit\u00e0_visione_docs_01_studio_di_fattibilita",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "1. studio di fattibilita & visione (`docs/01-studio-di-fattibilita/`)"
+    },
+    {
+      "label": "2. Business Plan (`docs/02-Business-Plan/`)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "readme_2_business_plan_docs_02_business_plan",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "2. business plan (`docs/02-business-plan/`)"
+    },
+    {
+      "label": "3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "readme_3_product_roadmap_specifiche_docs_03_product_roadmap",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "3. product roadmap & specifiche (`docs/03-product-roadmap/`)"
+    },
+    {
+      "label": "4. Manuale Architetturale (`docs/04-Architecture-Handbook/`)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "readme_4_manuale_architetturale_docs_04_architecture_handbook",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "4. manuale architetturale (`docs/04-architecture-handbook/`)"
+    },
+    {
+      "label": "5. Manuale Utente (`docs/05-Manuale-Utente/`)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "readme_5_manuale_utente_docs_05_manuale_utente",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "5. manuale utente (`docs/05-manuale-utente/`)"
+    },
+    {
+      "label": "6. Presentazioni & Materiali Clinici (`docs/`)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "readme_6_presentazioni_materiali_clinici_docs",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "6. presentazioni & materiali clinici (`docs/`)"
+    },
+    {
+      "label": "\ud83c\udfaf Pilastri del Progetto",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "readme_pilastri_del_progetto",
+      "community": 108,
+      "community_name": "\ud83d\udcda Indice della Documentazione",
+      "norm_label": "\ud83c\udfaf pilastri del progetto"
     },
     {
       "label": "01-Executive-Summary.md",
@@ -6940,8 +7006,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_02_backend_spring_boot",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "02 \u2014 backend (spring boot)"
     },
     {
@@ -6951,8 +7017,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_1_panoramica",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "1. panoramica"
     },
     {
@@ -6962,8 +7028,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_2_struttura_dei_package",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "2. struttura dei package"
     },
     {
@@ -6973,8 +7039,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_3_flusso_di_una_richiesta",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "3. flusso di una richiesta"
     },
     {
@@ -6984,8 +7050,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_4_controller",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "4. controller"
     },
     {
@@ -6995,8 +7061,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_5_service",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "5. service"
     },
     {
@@ -7006,8 +7072,8 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_6_persistenza",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "6. persistenza"
     },
     {
@@ -7017,8 +7083,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_7_dto_e_validazione",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "7. dto e validazione"
     },
     {
@@ -7028,8 +7094,8 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_8_gestione_errori",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "8. gestione errori"
     },
     {
@@ -7039,8 +7105,8 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_9_integrazioni_server_side",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "9. integrazioni server-side"
     },
     {
@@ -7050,8 +7116,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_02_backend_10_configurazione",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 106,
+      "community_name": "02 \u2014 Backend (Spring Boot)",
       "norm_label": "10. configurazione"
     },
     {
@@ -7787,8 +7853,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 109,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "10-testing.md"
     },
     {
@@ -7798,8 +7864,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_10_testing",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 109,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "10 \u2014 testing"
     },
     {
@@ -7809,8 +7875,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_1_backend",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 109,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "1. backend"
     },
     {
@@ -7820,8 +7886,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_2_validazione_su_db_reale",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 109,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "2. validazione su db reale"
     },
     {
@@ -7831,8 +7897,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_3_frontend",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 109,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "3. frontend"
     },
     {
@@ -7842,8 +7908,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_4_direzione",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 109,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "4. direzione"
     },
     {
@@ -8392,8 +8458,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_01_guida_dottoressa",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "01-guida-dottoressa.md"
     },
     {
@@ -8557,8 +8623,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_02_guida_segretaria",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "02-guida-segretaria.md"
     },
     {
@@ -8700,8 +8766,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "03-guida-amministratore.md"
     },
     {
@@ -8711,8 +8777,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_03_guida_amministratore_titolare_responsabile_studio",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "03 \u2014 guida amministratore (titolare / responsabile studio)"
     },
     {
@@ -8722,8 +8788,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_0_accesso_e_ruolo",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "0. accesso e ruolo"
     },
     {
@@ -8733,8 +8799,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_1_dashboard",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "1. dashboard"
     },
     {
@@ -8744,8 +8810,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_2_impostazioni_dello_studio",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "2. impostazioni dello studio"
     },
     {
@@ -8755,8 +8821,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_3_listino_prestazioni",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "3. listino prestazioni"
     },
     {
@@ -8766,8 +8832,8 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_4_prompt_manager_ai",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "4. prompt manager ai"
     },
     {
@@ -8777,8 +8843,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_5_supervisione_operativa",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "5. supervisione operativa"
     },
     {
@@ -8788,8 +8854,8 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_6_multi_studio_admin_tenant_nota",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "6. multi-studio (admin tenant) \u2014 nota"
     },
     {
@@ -8799,8 +8865,8 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_7_sicurezza_e_privacy_cosa_deve_sapere_l_admin",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "7. sicurezza e privacy (cosa deve sapere l'admin)"
     },
     {
@@ -8810,8 +8876,8 @@
       "source_location": "L147",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_riepilogo_attivit\u00e0_amministratore",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
       "norm_label": "riepilogo attivita (amministratore)"
     },
     {
@@ -9030,8 +9096,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "readme.md"
     },
     {
@@ -9722,11 +9788,242 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_01_studio_di_fattibilita_01_executive_summary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_05_manuale_utente_readme",
+      "target": "docs_01_studio_di_fattibilita_02_vision",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_01_studio_di_fattibilita_06_rischi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_03_product_roadmap_ai_roadmap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_03_product_roadmap_product_roadmap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_03_product_roadmap_release_1_x",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_03_product_roadmap_release_2_x",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_01_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_02_backend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_03_frontend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_04_ai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_05_dicom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_06_multitenancy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_07_security",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_11_data_encryption",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_12_clinical_record_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_04_architecture_handbook_13_audit_trail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_05_manuale_utente_01_guida_dottoressa",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_05_manuale_utente_02_guida_segretaria",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_05_manuale_utente_03_guida_amministratore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_presentazione_medico_dentalcare_pro",
       "confidence_score": 1.0
     },
     {
@@ -9737,29 +10034,95 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "readme_dentalcare_pro_documentation",
+      "target": "readme_documentazione_ufficiale_dentalcare_pro",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "readme_dentalcare_pro_documentation",
-      "target": "readme_contents",
+      "source": "readme_documentazione_ufficiale_dentalcare_pro",
+      "target": "readme_indice_della_documentazione",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L13",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "readme_dentalcare_pro_documentation",
-      "target": "readme_vision",
+      "source": "readme_documentazione_ufficiale_dentalcare_pro",
+      "target": "readme_pilastri_del_progetto",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_indice_della_documentazione",
+      "target": "readme_1_studio_di_fattibilit\u00e0_visione_docs_01_studio_di_fattibilita",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_indice_della_documentazione",
+      "target": "readme_2_business_plan_docs_02_business_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_indice_della_documentazione",
+      "target": "readme_3_product_roadmap_specifiche_docs_03_product_roadmap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_indice_della_documentazione",
+      "target": "readme_4_manuale_architetturale_docs_04_architecture_handbook",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_indice_della_documentazione",
+      "target": "readme_5_manuale_utente_docs_05_manuale_utente",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_indice_della_documentazione",
+      "target": "readme_6_presentazioni_materiali_clinici_docs",
       "confidence_score": 1.0
     },
     {
@@ -18949,5 +19312,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "80cf67af12a040c3a009dff3ed5415a5549b49ed"
+  "built_at_commit": "30d147a27375595c6ebc9df9151b55b634d29c95"
 }

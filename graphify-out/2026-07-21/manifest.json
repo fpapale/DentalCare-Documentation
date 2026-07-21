@@ -533,5 +533,10 @@
     "mtime": 1784629800.0,
     "ast_hash": "0cec7773c910b1ab6f75ca715ddf8c5b",
     "semantic_hash": ""
+  },
+  "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md": {
+    "mtime": 1784642452.0,
+    "ast_hash": "87e3f9b454e85321351a14cb673fdb3c",
+    "semantic_hash": ""
   }
 }

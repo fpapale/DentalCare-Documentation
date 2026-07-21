@@ -868,8 +868,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_01_studio_di_fattibilita_03_analisi_mercato_03_analisi_di_mercato",
-      "community": 17,
-      "community_name": "03-Analisi-Mercato.md",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
       "norm_label": "03 - analisi di mercato"
     },
     {
@@ -879,8 +879,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "docs_01_studio_di_fattibilita_03_analisi_mercato_dentalcare_pro",
-      "community": 17,
-      "community_name": "03-Analisi-Mercato.md",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
       "norm_label": "dentalcare pro"
     },
     {
@@ -890,8 +890,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "docs_01_studio_di_fattibilita_03_analisi_mercato_focus_italia_ed_europa_per_piattaforma_saas_ai_native_odontoiatrica",
-      "community": 17,
-      "community_name": "03-Analisi-Mercato.md",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
       "norm_label": "focus italia ed europa per piattaforma saas ai-native odontoiatrica"
     },
     {
@@ -901,8 +901,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "docs_01_studio_di_fattibilita_03_analisi_mercato_indice",
-      "community": 17,
-      "community_name": "03-Analisi-Mercato.md",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
       "norm_label": "indice"
     },
     {
@@ -5546,6 +5546,182 @@
       "community": 6,
       "community_name": "AI Roadmap \u2014 DentalCare Pro",
       "norm_label": "riferimenti"
+    },
+    {
+      "label": "DentalCare-Credits-and-Reputation-Spec.md",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "dentalcare-credits-and-reputation-spec.md"
+    },
+    {
+      "label": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_specifiche_tecniche_e_di_prodotto_dentalcare_credits_clinical_reputation_network",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "specifiche tecniche e di prodotto: dentalcare credits & clinical reputation network"
+    },
+    {
+      "label": "1. Executive Summary & Vision",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_1_executive_summary_vision",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "1. executive summary & vision"
+    },
+    {
+      "label": "2. Requisiti di Prodotto e Gamification",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_2_requisiti_di_prodotto_e_gamification",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "2. requisiti di prodotto e gamification"
+    },
+    {
+      "label": "2.1 Sistema di Incentivazione (\"DentalCare Credits\")",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_2_1_sistema_di_incentivazione_dentalcare_credits",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "2.1 sistema di incentivazione (\"dentalcare credits\")"
+    },
+    {
+      "label": "2.2 Reputazione Clinica e Ranking (\"Peer Reputation Score\")",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_2_2_reputazione_clinica_e_ranking_peer_reputation_score",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "2.2 reputazione clinica e ranking (\"peer reputation score\")"
+    },
+    {
+      "label": "3. Architettura Funzionale del Modulo",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_architettura_funzionale_del_modulo",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "3. architettura funzionale del modulo"
+    },
+    {
+      "label": "3.1 Client-Side DICOM Anonymizer Engine",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_1_client_side_dicom_anonymizer_engine",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "3.1 client-side dicom anonymizer engine"
+    },
+    {
+      "label": "3.2 Peer Consensus Validation Engine (Multi-Reviewer)",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_2_peer_consensus_validation_engine_multi_reviewer",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "3.2 peer consensus validation engine (multi-reviewer)"
+    },
+    {
+      "label": "3.3 Anonymized Clinical Cases Feed & Peer-Consultation",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_3_anonymized_clinical_cases_feed_peer_consultation",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "3.3 anonymized clinical cases feed & peer-consultation"
+    },
+    {
+      "label": "4. Bozza del Modello Dati (Database Schema Spec)",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_4_bozza_del_modello_dati_database_schema_spec",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "4. bozza del modello dati (database schema spec)"
+    },
+    {
+      "label": "5. Matrice di Compliance & Rischi Normativi",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L131",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_5_matrice_di_compliance_rischi_normativi",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "5. matrice di compliance & rischi normativi"
+    },
+    {
+      "label": "6. Roadmap di Sviluppo & Dipendenze",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L143",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_6_roadmap_di_sviluppo_dipendenze",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "6. roadmap di sviluppo & dipendenze"
+    },
+    {
+      "label": "Milestone 1 (Release 3.0): Alpha AI Lab",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L152",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_milestone_1_release_3_0_alpha_ai_lab",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "milestone 1 (release 3.0): alpha ai lab"
+    },
+    {
+      "label": "Milestone 2 (Release 3.5): Engine dei Crediti e Consensus",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L156",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_milestone_2_release_3_5_engine_dei_crediti_e_consensus",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "milestone 2 (release 3.5): engine dei crediti e consensus"
+    },
+    {
+      "label": "Milestone 3 (Release 4.0): Community & Formazione FAD",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L160",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_milestone_3_release_4_0_community_formazione_fad",
+      "community": 104,
+      "community_name": "Specifiche Tecniche e di Prodotto: DentalCare Credits & Clinical Reputation Network",
+      "norm_label": "milestone 3 (release 4.0): community & formazione fad"
     },
     {
       "label": "Product-Roadmap.md",
@@ -14501,6 +14677,171 @@
       "_origin": "ast",
       "source": "docs_03_product_roadmap_ai_roadmap_ai_roadmap_dentalcare_pro",
       "target": "docs_03_product_roadmap_ai_roadmap_riferimenti",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_specifiche_tecniche_e_di_prodotto_dentalcare_credits_clinical_reputation_network",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_specifiche_tecniche_e_di_prodotto_dentalcare_credits_clinical_reputation_network",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_1_executive_summary_vision",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_specifiche_tecniche_e_di_prodotto_dentalcare_credits_clinical_reputation_network",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_2_requisiti_di_prodotto_e_gamification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_specifiche_tecniche_e_di_prodotto_dentalcare_credits_clinical_reputation_network",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_architettura_funzionale_del_modulo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_specifiche_tecniche_e_di_prodotto_dentalcare_credits_clinical_reputation_network",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_4_bozza_del_modello_dati_database_schema_spec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_specifiche_tecniche_e_di_prodotto_dentalcare_credits_clinical_reputation_network",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_5_matrice_di_compliance_rischi_normativi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_specifiche_tecniche_e_di_prodotto_dentalcare_credits_clinical_reputation_network",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_6_roadmap_di_sviluppo_dipendenze",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_2_requisiti_di_prodotto_e_gamification",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_2_1_sistema_di_incentivazione_dentalcare_credits",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_2_requisiti_di_prodotto_e_gamification",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_2_2_reputazione_clinica_e_ranking_peer_reputation_score",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_architettura_funzionale_del_modulo",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_1_client_side_dicom_anonymizer_engine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_architettura_funzionale_del_modulo",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_2_peer_consensus_validation_engine_multi_reviewer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_architettura_funzionale_del_modulo",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_3_3_anonymized_clinical_cases_feed_peer_consultation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L152",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_6_roadmap_di_sviluppo_dipendenze",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_milestone_1_release_3_0_alpha_ai_lab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L156",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_6_roadmap_di_sviluppo_dipendenze",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_milestone_2_release_3_5_engine_dei_crediti_e_consensus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_6_roadmap_di_sviluppo_dipendenze",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec_milestone_3_release_4_0_community_formazione_fad",
       "confidence_score": 1.0
     },
     {

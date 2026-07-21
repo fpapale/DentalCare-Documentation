@@ -30,6 +30,24 @@ Ruoli (enum `dentalcare.provider_role`): `tenant_admin`, `admin`, `dentist`,
 I controlli di autorizzazione sono **sempre** lato server, mai delegati al
 frontend. `401` = non autenticato, `403` = non autorizzato.
 
+### Visibilità del listino per ruolo
+
+Oltre ai matcher di rotta, il **catalogo prestazioni** è filtrabile per ruolo a
+livello di dato. Ogni categoria (`service_categories`) può dichiarare in
+`allowed_roles` (CSV di `provider_role`) quali ruoli possono selezionare le sue
+prestazioni; `ServiceCatalogService.findAll()` applica il filtro sul ruolo del
+**JWT**, esposto da `TenantContext.getCurrentRole()`, mai da input client.
+
+Regole:
+- categoria senza `allowed_roles` = nessun vincolo, visibile a tutti (fallback
+  conservativo: un tenant non configurato si comporta come prima);
+- `secretary`, `admin`, `tenant_admin` **non filtrano mai** — selezionano
+  prestazioni per conto di chiunque;
+- è un filtro di *visibilità/usabilità* del listino, non un confine di sicurezza
+  sui dati clinici: quello resta lo schema-per-tenant + i matcher di rotta.
+
+Configurabile dall'amministratore in *Prestazioni → Categorie*.
+
 ## 3. Cifratura campo-per-campo (GDPR art. 32) — #7
 
 Dati personali sensibili cifrati **a riposo**, con **chiavi derivate

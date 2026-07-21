@@ -9,9 +9,9 @@ dei tenant. Un unico database (`dentalcare_prod`), N schemi.
 
 ## 2. Contesto tenant
 
-- **`TenantContext`**: thread-local con schema e clinicId correnti.
-  `validatedSchema()` restituisce lo schema **validato via regex**
-  `^t_[0-9a-f]{8}$` — usato in ogni query. Il tenant non è **mai** preso
+- **`TenantContext`**: thread-local con schema, clinicId e **ruolo** correnti
+  (`getCurrentRole()`). `validatedSchema()` restituisce lo schema **validato via
+  regex** `^t_[0-9a-f]{8}$` — usato in ogni query. Il tenant non è **mai** preso
   dall'input client: deriva dal JWT.
 - **`JwtAuthenticationFilter`**: a ogni richiesta valida il token e popola
   `SecurityContext` + `TenantContext` (schema, clinicId, ruolo dai claim).
@@ -53,13 +53,32 @@ ricostruita vanno aggiunte **prima** del rebuild della vista; altrimenti
 cancellata fino al riavvio successivo. Questa regola è stata la causa di un bug
 risolto durante l'introduzione della cifratura di `fiscal_code`.
 
-## 6. Tenant demo
+## 6. Configurazione per-tenant
+
+Alcuni comportamenti sono configurabili per singolo studio, sempre dallo schema
+del tenant (mai da input client):
+
+- **Orari studio** — colonne `work_start_time`, `work_end_time`, `slot_minutes`,
+  `working_days` su `clinics`. Guidano la proposta del primo slot libero in
+  `AppointmentService.findAvailability()`. Nullable di proposito: campo assente =
+  default applicativo (`ScheduleConfig.defaults()`, 08:00–19:00, slot 15′,
+  lun–ven). Editabili in *Impostazioni → Agenda*.
+- **Ruoli per categoria prestazione** — `service_categories.allowed_roles`
+  (vedi [07-Security §2](07-Security.md)).
+
+Entrambe le colonne sono aggiunte in modo idempotente da `patchSchema()` (vedi
+§5), quindi un tenant preesistente le riceve al primo avvio dopo il deploy.
+
+## 7. Tenant demo
 
 Lo schema `t_9d754153` è il tenant demo, materializzato con dati di esempio da
-`database/install.sql`. La sessione demo (`demo@demo.dentalcare.it`) combina
-impersonazione + nessuna password temporanea.
+`database/install.sql`. La combo di **impersonazione** (assumere l'identità di un
+altro operatore) è un privilegio del solo **account** demo
+`demo@demo.dentalcare.it`, non di ogni utente del tenant: il frontend la abilita
+confrontando l'email dell'utente con quella esposta da `/api/public/demo-config`,
+che a demo spenta (produzione) non restituisce né email né password.
 
-## 7. `install.sql` come specchio del DB
+## 8. `install.sql` come specchio del DB
 
 `database/install.sql` è l'installer unico e deve **rispecchiare** lo schema
 reale: contiene sia il template in `create_tenant()` (per i nuovi tenant) sia lo

@@ -40,7 +40,13 @@ usano status HTTP coerenti (201 + `Location` in creazione, 204 in delete). Nessu
 logica di business. Esempi: `PatientController`, `AppointmentController`,
 `EstimateController`, `InvoiceController`, `TreatmentPlanController`,
 `OdontogramController`, `ProductController` (magazzino), `RecallController`
-(richiami), `CopilotController`, `ChatController`, `TenantAdminController`.
+(richiami), `CopilotController`, `ChatController`, `TenantAdminController`,
+`ClinicSettingsController` (dati fatturazione + orari studio per-tenant).
+
+`AppointmentController` espone anche `GET /availability`: dato un servizio e una
+data, `AppointmentService.findAvailability()` restituisce i primi slot liberi
+rispettando gli orari studio del tenant e le sovrapposizioni con appuntamenti
+non cancellati (`starts_at < candidateEnd AND ends_at > candidateStart`).
 
 ## 5. Service
 

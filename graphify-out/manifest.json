@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1784642912.0,
-    "ast_hash": "865122f57cc63bf0b5e15df6edf26c2a",
+    "mtime": 1784643486.0,
+    "ast_hash": "e6271445313d322b2a3339a64dc8773d",
     "semantic_hash": ""
   },
   "docs/01-Studio-di-Fattibilita/01-Executive-Summary.md": {
@@ -537,6 +537,11 @@
   "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md": {
     "mtime": 1784642452.0,
     "ast_hash": "87e3f9b454e85321351a14cb673fdb3c",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md": {
+    "mtime": 1784643482.0,
+    "ast_hash": "ead89b7d8484324c3edc9a324f78b082",
     "semantic_hash": ""
   }
 }

@@ -10,6 +10,7 @@ Benvenuti nella documentazione ufficiale di **DentalCare Pro**, la piattaforma g
 - [Executive Summary](docs/01-Studio-di-Fattibilita/01-Executive-Summary.md) — Sintesi strategica del progetto.
 - [Visione e Missione](docs/01-Studio-di-Fattibilita/02-Vision.md) — La trasformazione digitale dell'odontoiatria.
 - [Analisi dei Rischi e Compliance](docs/01-Studio-di-Fattibilita/06-Rischi.md) — Rischi tecnici, clinici e normativi (GDPR, EU AI Act, MDR).
+- 🆕 [**Strategia Open Data & Reputation**](docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md) — Analisi degli stakeholder (Università, Società Scientifiche, AI Community) e impatto reputazionale dell'iniziativa Open Science.
 
 ### 2. Business Plan (`docs/02-Business-Plan/`)
 - Modello finanziario, piano di sostenibilità e strategia di go-to-market.
@@ -19,7 +20,7 @@ Benvenuti nella documentazione ufficiale di **DentalCare Pro**, la piattaforma g
 - [AI Roadmap](docs/03-Product-Roadmap/AI-Roadmap.md) — Evoluzione dei modelli LLM e Computer Vision.
 - [Release 1.x](docs/03-Product-Roadmap/Release-1.x.md) — Gestionale odontoiatrico con AI amministrativa.
 - [Release 2.x](docs/03-Product-Roadmap/Release-2.x.md) — AI radiologica certificata e percorso MDR.
-- 🆕 [**Specifica DentalCare Credits & Reputation Network**](docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md) — Sistema di gamification, anonimizzazione DICOM, incentivi SaaS e validazione peer-to-peer (Release 3.x/4.x).
+- [Specifica DentalCare Credits & Reputation Network](docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md) — Sistema di gamification, anonimizzazione DICOM, incentivi SaaS e validazione peer-to-peer (Release 3.x/4.x).
 
 ### 4. Manuale Architetturale (`docs/04-Architecture-Handbook/`)
 - [Overview Architetturale](docs/04-Architecture-Handbook/01-Overview.md) — Microservizi e struttura cloud.
@@ -39,7 +40,7 @@ Benvenuti nella documentazione ufficiale di **DentalCare Pro**, la piattaforma g
 - [Guida Amministratore](docs/05-Manuale-Utente/03-Guida-Amministratore.md) — Configurazione studio e impostazioni AI.
 
 ### 6. Presentazioni & Materiali Clinici (`docs/`)
-- 🆕 [**Presentazione Clinico-Tecnico-Legale per il Medico**](docs/Presentazione-Medico-DentalCare-Pro.md) — Panoramica integrata delle funzionalità attuali e future per odontoiatri e direttori sanitari.
+- [Presentazione Clinico-Tecnico-Legale per il Medico](docs/Presentazione-Medico-DentalCare-Pro.md) — Panoramica integrata delle funzionalità attuali e future per odontoiatri e direttori sanitari.
 
 ---
 

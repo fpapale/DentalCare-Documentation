@@ -95,7 +95,7 @@
       "label": "2. Business Plan (`docs/02-Business-Plan/`)",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L14",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "readme_2_business_plan_docs_02_business_plan",
       "community": 108,
@@ -106,7 +106,7 @@
       "label": "3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L17",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "readme_3_product_roadmap_specifiche_docs_03_product_roadmap",
       "community": 108,
@@ -117,7 +117,7 @@
       "label": "4. Manuale Architetturale (`docs/04-Architecture-Handbook/`)",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L24",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "readme_4_manuale_architetturale_docs_04_architecture_handbook",
       "community": 108,
@@ -128,7 +128,7 @@
       "label": "5. Manuale Utente (`docs/05-Manuale-Utente/`)",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L36",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "readme_5_manuale_utente_docs_05_manuale_utente",
       "community": 108,
@@ -139,7 +139,7 @@
       "label": "6. Presentazioni & Materiali Clinici (`docs/`)",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L41",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "readme_6_presentazioni_materiali_clinici_docs",
       "community": 108,
@@ -150,7 +150,7 @@
       "label": "\ud83c\udfaf Pilastri del Progetto",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L46",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "readme_pilastri_del_progetto",
       "community": 108,
@@ -934,8 +934,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_01_studio_di_fattibilita_03_analisi_mercato_03_analisi_di_mercato",
-      "community": 105,
-      "community_name": "03 - Analisi di Mercato",
+      "community": 17,
+      "community_name": "03-Analisi-Mercato.md",
       "norm_label": "03 - analisi di mercato"
     },
     {
@@ -945,8 +945,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "docs_01_studio_di_fattibilita_03_analisi_mercato_dentalcare_pro",
-      "community": 105,
-      "community_name": "03 - Analisi di Mercato",
+      "community": 17,
+      "community_name": "03-Analisi-Mercato.md",
       "norm_label": "dentalcare pro"
     },
     {
@@ -956,8 +956,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "docs_01_studio_di_fattibilita_03_analisi_mercato_focus_italia_ed_europa_per_piattaforma_saas_ai_native_odontoiatrica",
-      "community": 105,
-      "community_name": "03 - Analisi di Mercato",
+      "community": 17,
+      "community_name": "03-Analisi-Mercato.md",
       "norm_label": "focus italia ed europa per piattaforma saas ai-native odontoiatrica"
     },
     {
@@ -967,8 +967,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "docs_01_studio_di_fattibilita_03_analisi_mercato_indice",
-      "community": 105,
-      "community_name": "03 - Analisi di Mercato",
+      "community": 17,
+      "community_name": "03-Analisi-Mercato.md",
       "norm_label": "indice"
     },
     {
@@ -3192,6 +3192,116 @@
       "community": 4,
       "community_name": "07-Clinical-Advisory-Board.md",
       "norm_label": "13. conclusioni"
+    },
+    {
+      "label": "07-Open-Data-and-Reputation-Strategy.md",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "07-open-data-and-reputation-strategy.md"
+    },
+    {
+      "label": "Strategia Open Data & AI Initiative: Stakeholder e Impatto Reputazionale",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_strategia_open_data_ai_initiative_stakeholder_e_impatto_reputazionale",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "strategia open data & ai initiative: stakeholder e impatto reputazionale"
+    },
+    {
+      "label": "1. Executive Summary",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_1_executive_summary",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "1. executive summary"
+    },
+    {
+      "label": "2. Mappatura degli Stakeholder Interessati",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_mappatura_degli_stakeholder_interessati",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "2. mappatura degli stakeholder interessati"
+    },
+    {
+      "label": "2.1 Universit\u00e0, Facolt\u00e0 di Medicina/Odontoiatria e Politecnici",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_1_universit\u00e0_facolt\u00e0_di_medicina_odontoiatria_e_politecnici",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "2.1 universita, facolta di medicina/odontoiatria e politecnici"
+    },
+    {
+      "label": "2.2 Societ\u00e0 Scientifiche & Associazioni Odontoiatriche (ANDI, AIO, SIDO, SIE)",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_2_societ\u00e0_scientifiche_associazioni_odontoiatriche_andi_aio_sido_sie",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "2.2 societa scientifiche & associazioni odontoiatriche (andi, aio, sido, sie)"
+    },
+    {
+      "label": "2.3 AI Research Community (Hugging Face, Kaggle, FAIR, Google Health)",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_3_ai_research_community_hugging_face_kaggle_fair_google_health",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "2.3 ai research community (hugging face, kaggle, fair, google health)"
+    },
+    {
+      "label": "2.4 Produttori di Hardware e Scanner Intraorali / CBCT (Dentsply Sirona, Planmeca, Carestream)",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_4_produttori_di_hardware_e_scanner_intraorali_cbct_dentsply_sirona_planmeca_carestream",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "2.4 produttori di hardware e scanner intraorali / cbct (dentsply sirona, planmeca, carestream)"
+    },
+    {
+      "label": "2.5 Enti di Regolamentazione & Notified Bodies (MDR, Istituto Superiore di Sanit\u00e0)",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_5_enti_di_regolamentazione_notified_bodies_mdr_istituto_superiore_di_sanit\u00e0",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "2.5 enti di regolamentazione & notified bodies (mdr, istituto superiore di sanita)"
+    },
+    {
+      "label": "3. Strategia di Ritorno Reputazionale & Commerciale (The Brand Equity Engine)",
+      "file_type": "document",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_3_strategia_di_ritorno_reputazionale_commerciale_the_brand_equity_engine",
+      "community": 105,
+      "community_name": "03 - Analisi di Mercato",
+      "norm_label": "3. strategia di ritorno reputazionale & commerciale (the brand equity engine)"
     },
     {
       "label": "08-Piano-Validazione.md",
@@ -7853,8 +7963,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing",
-      "community": 109,
-      "community_name": "10 \u2014 Testing",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "10-testing.md"
     },
     {
@@ -7864,8 +7974,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_10_testing",
-      "community": 109,
-      "community_name": "10 \u2014 Testing",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "10 \u2014 testing"
     },
     {
@@ -7875,8 +7985,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_1_backend",
-      "community": 109,
-      "community_name": "10 \u2014 Testing",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "1. backend"
     },
     {
@@ -7886,8 +7996,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_2_validazione_su_db_reale",
-      "community": 109,
-      "community_name": "10 \u2014 Testing",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "2. validazione su db reale"
     },
     {
@@ -7897,8 +8007,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_3_frontend",
-      "community": 109,
-      "community_name": "10 \u2014 Testing",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "3. frontend"
     },
     {
@@ -7908,8 +8018,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_4_direzione",
-      "community": 109,
-      "community_name": "10 \u2014 Testing",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "4. direzione"
     },
     {
@@ -9821,33 +9931,11 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L19",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_03_product_roadmap_ai_roadmap",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L22",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme",
-      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme",
-      "target": "docs_03_product_roadmap_product_roadmap",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy",
       "confidence_score": 1.0
     },
     {
@@ -9858,7 +9946,29 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_03_product_roadmap_release_1_x",
+      "target": "docs_03_product_roadmap_ai_roadmap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_03_product_roadmap_dentalcare_credits_and_reputation_spec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_03_product_roadmap_product_roadmap",
       "confidence_score": 1.0
     },
     {
@@ -9869,18 +9979,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_03_product_roadmap_release_2_x",
+      "target": "docs_03_product_roadmap_release_1_x",
       "confidence_score": 1.0
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L25",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_01_overview",
+      "target": "docs_03_product_roadmap_release_2_x",
       "confidence_score": 1.0
     },
     {
@@ -9891,7 +10001,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_02_backend",
+      "target": "docs_04_architecture_handbook_01_overview",
       "confidence_score": 1.0
     },
     {
@@ -9902,7 +10012,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_03_frontend",
+      "target": "docs_04_architecture_handbook_02_backend",
       "confidence_score": 1.0
     },
     {
@@ -9913,7 +10023,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_04_ai",
+      "target": "docs_04_architecture_handbook_03_frontend",
       "confidence_score": 1.0
     },
     {
@@ -9924,7 +10034,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_05_dicom",
+      "target": "docs_04_architecture_handbook_04_ai",
       "confidence_score": 1.0
     },
     {
@@ -9935,7 +10045,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_06_multitenancy",
+      "target": "docs_04_architecture_handbook_05_dicom",
       "confidence_score": 1.0
     },
     {
@@ -9946,7 +10056,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_07_security",
+      "target": "docs_04_architecture_handbook_06_multitenancy",
       "confidence_score": 1.0
     },
     {
@@ -9957,7 +10067,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_11_data_encryption",
+      "target": "docs_04_architecture_handbook_07_security",
       "confidence_score": 1.0
     },
     {
@@ -9968,7 +10078,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_12_clinical_record_model",
+      "target": "docs_04_architecture_handbook_11_data_encryption",
       "confidence_score": 1.0
     },
     {
@@ -9979,18 +10089,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_04_architecture_handbook_13_audit_trail",
+      "target": "docs_04_architecture_handbook_12_clinical_record_model",
       "confidence_score": 1.0
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L37",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_05_manuale_utente_01_guida_dottoressa",
+      "target": "docs_04_architecture_handbook_13_audit_trail",
       "confidence_score": 1.0
     },
     {
@@ -10001,7 +10111,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
-      "target": "docs_05_manuale_utente_02_guida_segretaria",
+      "target": "docs_05_manuale_utente_01_guida_dottoressa",
       "confidence_score": 1.0
     },
     {
@@ -10012,6 +10122,17 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
+      "target": "docs_05_manuale_utente_02_guida_segretaria",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
       "target": "docs_05_manuale_utente_03_guida_amministratore",
       "confidence_score": 1.0
     },
@@ -10019,7 +10140,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L42",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
@@ -10052,7 +10173,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_documentazione_ufficiale_dentalcare_pro",
@@ -10074,7 +10195,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_indice_della_documentazione",
@@ -10085,7 +10206,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_indice_della_documentazione",
@@ -10096,7 +10217,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_indice_della_documentazione",
@@ -10107,7 +10228,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_indice_della_documentazione",
@@ -10118,7 +10239,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_indice_della_documentazione",
@@ -12906,6 +13027,105 @@
       "_origin": "ast",
       "source": "docs_01_studio_di_fattibilita_07_clinical_advisory_board_11_roadmap",
       "target": "docs_01_studio_di_fattibilita_07_clinical_advisory_board_anno_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_strategia_open_data_ai_initiative_stakeholder_e_impatto_reputazionale",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_strategia_open_data_ai_initiative_stakeholder_e_impatto_reputazionale",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_1_executive_summary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_strategia_open_data_ai_initiative_stakeholder_e_impatto_reputazionale",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_mappatura_degli_stakeholder_interessati",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_strategia_open_data_ai_initiative_stakeholder_e_impatto_reputazionale",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_3_strategia_di_ritorno_reputazionale_commerciale_the_brand_equity_engine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_mappatura_degli_stakeholder_interessati",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_1_universit\u00e0_facolt\u00e0_di_medicina_odontoiatria_e_politecnici",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_mappatura_degli_stakeholder_interessati",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_2_societ\u00e0_scientifiche_associazioni_odontoiatriche_andi_aio_sido_sie",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_mappatura_degli_stakeholder_interessati",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_3_ai_research_community_hugging_face_kaggle_fair_google_health",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_mappatura_degli_stakeholder_interessati",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_4_produttori_di_hardware_e_scanner_intraorali_cbct_dentsply_sirona_planmeca_carestream",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_mappatura_degli_stakeholder_interessati",
+      "target": "docs_01_studio_di_fattibilita_07_open_data_and_reputation_strategy_2_5_enti_di_regolamentazione_notified_bodies_mdr_istituto_superiore_di_sanit\u00e0",
       "confidence_score": 1.0
     },
     {
@@ -19312,5 +19532,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "30d147a27375595c6ebc9df9151b55b634d29c95"
+  "built_at_commit": "cc5fda5aedaebcdf1ae7793a46d007aaa34091ad"
 }

@@ -132,8 +132,10 @@ e osservazione umana) è in [04-AI](04-AI.md).
 ## 6. Roadmap sicurezza
 
 **Release 1.x** (prerequisiti di go-live):
-- **audit trail clinico** append-only — accessi, letture, scritture, export
-  (vedi [12-Clinical-Record-Model §4](12-Clinical-Record-Model.md#4-audit-trail));
+- **audit trail clinico** append-only — accessi, letture, scritture, export.
+  Modello probatorio, taglio Tier 1/Tier 2 e decisioni di design aperte in
+  [13-Audit-Trail](13-Audit-Trail.md); l'entità nel modello dati in
+  [12-Clinical-Record-Model §4](12-Clinical-Record-Model.md#4-audit-trail);
 - **MFA** per professionisti e amministratori;
 - verifica end-to-end della segregazione dei ruoli, con test automatici;
 - **integrità dei documenti**: impronta SHA-256, verifica MIME, scansione malware;

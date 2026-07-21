@@ -20,6 +20,7 @@ ciò che è pianificato/non ancora presente.
 | 10 | [Testing](10-Testing.md) | Unit-first + validazione DB reale |
 | 11 | [Cifratura dati & GDPR](11-Data-Encryption.md) | Scelte di progetto, modello di minaccia, trade-off, roadmap |
 | 12 | [Modello cartella clinica](12-Clinical-Record-Model.md) | Entità, encounter, finalizzazione e addendum, audit, mappatura FHIR |
+| 13 | [Audit trail clinico](13-Audit-Trail.md) | Modello probatorio, taglio Tier 1 (gate) / Tier 2, decisioni di design |
 
 ## Sintesi tecnica
 
@@ -54,9 +55,10 @@ studi dentistici:
 **Release 1.x** — prerequisiti del go-live clinico (vedi
 [Release 1.x](../03-Product-Roadmap/Release-1.x.md)):
 
-- **audit trail clinico**, **finalizzazione delle note + addendum**, **consensi
-  versionati**, **encounter**: il livello del *valore probatorio* della cartella
-  (vedi [12-Clinical-Record-Model](12-Clinical-Record-Model.md));
+- **audit trail clinico** (modello probatorio, Tier 1/Tier 2 e decisioni di
+  design in [13-Audit-Trail](13-Audit-Trail.md)), **finalizzazione delle note +
+  addendum**, **consensi versionati**, **encounter**: il livello del *valore
+  probatorio* della cartella (vedi [12-Clinical-Record-Model](12-Clinical-Record-Model.md));
 - MFA, merge dei duplicati, integrità dei documenti (SHA-256, malware scan),
   export paziente art. 15.
 

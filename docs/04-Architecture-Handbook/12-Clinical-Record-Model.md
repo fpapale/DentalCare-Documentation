@@ -150,6 +150,12 @@ promette — il **report degli accessi** al paziente che lo richiede, i **KPI** 
 Oggi esiste l'audit delle **azioni AI** (`ai_audit_log`, vedi [04-AI](04-AI.md));
 l'audit clinico generale è la prima milestone tecnica della Release 1.x.
 
+Il **modello probatorio** completo — cosa rende un audit *opponibile* e non solo
+"un log", il taglio tra il minimo obbligatorio al go-live (Tier 1) e ciò che è
+differito (Tier 2), e le decisioni di design ancora aperte (concorrenza della
+hash chain, dove vive il log, come si instrumentano le letture, modulo interno
+vs servizio riusabile) — è in [13-Audit-Trail](13-Audit-Trail.md).
+
 ## 5. Interoperabilità: strategia duale
 
 Il modello interno è **deliberatamente non modellato su uno standard di scambio**. Gli
@@ -234,5 +240,5 @@ questa distanza prima che il primo paziente reale entri nel sistema.
 ## Riferimenti
 
 - [Release 1.x](../03-Product-Roadmap/Release-1.x.md) — scope e criteri di go-live
-- [07-Security](07-Security.md) · [11-Data-Encryption](11-Data-Encryption.md) · [04-AI](04-AI.md)
+- [07-Security](07-Security.md) · [11-Data-Encryption](11-Data-Encryption.md) · [13-Audit-Trail](13-Audit-Trail.md) · [04-AI](04-AI.md)
 - Regolamento (UE) 2016/679 (GDPR) · HL7 FHIR · DICOM · FSE 2.0

@@ -4,6 +4,8 @@
 **Versione:** 1.0  
 **Data:** Luglio 2026
 
+> **Ranking aggiornato (ricerca web + scoring):** l'analisi puntuale dei competitor reali con score di importanza, sub-score e deep-dive è in [04b — Ranking Competitor (2026-07)](04b-Competitor-Ranking-2026-07.md). Questo documento resta la narrativa/SWOT di posizionamento.
+
 # 1. Obiettivo
 
 Questo documento analizza il panorama competitivo del software gestionale odontoiatrico in Italia ed Europa, individuando opportunità di differenziazione per DentalCare Pro.

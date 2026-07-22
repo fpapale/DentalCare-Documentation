@@ -93,6 +93,8 @@ LLM
 
 # 3 Analisi Competitiva
 
+> Ranking competitor **verificato** (ricerca web + scoring per importanza, 2026-07) in [04b-Competitor-Ranking-2026-07](04b-Competitor-Ranking-2026-07.md). L'elenco qui sotto è indicativo e superato da quel documento.
+
 ## Principali competitor
 
 Byte

@@ -137,6 +137,26 @@ Sub-score: **P**=prossimità · **O**=overlap · **T**=traction.
 - **Tier soft ai confini:** UNO (74.6→Critical) e Open Kanino (59.9→High), spinti su dalla prossimità IT nonostante l'assenza di AI.
 - **Copertura:** nessun competitor confermato *operante in Italia* tra gli internazionali (i più vicini UK/IE/FR). Non coperti in questa passata: player continentali (FR "Julie", ES "Logosw"), Weave, Modento, iDentalSoft — candidati per un secondo giro EU-native.
 
+## 8. Nuove Opportunità di Prodotto e Stime di Pricing
+
+Sulla base dei gap dei competitor analizzati, si delineano quattro opportunità chiave di differenziazione e posizionamento di prezzo per DentalCare Pro:
+
+### 1. Assistente Vocale "Hands-Free" da Poltrona (Chairside Agent)
+* **Descrizione**: Interazione vocale interattiva (tramite hotword *"Ehi Giulia"*) per permettere al medico di operare a mani libere (es. dettare note, interrogare anamnesi, proiettare radiografie) senza rompere la sterilità clinica.
+* **Pricing consigliato**: **49 - 79 € / mese per studio** come add-on (incluso nel piano *Clinic*).
+
+### 2. Peer Consensus & Clinical Reputation Network (DentalCare Credits)
+* **Descrizione**: Condivisione e validazione di radiografie anonimizzate per consulti ed etichettatura dati in modalità cooperativa. I dentisti guadagnano crediti effettuando peer review.
+* **Pricing consigliato**: Sistema a gettoni per chi richiede pareri esterni (**2 - 5 € a caso**) e modello di incentivo con sconti sul canone SaaS (fino al 50% di sconto sul piano *Professional*) per i medici che validano i casi.
+
+### 3. Visualizzatore PACS Cloud & Radiologia AI Integrata (YOLO)
+* **Descrizione**: Diagnosi assistita integrata direttamente sull'odontogramma, superando la scomodità di software esterni (alt-tab).
+* **Pricing consigliato**: Modello ibrido con opzione a consumo (**1,50 - 3,00 € a radiografia analizzata**) o abbonamento flat illimitato (**99 - 149 € / mese per studio**).
+
+### 4. Giulia Voice (Receptionist Telefonico AI 24/7)
+* **Descrizione**: Assistente vocale telefonico in italiano integrato nativamente con agenda e anagrafica pazienti.
+* **Pricing consigliato**: Canone base di **79 - 149 € / mese** + costo al consumo per la telefonia (**0,15 - 0,25 € / minuto**).
+
 ---
 
 ## Riferimenti
@@ -144,3 +164,4 @@ Sub-score: **P**=prossimità · **O**=overlap · **T**=traction.
 - [04-Competitor](04-Competitor.md) — narrativa/SWOT competitiva · [05-SWOT](05-SWOT.md) · [03-Analisi-Mercato](03-Analisi-Mercato.md)
 - [Business Plan → 03-Market-Strategy](../02-Business-Plan/03-Market-Strategy.md)
 - Snapshot generato via ricerca web strutturata (3 agenti ricerca + scoring esperto), 2026-07-22. Dati traction dichiarati dai vendor, non auditati.
+

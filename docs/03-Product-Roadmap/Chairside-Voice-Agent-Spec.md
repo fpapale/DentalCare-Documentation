@@ -20,55 +20,59 @@ L'**Assistente Vocale "Hands-Free" (Chairside Agent)** consente all'odontoiatra 
 
 ---
 
-## 2. Architettura della Pipeline Vocale (100% Offline)
+## 2. Architettura della Pipeline Vocale & Integrazione SaaS Ibrida
 
-A tutela della riservatezza dei dati sanitari (GDPR) e per garantire la massima stabilità in assenza di connessione internet costante, l'intera pipeline vocale viene eseguita **in-process / on-premise** sul server dello studio o sul client locale.
+La piattaforma opera come una soluzione **SaaS Ibrida (Edge/Cloud)**. Il segnale vocale e l'elaborazione biometrica dell'audio rimangono rigorosamente all'interno del perimetro locale dello studio odontoiatrico, mentre la persistenza strutturata e la condivisione dello stato clinico avvengono sul cloud centralizzato del SaaS.
 
 ```
-+------------------+      PCM Audio Stream      +------------------------+
-|  Microfono       | ─────────────────────────> | Audio Pre-processor    |
-|  (Chairside)     |                            | (Noise Gate & Filters) |
-+------------------+                            +------------------------+
-                                                            │
-                                                            ▼
-+------------------+      Trascrizione (Testo)  +------------------------+
-| Clinical Parser  | <───────────────────────── | Vosk STT Engine        |
-| & DSL Interpreter|                            | (vosk-java / Model IT) |
-+------------------+                            +------------------------+
-        │
-        ▼ Generazione Comando Clinico
-+------------------------------------------------------------------------+
-| DentalCare Core (Spring Boot Context) ➔ Esecuzione & Aggiornamento     |
-+------------------------------------------------------------------------+
-        │
-        ▼ Output Risposta (Testo)
-+------------------+      Flusso Audio (Sintesi)+------------------------+
-| Altoparlante     | <───────────────────────── | Voices / MaryTTS Engine|
-| (Chairside Feedback)                          | (Sintesi Vocale)       |
-+------------------+                            +------------------------+
++--------------------------------------------------------------------------------+
+|                        ELABORAZIONE LOCAL EDGE (CLIENT)                        |
+|                                                                                |
+|  [ Microfono ] ➔ [ Noise Gate / Web Audio API ] ➔ [ STT Engine (WASM/LAN) ]    |
++--------------------------------------------------------------------------------+
+                                       │
+                                       ▼ Solo Dati Strutturati JSON (Letti localmente)
++--------------------------------------------------------------------------------+
+|                          PIATTAFORMA SAAS CENTRALIZZATA                        |
+|                                                                                |
+|  ➔ API Gateway ➔ Core Spring Boot Service ➔ Database Multi-Tenant PostgreSQL    |
++--------------------------------------------------------------------------------+
 ```
 
-### 2.1 Acquisizione e Pre-processing Audio (Java Sound API)
-*   L'acquisizione dell'audio avviene tramite la classe Java `TargetDataLine` con campionamento standard a **16kHz, 16-bit Mono, PCM**.
-*   **Noise Gate & Spectral Subtraction**: Implementazione di un filtro software passa-banda per attenuare le frequenze acustiche tipiche del rumore dei manipoli/turbine odontoiatriche (frequenze comprese tra 5kHz e 8kHz) ed evitare falsi trigger.
+### 2.1 Distribuzione delle Operazioni (Local vs Cloud)
 
-### 2.2 Riconoscimento Vocale (Speech-to-Text) - Vosk Engine
-*   **Componente**: Integrazione della libreria **Vosk** tramite il wrapper ufficiale `vosk-java`.
-*   **Modello**: Modello italiano leggero (*Vosk Model Italian Small*) pre-installato e caricato a runtime.
-*   **Grammatica Dinamica**: Configurazione del modulo di decodifica Vosk con un dizionario/grammatica ristretto per l'odontogramma (numeri dentali da 11 a 48, termini clinici come *"carie"*, *"otturazione"*, *"protesi"*, *"mancante"*). Questo aumenta l'accuratezza di riconoscimento del 98% anche in ambienti molto rumorosi.
+Per garantire la conformità alla privacy e la resilienza di rete, le operazioni sono così distribuite:
 
-### 2.3 Riconoscimento degli Intenti (Clinical Parser & DSL)
-Il testo trascritto viene analizzato da un parser sintattico locale scritto in Java (senza ricorso a LLM esterni a pagamento per ridurre latenza e costi):
-*   **Sintassi DSL Clinica**: Definizione di regole regex e pattern matching (es. `^dente\s+(\d{2})\s+(carie|otturazione|corona|impianto)\s+(occlusale|vestibolare|palatale|linguale|mesiale|distale)?$`).
-*   **Fallback AI**: In caso di espressioni complesse, elaborazione locale del testo tramite *Spring AI* integrato con modelli locali di tipo BERT/distilBERT eseguiti tramite ONNX Runtime.
-
-### 2.4 Sintesi Vocale (Text-to-Speech) - Voices Engine
-*   **Componente**: Integrazione di **Voices TTS** (in-process Java wrapper per modelli locali Piper).
-*   **Feedback vocale**: Risposte rapide e non invasive per confermare le azioni registrate (es. *"Dente 16 carie occlusale salvato"*).
+*   **Riconoscimento Vocale Client-Side (Offline)**: 
+    *   L'acquisizione dell'audio avviene tramite il microfono del client.
+    *   L'elaborazione e la conversione dell'audio in testo (STT) avvengono **localmente nel browser del medico** tramite compilazione **WebAssembly (WASM)** dei modelli Vosk/Whisper.cpp, oppure inviando l'audio in LAN locale a un gateway di studio (`dentalcare-ai-service`).
+    *   **Nessun file audio lascia lo studio o viene inviato a server esterni.**
+*   **Sincronizzazione Cloud Resiliente**:
+    *   Una volta riconosciuto l'intento clinico (es. *"Dente 16 carie occlusale"*), il client genera un payload JSON leggero e lo invia al server SaaS tramite API REST crittografate.
+    *   **Funzionamento Offline Temporaneo**: Se la connessione internet si interrompe, i comandi validati vengono salvati nella memoria cache locale del browser (*IndexedDB*) e trasmessi al cloud automaticamente non appena la rete torna disponibile.
+*   **Sintesi Vocale Locale (TTS)**:
+    *   La generazione delle risposte vocali (TTS) avviene in-process sul client tramite libreria *Voices* o *MaryTTS*, garantendo feedback istantanei senza latenza di rete (< 200ms).
 
 ---
 
-## 3. Flusso di Esecuzione e Stato (State Machine)
+## 3. Componenti Tecnologiche Locali (Java/Browser Integration)
+
+### 3.1 Acquisizione e Pre-processing Audio
+*   L'acquisizione dell'audio avviene tramite la classe Java `TargetDataLine` (per client desktop) o tramite le **Web Audio API** (per client browser) con campionamento a **16kHz, 16-bit Mono, PCM**.
+*   **Noise Gate & Spectral Subtraction**: Filtri passa-banda software per attenuare le frequenze acustiche tipiche delle turbine odontoiatriche (frequenze comprese tra 5kHz e 8kHz) ed evitare falsi trigger.
+
+### 3.2 Riconoscimento Vocale (Speech-to-Text) - Vosk Engine
+*   **Componente**: Integrazione di **Vosk** tramite il wrapper `vosk-java` o tramite build `vosk-wasm` nel browser.
+*   **Modello**: Modello italiano leggero (*Vosk Model Italian Small*).
+*   **Grammatica Dinamica**: Dizionario/grammatica circoscritto alla nomenclatura odontoiatrica (es. numeri dentali da 11 a 48, termini clinici come *"carie"*, *"otturazione"*, *"protesi"*, *"mancante"*). Questo aumenta l'accuratezza del riconoscimento oltre il 98% anche in presenza di forte rumore di fondo.
+
+### 3.3 Riconoscimento degli Intenti (Clinical Parser & DSL)
+*   Il testo trascritto viene analizzato da un parser sintattico locale (senza ricorso a LLM esterni a pagamento per ridurre latenza e costi).
+*   **Sintassi DSL Clinica**: Definizione di regole regex e pattern matching (es. `^dente\s+(\d{2})\s+(carie|otturazione|corona|impianto)\s+(occlusale|vestibolare|palatale|linguale|mesiale|distale)?$`).
+
+---
+
+## 4. Flusso di Esecuzione e Stato (State Machine)
 
 Per evitare inserimenti accidentali dettati da conversazioni informali con il paziente, l'assistente vocale opera tramite una **Wake Word** e un sistema di conferma:
 
@@ -86,7 +90,7 @@ stateDiagram-v2
 
 ---
 
-## 4. Bozza dello Schema Dati di Configurazione (PostgreSQL)
+## 5. Bozza dello Schema Dati di Configurazione (PostgreSQL)
 
 Ogni studio dentistico può configurare e calibrare le impostazioni della voce per-tenant:
 
@@ -106,7 +110,7 @@ CREATE TABLE ai_voice.chairside_agent_settings (
 
 ---
 
-## 5. Compliance, Sicurezza & AI Act
+## 6. Compliance, Sicurezza & AI Act
 
 *   **GDPR (Art. 32)**: L'elaborazione del segnale vocale non viene inviata a server di terze parti esterne allo studio. Le registrazioni audio temporanee in formato PCM vengono distrutte in memoria RAM immediatamente dopo la trascrizione e non vengono mai salvate su disco.
 *   **EU AI Act (Trasparenza)**: All'attivazione dell'assistente vocale da parte del medico, la piattaforma emette un segnale acustico e visivo (es. icona microfono verde fissa a schermo) per informare chiunque sia presente nella stanza (incluso il paziente) che l'acquisizione audio è attiva.

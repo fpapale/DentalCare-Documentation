@@ -5988,92 +5988,103 @@
       "norm_label": "1.1 principali casi d'uso (use cases)"
     },
     {
-      "label": "2. Architettura della Pipeline Vocale (100% Offline)",
+      "label": "2. Architettura della Pipeline Vocale & Integrazione SaaS Ibrida",
       "file_type": "document",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_100_offline",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_integrazione_saas_ibrida",
       "community": 107,
       "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
-      "norm_label": "2. architettura della pipeline vocale (100% offline)"
+      "norm_label": "2. architettura della pipeline vocale & integrazione saas ibrida"
     },
     {
-      "label": "2.1 Acquisizione e Pre-processing Audio (Java Sound API)",
+      "label": "2.1 Distribuzione delle Operazioni (Local vs Cloud)",
       "file_type": "document",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L51",
+      "source_location": "L42",
       "_origin": "ast",
-      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_2_1_acquisizione_e_pre_processing_audio_java_sound_api",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_2_1_distribuzione_delle_operazioni_local_vs_cloud",
       "community": 107,
       "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
-      "norm_label": "2.1 acquisizione e pre-processing audio (java sound api)"
+      "norm_label": "2.1 distribuzione delle operazioni (local vs cloud)"
     },
     {
-      "label": "2.2 Riconoscimento Vocale (Speech-to-Text) - Vosk Engine",
+      "label": "3. Componenti Tecnologiche Locali (Java/Browser Integration)",
       "file_type": "document",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L55",
+      "source_location": "L58",
       "_origin": "ast",
-      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_2_2_riconoscimento_vocale_speech_to_text_vosk_engine",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_3_componenti_tecnologiche_locali_java_browser_integration",
       "community": 107,
       "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
-      "norm_label": "2.2 riconoscimento vocale (speech-to-text) - vosk engine"
+      "norm_label": "3. componenti tecnologiche locali (java/browser integration)"
     },
     {
-      "label": "2.3 Riconoscimento degli Intenti (Clinical Parser & DSL)",
+      "label": "3.1 Acquisizione e Pre-processing Audio",
       "file_type": "document",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
       "source_location": "L60",
       "_origin": "ast",
-      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_2_3_riconoscimento_degli_intenti_clinical_parser_dsl",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_3_1_acquisizione_e_pre_processing_audio",
       "community": 107,
       "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
-      "norm_label": "2.3 riconoscimento degli intenti (clinical parser & dsl)"
+      "norm_label": "3.1 acquisizione e pre-processing audio"
     },
     {
-      "label": "2.4 Sintesi Vocale (Text-to-Speech) - Voices Engine",
+      "label": "3.2 Riconoscimento Vocale (Speech-to-Text) - Vosk Engine",
       "file_type": "document",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L65",
+      "source_location": "L64",
       "_origin": "ast",
-      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_2_4_sintesi_vocale_text_to_speech_voices_engine",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_3_2_riconoscimento_vocale_speech_to_text_vosk_engine",
       "community": 107,
       "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
-      "norm_label": "2.4 sintesi vocale (text-to-speech) - voices engine"
+      "norm_label": "3.2 riconoscimento vocale (speech-to-text) - vosk engine"
     },
     {
-      "label": "3. Flusso di Esecuzione e Stato (State Machine)",
+      "label": "3.3 Riconoscimento degli Intenti (Clinical Parser & DSL)",
       "file_type": "document",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L71",
+      "source_location": "L69",
       "_origin": "ast",
-      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_3_flusso_di_esecuzione_e_stato_state_machine",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_3_3_riconoscimento_degli_intenti_clinical_parser_dsl",
       "community": 107,
       "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
-      "norm_label": "3. flusso di esecuzione e stato (state machine)"
+      "norm_label": "3.3 riconoscimento degli intenti (clinical parser & dsl)"
     },
     {
-      "label": "4. Bozza dello Schema Dati di Configurazione (PostgreSQL)",
+      "label": "4. Flusso di Esecuzione e Stato (State Machine)",
       "file_type": "document",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L89",
+      "source_location": "L75",
       "_origin": "ast",
-      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_4_bozza_dello_schema_dati_di_configurazione_postgresql",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_4_flusso_di_esecuzione_e_stato_state_machine",
       "community": 107,
       "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
-      "norm_label": "4. bozza dello schema dati di configurazione (postgresql)"
+      "norm_label": "4. flusso di esecuzione e stato (state machine)"
     },
     {
-      "label": "5. Compliance, Sicurezza & AI Act",
+      "label": "5. Bozza dello Schema Dati di Configurazione (PostgreSQL)",
       "file_type": "document",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L109",
+      "source_location": "L93",
       "_origin": "ast",
-      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_5_compliance_sicurezza_ai_act",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_5_bozza_dello_schema_dati_di_configurazione_postgresql",
       "community": 107,
       "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
-      "norm_label": "5. compliance, sicurezza & ai act"
+      "norm_label": "5. bozza dello schema dati di configurazione (postgresql)"
+    },
+    {
+      "label": "6. Compliance, Sicurezza & AI Act",
+      "file_type": "document",
+      "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "docs_03_product_roadmap_chairside_voice_agent_spec_6_compliance_sicurezza_ai_act",
+      "community": 107,
+      "community_name": "03 \u2014 Guida Amministratore (titolare / responsabile studio)",
+      "norm_label": "6. compliance, sicurezza & ai act"
     },
     {
       "label": "DentalCare-Credits-and-Reputation-Spec.md",
@@ -8337,8 +8348,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 110,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "10-testing.md"
     },
     {
@@ -8348,8 +8359,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_10_testing",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 110,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "10 \u2014 testing"
     },
     {
@@ -8359,8 +8370,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_1_backend",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 110,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "1. backend"
     },
     {
@@ -8370,8 +8381,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_2_validazione_su_db_reale",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 110,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "2. validazione su db reale"
     },
     {
@@ -8381,8 +8392,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_3_frontend",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 110,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "3. frontend"
     },
     {
@@ -8392,8 +8403,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "docs_04_architecture_handbook_10_testing_4_direzione",
-      "community": 3,
-      "community_name": "Architecture-Handbook.md",
+      "community": 110,
+      "community_name": "10 \u2014 Testing",
       "norm_label": "4. direzione"
     },
     {
@@ -9261,8 +9272,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_03_guida_amministratore_titolare_responsabile_studio",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "03 \u2014 guida amministratore (titolare / responsabile studio)"
     },
     {
@@ -9272,8 +9283,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_0_accesso_e_ruolo",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "0. accesso e ruolo"
     },
     {
@@ -9283,8 +9294,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_1_dashboard",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "1. dashboard"
     },
     {
@@ -9294,8 +9305,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_2_impostazioni_dello_studio",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "2. impostazioni dello studio"
     },
     {
@@ -9305,8 +9316,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_3_listino_prestazioni",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "3. listino prestazioni"
     },
     {
@@ -9316,8 +9327,8 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_4_prompt_manager_ai",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "4. prompt manager ai"
     },
     {
@@ -9327,8 +9338,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_5_supervisione_operativa",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "5. supervisione operativa"
     },
     {
@@ -9338,8 +9349,8 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_6_multi_studio_admin_tenant_nota",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "6. multi-studio (admin tenant) \u2014 nota"
     },
     {
@@ -9349,8 +9360,8 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_7_sicurezza_e_privacy_cosa_deve_sapere_l_admin",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "7. sicurezza e privacy (cosa deve sapere l'admin)"
     },
     {
@@ -9360,8 +9371,8 @@
       "source_location": "L147",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_03_guida_amministratore_riepilogo_attivit\u00e0_amministratore",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 3,
+      "community_name": "Architecture-Handbook.md",
       "norm_label": "riepilogo attivita (amministratore)"
     },
     {
@@ -9591,8 +9602,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme_05_manuale_utente_tenant_demo",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 109,
+      "community_name": "05 \u2014 Manuale Utente (tenant demo)",
       "norm_label": "05 \u2014 manuale utente (tenant demo)"
     },
     {
@@ -9602,8 +9613,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme_indice",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 109,
+      "community_name": "05 \u2014 Manuale Utente (tenant demo)",
       "norm_label": "indice"
     },
     {
@@ -9613,8 +9624,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme_manuale_con_schermate_reali_per_la_presentazione",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 109,
+      "community_name": "05 \u2014 Manuale Utente (tenant demo)",
       "norm_label": "manuale con schermate reali (per la presentazione)"
     },
     {
@@ -9624,8 +9635,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme_accesso_all_applicazione",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 109,
+      "community_name": "05 \u2014 Manuale Utente (tenant demo)",
       "norm_label": "accesso all'applicazione"
     },
     {
@@ -9635,8 +9646,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme_account_demo_tenant_demo",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 109,
+      "community_name": "05 \u2014 Manuale Utente (tenant demo)",
       "norm_label": "account demo (tenant demo)"
     },
     {
@@ -9646,8 +9657,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme_matrice_funzioni_ruolo",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 109,
+      "community_name": "05 \u2014 Manuale Utente (tenant demo)",
       "norm_label": "matrice funzioni \u00d7 ruolo"
     },
     {
@@ -9657,8 +9668,8 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme_convenzioni_del_manuale",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 109,
+      "community_name": "05 \u2014 Manuale Utente (tenant demo)",
       "norm_label": "convenzioni del manuale"
     },
     {
@@ -9668,8 +9679,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "docs_05_manuale_utente_readme_concetti_chiave_glossario_rapido",
-      "community": 16,
-      "community_name": "01 \u2014 Guida Dottoressa (medico)",
+      "community": 109,
+      "community_name": "05 \u2014 Manuale Utente (tenant demo)",
       "norm_label": "concetti chiave (glossario rapido)"
     },
     {
@@ -15941,40 +15952,51 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "docs_03_product_roadmap_chairside_voice_agent_spec_specifiche_tecniche_e_di_prodotto_assistente_vocale_hands_free_da_poltrona_chairside_agent",
-      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_100_offline",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_integrazione_saas_ibrida",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L71",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast",
       "source": "docs_03_product_roadmap_chairside_voice_agent_spec_specifiche_tecniche_e_di_prodotto_assistente_vocale_hands_free_da_poltrona_chairside_agent",
-      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_3_flusso_di_esecuzione_e_stato_state_machine",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_3_componenti_tecnologiche_locali_java_browser_integration",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L89",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast",
       "source": "docs_03_product_roadmap_chairside_voice_agent_spec_specifiche_tecniche_e_di_prodotto_assistente_vocale_hands_free_da_poltrona_chairside_agent",
-      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_4_bozza_dello_schema_dati_di_configurazione_postgresql",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_4_flusso_di_esecuzione_e_stato_state_machine",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L109",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast",
       "source": "docs_03_product_roadmap_chairside_voice_agent_spec_specifiche_tecniche_e_di_prodotto_assistente_vocale_hands_free_da_poltrona_chairside_agent",
-      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_5_compliance_sicurezza_ai_act",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_5_bozza_dello_schema_dati_di_configurazione_postgresql",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_specifiche_tecniche_e_di_prodotto_assistente_vocale_hands_free_da_poltrona_chairside_agent",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_6_compliance_sicurezza_ai_act",
       "confidence_score": 1.0
     },
     {
@@ -15992,22 +16014,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L51",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_100_offline",
-      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_2_1_acquisizione_e_pre_processing_audio_java_sound_api",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L55",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_100_offline",
-      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_2_2_riconoscimento_vocale_speech_to_text_vosk_engine",
+      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_integrazione_saas_ibrida",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_2_1_distribuzione_delle_operazioni_local_vs_cloud",
       "confidence_score": 1.0
     },
     {
@@ -16017,19 +16028,30 @@
       "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_100_offline",
-      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_2_3_riconoscimento_degli_intenti_clinical_parser_dsl",
+      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_3_componenti_tecnologiche_locali_java_browser_integration",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_3_1_acquisizione_e_pre_processing_audio",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
-      "source_location": "L65",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_2_architettura_della_pipeline_vocale_100_offline",
-      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_2_4_sintesi_vocale_text_to_speech_voices_engine",
+      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_3_componenti_tecnologiche_locali_java_browser_integration",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_3_2_riconoscimento_vocale_speech_to_text_vosk_engine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_03_product_roadmap_chairside_voice_agent_spec_3_componenti_tecnologiche_locali_java_browser_integration",
+      "target": "docs_03_product_roadmap_chairside_voice_agent_spec_3_3_riconoscimento_degli_intenti_clinical_parser_dsl",
       "confidence_score": 1.0
     },
     {
@@ -20324,5 +20346,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "fbe74ec867860b35ca9e98bbf6afecfcde3f8900"
+  "built_at_commit": "437e1a64f13bcb126329ab49f029c76f5ac5850c"
 }

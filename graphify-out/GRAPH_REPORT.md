@@ -1,16 +1,16 @@
 # Graph Report - DentalCare-Pro-Documentation  (2026-07-23)
 
 ## Corpus Check
-- 99 files · ~115,540 words
+- 99 files · ~115,631 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 931 nodes · 916 edges · 109 communities (107 shown, 2 thin omitted)
+- 932 nodes · 917 edges · 111 communities (109 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fbe74ec8`
+- Built from commit: `437e1a64`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -77,6 +77,8 @@
 - 02 — Backend (Spring Boot)
 - 03 — Guida Amministratore (titolare / responsabile studio)
 - 📚 Indice della Documentazione
+- 05 — Manuale Utente (tenant demo)
+- 10 — Testing
 
 ## God Nodes (most connected - your core abstractions)
 1. `AI Roadmap — DentalCare Pro` - 34 edges
@@ -93,7 +95,7 @@
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (109 total, 2 thin omitted)
+## Communities (111 total, 2 thin omitted)
 
 ### Community 0 - "Studio-di-Fattibilita.md"
 Cohesion: 0.05
@@ -108,8 +110,8 @@ Cohesion: 0.06
 Nodes (35): 08 - Piano di Validazione, 10. Ruoli, 11. Roadmap, 12. Deliverable, 13. Conclusioni, 1. Obiettivo, 2. Principi, 3. Obiettivi (+27 more)
 
 ### Community 3 - "Architecture-Handbook.md"
-Cohesion: 0.15
-Nodes (10): 05 — DICOM (Imaging), 1. Cosa c'è oggi, 2. Cosa manca (per il supporto DICOM), 3. Note di progettazione (quando verrà affrontato), Stato attuale: NON implementato (roadmap), 10 — Testing, 1. Backend, 2. Validazione su DB reale (+2 more)
+Cohesion: 0.13
+Nodes (15): 05 — DICOM (Imaging), 1. Cosa c'è oggi, 2. Cosa manca (per il supporto DICOM), 3. Note di progettazione (quando verrà affrontato), Stato attuale: NON implementato (roadmap), 03 — Guida Amministratore (titolare / responsabile studio), 0. Accesso e ruolo, 1. Dashboard (+7 more)
 
 ### Community 4 - "07-Clinical-Advisory-Board.md"
 Cohesion: 0.06
@@ -160,8 +162,8 @@ Cohesion: 0.13
 Nodes (15): 13 — Audit trail clinico (modello probatorio), 1. "Probatorio" non è "salvare i log", 2. Stato attuale (verificato sul codice), 3. Il taglio: Tier 1 (gate) vs Tier 2 (differito), 4. Tier 1 — obbligatorio per il go-live, 5. Tier 2 — differito (eccellente, ma non blocca il go-live), 6. Decisioni di design aperte, 7. Dipendenza con finalizzazione e versionamento (+7 more)
 
 ### Community 16 - "01 — Guida Dottoressa (medico)"
-Cohesion: 0.06
-Nodes (32): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 1. Agenda: la giornata clinica, 2. Scheda paziente, 3. Anamnesi, 4. Odontogramma (+24 more)
+Cohesion: 0.14
+Nodes (14): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 1. Agenda: la giornata clinica, 2. Scheda paziente, 3. Anamnesi, 4. Odontogramma (+6 more)
 
 ### Community 17 - "03-Analisi-Mercato.md"
 Cohesion: 0.17
@@ -328,12 +330,20 @@ Cohesion: 0.18
 Nodes (11): 02 — Backend (Spring Boot), 10. Configurazione, 1. Panoramica, 2. Struttura dei package, 3. Flusso di una richiesta, 4. Controller, 5. Service, 6. Persistenza (+3 more)
 
 ### Community 107 - "03 — Guida Amministratore (titolare / responsabile studio)"
-Cohesion: 0.17
-Nodes (11): 1.1 Principali Casi d'Uso (Use Cases), 1. Visione del Prodotto & Casi d'Uso, 2.1 Acquisizione e Pre-processing Audio (Java Sound API), 2.2 Riconoscimento Vocale (Speech-to-Text) - Vosk Engine, 2.3 Riconoscimento degli Intenti (Clinical Parser & DSL), 2.4 Sintesi Vocale (Text-to-Speech) - Voices Engine, 2. Architettura della Pipeline Vocale (100% Offline), 3. Flusso di Esecuzione e Stato (State Machine) (+3 more)
+Cohesion: 0.15
+Nodes (12): 1.1 Principali Casi d'Uso (Use Cases), 1. Visione del Prodotto & Casi d'Uso, 2.1 Distribuzione delle Operazioni (Local vs Cloud), 2. Architettura della Pipeline Vocale & Integrazione SaaS Ibrida, 3.1 Acquisizione e Pre-processing Audio, 3.2 Riconoscimento Vocale (Speech-to-Text) - Vosk Engine, 3.3 Riconoscimento degli Intenti (Clinical Parser & DSL), 3. Componenti Tecnologiche Locali (Java/Browser Integration) (+4 more)
 
 ### Community 108 - "📚 Indice della Documentazione"
 Cohesion: 0.22
 Nodes (9): 1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`), 2. Business Plan (`docs/02-Business-Plan/`), 3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`), 4. Manuale Architetturale (`docs/04-Architecture-Handbook/`), 5. Manuale Utente (`docs/05-Manuale-Utente/`), 6. Presentazioni & Materiali Clinici (`docs/`), Documentazione Ufficiale DentalCare Pro, 📚 Indice della Documentazione (+1 more)
+
+### Community 109 - "05 — Manuale Utente (tenant demo)"
+Cohesion: 0.25
+Nodes (8): 05 — Manuale Utente (tenant demo), Accesso all'applicazione, Account demo (tenant demo), Concetti chiave (glossario rapido), Convenzioni del manuale, Indice, Manuale con schermate reali (per la presentazione), Matrice funzioni × ruolo
+
+### Community 110 - "10 — Testing"
+Cohesion: 0.33
+Nodes (5): 10 — Testing, 1. Backend, 2. Validazione su DB reale, 3. Frontend, 4. Direzione
 
 ## Knowledge Gaps
 - **698 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+693 more)

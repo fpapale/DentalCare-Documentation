@@ -1,16 +1,16 @@
-# Graph Report - DentalCare-Pro-Documentation  (2026-07-21)
+# Graph Report - DentalCare-Pro-Documentation  (2026-07-23)
 
 ## Corpus Check
-- 97 files · ~111,366 words
+- 99 files · ~115,540 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 897 nodes · 878 edges · 109 communities (107 shown, 2 thin omitted)
+- 931 nodes · 916 edges · 109 communities (107 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `cc5fda5a`
+- Built from commit: `fbe74ec8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -86,9 +86,9 @@
 5. `01 — Guida Dottoressa (medico)` - 14 edges
 6. `02 — Backend (Spring Boot)` - 11 edges
 7. `13 — Audit trail clinico (modello probatorio)` - 11 edges
-8. `4. Analisi per categoria` - 10 edges
-9. `12 — Modello della cartella clinica` - 10 edges
-10. `02 — Guida Segretaria (front-office)` - 10 edges
+8. `04b — Ranking Competitor (ricerca web, luglio 2026)` - 10 edges
+9. `4. Analisi per categoria` - 10 edges
+10. `12 — Modello della cartella clinica` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -101,7 +101,7 @@ Nodes (39): 10 Piano di Validazione Scientifica, 11 Piano Commerciale, 12 Strate
 
 ### Community 1 - "Release 1.x — Gestionale odontoiatrico con AI amministrativa"
 Cohesion: 0.05
-Nodes (40): 10. Architettura, 11. Moduli Core, 12. Moduli AI, 13. Sicurezza, 14. Compliance, 15. DICOM, 16. Clinical Workflow, 17. Funzionalità Dettagliate (+32 more)
+Nodes (41): 10. Architettura, 11. Moduli Core, 12. Moduli AI, 13. Sicurezza, 14. Compliance, 15. DICOM, 16. Clinical Workflow, 17. Funzionalità Dettagliate (+33 more)
 
 ### Community 2 - "08-Piano-Validazione.md"
 Cohesion: 0.06
@@ -121,7 +121,7 @@ Nodes (33): 05 - Analisi SWOT, 1. Introduzione, 2. Matrice SWOT, 3.1 AI-First, 3
 
 ### Community 6 - "AI Roadmap — DentalCare Pro"
 Cohesion: 0.06
-Nodes (34): 10. AI Knowledge, 11. AI Workflow, 12. Multi-Agent System, 13. Model Strategy, 14. Data Strategy, 15. MLOps, 16. Model Registry, 17. Dataset Strategy (+26 more)
+Nodes (35): 10. AI Knowledge, 11. AI Workflow, 12. Multi-Agent System, 13. Model Strategy, 14. Data Strategy, 15. MLOps, 16. Model Registry, 17. Dataset Strategy (+27 more)
 
 ### Community 7 - "4. Analisi per categoria"
 Cohesion: 0.06
@@ -160,16 +160,16 @@ Cohesion: 0.13
 Nodes (15): 13 — Audit trail clinico (modello probatorio), 1. "Probatorio" non è "salvare i log", 2. Stato attuale (verificato sul codice), 3. Il taglio: Tier 1 (gate) vs Tier 2 (differito), 4. Tier 1 — obbligatorio per il go-live, 5. Tier 2 — differito (eccellente, ma non blocca il go-live), 6. Decisioni di design aperte, 7. Dipendenza con finalizzazione e versionamento (+7 more)
 
 ### Community 16 - "01 — Guida Dottoressa (medico)"
-Cohesion: 0.09
-Nodes (22): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 1. Agenda: la giornata clinica, 2. Scheda paziente, 3. Anamnesi, 4. Odontogramma (+14 more)
+Cohesion: 0.06
+Nodes (32): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 1. Agenda: la giornata clinica, 2. Scheda paziente, 3. Anamnesi, 4. Odontogramma (+24 more)
 
 ### Community 17 - "03-Analisi-Mercato.md"
 Cohesion: 0.17
 Nodes (11): 03 - Analisi di Mercato, 17. Conclusioni, 18. Fonti, 1. Executive Summary del mercato, 2.1 Driver principali, 2.2 Opportunità specifica per DentalCare Pro, 2. Perché il mercato è interessante oggi, DentalCare Pro (+3 more)
 
 ### Community 18 - "Market Strategy"
-Cohesion: 0.17
-Nodes (11): Aprile-giugno 2027: vendita controllata, Canali, Gennaio-marzo 2027: Design Partner Program, Go-To-Market, Ideal Customer Profile iniziale, Market Strategy, Messaggio chiave, Obiettivo (+3 more)
+Cohesion: 0.06
+Nodes (29): 04b — Ranking Competitor (ricerca web, luglio 2026), 1. Assistente Vocale "Hands-Free" da Poltrona (Chairside Agent), 1. Metodo, 2. Lettura esecutiva, 2. Peer Consensus & Clinical Reputation Network (DentalCare Credits), 3. Scoreboard (36, ordinati per score), 3. Visualizzatore PACS Cloud & Radiologia AI Integrata (YOLO), 4. Giulia Voice (Receptionist Telefonico AI 24/7) (+21 more)
 
 ### Community 19 - "07 — Sicurezza"
 Cohesion: 0.17
@@ -192,8 +192,8 @@ Cohesion: 0.20
 Nodes (9): Assunzioni di base, Break-even, Costi principali, Driver economici, Financial Plan, Obiettivo, Ricavi, Scenari (+1 more)
 
 ### Community 24 - "04 — AI"
-Cohesion: 0.20
-Nodes (10): 04 — AI, 1. Copilot, 2. Analisi radiologica (servizio Python), 3. Automazione conversazionale (n8n), 4. Storage degli asset AI, Audit delle azioni AI, Gate di conferma delle scritture (`PendingActionService`), Prompt Manager (+2 more)
+Cohesion: 0.18
+Nodes (11): 04 — AI, 1. Copilot, 2. Analisi radiologica (servizio Python), 3. Automazione conversazionale (n8n) e assistente vocale "Giulia", 4. Storage degli asset AI, Audit delle azioni AI, Gate di conferma delle scritture (`PendingActionService`), Prompt Manager (+3 more)
 
 ### Community 25 - "03 — Guida Amministratore (titolare / responsabile studio)"
 Cohesion: 0.14
@@ -328,15 +328,15 @@ Cohesion: 0.18
 Nodes (11): 02 — Backend (Spring Boot), 10. Configurazione, 1. Panoramica, 2. Struttura dei package, 3. Flusso di una richiesta, 4. Controller, 5. Service, 6. Persistenza (+3 more)
 
 ### Community 107 - "03 — Guida Amministratore (titolare / responsabile studio)"
-Cohesion: 0.20
-Nodes (10): 03 — Guida Amministratore (titolare / responsabile studio), 0. Accesso e ruolo, 1. Dashboard, 2. Impostazioni dello studio, 3. Listino prestazioni, 4. Prompt Manager AI, 5. Supervisione operativa, 6. Multi-studio (Admin Tenant) — nota (+2 more)
+Cohesion: 0.17
+Nodes (11): 1.1 Principali Casi d'Uso (Use Cases), 1. Visione del Prodotto & Casi d'Uso, 2.1 Acquisizione e Pre-processing Audio (Java Sound API), 2.2 Riconoscimento Vocale (Speech-to-Text) - Vosk Engine, 2.3 Riconoscimento degli Intenti (Clinical Parser & DSL), 2.4 Sintesi Vocale (Text-to-Speech) - Voices Engine, 2. Architettura della Pipeline Vocale (100% Offline), 3. Flusso di Esecuzione e Stato (State Machine) (+3 more)
 
 ### Community 108 - "📚 Indice della Documentazione"
 Cohesion: 0.22
 Nodes (9): 1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`), 2. Business Plan (`docs/02-Business-Plan/`), 3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`), 4. Manuale Architetturale (`docs/04-Architecture-Handbook/`), 5. Manuale Utente (`docs/05-Manuale-Utente/`), 6. Presentazioni & Materiali Clinici (`docs/`), Documentazione Ufficiale DentalCare Pro, 📚 Indice della Documentazione (+1 more)
 
 ## Knowledge Gaps
-- **674 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+669 more)
+- **698 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+693 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -344,16 +344,16 @@ Nodes (9): 1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Release 1.x — Gestionale odontoiatrico con AI amministrativa` connect `Release 1.x — Gestionale odontoiatrico con AI amministrativa` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Why does `AI Roadmap — DentalCare Pro` connect `AI Roadmap — DentalCare Pro` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.038) - this node is a cross-community bridge._
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `Release 2.x — AI radiologica certificata (percorso MDR)` connect `Release 2.x — AI radiologica certificata (percorso MDR)` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+  _High betweenness centrality (0.030) - this node is a cross-community bridge._
 - **What connects `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)` to the rest of the system?**
-  _674 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _698 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Studio-di-Fattibilita.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Release 1.x — Gestionale odontoiatrico con AI amministrativa` be split into smaller, more focused modules?**
-  _Cohesion score 0.05 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `08-Piano-Validazione.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._

@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1784800420.0,
-    "ast_hash": "8720843a10ad68c738085631aebc6950",
+    "mtime": 1784643486.0,
+    "ast_hash": "e6271445313d322b2a3339a64dc8773d",
     "semantic_hash": ""
   },
   "docs/01-Studio-di-Fattibilita/01-Executive-Summary.md": {
@@ -538,20 +538,5 @@
     "mtime": 1784754976.0,
     "ast_hash": "33640a280e16a8a93fed28ad86ffbf5e",
     "semantic_hash": "33640a280e16a8a93fed28ad86ffbf5e"
-  },
-  "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md": {
-    "mtime": 1784800416.0,
-    "ast_hash": "8c33ceb60b7ce68d15e1add0e781abb9",
-    "semantic_hash": ""
-  },
-  "graphify-out/converted/DentalCare_Pro_Executive_Summary_Draft_v1_842f19ab.md": {
-    "mtime": 1784758224.0,
-    "ast_hash": "669283b4734cb1306c3118a316a8cc5b",
-    "semantic_hash": ""
-  },
-  "graphify-out/converted/Manuale_Utente_DentalCare_Pro_e1548f71.md": {
-    "mtime": 1784758232.0,
-    "ast_hash": "04291a7b46c4334c62b172b9b373dab0",
-    "semantic_hash": ""
   }
 }

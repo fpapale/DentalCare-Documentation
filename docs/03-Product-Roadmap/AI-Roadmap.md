@@ -1,6 +1,6 @@
 # AI Roadmap — DentalCare Pro
 
-**Versione:** 1.0 · **Data:** 17 luglio 2026
+**Versione:** 1.1 · **Data:** 22 luglio 2026
 **Principio guida:** l'AI di DentalCare si divide in due mondi separati da un confine
 regolatorio — **amministrativa** (oggi) e **clinica** (dopo il CE). Confonderli
 riclassifica l'intero prodotto.
@@ -9,16 +9,17 @@ riclassifica l'intero prodotto.
 
 ## 1. Executive Summary
 
-DentalCare ha tre sistemi AI in essere:
+DentalCare ha tre sistemi AI in essere e un'estensione pianificata del Copilot:
 
 | Sistema | Cosa fa | Classificazione | Stato |
 |---|---|---|---|
 | **Copilot** | assistente conversazionale sui moduli (agenda, pazienti, preventivi…) | AI **non high-risk** | ✅ in Release 1.x |
-| **Assistente vocale** | prenotazioni e informazioni amministrative | AI con obblighi di **trasparenza** (art. 50) | ✅ in Release 1.x |
+| **Assistente vocale telefonico** | prenotazioni e informazioni amministrative | AI con obblighi di **trasparenza** (art. 50) | ✅ in Release 1.x |
+| **Chairside Agent “Ehi Giulia”** | input/output vocale del Copilot dalla poltrona: consultazione, navigazione e dettatura controllata | segue il perimetro **non high-risk** del Copilot finché non formula valutazioni cliniche | 📋 pianificato in Release 1.x |
 | **Analisi radiologica** | reperti su ortopanoramica | probabile **MDSW** + AI Act **high-risk** | 🔒 congelato → Release 2.x |
 
 La roadmap AI è quindi semplice da enunciare e difficile da rispettare: **portare a norma
-i primi due, tenere il terzo fuori dall'uso clinico finché non è certificato.**
+Copilot e voce, tenere la radiologia fuori dall'uso clinico finché non è certificata.**
 
 ## 2. Visione AI
 
@@ -88,6 +89,26 @@ sull'AI.
 prescrizione, nessuna interpretazione di referti. Escalation deterministica verso una
 persona per ogni richiesta clinica. Un agente di prenotazione non deve trasformarsi
 informalmente in triage.
+
+### Chairside Agent — canale vocale del Copilot
+
+Il Chairside Agent non è un secondo agente e non coincide con l'assistente telefonico:
+usa la stessa conversazione, cronologia, contesto paziente e superficie di tool del
+Copilot. L'utente può attivarlo manualmente o con hotword locale **“Ehi Giulia”**; il testo
+riconosciuto viene scritto nella chat e la risposta può essere letta tramite sintesi
+vocale configurabile.
+
+Le domande e la navigazione possono essere inviate subito. La dettatura clinica richiede
+prima la revisione della trascrizione e poi il normale gate di conferma dell'azione: le
+due conferme sono distinte e auditate. Il paziente è soltanto quello già selezionato
+nell'interfaccia; il cambio paziente via voce è escluso dall'MVP.
+
+Lo sviluppo segue questo ordine: conversazione condivisa → policy e impostazioni →
+push-to-talk/STT → TTS → hotword → gate clinici/hardening → pilota. Effort stimato:
+**43-69 giornate-agente**, ossia circa **4-5 settimane** con tre agenti dedicati
+(backend, frontend e test/QA). L'attivazione richiede DPIA/valutazione del provider,
+test avversi e pilota positivo; in caso contrario resta `enabled=false` senza bloccare
+la Release 1.x.
 
 ## 9. AI Radiology
 
@@ -239,6 +260,7 @@ dispositivo, immagini rifiutate, drift, casi fuori intended purpose.
 
 - **Gate no-clinical** sul modulo radiologico (default OFF in produzione) ← *prima cosa*
 - Disclosure e limiti dell'assistente vocale
+- Chairside Agent #39: fondazioni Copilot condivise → STT/TTS → hotword locale → doppio gate clinico → pilota controllato
 - Registro AI · AI Use Policy · AI literacy
 - Informativa al paziente sull'uso dell'AI
 - Kill switch per modulo · logging AI esteso

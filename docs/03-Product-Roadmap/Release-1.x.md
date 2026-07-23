@@ -1,6 +1,6 @@
 # Release 1.x — Gestionale odontoiatrico con AI amministrativa
 
-**Fase 1** · **Target: gennaio 2027** · **Versione doc:** 1.0 (17 luglio 2026)
+**Fase 1** · **Target: gennaio 2027** · **Versione doc:** 1.1 (22 luglio 2026)
 
 ---
 
@@ -72,6 +72,23 @@ DentalCare non può. Al termine di Release 1.x, sì.
 - **Kill switch** per modulo e **gate no-clinical** sul modulo radiologico.
 - Logging AI esteso (paziente, esito, correlation ID).
 
+### Chairside Agent “Ehi Giulia”
+
+Canale vocale hands-free del **Copilot esistente**, disponibile dalla postazione di
+poltrona. La richiesta pronunciata viene trascritta nella stessa chat e sessione del
+Copilot; la sintesi vocale è abilitabile dal pannello e configurabile nelle impostazioni
+per voce, lingua di riconoscimento, lingua di sintesi e modalità `off`/`brief`/`full`.
+
+Ordine di sviluppo: audit e autorizzazioni server-side → chiusura del gate di conferma
+Copilot → conversazione condivisa e policy → push-to-talk/STT → TTS → hotword locale →
+revisione dettatura e doppia conferma → test avversi e pilota. La hotword viene elaborata
+localmente e nessun audio è conservato per default.
+
+**Stima:** backend 11-18, frontend 17-26 e test/QA 15-25 giornate-agente; totale
+**43-69 giornate-agente**, circa **4-5 settimane calendario** con tre agenti dedicati in
+parallelo. L'attivazione non è bloccante per il resto della Release: se il pilota non è
+verde, la funzione resta installata ma disabilitata tramite policy server-side.
+
 ### Governance e privacy
 - **DPIA** approvata · ROPA · informative · **DPA + SCC + TIA** con i fornitori AI ·
   contratti studi con clausole deployer · registro claim.
@@ -137,7 +154,8 @@ non sulle funzioni.
 | Modulo | In Release 1.x |
 |---|---|
 | **Copilot conversazionale** | ✅ incluso, con conferma umana obbligatoria per ogni scrittura |
-| **Assistente vocale** (prenotazioni) | ✅ incluso, con disclosure e fallback umano |
+| **Assistente vocale telefonico** (prenotazioni) | ✅ incluso, con disclosure e fallback umano |
+| **Chairside Agent “Ehi Giulia”** (Copilot hands-free in poltrona) | 📋 incluso nello scope; attivazione subordinata a doppio gate, DPIA e pilota |
 | **Analisi radiologica** | 🔒 **disattivato** in produzione clinica → Release 2.x |
 
 Vedi [AI-Roadmap](AI-Roadmap.md) per la classificazione regolatoria di ciascuno.

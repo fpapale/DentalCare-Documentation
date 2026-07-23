@@ -1,6 +1,6 @@
 # Product Roadmap — DentalCare Pro
 
-**Versione:** 1.0 · **Data:** 17 luglio 2026 · **Orizzonte:** 2026-2029
+**Versione:** 1.1 · **Data:** 22 luglio 2026 · **Orizzonte:** 2026-2029
 **Base:** stato dell'arte verificato su codice e database reali, non su documentazione.
 
 ---
@@ -105,7 +105,8 @@ non conforme dal primo giorno.
 | Piano | Stato | Fase |
 |---|---|---|
 | **Core Platform** — anagrafica, agenda, cartella, fatturazione, magazzino, richiami | ✅ implementato, da completare sul valore probatorio | 1 |
-| **AI Platform (amministrativa)** — Copilot, assistente vocale | ✅ implementato, da mettere a norma | 1 |
+| **AI Platform (amministrativa)** — Copilot e assistente vocale telefonico | ✅ implementato, da mettere a norma | 1 |
+| **Chairside Agent “Ehi Giulia”** — canale vocale hands-free del Copilot in poltrona | 📋 pianificato, attivabile dopo pilota | 1 |
 | **Clinical Platform** — encounter, consensi, audit, finalizzazione | 🔨 in costruzione | 1 |
 | **AI Platform (clinica)** — radiologia | 🔒 congelata fuori dall'uso clinico | 2 |
 | **Interoperability Platform** — FHIR, DICOMweb, FSE | ⏸️ rimandata | post-1 |
@@ -226,9 +227,10 @@ scala: la scala funziona.
 | Luglio | **Ingaggio DPO** (percorso critico) · gate no-clinical sul modulo radiologico · disclosure assistente vocale |
 | Agosto-Settembre | Audit trail clinico · finalizzazione note + addendum · segregazione ruoli server-side · soft delete |
 | Settembre-Ottobre | Encounter · consensi versionati · odontogramma temporale · anamnesi tri-stato |
+| Settembre-Novembre | *(binario parallelo #39)* Chairside Agent: conversazione Copilot condivisa → impostazioni voce/lingua → push-to-talk/STT → TTS → hotword locale → doppio gate clinico |
 | Ottobre-Novembre | MFA · merge duplicati · integrità documenti · export paziente (art. 15) |
 | Settembre-Dicembre | *(binario parallelo, dipende dal DPO)* DPIA · informative · DPA fornitori · contratti studi |
-| Dicembre | Pen test · restore test · test cross-tenant · formazione |
+| Dicembre | Pen test · restore test · test cross-tenant · formazione · pilota Chairside su una postazione |
 
 ## 23. Roadmap 2027
 

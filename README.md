@@ -10,7 +10,7 @@ Benvenuti nella documentazione ufficiale di **DentalCare Pro**, la piattaforma g
 - [Executive Summary](docs/01-Studio-di-Fattibilita/01-Executive-Summary.md) — Sintesi strategica del progetto.
 - [Visione e Missione](docs/01-Studio-di-Fattibilita/02-Vision.md) — La trasformazione digitale dell'odontoiatria.
 - [Analisi dei Rischi e Compliance](docs/01-Studio-di-Fattibilita/06-Rischi.md) — Rischi tecnici, clinici e normativi (GDPR, EU AI Act, MDR).
-- 🆕 [**Strategia Open Data & Reputation**](docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md) — Analisi degli stakeholder (Università, Società Scientifiche, AI Community) e impatto reputazionale dell'iniziativa Open Science.
+- [Strategia Open Data & Reputation](docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md) — Analisi degli stakeholder (Università, Società Scientifiche, AI Community) e impatto reputazionale dell'iniziativa Open Science.
 
 ### 2. Business Plan (`docs/02-Business-Plan/`)
 - Modello finanziario, piano di sostenibilità e strategia di go-to-market.
@@ -21,6 +21,7 @@ Benvenuti nella documentazione ufficiale di **DentalCare Pro**, la piattaforma g
 - [Release 1.x](docs/03-Product-Roadmap/Release-1.x.md) — Gestionale odontoiatrico con AI amministrativa.
 - [Release 2.x](docs/03-Product-Roadmap/Release-2.x.md) — AI radiologica certificata e percorso MDR.
 - [Specifica DentalCare Credits & Reputation Network](docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md) — Sistema di gamification, anonimizzazione DICOM, incentivi SaaS e validazione peer-to-peer (Release 3.x/4.x).
+- 🆕 [**Specifica Assistente Vocale Chairside Agent**](docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md) — Architettura della pipeline vocale offline, acquisizione audio PCM, integrazione Vosk STT, Voices TTS, interprete DSL dei comandi clinici e conformità GDPR/AI Act.
 
 ### 4. Manuale Architetturale (`docs/04-Architecture-Handbook/`)
 - [Overview Architetturale](docs/04-Architecture-Handbook/01-Overview.md) — Microservizi e struttura cloud.

@@ -131,9 +131,13 @@ snapshot puntuale e datato del catalogo anamnesi condiviso** (§3.1): senza, le
 selezioni del paziente (`item_id`) diventano illeggibili dopo la cancellazione.
 
 L'export **decifra** i campi sensibili ([07-Security §3](07-Security.md)) →
-l'artefatto va protetto (archivio cifrato / download firmato a scadenza) e
-l'estrazione **auditata**. È **copia di sicurezza / portabilità**, **non**
-conservazione a norma (§7.3).
+l'artefatto va protetto e l'estrazione **auditata**. Protezione scelta:
+**signed URL a scadenza breve** (nessuna copia persistente non protetta sul
+server) **+ archivio cifrato con password monouso** (il file resta cifrato una
+volta sul disco dell'utente), coerente col pattern token/monouso della guardia di
+cancellazione (§7.2). Scartata come default la cifratura con chiave del tenant,
+che ostacolerebbe la portabilità art. 20. È **copia di sicurezza / portabilità**,
+**non** conservazione a norma (§7.3).
 
 ### 7.2 Cancellazione con guardia (grace period)
 `deleteClinic()` rifiuta una sede con pazienti o l'ultima sede. `deleteTenant()`

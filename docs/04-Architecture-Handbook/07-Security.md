@@ -30,6 +30,12 @@ Ruoli (enum `dentalcare.provider_role`): `tenant_admin`, `admin`, `dentist`,
 I controlli di autorizzazione sono **sempre** lato server, mai delegati al
 frontend. `401` = non autenticato, `403` = non autorizzato.
 
+> **`tenant_admin` vs `admin`:** `tenant_admin` è il proprietario dell'account,
+> amministra **tutte** le cliniche/sedi del proprio tenant (non esiste un ruolo di
+> amministratore per singola sede). `admin` è legacy/di servizio (tenant demo +
+> service-token n8n). Terminologia completa in
+> [06-Multitenancy §1.1](06-Multitenancy.md).
+
 ### Visibilità del listino per ruolo
 
 Oltre ai matcher di rotta, il **catalogo prestazioni** è filtrabile per ruolo a
@@ -143,6 +149,13 @@ e osservazione umana) è in [04-AI](04-AI.md).
 - **pen test** e restore test documentati.
 
 **Successive:**
+- **difesa in profondità dell'isolamento a livello DB** (Row Level Security o
+  ruoli Postgres per-tenant): oggi l'isolamento cross-tenant è **applicativo**
+  (schema dal JWT + prefissatura query), senza rete DB — vedi
+  [06-Multitenancy §3.2](06-Multitenancy.md);
+- **guardia di cancellazione tenant/clinica** con export imposto + token + copia
+  in retention + soft-delete/grace period (#47) — vedi
+  [06-Multitenancy §7](06-Multitenancy.md);
 - `VaultMasterKeyProvider` (rotazione/gestione centralizzata chiavi);
 - Slice 2b cifratura: `phone` / `email` / `address` (normalizzazione blind index dedicata);
 - `DROP` delle colonne plaintext dopo verifica prod prolungata;

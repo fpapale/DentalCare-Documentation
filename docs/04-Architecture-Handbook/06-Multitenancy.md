@@ -139,24 +139,39 @@ cancellazione (§7.2). Scartata come default la cifratura con chiave del tenant,
 che ostacolerebbe la portabilità art. 20. È **copia di sicurezza / portabilità**,
 **non** conservazione a norma (§7.3).
 
-### 7.2 Cancellazione con guardia (grace period)
-`deleteClinic()` rifiuta una sede con pazienti o l'ultima sede. `deleteTenant()`
-oggi fa `DROP SCHEMA CASCADE` + purge MinIO = **irreversibile immediato**, con
-export solo "consigliato lato client".
+### 7.2 Cancellazione con guardia (grace period) — implementata (#47)
+`deleteClinic()` rifiuta una sede con pazienti o l'ultima sede. La cancellazione
+del **tenant** non è più un `DROP SCHEMA CASCADE` immediato: è una **guardia
+verificabile dal server** — mai una checkbox "hai salvato?" (autodichiarazione
+non verificabile). Componenti (`TenantDeletionService`, `TenantDeletionScheduler`,
+`TenantDeletionTokenStore`):
 
-#47 impone una **guardia verificabile dal server** — mai una checkbox "hai
-salvato?" (autodichiarazione non verificabile):
+1. **`prepare`** — genera l'export, lo avvolge in un **archivio ZIP AES protetto
+   da password monouso** (Slice B, §7.1), lo salva su MinIO (retention, cifrata
+   anche a riposo) e rilascia un **token monouso a TTL breve** (persistente su
+   `dentalcare.tenant_deletion_tokens`, sopravvive al riavvio). La password è
+   mostrata **una sola volta**.
+2. **`confirm`** (`DELETE /tenant`) — valida token + **nome del tenant digitato
+   esatto** → **soft-delete**: `tenants.active=false` + `scheduled_drop_at=now()+N gg`
+   (default 30). Nessun DROP immediato.
+3. **`cancel`** — annulla nella finestra (riattiva il tenant).
+4. **`TenantDeletionScheduler`** — job giornaliero: `DROP SCHEMA CASCADE` + purge
+   MinIO solo per i tenant con finestra scaduta → **annullabile fino allo scadere**
+   (standard cloud account deletion).
 
-1. **export imposto + token monouso** legato all'export prodotto/scaricato → senza
-   export, cancellazione rifiutata (409);
-2. **conferma digitata** (nome tenant / `ELIMINA`);
-3. **copia dell'export in retention** server-side per N giorni;
-4. **soft-delete**: `tenants.active=false` + `scheduled_drop_at=now()+N gg`,
-   accesso revocato subito; `DROP SCHEMA` reale solo allo scadere, via job →
-   **annullabile nella finestra** (standard cloud account deletion).
+**Congelamento durante il grace period.** Il soft-delete non blocca solo i nuovi
+login (`active=false`): il `JwtAuthenticationFilter` **congela anche i JWT già
+emessi** — ogni richiesta di un tenant in soft-delete riceve `403`, **tranne**
+l'endpoint di annullamento (così l'admin può ancora annullare). Realizzato con un
+set di schemi inattivi in `TenantSchemaRegistry` (popolato a confirm/cancel,
+ricaricato all'avvio) → nessuna query DB per-richiesta.
+
+**Audit persistente.** Ogni evento (prepare/confirm/cancel/hard_drop) è scritto su
+`dentalcare.tenant_audit_log`, tabella **globale** che sopravvive al DROP dello
+schema.
 
 Trade-off GDPR art. 17: se la cancellazione nasce da erasure dell'interessato, la
-finestra va documentata come tempo tecnico (revoca accesso immediata + drop
+finestra va documentata come tempo tecnico (accesso congelato subito + drop
 differito); per l'offboarding volontario del tenant nessun vincolo.
 
 ### 7.3 Backup ≠ export ≠ conservazione a norma

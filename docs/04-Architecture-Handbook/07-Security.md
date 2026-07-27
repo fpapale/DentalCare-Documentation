@@ -54,6 +54,30 @@ Regole:
 
 Configurabile dall'amministratore in *Prestazioni → Categorie*.
 
+### Visibilità pazienti per ruolo (#42) — enforcement server-side
+
+`AccessScopeService.resolveProviderFilter()` è la **regola unica** che decide, lato
+server, quali pazienti/appuntamenti un chiamante può vedere, guidata da
+`clinics.patient_visibility_mode` ([06-Multitenancy §6](06-Multitenancy.md)):
+
+- ruolo **non clinico** (segreteria/admin) → il `providerId` passato resta un filtro
+  facoltativo di comodo;
+- ruolo **clinico** + modalità `shared` → nessun filtro: tutti i pazienti della **sede**;
+- ruolo **clinico** + `per_provider` (default) → forzato ai **propri**, ignorando
+  qualunque `providerId` proposto dal client.
+
+Usata da `PatientController` (`findAll`/`findById`) e da `AppointmentService`. **Chiude
+il gap per cui `?providerId=` era un filtro deciso dal client**: ora è un confine
+deciso dal server dal ruolo del JWT, non un parametro fidato. La costante dei ruoli
+clinici è unica (`RoleConstants.MEDICAL_ROLES`), non più duplicata tra servizi.
+
+### Intestazione fattura decisa dal server (#44)
+
+Analogamente, `InvoiceService.createFromEstimate` non accetta più `issuerType`/`providerId`
+dal client: legge `clinics.billing_mode` e decide l'intestazione (`studio` → fattura
+dello studio; `provider` → parcella al medico del preventivo). Un esito fiscale non
+dipende da un parametro client.
+
 ## 3. Cifratura campo-per-campo (GDPR art. 32) — #7
 
 Dati personali sensibili cifrati **a riposo**, con **chiavi derivate

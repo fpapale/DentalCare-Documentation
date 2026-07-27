@@ -114,9 +114,21 @@ del tenant (mai da input client):
   lun–ven). Editabili in *Impostazioni → Agenda*.
 - **Ruoli per categoria prestazione** — `service_categories.allowed_roles`
   (vedi [07-Security §2](07-Security.md)).
+- **Visibilità pazienti per ruolo (#42)** — `clinics.patient_visibility_mode`
+  (`per_provider` default | `shared`). In `per_provider` un ruolo clinico vede solo
+  i propri pazienti; in `shared` tutti quelli della **sede**. Enforcement server-side
+  in `AccessScopeService.resolveProviderFilter()` (vedi [07-Security §2](07-Security.md)).
+- **Modalità di fatturazione (#44)** — `clinics.billing_mode` (`studio` default |
+  `provider`). Decide **lato server** l'intestazione della fattura in
+  `InvoiceService.createFromEstimate` (`studio` = fattura dello studio; `provider` =
+  parcella intestata al medico del preventivo), mai da input client. Affianca
+  `provider_price_overrides` (override prezzi per medico, versionati per intervallo)
+  e la vista `v_provider_effective_prices`.
 
-Entrambe le colonne sono aggiunte in modo idempotente da `patchSchema()` (vedi
-§5), quindi un tenant preesistente le riceve al primo avvio dopo il deploy.
+Queste colonne sono aggiunte in modo idempotente da `patchSchema()` (vedi §5),
+quindi un tenant preesistente le riceve al primo avvio dopo il deploy. Solo
+l'amministratore può cambiare `patient_visibility_mode` e `billing_mode` (matcher
+`PUT /api/settings/**` in `SecurityConfig`).
 
 ## 7. Ciclo di vita del tenant: export e cancellazione
 

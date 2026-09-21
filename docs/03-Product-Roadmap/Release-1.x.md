@@ -16,7 +16,6 @@ Il lavoro della Release non è costruire funzioni nuove — il gestionale c'è g
 completare ciò che rende la cartella clinica **difendibile**: tracciabilità,
 immutabilità, consensi, segregazione degli accessi. E mettere a norma l'AI che è già in
 produzione.
-
 ---
 
 ## 2. Obiettivi della Release
@@ -45,16 +44,19 @@ DentalCare non può. Al termine di Release 1.x, sì.
   rettificata/annullata) e **addendum** come unica via di correzione.
 - **Consensi versionati**: template, versione, collegamento a piano/procedura, firma,
   revoca.
-- **Encounter** come perno che lega osservazioni, diagnosi, procedure, immagini.
+- **Encounter / Ciclo della seduta** — ✅ **Fatta (dev, #56-#62)**: perno relazionale tra appuntamento e piano di cura (`appointment_treatment_items`), firma reale dell'atto (`performed_by_provider_id`), chiusura autonoma seduta (#60), gestione prestazioni in sospeso con riprogrammazione o rimozione motivata (#61).
 - **Odontogramma temporale**: storia dei reperti, non snapshot corrente; confronto tra date.
 - **Anamnesi tri-stato**: presente / assente / non noto, con fonte e data.
-- **Soft delete**: stato di annullamento al posto della cancellazione fisica.
+- **Soft delete & export con password monouso**: ✅ **Fatta (dev, #47)**: archivio ZIP AES-256 e grace period con congelamento JWT.
 
 ### Identità e accessi
 - **MFA** per professionisti e amministratori.
-- **Segregazione dei ruoli verificata lato server**, non solo in interfaccia.
+- **Segregazione dei ruoli verificata lato server** — ✅ **Fatta (dev, #42, #44, #62)**: `AccessScopeService` per visibilità pazienti e `/api/appointments/*/session/**` protetto da `CLINICAL_WRITE_ROLES` (la segreteria non può firmare atti clinici).
 - **Relazione di cura** come criterio di autorizzazione.
 - **Merge dei duplicati** paziente con approvazione e audit.
+
+### Ciclo economico e fatturazione
+- **Fatturazione conforme** — ✅ **Fatta (dev, #50, #52, #53)**: fattura a saldo vincolata all'avanzamento reale delle prestazioni completate in seduta, introduzione documento di acconto, e flusso completo di storno con nota di credito (inalienabilità dei documenti fiscali emessi).
 
 ### Integrità dei documenti
 - Impronta **SHA-256**, verifica del MIME reale, scansione malware, controllo di coerenza
@@ -65,8 +67,10 @@ DentalCare non può. Al termine di Release 1.x, sì.
 
 ### AI amministrativa a norma
 - **Registro AI**, AI Use Policy, programma di **AI literacy**.
+- **Inventario tecnico flussi AI per DPO** — ✅ **Fatta (dev, #55)**: censimento completo flussi, classificazione Art. 9 GDPR e tabella per ROPA/DPIA.
 - **Disclosure** dell'assistente vocale a inizio interazione + fallback umano sempre
-  disponibile.
+  disponibile (✅ **Fatta, Art. 50 AI Act** con Inspection Binder Retell Cartella 13).
+- **Errori intelligenti** — ✅ **Fatta (dev, #54)**: riscrittura AI dei messaggi d'errore applicativi e conflitti DB in linguaggio comprensibile.
 - **Limiti operativi**: nessun triage, nessuna diagnosi, nessuna prescrizione.
 - **Informativa al paziente** sull'uso dell'AI (L. 132/2025).
 - **Kill switch** per modulo e **gate no-clinical** sul modulo radiologico.

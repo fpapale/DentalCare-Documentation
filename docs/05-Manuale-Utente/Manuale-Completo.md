@@ -2,7 +2,7 @@
 
 Manuale con **schermate reali** dell'applicazione e **percorsi guidati** per i tre ruoli di uno studio odontoiatrico: **Segreteria**, **Medico**, **Amministratore**.
 
-> Disponibile anche in **Word**: [Manuale_Utente_DentalCare_Pro.docx](Manuale_Utente_DentalCare_Pro.docx). Le schermate provengono dall'ambiente dimostrativo; nomi e dati dei pazienti sono fittizi.
+> Disponibile anche in **Word**: [Manuale_Utente_DentalCare_Pro.docx](Manuale_Utente_DentalCare_Pro.docx). Per la trattazione completa e approfondita di tutti i moduli, schermate, ciclo della seduta e glossario degli stati, consulta il **[Manuale Utente Integrale (1120 righe)](MANUALE_UTENTE.md)**. Le schermate provengono dall'ambiente dimostrativo; nomi e dati dei pazienti sono fittizi.
 
 ---
 

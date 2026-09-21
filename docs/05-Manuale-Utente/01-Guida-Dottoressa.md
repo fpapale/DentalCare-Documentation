@@ -32,15 +32,46 @@ vedere i propri pazienti in programma e aprirne la scheda al volo.
 
 1. Apri **Agenda**. Scegli la vista (giorno/settimana).
 2. Clicca su un appuntamento per vederne i dettagli (paziente, prestazione, note).
-3. Dal dettaglio appuntamento apri la **scheda paziente** per iniziare la visita.
+3. Dal dettaglio appuntamento premi **Scheda di seduta** (o apri la scheda paziente) per iniziare la visita.
 4. L'agenda si aggiorna **in tempo reale**: se la segreteria sposta un
    appuntamento mentre la tieni aperta, lo vedi senza ricaricare.
 
 > Il medico può anche **creare** un appuntamento (**Agenda → Nuovo
-> appuntamento**), utile per fissare il controllo successivo a fine visita.
+> appuntamento**), utile per fissare il controllo successivo a fine visita. Se l'appuntamento nasce da un piano di cura, le prestazioni selezionate restano agganciate alla prenotazione.
 
 **▶️ Prova nel demo:** apri Agenda, clicca un appuntamento esistente, poi
-"Apri scheda paziente".
+"Scheda di seduta".
+
+---
+
+## 1.1 Scheda di seduta clinica e chiusura (#56-#62)
+
+La **Scheda di seduta** è il momento operativo in cui la pianificazione (l'appuntamento) incontra la clinica reale (il piano di cura).
+
+### Chi può firmare l'atto clinico (#62)
+Solo i ruoli clinici autorizzati (`dentist`, `hygienist`, `orthodontist`, `surgeon`, `tenant_admin`) possono registrare esiti o chiudere la seduta. La segreteria e gli utenti amministrativi puri non possono chiamare queste funzioni: il confine è blindato server-side.
+
+### Visita svolta per conto di un collega
+Se stai visitando un paziente in una seduta assegnata a un collega (sostituzione, urgenza o consulto), l'interfaccia mostra un avviso chiaro:
+> *«Questa seduta è assegnata al Dr. Marchetti. Registrando, l'esecuzione risulterà a tuo nome.»*
+
+Puoi procedere regolarmente senza attriti operativi, ma nel registro clinico e probatorio (`performed_by_provider_id`) risulterà con certezza il nome di chi ha effettivamente visitato ed eseguito la prestazione.
+
+### Registrare le prestazioni ed esiti
+Nella scheda di seduta trovi le prestazioni collegate previste dal piano:
+1. Per ciascuna prestazione seleziona l'esito:
+   - **Eseguita** (`completed`): la prestazione è stata completata;
+   - **Parzialmente eseguita** (`partially_completed`);
+   - **Non eseguita** (`not_performed`) o **Annullata** (`cancelled`).
+2. Premi **Registra seduta**: il sistema aggiorna lo stato clinico nel piano di cura, associando autore e seduta d'origine.
+
+### Azione autonoma «Chiudi seduta» (#60)
+La chiusura della seduta è un'azione propria. Se hai già registrato le prestazioni o se non c'era nulla da dichiarare, premi direttamente **Chiudi seduta**. Una seduta chiusa o annullata non ammette ulteriori registrazioni retroattive per prevenire falsificazioni.
+
+### Prestazioni rimaste in sospeso (#61)
+Se chiudi una seduta lasciando prestazioni collegate senza esito completato, il sistema non le abbandona nel limbo:
+- **Riprogramma**: assegna la prestazione a un nuovo appuntamento futuro;
+- **Togli dal piano di cura**: stralcia la voce dal piano, richiedendo l'inserimento di una **motivazione clinica obbligatoria**. L'evento viene storicizzato in `treatment_plan_item_events`.
 
 ---
 
@@ -179,14 +210,13 @@ Il piano di cura raccoglie le prestazioni previste; da lì nasce il preventivo.
    quantità, dente).
 2. Genera il **preventivo** dal piano ("**Genera piano/preventivo**").
 3. Rivedi importi, sconti, IVA, validità.
-4. Il preventivo può essere **inviato** al paziente e, se **accettato**, diventa
-   la base per la **fatturazione**.
+4. Il preventivo mostra lo stato di avanzamento delle prestazioni eseguite (es. *"2 di 4 eseguite"*) e l'importo dinamico **Fatturabile** calcolato sulle sole prestazioni effettivamente completate in seduta.
 
-> Il flusso economico completo (invio, accettazione, fattura) è tipicamente
+> Il flusso economico completo (invio, accettazione, fattura a saldo o acconto) è tipicamente
 > gestito **con la segreteria**: vedi [Guida Segretaria](02-Guida-Segretaria.md).
 
 **▶️ Prova nel demo:** apri un preventivo esistente in **Preventivi** e osserva
-le voci, gli importi e lo stato.
+le voci, gli importi e la colonna Avanzamento/Fatturabile.
 
 ---
 
@@ -224,14 +254,23 @@ Esempi di richieste:
 
 ---
 
+## 12. Gestione errori ed Errori intelligenti (#51, #54)
+
+Quando un'azione non può essere completata (ad es. tentativo di registrare una prestazione già completata o modifica non consentita):
+- Viene visualizzata una striscia di avviso in posizione fissa in alto.
+- Con la funzione **Errori intelligenti** attiva, il messaggio tecnico incomprensibile (es. violazioni di integrità del database) viene tradotto istantaneamente dall'AI in un suggerimento chiaro in italiano che spiega cosa è accaduto e come risolvere.
+- Il link *"Dettaglio tecnico"* resta sempre disponibile per visualizzare il codice errore esatto (es. `SESSION_ALREADY_CLOSED`, `SESSION_ITEM_ALREADY_PERFORMED`) utile per l'assistenza IT.
+
+---
+
 ## Riepilogo giornata tipo (Dottoressa)
 
 1. **Dashboard** → colpo d'occhio su appuntamenti e richiami.
-2. **Agenda** → apri il primo paziente.
-3. **Anamnesi** → verifica allergie/farmaci.
-4. **Documenti → Analizza AI** → controlla la radiografia.
-5. **Odontogramma** → aggiorna condizioni.
-6. **Cartella clinica → Nuova visita** → registra la prestazione.
-7. **Diagnosi / Prescrizioni** → se necessario.
-8. **Piano di cura → Preventivo** → proponi il trattamento.
-9. **Agenda → Nuovo appuntamento** → fissa il controllo.
+2. **Agenda** → apri la **Scheda di seduta** del paziente.
+3. **Anamnesi** → verifica allergie/farmaci e alert clinici.
+4. **Documenti → Analizza AI** → controlla l'ortopanoramica e i reperti rilevati.
+5. **Odontogramma** → aggiorna condizioni cliniche per dente e superficie.
+6. **Scheda di seduta** → dichiara le prestazioni eseguite, gestisci eventuali sospesi e chiudi la seduta.
+7. **Diagnosi / Prescrizioni** → se necessario emetti ricetta o prescrizione.
+8. **Piano di cura → Preventivo** → verifica l'avanzamento e l'importo fatturabile.
+9. **Agenda → Nuovo appuntamento** → fissa il controllo successivo collegato al piano.

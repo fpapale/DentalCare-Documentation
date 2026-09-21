@@ -74,21 +74,23 @@ verifica l'aggiornamento.
 
 ---
 
-## 4. Prompt Manager AI
+## 4. Prompt Manager AI e Errori intelligenti (#17, #54)
 
-**Percorso** → **Impostazioni → sezione AI (Prompt)**
+**Percorso** → **Impostazioni → sezione AI** e **Impostazioni → Sistema**
 
-I comportamenti del Copilot AI sono guidati da **prompt** editabili dall'admin,
-con possibilità di **override per studio** (tenant).
+I comportamenti dell'intelligenza artificiale sono interamente configurabili dall'amministratore, con possibilità di **override per studio** (tenant).
 
+### Prompt Manager
 1. Apri la sezione **AI / Prompt** nelle Impostazioni.
-2. Seleziona il prompt da personalizzare.
-3. Modifica il testo. Sono disponibili **segnaposto dinamici** (es. `{{oggi}}`,
-   `{{ora}}`) che vengono sostituiti a runtime.
-4. Salva: il Copilot userà la versione personalizzata per lo studio.
+2. Seleziona il prompt da personalizzare (es. prompt di sistema, prompt clinici o il prompt `error.humanize` per la riscrittura degli errori).
+3. Modifica il testo. Sono disponibili **segnaposto dinamici** (es. `{{oggi}}`, `{{ora}}`) che vengono sostituiti a runtime.
+4. Salva: il Copilot e il gestore errori useranno la versione personalizzata per lo studio.
 
-> Personalizzare i prompt permette di adattare tono e regole dell'assistente allo
-> studio senza toccare il codice.
+### Errori intelligenti (#54)
+In **Impostazioni → Sistema** è presente l'opzione **"Errori intelligenti"**:
+- **Abilitato (default):** quando un'operazione genera un errore interno o un conflitto di integrità (es. tentativo di emettere fattura su prestazioni non completate, o seduta già chiusa), l'AI traduce istantaneamente il messaggio in una spiegazione amichevole e guidata per l'operatore.
+- **Disabilitato:** il sistema mostra solo la descrizione tecnica standard.
+- *Nota di riservatezza:* I messaggi inviati al modello per la riscrittura sono sanitizzati (vengono rimossi codici fiscali e dettagli sensibili) e non vengono memorizzati nei log esterni.
 
 ---
 

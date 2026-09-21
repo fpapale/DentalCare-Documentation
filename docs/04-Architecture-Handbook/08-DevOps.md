@@ -45,10 +45,15 @@ immagini via `${VERSION}` da `.env`.
 
 ## 4. Ambienti
 
-| Ambiente | Backend | DB | Frontend |
-|----------|---------|----|----------|
-| dev | `mvnw spring-boot:run` (:8080, profilo default) | `dentalcarepro` @ <db-host-lan> | `npm start` (:4200) |
-| prod | container (profilo `prod`, non esposto) | `dentalcare_prod` @ <db-host-lan> | nginx :4200 → host :`FRONTEND_PORT` (8081) |
+| Ambiente | Backend | DB | Frontend | MinIO Root Prefix (#40) |
+|----------|---------|----|----------|-------------------------|
+| dev | `mvnw spring-boot:run` (:8080, profilo default) | `dentalcarepro` @ <db-host-lan> | `npm start` (:4200) | `dev/` |
+| coll (#41) | container (profilo `coll`, non esposto) | `dentalcare_coll` @ <db-host-lan> | nginx :4200 → host :8082 | `coll/` |
+| prod | container (profilo `prod`, non esposto) | `dentalcare_prod` @ <db-host-lan> | nginx :4200 → host :`FRONTEND_PORT` (8081) | `prod/` |
+
+Lo stack di **COLLAUDO** (#41) gira sullo stesso host di produzione in container isolati con rete e volumi dedicati (`docker-compose.coll.yml`, script `install-coll.sh` e `setup-coll.sh`), permettendo la validazione pre-rilascio senza impattare la produzione.
+
+L'isolamento di storage MinIO (#40) garantisce che i documenti di test, collaudo e produzione non si sovrappongano anche condividendo lo stesso cluster object storage.
 
 ## 5. Versioning e convenzioni
 

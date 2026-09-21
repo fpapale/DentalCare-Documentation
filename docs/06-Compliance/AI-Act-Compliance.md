@@ -72,22 +72,31 @@ Procedura completa: `directives/procedura-aggiornamento-giulia-retell.md`
 ## Inspection Readiness Binder
 
 Il binder di ispezione è organizzato in 15 cartelle (§28 del piano compliance).  
-Cartella 13 — Trasparenza (Giulia): `compliance/aiact/retell/`
+Cartella 13 — Trasparenza (Giulia): [`retell/`](retell/)
 
 Evidenze presenti:
-- ✅ System prompt REL 1.0 (snapshot immutabile)
-- ✅ Registro attivazione compilato
-- ⬜ Screenshot Retell dashboard (da aggiungere manualmente)
+- ✅ System prompt REL 1.0 (snapshot immutabile: [`system-prompt-REL1.0-2026-07-28.md`](retell/system-prompt-REL1.0-2026-07-28.md))
+- ✅ Registro attivazione compilato ([`attivazione.md`](retell/attivazione.md))
+- ✅ Screenshot Retell dashboard con clausola Art. 50 ([`retell-system-prompt-2026-07-28.png`](retell/retell-system-prompt-2026-07-28.png))
+- ✅ Trascrizione messaggi configurati e indice verificato ([`messaggi-configurati.md`](retell/messaggi-configurati.md), [`INDEX-2026-07-28.md`](retell/INDEX-2026-07-28.md))
 - ⬜ Log test call post-attivazione
 
 ---
 
-## Documenti di riferimento (repo principale)
+## Privacy & Governance per il DPO
+
+È disponibile l'**inventario tecnico completo dei flussi AI** predisposto per supportare la redazione di ROPA (art. 30 GDPR), DPIA (art. 35) e accordi sul trattamento dati DPA (art. 28):
+- 📄 [Inventario dei flussi AI — Risposte tecniche per il DPO](inventario-flussi-ai-per-dpo.md): mappatura di categorie di dati, destinatari (OpenAI, Retell, locale self-hosted per AI radiologica), trattamento dati sanitari ex Art. 9 GDPR, e riferimenti puntuali a file e righe di codice sorgente.
+
+---
+
+## Documenti di riferimento
 
 | File | Contenuto |
 |---|---|
+| `inventario-flussi-ai-per-dpo.md` | Inventario tecnico flussi AI, basi dati, ROPA, DPIA e DPA |
+| `retell/` | Inspection Binder Cartella 13 (System prompt, screenshot, messaggi) |
 | `directives/DentalCare_Pro_EU_AI_Act_Compliance_2026.md` | Piano compliance completo |
 | `directives/procedura-aggiornamento-giulia-retell.md` | Procedura operativa aggiornamenti |
 | `Segretaria/giulia-voice-disclosure-aiact.md` | Script disclosure + checklist binder |
 | `Segretaria/SmileDesk Agent - retell.ai_REL1.0.md` | System prompt produzione corrente |
-| `compliance/aiact/retell/` | Inspection Binder Cartella 13 |

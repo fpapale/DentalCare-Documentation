@@ -11,15 +11,17 @@ esempi usano il **tenant demo** e sono riproducibili passo-passo.
 
 | # | Guida | Per chi | Contenuti principali |
 |---|-------|---------|----------------------|
-| 1 | [Guida Dottoressa](01-Guida-Dottoressa.md) | Dentista / Igienista / Ortodontista / Chirurgo | Agenda clinica, scheda paziente, cartella clinica, odontogramma, anamnesi, diagnosi, prescrizioni, piani di cura, preventivi, analisi AI radiografie, Copilot |
-| 2 | [Guida Segretaria](02-Guida-Segretaria.md) | Segreteria / Front-office | Appuntamenti, anagrafica pazienti, richiami, preventivi, fatturazione, magazzino, Copilot AI |
-| 3 | [Guida Amministratore](03-Guida-Amministratore.md) | Titolare / Responsabile studio | Dashboard, impostazioni, listino prestazioni, Prompt Manager AI, gestione completa |
+| 1 | [Guida Dottoressa](01-Guida-Dottoressa.md) | Dentista / Igienista / Ortodontista / Chirurgo | Agenda clinica, scheda di seduta (#56-#62), cartella clinica, odontogramma, anamnesi, piani di cura, preventivi, analisi AI radiografie, Copilot |
+| 2 | [Guida Segretaria](02-Guida-Segretaria.md) | Segreteria / Front-office | Appuntamenti, anagrafica pazienti, richiami, preventivi, fatturazione conforme (saldo, acconto, nota credito #50-#52), magazzino, Copilot AI |
+| 3 | [Guida Amministratore](03-Guida-Amministratore.md) | Titolare / Responsabile studio | Dashboard, impostazioni, listino prestazioni, Prompt Manager AI, Errori intelligenti (#54), export protetto (#47) |
+| 4 | [**Manuale Utente Integrale**](MANUALE_UTENTE.md) | Tutti i ruoli | **Documento completo e dettagliato (1120 righe)** con tutti i moduli, schermate, ciclo seduta, gestione errori e glossario stati |
 
 ## Manuale con schermate reali (per la presentazione)
 
 Manuale a **percorsi guidati** con le **schermate reali** dell'applicazione per i tre ruoli, pensato come materiale di presentazione:
 
-- **[Manuale-Completo.md](Manuale-Completo.md)** — versione consultabile su GitHub, con gli screenshot embedded.
+- **[MANUALE_UTENTE.md](MANUALE_UTENTE.md)** — **Manuale utente completo di riferimento**, aggiornato a tutte le feature recenti (#50-#62, ciclo seduta, fatturazione, AI error humanize).
+- **[Manuale-Completo.md](Manuale-Completo.md)** — sintesi percorsi con gli screenshot embedded.
 - **[Manuale_Utente_DentalCare_Pro.docx](Manuale_Utente_DentalCare_Pro.docx)** — versione Word (12 schermate), pronta da stampare o inviare.
 
 Le schermate provengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.

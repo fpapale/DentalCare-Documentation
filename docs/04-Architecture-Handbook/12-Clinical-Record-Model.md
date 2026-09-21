@@ -26,7 +26,7 @@ Le prime tre domande riguardano il **modello dati**; la quarta l'**audit trail**
 | **Patient** | anagrafica clinica, identificatore interno UUID | ✅ implementato |
 | **Provider** | professionista e ruolo | ✅ implementato |
 | **Appointment** | pianificazione | ✅ implementato |
-| **Encounter** | **episodio di cura effettivo** | 🔨 Release 1.x |
+| **Encounter (Seduta clinica)** | **episodio di cura effettivo** | ✅ **implementato (#56-#62)** |
 | **Anamnesi** | scheda clinica generale, voci strutturate da catalogo | ✅ implementato · tri-stato in Release 1.x |
 | **Reperto dentale** (odontogramma) | condizione per dente/superficie, con origine | ✅ implementato · storicità in Release 1.x |
 | **Diagnosi** | problema, stato, data, risoluzione | ✅ implementato |
@@ -39,15 +39,33 @@ Le prime tre domande riguardano il **modello dati**; la quarta l'**audit trail**
 | **Audit event** | accessi e operazioni | 🔨 Release 1.x |
 | **Preventivo / Fattura** | piano economico | ✅ implementato |
 
-### 2.1 Encounter — il perno mancante
+### 2.1 Encounter & Ciclo della Seduta Clinica (implementato #56–#62)
 
-Oggi l'appuntamento (pianificazione) e la voce di cartella (registrazione) esistono, ma
-non c'è l'entità che lega **tutto ciò che è accaduto in una visita**: osservazioni,
-odontogramma, immagini, diagnosi, piano, procedure.
+Con l'implementazione del **Ciclo della seduta** (#56) e dei controlli probatori associati (#60, #61, #62), la separazione tra pianificazione (appuntamento) e atto clinico (piano di cura / prestazione) è stata saldata mediante un modello relazionale esplicito:
 
-L'`Encounter` (con stato *pianificato / in corso / concluso*) diventa il riferimento
-comune delle entità cliniche. È il prerequisito di due cose: la ricostruzione della
-cartella a una data storica, e la mappatura verso standard di scambio (§5).
+```text
+Appointment (pianificazione temporale / poltrona)
+     │ 1..N
+     ▼
+appointment_treatment_items (collegamento e tracciamento esecuzione)
+     ├── treatment_plan_item_id
+     ├── outcome: completed | partially_completed | not_performed | cancelled
+     ├── performed_at (timestamp reale dell'atto)
+     ├── performed_by_provider_id (medico reale che firma l'atto, dal JWT)
+     └── performed_in_appointment_id (seduta clinica d'origine)
+     ▲
+     │ 1..N
+TreatmentPlanItem (piano di cura del paziente)
+     ├── status: planned | in_progress | completed | cancelled
+     ├── performed_by_provider_id / performed_at / performed_in_appointment_id
+     └── treatment_plan_item_events (storico eventi, riprogrammazioni, stralci)
+```
+
+#### Regole e vincoli di integrità clinica:
+1. **Tracciabilità probatoria dell'autore (#62):** L'atto clinico deve portare il nome di chi l'ha realmente svolto. Se un medico visita in una seduta originariamente assegnata a un collega, il sistema consente l'operazione ma registra nel DB `performed_by_provider_id = current_user`.
+2. **Confine di ruolo server-side (`CLINICAL_WRITE_ROLES`):** Gli endpoint `/api/appointments/{id}/session/**` sono protetti in `SecurityConfig` e riservati ai soli ruoli sanitari abilitati (`dentist`, `hygienist`, `orthodontist`, `surgeon`, `tenant_admin`). La segreteria non può firmare l'esecuzione di atti clinici.
+3. **Inviolabilità temporale della seduta:** Il server rifiuta registrazioni su sedute già chiuse, annullate o no-show (`SESSION_ALREADY_CLOSED`, `SESSION_CANCELLED`, `SESSION_NO_SHOW`).
+4. **Tracciamento eventi in sospeso (`treatment_plan_item_events` #61):** Alla chiusura della seduta, ogni prestazione non eseguita non resta in un limbo: viene riprogrammata o stralciata con vincolo di motivazione clinica obbligatoria (`ck_tpie_reason`).
 
 ### 2.2 Reperto dentale: da snapshot a storia
 

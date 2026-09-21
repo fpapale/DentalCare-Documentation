@@ -27,6 +27,7 @@
 
 ## 3. Script di deploy
 
+### Produzione
 - **`setup.sh`**: bootstrap — prepara `~/docker/dentalcarepro`, clona/aggiorna il
   repo, lancia `install.sh`.
 - **`install.sh`**:
@@ -42,8 +43,19 @@
 Comandi tipici sul server:
 ```bash
 cd ~/docker/dentalcarepro
-./setup.sh            # aggiornamento completo (pull + install)
-./setup.sh --update   # solo pull + rebuild app (no config, no DB)
+./setup.sh            # aggiornamento completo prod (pull + install)
+./setup.sh --update   # solo pull + rebuild app prod (no config, no DB)
+```
+
+### Collaudo (#41)
+- **`setup-coll.sh`**: bootstrap dello stack di collaudo in `~/docker/dentalcarepro-coll`.
+- **`install-coll.sh`**: esegue il build e deployment su `docker-compose.coll.yml` (porta host 8082, profilo backend `coll`, DB `dentalcare_coll`).
+
+Comandi per collaudo:
+```bash
+cd ~/docker/dentalcarepro-coll
+./setup-coll.sh            # aggiornamento collaudo completo
+./setup-coll.sh --update   # rebuild veloce collaudo
 ```
 
 ## 4. Creazione database

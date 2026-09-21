@@ -25,6 +25,7 @@ Ruoli (enum `dentalcare.provider_role`): `tenant_admin`, `admin`, `dentist`,
 | `/api/internal/**` | permitAll (rete interna) |
 | `/api/tenant-admin/**` | `hasRole('TENANT_ADMIN')` |
 | `/api/admin/**` | `hasAnyRole('ADMIN','TENANT_ADMIN')` |
+| `/api/appointments/*/session/**` | `hasAnyRole('DENTIST','HYGIENIST','ORTHODONTIST','SURGEON','TENANT_ADMIN')` (#62) |
 | ogni altra | authenticated |
 
 I controlli di autorizzazione sono **sempre** lato server, mai delegati al
@@ -35,6 +36,16 @@ frontend. `401` = non autenticato, `403` = non autorizzato.
 > amministratore per singola sede). `admin` è legacy/di servizio (tenant demo +
 > service-token n8n). Terminologia completa in
 > [06-Multitenancy §1.1](06-Multitenancy.md).
+
+### Autorizzazione atti clinici server-side (#62)
+
+La compilazione della Scheda di seduta costituisce un **atto clinico formale** con valenza probatoria.
+In precedenza il pulsante era solo nascosto alla segreteria nell'interfaccia utente (client-side).
+
+Con l'intervento #62:
+- La rotta `/api/appointments/{id}/session/**` è blindata lato server su `CLINICAL_WRITE_ROLES` (`DENTIST`, `HYGIENIST`, `ORTHODONTIST`, `SURGEON`, `TENANT_ADMIN`). Qualsiasi invocazione diretta da parte di `secretary` o `assistant` viene intercettata dal filtro di sicurezza e respinta con HTTP 403 Forbidden.
+- **Guardie di stato della seduta**: prima di registrare esiti, `SessionService` verifica lo stato dell'appuntamento, rifiutando operazioni su appuntamenti chiusi (`SESSION_ALREADY_CLOSED`), annullati (`SESSION_CANCELLED`) o mancati (`SESSION_NO_SHOW`).
+- **Attribuzione certa dell'autore**: il campo `performed_by_provider_id` viene estratto tassativamente dal token JWT dell'operatore connesso, non dai parametri della richiesta. Se un professionista effettua la seduta per un collega, l'atto è registrato a nome dell'esecutore reale.
 
 ### Visibilità del listino per ruolo
 

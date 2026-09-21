@@ -109,21 +109,24 @@ La segreteria gestisce l'iter del preventivo verso il paziente.
 
 ---
 
-## 5. Fatturazione
+## 5. Fatturazione e incassi (#50, #52, #53)
 
-**Percorso** → **Fatturazione**
+**Percorso** → **Fatturazione** (e scheda paziente → tab Fatture)
 
-1. Apri **Fatturazione**: elenco documenti (fatture, note) con stato e importi.
-2. Crea una fattura (tipicamente da un preventivo accettato / prestazioni erogate):
-   controlla dati emittente e paziente, voci, imponibile, IVA, totale.
-3. Registra pagamento e metodo quando incassi.
-4. Apri il **dettaglio fattura** per rivedere o stampare.
+1. Apri **Fatturazione**: visualizzi l'elenco dei documenti emessi, gli stati e gli importi.
+2. Premi **+ Nuovo documento** e seleziona la tipologia corretta:
+   - **Fattura a saldo (da piano/preventivo)**: emette la fattura solo per le prestazioni che il medico ha **già completato in seduta clinica** (#50). Il sistema calcola l'importo fatturabile effettivo ed impedisce la fatturazione anticipata di prestazioni cliniche non ancora eseguite.
+   - **Acconto**: permette di emettere una fattura per un anticipo concordato con il paziente, prima dell'esecuzione delle cure.
+   - **Nota di credito (#52)**: serve per stornare parzialmente o totalmente una fattura emessa in precedenza. Non si crea da zero: si apre la fattura da rettificare e si preme **Storna con nota di credito**. Il sistema genera il documento con importi negativi collegato alla fattura di origine.
+3. **Regola di conservazione fiscale e non eliminabilità**:
+   - Una fattura o nota di credito **emessa non si elimina mai**: l'azione "Elimina" è consentita solo per le **bozze**.
+   - I preventivi e i piani di cura collegati a documenti fiscali emessi non possono essere cancellati, per garantire la tracciabilità probatoria e fiscale.
+4. Registra pagamento e metodo quando incassi (contanti, POS, bonifico).
 
-> **Nota fiscale:** le fatture non si eliminano insieme al paziente (obbligo di
-> conservazione). Restano nel sistema anche se il paziente viene rimosso.
+> **Confine tra segreteria e atto clinico (#62):** La segreteria emette fatture e gestisce i pagamenti, ma **non ha accesso alla registrazione della Scheda di Seduta** (eseguito/non eseguito). Questo confine è garantito dal server (`CLINICAL_WRITE_ROLES`): solo i professionisti clinici possono firmare l'atto sanitario.
 
 **▶️ Prova nel demo:** apri **Fatturazione**, entra in una fattura e osserva le
-voci e il totale.
+voci e il totale; prova a creare una nota di credito da una fattura emessa.
 
 ---
 

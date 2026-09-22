@@ -1,170 +1,190 @@
-# Manuale Utente — DentalCare Pro
+# DentalCare Pro — Manuale completo
 
-Manuale con **schermate reali** dell'applicazione e **percorsi guidati** per i tre ruoli di uno studio odontoiatrico: **Segreteria**, **Medico**, **Amministratore**.
-
-> Disponibile anche in **Word**: [Manuale_Utente_DentalCare_Pro.docx](Manuale_Utente_DentalCare_Pro.docx). Per la trattazione completa e approfondita di tutti i moduli, schermate, ciclo della seduta e glossario degli stati, consulta il **[Manuale Utente Integrale (1120 righe)](MANUALE_UTENTE.md)**. Le schermate provengono dall'ambiente dimostrativo; nomi e dati dei pazienti sono fittizi.
-
----
-
-## 1. Introduzione
-
-DentalCare Pro è il gestionale dello studio odontoiatrico: agenda, pazienti, cartella clinica, preventivi, fatturazione, richiami e magazzino in un'unica applicazione web, accessibile da browser senza installare nulla.
-
-### 1.1 I tre ruoli
-
-| Ruolo | Cosa può fare |
-|---|---|
-| **Segreteria** | Agenda, prenotazioni, anagrafica pazienti, preventivi, fatture, richiami. *Non* accede a cartella clinica, anamnesi e odontogramma. |
-| **Medico** | Tutto ciò che vede la segreteria, più la cartella clinica completa: anamnesi, odontogramma, diagnosi, piani di cura, prescrizioni. |
-| **Amministratore** | Configurazione dello studio: dati fiscali, professionisti, listino prestazioni, parametri AI, impostazioni di sistema. |
-
-> **Perché.** La separazione dei ruoli è una misura di riservatezza: la segreteria gestisce l'organizzazione dello studio senza vedere i dati clinici dei pazienti.
-
-### 1.2 Accesso
-
-Si accede da browser all'indirizzo dello studio. Ogni operatore usa le proprie credenziali personali.
-
-![Login](screenshots/01-login.png)
-
-1. Aprire il browser all'indirizzo dello studio.
-2. Inserire la propria email e password.
-3. Premere **Accedi**. Al primo accesso viene richiesto di scegliere una nuova password.
+> Versione 2.0 · 21 settembre 2026
+> Schermate riprese dall'applicazione reale, con i tre ruoli: segreteria, medico, amministratore.
+> Per la consultazione tecnica modulo-per-modulo e il glossario approfondito di tutte le impostazioni, vedi anche il [Manuale Utente Integrale (1120 righe)](MANUALE_UTENTE.md).
 
 ---
 
-## 2. Percorso Segreteria
+## Indice
 
-La segreteria è il centro operativo dello studio: accoglie i pazienti, gestisce l'agenda, prepara preventivi e fatture, tiene i richiami.
+1. [Come è organizzato il lavoro](#1-come-è-organizzato-il-lavoro)
+2. [Accesso](#2-accesso)
+3. [La segreteria](#3-la-segreteria)
+4. [Il medico](#4-il-medico)
+   - [4.1 L'agenda del medico](#41-lagenda-del-medico)
+   - [4.2 La scheda di seduta](#42-la-scheda-di-seduta)
+   - [4.3 Registrare cosa è stato fatto](#43-registrare-cosa-è-stato-fatto)
+   - [4.4 Le prestazioni rimaste in sospeso](#44-le-prestazioni-rimaste-in-sospeso)
+   - [4.5 Il preventivo si aggiorna da solo](#45-il-preventivo-si-aggiorna-da-solo)
+5. [L'amministratore](#5-lamministratore)
+6. [Quando qualcosa non funziona](#6-quando-qualcosa-non-funziona)
+7. [Glossario](#7-glossario)
 
-### 2.1 La dashboard
+---
 
-Dopo l'accesso si apre la dashboard: la fotografia della giornata. In alto i numeri chiave (pazienti totali, appuntamenti di oggi, preventivi inviati, piani attivi, occupazione delle poltrone). Al centro i prossimi appuntamenti; a destra il dettaglio del paziente selezionato.
+## 1. Come è organizzato il lavoro
 
-![Dashboard segreteria](screenshots/02-seg-dashboard.png)
+DentalCare Pro segue il ciclo reale di uno studio:
 
-### 2.2 L'agenda
+```
+piano di cura  →  appuntamento  →  seduta  →  fattura
+```
 
-L'agenda mostra la giornata divisa per poltrona (Studio 1–4). Ogni appuntamento è un blocco colorato secondo lo stato: giallo **Programmato**, blu **Confermato**, verde **Presente**. In alto si sceglie la vista: Prossimi, Giorno, Settimana, Mese.
+Ogni passo è **collegato** al precedente. Una prestazione nasce in un piano di cura, viene
+prenotata in un appuntamento, eseguita in una seduta e infine fatturata. Il sistema tiene
+insieme la catena: quando il medico registra un'esecuzione, il preventivo lo sa; quando tutte
+le prestazioni sono state fatte, la segreteria vede che si può fatturare.
 
-![Agenda](screenshots/03-seg-agenda.png)
+### Chi vede cosa
 
-**Prenotare un appuntamento:**
+Non tutti fanno le stesse cose, e il programma lo rispetta.
 
-1. Dall'agenda premere **+ Appuntamento** in alto a destra.
-2. Cercare il paziente per nome o telefono; se è nuovo, crearlo al volo.
-3. Scegliere prestazione, medico, poltrona, data e ora.
-4. Salvare: l'appuntamento compare subito in agenda nella poltrona scelta.
+| | Segreteria | Medico | Amministratore |
+|---|:---:|:---:|:---:|
+| Agenda, pazienti, anagrafiche | ✅ | ✅ | ✅ |
+| Preventivi e fatturazione | ✅ | ✅ | ✅ |
+| **Scheda di seduta** (registrare prestazioni eseguite) | ❌ | ✅ | ✅ |
+| Catalogo prestazioni | ❌ | ✅ | ✅ |
+| Impostazioni dello studio | ❌ | ❌ | ✅ |
 
-> **Automazione.** Gli appuntamenti telefonici gestiti dall'assistente vocale *Giulia* compaiono in agenda automaticamente, senza che la segreteria debba trascriverli.
+> **Perché la segreteria non registra le prestazioni.** Segnare che una prestazione è stata
+> eseguita è un **atto clinico**: resta in cartella con la data e il nome di chi l'ha svolta.
+> Una firma di chi non era alla poltrona non ha valore. Il limite non è solo un pulsante
+> nascosto: il programma rifiuta la richiesta anche se arriva per altre vie.
 
-### 2.3 I pazienti
+---
 
-La sezione Pazienti elenca l'anagrafica dello studio. Ogni scheda mostra contatti, codice fiscale, numero di visite, piani di cura e i richiami in scadenza. La ricerca in alto filtra per nome, cognome o codice fiscale.
+## 2. Accesso
 
-![Elenco pazienti](screenshots/04-seg-pazienti.png)
+![Schermata di accesso](img/01-login.png)
 
-> **Nota.** Il codice fiscale non è obbligatorio alla registrazione: un paziente nuovo può essere creato con nome e recapito, e la scheda si completa allo sportello. Questo permette anche all'assistente vocale di registrare chi prenota per telefono.
+Si entra con l'indirizzo email e la password ricevuti dallo studio.
 
-### 2.4 Il Copilot AI
+Se la password non si ricorda, **«Password dimenticata?»** invia un codice temporaneo
+all'indirizzo registrato. Al primo accesso con quel codice il programma chiede di sceglierne
+una nuova.
 
-Il Copilot AI è l'assistente della segreteria: risponde a domande sullo studio, riepiloga le chiamate, prepara bozze e propone le attività da fare. A destra mostra i permessi dell'utente, il paziente selezionato, le ultime chiamate dell'assistente vocale e le attività aperte.
+> Per motivi di sicurezza il programma risponde allo stesso modo sia che l'indirizzo esista sia
+> che non esista: non rivela quali email sono registrate. Se l'email non arriva entro qualche
+> minuto, il primo controllo da fare è che l'indirizzo sia scritto giusto.
 
-![Copilot AI](screenshots/05-seg-copilot.png)
+---
 
-> **Supervisione.** Il Copilot non esegue nulla di irreversibile da solo: quando propone di creare o modificare qualcosa, mostra prima un'anteprima e chiede conferma. È il professionista a decidere.
+## 3. La segreteria
 
-### 2.5 I preventivi: a che punto è il lavoro
+La segreteria è il punto di regia: vede tutto lo studio, tutti i medici, tutti i pazienti.
 
-Oltre a importo e stato, due colonne dicono **quanto lavoro è già stato fatto**.
+### La giornata a colpo d'occhio
 
-![Elenco preventivi con avanzamento](screenshots/13-seg-preventivi-avanzamento.png)
+![Dashboard segreteria](img/02-segreteria-dashboard.png)
 
-- **Avanzamento** — quante prestazioni del preventivo risultano eseguite.
+In alto i numeri della giornata: pazienti, appuntamenti di oggi, preventivi inviati, piani
+attivi. L'**occupazione** dice quanto sono piene le poltrone.
+
+A destra il pannello **Motivo appuntamento** mostra, per il paziente selezionato, perché viene:
+trattamento previsto, poltrona, medico, e soprattutto gli **alert clinici** — allergie, terapie
+in corso — prima ancora che entri.
+
+### L'agenda
+
+![Agenda della segreteria](img/03-segreteria-agenda.png)
+
+Quattro viste: **Prossimi** (il resto della giornata), **Giorno**, **Settimana**, **Mese**.
+
+Quando la giornata non ha più appuntamenti in programma, l'agenda passa da sola a quelli di
+domani e lo segnala in alto.
+
+Le pastiglie colorate filtrano per stato: *Programmato*, *Confermato*, *Presente*.
+
+### I pazienti
+
+![Elenco pazienti](img/04-segreteria-pazienti.png)
+
+Ricerca per nome o cognome, con i filtri *Tutti / Attivi / Archiviati*.
+
+### I preventivi
+
+![Elenco preventivi](img/05-preventivi-lista.png)
+
+Oltre a importo e stato, due colonne dicono **a che punto è il lavoro**:
+
+- **Avanzamento** — quante prestazioni del preventivo sono già state eseguite;
 - **«Fatturabile»** — compare quando **tutte** sono state fatte.
 
-Quel badge serve a trovare i lavori finiti e non ancora fatturati: il caso in cui il denaro resta fermo solo perché nessuno se n'è accorto.
+Quel badge serve a trovare i lavori finiti e non ancora fatturati: il caso in cui il denaro
+resta fermo solo perché nessuno se n'è accorto. Accanto compare una scorciatoia verso la
+fatturazione.
 
-> **È un'informazione, non un permesso.** Al momento dell'emissione il programma ricontrolla e può comunque rifiutare, spiegando quali prestazioni mancano. L'etichetta indirizza l'attenzione, non autorizza nulla.
+> L'etichetta è un'**informazione, non un permesso**: al momento dell'emissione il programma
+> ricontrolla e può comunque rifiutare, spiegando perché.
 
-L'avanzamento non si aggiorna a mano: cambia quando il medico registra la seduta.
+### La fatturazione
 
-### 2.6 La fatturazione
+![Fatturazione](img/06-fatturazione.png)
 
-![Fatturazione](screenshots/14-seg-fatturazione.png)
+Si emette da un preventivo accettato. I tipi di documento sono:
 
-Si emette da un preventivo accettato.
-
-| Tipo di documento | Quando si usa |
+| Tipo | Quando si usa |
 |---|---|
-| **Fattura**, **Ricevuta**, **Parcella** | documenti *a saldo*: ammessi solo su prestazioni **già eseguite** |
+| **Fattura**, **Ricevuta**, **Parcella** | documenti *a saldo*: ammessi solo su prestazioni già eseguite |
 | **Acconto** | per incassare un anticipo su lavoro non ancora fatto (prassi normale in implantologia) |
 | **Nota di credito** | per rettificare una fattura già emessa |
 
-> **Un documento emesso non si cancella.** Il suo numero resta consumato nella sequenza anche se viene annullato: per correggerlo si emette una **nota di credito**. Solo le bozze si eliminano. La stessa regola protegge il preventivo e il piano di cura collegati, che non sono eliminabili finché esiste un documento fiscale che li richiama.
+> **Un documento emesso non si cancella.** Il suo numero resta consumato nella sequenza anche se
+> viene annullato: per correggerlo si emette una **nota di credito**. Solo le bozze si
+> eliminano. La stessa regola protegge il preventivo e il piano di cura collegati.
 
-### 2.7 I richiami
+### I richiami
 
-![Richiami](screenshots/15-seg-richiami.png)
+![Richiami](img/07-richiami.png)
 
-Elenco dei pazienti da richiamare con lo stato del contatto, e generazione dei richiami periodici.
+Elenco dei pazienti da richiamare, con lo stato del contatto e la possibilità di generare i
+richiami periodici.
 
 ---
 
-## 3. Percorso Medico
+## 4. Il medico
 
-Il medico vede tutto ciò che vede la segreteria e, in più, la cartella clinica completa del paziente. Nel menu compare la voce **Prestazioni** per gestire il listino.
+Il medico vede filtrati sui **propri** appuntamenti e, in più, ha la **scheda di seduta** e il
+catalogo prestazioni.
 
-![Dashboard medico](screenshots/06-med-dashboard.png)
+### 4.1 L'agenda del medico
 
-### 3.1 La scheda paziente
+![Agenda del medico con gli appuntamenti trascorsi](img/08-medico-agenda-trascorsi.png)
 
-Aprendo un paziente, il medico trova la barra completa dei tab clinici: Panoramica, Cartella Clinica, Anamnesi, Odontogramma, Piani di Cura, Richiami, Preventivi, Documenti. In alto sono sempre visibili le allergie e gli avvisi.
+Accanto a ogni appuntamento c'è il pulsante **Seduta**.
 
-![Scheda paziente](screenshots/07-med-scheda.png)
+In fondo alla lista, la sezione **«Già trascorsi oggi»** raccoglie gli appuntamenti della
+giornata che sono **già finiti ma non ancora chiusi** — con il conteggio e la frase *«da qui si
+registra la seduta»*.
 
-### 3.2 L'odontogramma
+> **Perché esiste.** La seduta si registra *durante o dopo* la visita, non prima. Senza questa
+> sezione, alle 18 un appuntamento delle 9 sarebbe irraggiungibile proprio quando serve
+> registrarlo. Accanto a ciascuno, se ci sono prestazioni collegate, compare il conteggio
+> `n/m eseguite`.
 
-L'odontogramma è la mappa dei denti in numerazione FDI. Cliccando su una superficie si registra carie, otturazione o dente sano; il pallino in alto a destra del dente imposta le condizioni globali (corona, impianto, mancante…). La legenda spiega ogni colore.
+La sezione si può richiudere, e non compare alla segreteria.
 
-![Odontogramma](screenshots/08-med-odontogramma.png)
+### 4.2 La scheda di seduta
 
-> **AI e responsabilità.** Le condizioni proposte dall'intelligenza artificiale (badge **A**) sono sempre presentate come *«da verificare»*: restano una proposta finché il medico non le conferma. La decisione clinica è del professionista.
+Si apre dal pulsante **Seduta**. È la schermata da tenere aperta mentre il paziente è in
+poltrona.
 
-Dal pulsante **Genera Piano di Cura** l'odontogramma diventa il punto di partenza per il preventivo: le condizioni rilevate si traducono in prestazioni proposte.
+![Scheda di seduta vuota](img/11-scheda-seduta-vuota.png)
 
-### 3.3 La cartella clinica
+In alto: paziente, data, orario, poltrona, medico dell'appuntamento, e in evidenza gli **alert
+clinici**. A destra l'**avanzamento dei piani di cura** del paziente.
 
-Il tab Cartella Clinica raccoglie il quadro completo: alert clinici (allergie, terapie anticoagulanti, patologie), riepilogo clinico e anamnestico, sintesi dell'odontogramma, piani di cura e diario delle visite.
-
-![Cartella clinica](screenshots/09-med-cartella.png)
-
-> **Sicurezza del paziente.** Gli alert clinici in cima alla cartella (allergie, anticoagulanti, cardiopatia) sono la prima cosa che il medico vede: servono a evitare errori prima di ogni trattamento.
-
-### 3.4 L'agenda del medico
-
-L'agenda è filtrata sui **propri** appuntamenti. Accanto a ciascuno compare il pulsante **Seduta**.
-
-![Agenda del medico](screenshots/16-med-agenda-trascorsi.png)
-
-In fondo alla lista, la sezione **«Già trascorsi oggi»** raccoglie gli appuntamenti della giornata **già finiti ma non ancora chiusi**, con il conteggio e la frase *«da qui si registra la seduta»*.
-
-> **Perché esiste.** La seduta si registra *durante o dopo* la visita, non prima. Senza questa sezione, a fine giornata un appuntamento del mattino sarebbe irraggiungibile proprio quando serve registrarlo. Dove ci sono prestazioni collegate compare anche il conteggio `n/m eseguite`.
-
-La sezione non compare alla segreteria.
-
-### 3.5 La scheda di seduta
-
-È la schermata da tenere aperta mentre il paziente è in poltrona.
-
-![Scheda di seduta](screenshots/17-med-seduta-vuota.png)
-
-In alto: paziente, orario, poltrona, medico dell'appuntamento e, in evidenza sopra ogni azione, gli **alert clinici**. A destra l'avanzamento dei piani di cura del paziente.
+Se la seduta non ha prestazioni collegate — per esempio una visita — si aggiungono con
+**«Aggiungi prestazione»**.
 
 #### Scegliere cosa fare
 
-![Selettore delle prestazioni](screenshots/18-med-selettore-etichette.png)
+![Selettore con le etichette](img/12-selettore-etichette.png)
 
-Il selettore elenca **tutte** le prestazioni aperte del paziente, anche di piani diversi. Accanto a ognuna un'etichetta dice **quale appuntamento la riguarda**:
+Il selettore elenca **tutte** le prestazioni aperte del paziente, anche di piani diversi.
+Accanto a ognuna, un'etichetta dice **quale appuntamento la riguarda**:
 
 | Etichetta | Significato |
 |---|---|
@@ -173,15 +193,28 @@ Il selettore elenca **tutte** le prestazioni aperte del paziente, anche di piani
 | **In sospeso · seduta del 21/09** | è passata per una seduta conclusa senza essere eseguita |
 | **Da pianificare** | non ha alcun appuntamento |
 
-Selezionando una prestazione *fissata per un'altra seduta* compare un avviso: aggiungendola qui la si esegue oggi, e l'altro appuntamento resterà in agenda da rivedere. **È un avviso, non un blocco** — anticipare un lavoro è legittimo, farlo senza saperlo no.
+Selezionando una prestazione *fissata per un'altra seduta* compare un avviso: aggiungendola qui
+la si esegue oggi, e l'altro appuntamento resterà in agenda da rivedere. **È un avviso, non un
+blocco** — anticipare un lavoro è legittimo, farlo senza saperlo no.
 
-> **La seduta di un collega.** Aprendo la seduta di un altro medico compare un riquadro: *«Questa seduta è di Paolo Marchetti — le prestazioni che segni come eseguite risulteranno a tuo nome, non al suo»*. Si può procedere: sostituzioni e urgenze capitano. L'avviso serve perché sia una scelta e non una svista, dato che in cartella resta il nome di chi ha scritto.
+#### La seduta di un collega
 
-#### Registrare gli esiti
+Se apri la seduta di un altro medico, in testata compare un riquadro azzurro:
 
-![Scheda di seduta con gli esiti](screenshots/19-med-seduta-esiti.png)
+> **Questa seduta è di Paolo Marchetti** — le prestazioni che segni come eseguite risulteranno
+> *a tuo nome*, non al suo.
 
-Ogni prestazione porta con sé il contesto: **dente**, note cliniche, **piano di cura** e **numero di preventivo**, con i collegamenti per aprirli. Per ciascuna si sceglie uno dei tre esiti:
+Puoi procedere: sostituzioni e urgenze capitano. L'avviso serve perché sia una scelta e non una
+svista, perché in cartella resterà il nome di chi ha scritto.
+
+### 4.3 Registrare cosa è stato fatto
+
+![Scheda di seduta con gli esiti](img/13-scheda-seduta-esiti.png)
+
+Ogni prestazione porta con sé il contesto: **dente**, note cliniche, **piano di cura** e
+**numero di preventivo**, con i collegamenti per aprirli.
+
+Per ciascuna si sceglie uno dei tre esiti:
 
 | Esito | Effetto sul piano di cura |
 |---|---|
@@ -189,104 +222,147 @@ Ogni prestazione porta con sé il contesto: **dente**, note cliniche, **piano di
 | **Rinviata** | **resta aperta**: si potrà ripianificare in un'altra seduta |
 | **Non eseguita** | resta aperta, con la motivazione nelle note |
 
-Nessun esito è preselezionato; cliccando due volte lo stesso esito lo si toglie. Finché non si sceglie, resta scritto *«Nessun esito scelto — la prestazione resta aperta»*.
+Nessun esito è preselezionato. Cliccando due volte lo stesso esito lo si toglie. Finché non si
+sceglie, sotto i pulsanti resta scritto *«Nessun esito scelto — la prestazione resta aperta»*.
+
+Ogni esito può avere una **nota** facoltativa.
 
 #### Confermare
 
-![Riepilogo prima della conferma](screenshots/20-med-riepilogo-chiusura.png)
+![Riepilogo prima della conferma](img/14-riepilogo-chiusura.png)
 
-**«Registra seduta»** apre un riepilogo da leggere *prima* di confermare: i conteggi per esito, l'elenco voce per voce e — se ce ne sono — l'avviso delle prestazioni **rimaste senza esito**, che non vengono registrate e restano aperte nel piano.
+**«Registra seduta»** apre un riepilogo da leggere *prima* di confermare:
 
-In fondo, separata, una casella **mai preselezionata** per chiudere anche l'appuntamento.
+- i conteggi per esito — *1 eseguita*, *1 rinviata*;
+- l'elenco prestazione per prestazione;
+- se ce ne sono, l'avviso delle prestazioni **rimaste senza esito**, che non vengono registrate
+  e restano aperte nel piano.
 
-> **«Chiudi seduta»** è un pulsante a sé: serve quando non c'è nulla da dichiarare — gli esiti sono già stati registrati prima, oppure il paziente è venuto senza che si facesse nulla di pianificato.
+In fondo, separata, una casella **mai preselezionata** per chiudere anche l'appuntamento. Se
+non la si spunta, la seduta resta aperta e si può completare più tardi.
 
-Su una seduta già chiusa non si registra più nulla: se la chiusura è avvenuta per errore, l'appuntamento si **riapre** dalla scheda paziente. Su un appuntamento **annullato** il rifiuto è definitivo — una prestazione non può risultare eseguita in una seduta che non si è svolta.
+> **«Chiudi seduta»** è un pulsante a sé. Serve quando **non c'è nulla da dichiarare**: gli esiti
+> sono già stati registrati prima, oppure il paziente è venuto senza che si facesse nulla di
+> pianificato. A seduta chiusa, al posto del pulsante compare l'etichetta *«Seduta chiusa»*.
 
-Se un collega registra sulla stessa seduta mentre la stai compilando, alla conferma il programma rifiuta **una volta sola**, dice chi è stato e ricarica la scheda, così si rilegge prima di confermare di nuovo.
+#### Dopo la chiusura
 
-### 3.6 Le prestazioni rimaste in sospeso
+Su una seduta chiusa non si registra più nulla. Se la chiusura è avvenuta per errore,
+l'appuntamento si **riapre** dalla scheda paziente.
 
-![Piano di cura con prestazioni in sospeso](screenshots/21-med-piano-sospeso.png)
+Su un appuntamento **annullato** il rifiuto è definitivo: una prestazione non può risultare
+eseguita in una seduta che non si è svolta, e va registrata su quella in cui è avvenuta.
 
-Se una prestazione attraversa una seduta chiusa **senza** che le sia stato dato un esito, non sparisce e non resta a metà: viene marcata **«In sospeso»**, e in testa all'elenco compare un avviso con il conteggio.
+Se un collega registra sulla stessa seduta mentre la stai compilando, alla conferma il
+programma rifiuta **una volta sola** e dice chi è stato; la scheda si ricarica da sola, così si
+rilegge cosa c'è adesso prima di confermare di nuovo.
 
-Ha **due sole destinazioni**, entrambe da scegliere:
+### 4.4 Le prestazioni rimaste in sospeso
+
+![Piano di cura con le prestazioni in sospeso](img/09-piano-cura-in-sospeso.png)
+
+Se una prestazione attraversa una seduta che viene chiusa **senza** che le sia stato dato un
+esito, non sparisce e non resta a metà: viene marcata **«In sospeso»**, e in testa all'elenco
+compare un avviso con il conteggio.
+
+Una prestazione in sospeso ha **due sole destinazioni**, entrambe da scegliere:
 
 | Pulsante | Cosa fa |
 |---|---|
-| **Riprogramma** | apre la prenotazione per una nuova seduta. Appena prenotata, l'etichetta sparisce da sola |
+| **Riprogramma** | apre la prenotazione per fissarle una nuova seduta. Appena prenotata, l'etichetta sparisce da sola |
 | **Togli dal piano** | chiede un **motivo obbligatorio** e la toglie dalle cose da fare |
 
-![Finestra del motivo](screenshots/22-med-togli-dal-piano.png)
+![Finestra del motivo](img/10-togli-dal-piano-motivo.png)
 
-> **«Togli dal piano» non cancella nulla.** La prestazione passa ad *annullata* e **resta nel piano**, con il motivo, la data e il nome di chi ha deciso. Serve a poter ricostruire, anche a distanza di tempo, perché un lavoro previsto non è stato fatto.
+> **«Togli dal piano» non cancella nulla.** La prestazione passa ad *annullata* e **resta nel
+> piano**, con il motivo, la data e il nome di chi ha deciso. Serve a poter ricostruire, anche a
+> distanza di tempo, perché un lavoro previsto non è stato fatto.
 
-### 3.7 Il preventivo si aggiorna da solo
+Il motivo si sceglie fra quattro frequenti — *il paziente ha rinunciato*, *non più necessaria*,
+*sostituita da un'altra prestazione*, *inserita per errore* — oppure si scrive. La conferma
+resta spenta finché il motivo è vuoto.
 
-![Dettaglio preventivo con avanzamento](screenshots/23-preventivo-avanzamento.png)
+### 4.5 Il preventivo si aggiorna da solo
 
-Il preventivo mostra in testata l'avanzamento — *«2 di 5 prestazioni del piano eseguite»* — e una colonna **Esecuzione** riga per riga. Non c'è niente da aggiornare a mano.
+![Dettaglio preventivo con avanzamento](img/15-preventivo-avanzamento.png)
 
-> **Righe libere.** Una riga aggiunta a mano, non collegata a una prestazione del piano, non ha uno stato di esecuzione e non entra nel conteggio. Per questo un preventivo di tre righe può mostrare *«1 di 2 eseguite»*: non è un errore.
+Il preventivo mostra in testata l'**avanzamento** — *«2 di 5 prestazioni del piano eseguite»* —
+e una colonna **Esecuzione** riga per riga: *Eseguita*, *In agenda*, *Pianificata*.
 
----
+Non c'è niente da aggiornare a mano: cambia quando il medico registra la seduta.
 
-## 4. Percorso Amministratore
-
-L'amministratore configura lo studio. Nel menu compare la voce **Impostazioni**, che raccoglie tutti i parametri: dati fiscali, professionisti, anagrafiche, agenda, preventivi, fatturazione, richiami, AI e sistema.
-
-### 4.1 Dati dello studio
-
-Il primo tab imposta l'identità fiscale dello studio: ragione sociale, partita IVA, codice fiscale, indirizzo, PEC, codice SDI e IBAN. Questi dati finiscono automaticamente sulle fatture.
-
-![Impostazioni studio](screenshots/10-admin-impostazioni.png)
-
-### 4.2 Gestione dei prompt AI
-
-Il tab **AI** contiene il Prompt Manager: le istruzioni che guidano l'assistente AI si possono leggere e modificare direttamente, per lingua (italiano/inglese). Le modifiche hanno effetto immediato, senza riavviare l'applicazione.
-
-![Prompt Manager AI](screenshots/11-admin-ai.png)
-
-> **Trasparenza.** Poter leggere e modificare le istruzioni dell'AI in chiaro è una forma di trasparenza: lo studio sa esattamente come è istruito l'assistente e può adattarlo alle proprie regole.
-
-### 4.3 Il listino prestazioni
-
-La sezione Prestazioni è il catalogo dello studio, organizzato per categoria (Chirurgia, Conservativa, Diagnostica…). Ogni voce ha codice, prezzo, IVA, durata e collegamento alle condizioni dentali. È il listino da cui nascono preventivi e piani di cura.
-
-![Prestazioni e listino](screenshots/12-admin-prestazioni.png)
+> **Righe libere.** Una riga aggiunta a mano, non collegata a una prestazione del piano di cura,
+> non ha uno stato di esecuzione e non entra nel conteggio. Per questo un preventivo di tre
+> righe può mostrare *«1 di 2 eseguite»* — non è un errore.
 
 ---
 
-## 5. In sintesi
+## 5. L'amministratore
 
-| Se sei… | Parti da… |
-|---|---|
-| **Segreteria** | Dashboard → Agenda per la giornata, Pazienti per l'anagrafica, Copilot AI per farti aiutare. |
-| **Medico** | Pazienti → apri la scheda → Cartella Clinica e Odontogramma per il quadro clinico. Agenda → **Seduta** per registrare cosa hai fatto. |
-| **Amministratore** | Impostazioni per configurare studio, listino e AI prima di partire. |
+L'amministratore ha in più la voce **Impostazioni**.
+
+![Impostazioni](img/16-admin-impostazioni.png)
+
+Le schede coprono i dati dello studio, i professionisti, le anagrafiche, i parametri di agenda,
+preventivi, fatturazione, richiami, l'AI e il sistema.
+
+### Professionisti
+
+![Professionisti](img/17-admin-professionisti.png)
+
+Qui si creano e si modificano medici, igienisti e segreteria. Alla creazione il programma manda
+per email una **password temporanea**: al primo accesso l'interessato ne sceglie una propria.
+
+> **L'indirizzo email non è un dettaglio.** Un professionista senza email **non può accedere**,
+> perché il programma identifica l'utente proprio dall'indirizzo. Comparirà in agenda come
+> assegnatario, ma non potrà registrare le proprie sedute: lo farà sempre qualcun altro, e in
+> cartella resterà il nome di chi ha scritto.
+
+### Sistema
+
+![Impostazioni di sistema](img/18-admin-sistema-errori.png)
+
+**Errori intelligenti** — attivo di default. Quando un'operazione non riesce, l'AI riscrive il
+messaggio tecnico in linguaggio comune. Il messaggio originale resta sempre consultabile come
+«Dettaglio tecnico».
+
+> A funzione **disattivata**, il pannello mostra il messaggio del sistema così com'è e **nessun
+> testo viene inviato al servizio AI**.
+
+Nella stessa scheda si regolano le righe degli appuntamenti in Dashboard e per quanti giorni
+conservare la cronologia delle conversazioni con il Copilot.
+
+### AI
+
+![Impostazioni AI](img/19-admin-ai-prompt.png)
+
+I testi che guidano l'assistente AI sono modificabili qui, senza toccare il codice.
 
 ---
 
 ## 6. Quando qualcosa non funziona
 
-![Pannello errori](screenshots/25-pannello-errori.png)
+![Pannello errori](img/20-pannello-errori.png)
 
-Quando un'operazione fallisce compare una **striscia in fondo alla schermata**, sempre nella stessa posizione. Riporta tre cose: **cosa** non è riuscito, **perché** — con i dati concreti che bloccano l'operazione — e **cosa fare**, quando esiste un'alternativa.
+Quando un'operazione fallisce compare una **striscia in fondo alla schermata**, sempre nella
+stessa posizione. Riporta tre cose:
 
-La striscia **resta finché non viene chiusa**: non scompare da sola, così c'è il tempo di leggerla. Se si accumulano più errori, un pulsante apre lo storico della sessione.
+- **cosa** non è riuscito;
+- **perché**, con i dati concreti che bloccano l'operazione;
+- **cosa fare**, quando esiste un'alternativa.
 
-Sotto il messaggio, il link **«Dettaglio tecnico»** mostra l'orario, il **codice** e lo stato HTTP. **Sono questi i dati da riportare all'assistenza**: identificano la causa esatta.
+La striscia **resta finché non viene chiusa**: non scompare da sola, così c'è il tempo di
+leggerla. Se si accumulano più errori, un pulsante apre lo storico della sessione.
 
-> **Errori intelligenti.** Di norma il messaggio viene riscritto dall'AI in linguaggio comune, per renderlo comprensibile anche a chi non ha dimestichezza con i messaggi di sistema. L'originale resta sempre sotto «Dettaglio tecnico». La funzione si disattiva da **Impostazioni → Sistema**; a funzione spenta **nessun testo viene inviato al servizio AI**.
-
-![Impostazioni di sistema](screenshots/24-admin-sistema.png)
+Sotto il messaggio, il link **«Dettaglio tecnico»** mostra l'orario, il **codice** e lo stato
+HTTP — nell'esempio `RESOURCE_NOT_FOUND · HTTP 404`. **Sono questi i dati da riportare
+all'assistenza**: identificano la causa esatta.
 
 ---
 
-## 7. Glossario degli stati
+## 7. Glossario
 
-### Appuntamento
+### Stati dell'appuntamento
 
 | Stato | Significato |
 |---|---|
@@ -297,7 +373,7 @@ Sotto il messaggio, il link **«Dettaglio tecnico»** mostra l'orario, il **codi
 | `Annullato` | non si svolgerà |
 | `Non presentato` | il paziente non si è presentato |
 
-### Prestazione nel piano di cura
+### Stati della prestazione nel piano di cura
 
 | Stato | Significato |
 |---|---|
@@ -307,11 +383,14 @@ Sotto il messaggio, il link **«Dettaglio tecnico»** mostra l'orario, il **codi
 | `Eseguita` | registrata dal medico, con data e autore |
 | `Annullata` | non verrà eseguita. Se tolta dal piano, porta con sé il motivo |
 
-**In sospeso** non è uno stato a sé: è una **condizione**, e significa che la prestazione è passata per una seduta conclusa senza esito e non ha una nuova data. Nelle schermate ha la precedenza sullo stato, perché dire *«pianificata»* non racconterebbe che è già stata saltata una volta.
+**In sospeso** non è uno stato a sé: è una **condizione**, e significa che la prestazione è
+passata per una seduta conclusa senza esito e non ha una nuova data. Nelle schermate ha la
+precedenza sullo stato, perché dire *«pianificata»* non racconterebbe che è già stata saltata
+una volta.
 
-### Esito di seduta
+### Esiti di seduta
 
-Diverso dallo stato nel piano: vale per **quella** seduta.
+Diversi dallo stato nel piano: valgono per **quella** seduta.
 
 | Esito | Significato |
 |---|---|
@@ -320,7 +399,7 @@ Diverso dallo stato nel piano: vale per **quella** seduta.
 | `Rinviata` | non fatta oggi, **resta aperta** e ripianificabile |
 | `Non eseguita` | non fatta, con motivazione. Resta aperta |
 
-### Preventivo
+### Stati del preventivo
 
 | Stato | Significato |
 |---|---|
@@ -336,12 +415,17 @@ Diverso dallo stato nel piano: vale per **quella** seduta.
 
 > **Nessuno stato clinico o contabile cambia da solo.**
 
-Una prestazione risulta eseguita solo se il medico l'ha dichiarato. Una seduta si chiude solo se qualcuno lo chiede. Un piano di cura non si completa da sé nemmeno quando tutte le sue prestazioni sono state fatte: resta una decisione clinica.
+Una prestazione risulta eseguita solo se il medico l'ha dichiarato. Una seduta si chiude solo
+se qualcuno lo chiede. Un piano di cura non si completa da sé nemmeno quando tutte le sue
+prestazioni sono state fatte: resta una decisione clinica.
 
-Non ci sono caselle già spuntate, perché una casella già spuntata passa se si clicca in fretta — e sarebbe un automatismo travestito da scelta.
+Non ci sono caselle già spuntate, perché una casella già spuntata passa se si clicca in fretta —
+e sarebbe un automatismo travestito da scelta.
 
-L'unica eccezione è organizzativa: prenotando una prestazione, il programma la segna *In agenda*. Non afferma che sia stato fatto qualcosa al paziente.
+L'unica eccezione è organizzativa: prenotando una prestazione, il programma la segna *In
+agenda*. Non afferma che sia stato fatto qualcosa al paziente.
 
 ---
 
-Le schermate di questo manuale provengono dall'ambiente dimostrativo di DentalCare Pro. I nomi e i dati dei pazienti sono fittizi.
+*DentalCare Pro © 2026 — Tutti i diritti riservati*
+*Per assistenza: supporto@dentalcarepro.it*

@@ -1,11 +1,11 @@
 # Graph Report - DentalCare-Pro-Documentation  (2026-09-22)
 
 ## Corpus Check
-- 104 files · ~332,083 words
+- 104 files · ~212,956 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1130 nodes · 1126 edges · 129 communities (127 shown, 2 thin omitted)
+- 1132 nodes · 1128 edges · 128 communities (126 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -96,7 +96,6 @@
 - Messaggi configurati su Retell — Giulia REL 1.0
 - 14. USO DEI TOOL
 - 10. SegretarIA
-- 9. Magazzino
 
 ## God Nodes (most connected - your core abstractions)
 1. `AI Roadmap — DentalCare Pro` - 34 edges
@@ -113,7 +112,7 @@
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (129 total, 2 thin omitted)
+## Communities (128 total, 2 thin omitted)
 
 ### Community 0 - "Studio-di-Fattibilita.md"
 Cohesion: 0.05
@@ -169,7 +168,7 @@ Nodes (18): 04 - Analisi dei Competitor, 10. Conclusioni, 1. Obiettivo, 2. Execu
 
 ### Community 13 - "Manuale Utente — DentalCare Pro"
 Cohesion: 0.06
-Nodes (33): 1. Come è organizzato il lavoro, 2. Accesso, 3. La segreteria, 4.1 L'agenda del medico, 4.2 La scheda di seduta, 4.3 Registrare cosa è stato fatto, 4.4 Le prestazioni rimaste in sospeso, 4.5 Il preventivo si aggiorna da solo (+25 more)
+Nodes (35): 1.1 I tre ruoli, 1.2 Accesso, 1. Introduzione, 2.1 La dashboard, 2.2 L'agenda, 2.3 I pazienti, 2.4 Il Copilot AI, 2.5 I preventivi: a che punto è il lavoro (+27 more)
 
 ### Community 14 - "12 — Modello della cartella clinica"
 Cohesion: 0.12
@@ -184,8 +183,8 @@ Cohesion: 0.10
 Nodes (21): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 12. Gestione errori ed Errori intelligenti (#51, #54), 1.1 Scheda di seduta clinica e chiusura (#56-#62), 1. Agenda: la giornata clinica, 2. Scheda paziente (+13 more)
 
 ### Community 17 - "03-Analisi-Mercato.md"
-Cohesion: 0.17
-Nodes (11): 03 - Analisi di Mercato, 17. Conclusioni, 18. Fonti, 1. Executive Summary del mercato, 2.1 Driver principali, 2.2 Opportunità specifica per DentalCare Pro, 2. Perché il mercato è interessante oggi, DentalCare Pro (+3 more)
+Cohesion: 0.25
+Nodes (7): 17. Conclusioni, 18. Fonti, 1. Executive Summary del mercato, 2.1 Driver principali, 2.2 Opportunità specifica per DentalCare Pro, 2. Perché il mercato è interessante oggi, Nota metodologica
 
 ### Community 18 - "Market Strategy"
 Cohesion: 0.06
@@ -392,8 +391,8 @@ Cohesion: 0.22
 Nodes (8): Come aggiungere gli screenshot, Documenti collegati, Domande tipiche ispezione (da §29 documento compliance), Evidenze richieste, Inspection Readiness Binder — Cartella 13: Trasparenza, Obbligatorie entro 2026-08-02, Raccomandate entro 30 giorni, Sezione: Giulia Voice Agent (Retell AI)
 
 ### Community 118 - "5.1 Viste calendario"
-Cohesion: 0.25
-Nodes (8): 5.1 Viste calendario, Codici colore appuntamenti, Filtro per professionista, Navigazione temporale, Vista Giorno, Vista Mese, Vista Prossimi, Vista Settimana
+Cohesion: 0.18
+Nodes (11): 5.1 Viste calendario, 5.2 Nuovo appuntamento, 5.3 Scheda di seduta, 5. Agenda, Codici colore appuntamenti, Filtro per professionista, Navigazione temporale, Vista Giorno (+3 more)
 
 ### Community 119 - "2. Accesso e navigazione"
 Cohesion: 0.29
@@ -404,8 +403,8 @@ Cohesion: 0.29
 Nodes (7): 6. Preventivi, Avanzamento delle prestazioni, Dettaglio preventivo, Gestione stati, Lista preventivi, Nuovo preventivo, Voci di preventivo
 
 ### Community 121 - "DentalCare Pro — Manuale Utente"
-Cohesion: 0.33
-Nodes (6): 1. Introduzione, 5.2 Nuovo appuntamento, 5.3 Scheda di seduta, 5. Agenda, DentalCare Pro — Manuale Utente, Indice
+Cohesion: 0.50
+Nodes (4): 03 - Analisi di Mercato, DentalCare Pro, Focus Italia ed Europa per piattaforma SaaS AI-Native odontoiatrica, Indice
 
 ### Community 122 - "15. GESTIONE DELL’ESITO DEI TOOL E DEI WEBHOOK"
 Cohesion: 0.33
@@ -428,29 +427,25 @@ Cohesion: 0.40
 Nodes (5): 14. USO DEI TOOL, TOOL `book_appointment`, TOOL `cancel_appointment`, TOOL `check_availability`, TOOL `modify_appointment`
 
 ### Community 127 - "10. SegretarIA"
-Cohesion: 0.50
-Nodes (4): 10. SegretarIA, Attività, Chat, Chiamate
-
-### Community 128 - "9. Magazzino"
-Cohesion: 0.50
-Nodes (4): 9. Magazzino, Tab Fornitori, Tab Movimenti, Tab Prodotti
+Cohesion: 0.18
+Nodes (11): 10. SegretarIA, 1. Introduzione, 9. Magazzino, Attività, Chat, Chiamate, DentalCare Pro — Manuale Utente, Indice (+3 more)
 
 ## Knowledge Gaps
-- **851 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+846 more)
+- **854 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+849 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `DentalCare Pro — Manuale Utente` connect `DentalCare Pro — Manuale Utente` to `9. Magazzino`, `Architecture-Handbook.md`, `4. Pazienti`, `11. Impostazioni`, `12. Glossario stati`, `7. Fatturazione`, `2. Accesso e navigazione`, `6. Preventivi`, `3. Dashboard`, `8. Richiami`, `10. SegretarIA`?**
-  _High betweenness centrality (0.078) - this node is a cross-community bridge._
+- **Why does `DentalCare Pro — Manuale Utente` connect `10. SegretarIA` to `Architecture-Handbook.md`, `4. Pazienti`, `11. Impostazioni`, `12. Glossario stati`, `7. Fatturazione`, `5.1 Viste calendario`, `2. Accesso e navigazione`, `6. Preventivi`, `3. Dashboard`, `8. Richiami`?**
+  _High betweenness centrality (0.077) - this node is a cross-community bridge._
 - **Why does `Release 2.x — AI radiologica certificata (percorso MDR)` connect `Release 2.x — AI radiologica certificata (percorso MDR)` to `Architecture-Handbook.md`?**
   _High betweenness centrality (0.032) - this node is a cross-community bridge._
-- **Why does `AI Roadmap — DentalCare Pro` connect `AI Roadmap — DentalCare Pro` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `Release 1.x — Gestionale odontoiatrico con AI amministrativa` connect `Release 1.x — Gestionale odontoiatrico con AI amministrativa` to `Architecture-Handbook.md`?**
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
 - **What connects `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)` to the rest of the system?**
-  _851 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _854 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Studio-di-Fattibilita.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Release 1.x — Gestionale odontoiatrico con AI amministrativa` be split into smaller, more focused modules?**

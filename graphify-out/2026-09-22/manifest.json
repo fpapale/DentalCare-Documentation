@@ -405,8 +405,8 @@
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/Manuale-Completo.md": {
-    "mtime": 1790075074.0,
-    "ast_hash": "9c2e596999147782b67d19d6abe7923c",
+    "mtime": 1790020576.0,
+    "ast_hash": "dee1e03173e0ea6aff3a5793aec9967b",
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/README.md": {
@@ -646,106 +646,6 @@
   },
   "docs/05-Manuale-Utente/screenshots/25-pannello-errori.png": {
     "mtime": 1790020404.0,
-    "ast_hash": "80166b737b352a07a6fc3181e86eeb0a",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/01-login.png": {
-    "mtime": 1790017562.0,
-    "ast_hash": "ac951696ede85405657d363269c56377",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/02-segreteria-dashboard.png": {
-    "mtime": 1790017582.0,
-    "ast_hash": "41067be153559f6e5ef3b6ec01e320ed",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/03-segreteria-agenda.png": {
-    "mtime": 1790017590.0,
-    "ast_hash": "0a8d37dc550938a2edaad44ff811df93",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/04-segreteria-pazienti.png": {
-    "mtime": 1790017608.0,
-    "ast_hash": "aef555544d82d6c8f90d86f141c7bc97",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/05-preventivi-lista.png": {
-    "mtime": 1790017618.0,
-    "ast_hash": "5c8a03fffef493af86f3359c88d4a7e0",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/06-fatturazione.png": {
-    "mtime": 1790017632.0,
-    "ast_hash": "10b7f8ab2865c7595f54f94fc1c36da8",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/07-richiami.png": {
-    "mtime": 1790017642.0,
-    "ast_hash": "774a35829c2c4720b067df429031c6d9",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/08-medico-agenda-trascorsi.png": {
-    "mtime": 1790017678.0,
-    "ast_hash": "2d60749771abfaf98268891def7f745c",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/09-piano-cura-in-sospeso.png": {
-    "mtime": 1790017696.0,
-    "ast_hash": "633f519b91dc6970ae8b3afdb1ea5e35",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/10-togli-dal-piano-motivo.png": {
-    "mtime": 1790017718.0,
-    "ast_hash": "2d8b7d9b10be5a4bc0b47e7416a11b2f",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/11-scheda-seduta-vuota.png": {
-    "mtime": 1790017758.0,
-    "ast_hash": "d31d60682fd90f3525d5e80970f53e24",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/12-selettore-etichette.png": {
-    "mtime": 1790017798.0,
-    "ast_hash": "c8b8492fa6ce6a81b18b48c3d6ee446f",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/13-scheda-seduta-esiti.png": {
-    "mtime": 1790017846.0,
-    "ast_hash": "1d8660a80970ae3433b18fd2c62054b0",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/14-riepilogo-chiusura.png": {
-    "mtime": 1790017876.0,
-    "ast_hash": "a3c691197546ad418d85a6c277b8aa0f",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/15-preventivo-avanzamento.png": {
-    "mtime": 1790017904.0,
-    "ast_hash": "ef095520374e3db98932c2742a8cfc7d",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/16-admin-impostazioni.png": {
-    "mtime": 1790017938.0,
-    "ast_hash": "092aabd599b718ec973385dcbc5c0739",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/17-admin-professionisti.png": {
-    "mtime": 1790017954.0,
-    "ast_hash": "91f85e06ce87b2e877fabab7a4921faf",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/18-admin-sistema-errori.png": {
-    "mtime": 1790017964.0,
-    "ast_hash": "9f3b8df06f59366deb4670b7dbc1dfde",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/19-admin-ai-prompt.png": {
-    "mtime": 1790017992.0,
-    "ast_hash": "427575f700690531646b0ff807976c14",
-    "semantic_hash": ""
-  },
-  "docs/05-Manuale-Utente/img/20-pannello-errori.png": {
-    "mtime": 1790018022.0,
     "ast_hash": "80166b737b352a07a6fc3181e86eeb0a",
     "semantic_hash": ""
   }

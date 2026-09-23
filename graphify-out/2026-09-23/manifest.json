@@ -290,8 +290,8 @@
     "semantic_hash": "0079f1fc5dffe229309f93e41e7c30fd"
   },
   "docs/03-Product-Roadmap/Release-1.x.md": {
-    "mtime": 1790179172.0,
-    "ast_hash": "f561e60b420e40205823aae7f2046f4b",
+    "mtime": 1790017112.0,
+    "ast_hash": "93df57f570234517d5624df03f5332c6",
     "semantic_hash": ""
   },
   "docs/03-Product-Roadmap/Release-2.x.md": {
@@ -325,8 +325,8 @@
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/02-Backend.md": {
-    "mtime": 1790179182.0,
-    "ast_hash": "9e7edbcf249d4f271ea258ef0002ba74",
+    "mtime": 1790016916.0,
+    "ast_hash": "18a129fb013f93bb723dc095d9f58c59",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/03-Frontend.md": {

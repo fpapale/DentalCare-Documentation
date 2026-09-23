@@ -61,17 +61,19 @@ Contengono la logica e le transazioni. Pattern ricorrenti:
 - `SessionService`: orchestra la transizione della seduta clinica (`loadSession`,
   `recordOutcomes`, `closeSession`, `openItems`, `removeSuspendedItem`) garantendo
   la consistenza relazionale e l'audit dell'autore reale dell'atto clinico.
+- `InvoiceService`: gestisce l'intero ciclo documentale e calcola i numeri fattura mediante `nextProgressive(clinicId, year, prefix)` (#63) leggendo il valore massimo assegnato: in caso di eliminazione di una bozza, i numeri rimangono buchi storici senza causare collisioni sul vincolo `ux_invoices_number`.
 - `ErrorExplanationService`: interroga il modello OpenAI (`error.humanize`) con
   cache locale in-memory e sanitizzazione preventiva di identificatori o dati sensibili.
 
-## 6. Persistenza
+## 6. Persistenza e migrazioni a caldo
 
 - **SQL-first**: `NamedParameterJdbcTemplate` su schema tenant. Le viste
   incapsulano join e aggregazioni ricorrenti.
 - **JPA/Hibernate**: solo per 6 entity core; `ddl-auto=none`, `open-in-view=false`.
 - **Migrazioni**: schema creato/aggiornato da `database/install.sql` (installer)
   + funzione `dentalcare.create_tenant()` per nuovi tenant + patch idempotente
-  a runtime (vedi [06-Multitenancy](06-Multitenancy.md)).
+  a runtime gestita da `EstimateSchemaInitializer` (vedi [06-Multitenancy](06-Multitenancy.md)).
+- **DDL transazionale e zero-downtime (#64)**: per prevenire risposte HTTP 500 durante il riavvio del backend, `EstimateSchemaInitializer` esegue l'aggiornamento delle viste (`v_agenda_daily`, `v_patient_dashboard`, etc.) in modalità DDL transazionale atomica (`replaceView()` in singola transazione PostgreSQL), garantendo che i client in volo non vedano mai oggetti mancanti.
 
 ## 7. DTO e validazione
 

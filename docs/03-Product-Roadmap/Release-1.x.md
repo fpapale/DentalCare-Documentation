@@ -48,15 +48,20 @@ DentalCare non può. Al termine di Release 1.x, sì.
 - **Odontogramma temporale**: storia dei reperti, non snapshot corrente; confronto tra date.
 - **Anamnesi tri-stato**: presente / assente / non noto, con fonte e data.
 - **Soft delete & export con password monouso**: ✅ **Fatta (dev, #47)**: archivio ZIP AES-256 e grace period con congelamento JWT.
+- **Odontogramma da seduta clinica** — 🔨 **In pianificazione (#65)**: mappatura configurabile prestazione → stato dente, con aggiornamento consapevole dell'odontogramma a valle dell'atto clinico.
 
-### Identità e accessi
+### Identità, accessi e usabilità operativa
 - **MFA** per professionisti e amministratori.
 - **Segregazione dei ruoli verificata lato server** — ✅ **Fatta (dev, #42, #44, #62)**: `AccessScopeService` per visibilità pazienti e `/api/appointments/*/session/**` protetto da `CLINICAL_WRITE_ROLES` (la segreteria non può firmare atti clinici).
 - **Relazione di cura** come criterio di autorizzazione.
 - **Merge dei duplicati** paziente con approvazione e audit.
+- **Ordinamento e ricerca liste operative** — ✅ **Fatta (dev)**: ordinamento per colonna intelligente (date/importi decrescenti per default, celle vuote in fondo), ricerca testuale e filtri rapidi su Fatturazione, Richiami, Magazzino, Preventivi e Prestazioni; separazione dello stornato nei KPI contabili.
 
 ### Ciclo economico e fatturazione
-- **Fatturazione conforme** — ✅ **Fatta (dev, #50, #52, #53)**: fattura a saldo vincolata all'avanzamento reale delle prestazioni completate in seduta, introduzione documento di acconto, e flusso completo di storno con nota di credito (inalienabilità dei documenti fiscali emessi).
+- **Fatturazione conforme** — ✅ **Fatta (dev, #50, #52, #53, #63)**: fattura a saldo vincolata all'avanzamento reale delle prestazioni completate in seduta, documento di acconto, flusso di storno con nota di credito, e numerazione documentale robusta (#63, `nextProgressive` per eliminare collisioni su bozze cancellate).
+
+### Infrastruttura e affidabilità
+- **Zero-downtime schema patching** — ✅ **Fatta (dev, #64)**: esecuzione DDL transazionale per le viste in `EstimateSchemaInitializer`, azzerando i ritardi e gli errori 500 transitori nei riavvii.
 
 ### Integrità dei documenti
 - Impronta **SHA-256**, verifica del MIME reale, scansione malware, controllo di coerenza

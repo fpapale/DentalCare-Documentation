@@ -42,6 +42,10 @@ immagini via `${VERSION}` da `.env`.
   (obbligatoria, fail-fast), chiavi OpenAI/n8n/MinIO/HMAC.
 - Precedenza: `backend/config/` (e `config/` montata in prod) **override** dei
   default del classpath.
+- Interruttori funzionali per ambiente (#69, #70): registrazione cliente, prova gratuita (o
+  indirizzo dell'istanza di prova), ambiente di prova degli studi, Academy. Valori per ambiente
+  in [09-Deployment §3](09-Deployment.md); il collaudo li ha come la produzione con pazienti
+  reali (prova gratuita spenta, ambiente di prova e Academy accesi).
 
 ## 4. Ambienti
 

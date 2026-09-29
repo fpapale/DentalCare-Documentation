@@ -1,8 +1,9 @@
 # Architecture Handbook — DentalCare Pro
 
 Documentazione tecnica dello **stato reale** della piattaforma (branch `master`,
-aggiornata 2026-07). Descrive ciò che è implementato, segnalando esplicitamente
-ciò che è pianificato/non ancora presente.
+aggiornata 2026-09-28; #69 e #70 sono sul branch `feat/69-demo-academy`, in attesa di integrazione).
+Descrive ciò che è implementato, segnalando esplicitamente ciò che è pianificato/non
+ancora presente.
 
 ## Indice
 
@@ -13,13 +14,13 @@ ciò che è pianificato/non ancora presente.
 | 03 | [Frontend](03-Frontend.md) | Angular 21 standalone, feature, layout 3 colonne |
 | 04 | [AI](04-AI.md) | Copilot (Spring AI/GPT-4.1 + tool), analisi radiologica ONNX, n8n |
 | 05 | [DICOM](05-DICOM.md) | Stato: non implementato (roadmap) |
-| 06 | [Multi-tenancy](06-Multitenancy.md) | Schema-per-tenant, TenantContext, provisioning, patchSchema |
-| 07 | [Security](07-Security.md) | JWT, ruoli, cifratura GDPR campo-per-campo (#7) |
+| 06 | [Multi-tenancy](06-Multitenancy.md) | Schema-per-tenant, TenantContext, provisioning, patchSchema, workspace demo, ambiente di prova degli studi e tabelle di piattaforma (#69, #70) |
+| 07 | [Security](07-Security.md) | JWT, ruoli, ruoli di piattaforma, limiti per IP, cifratura GDPR campo-per-campo (#7) |
 | 08 | [DevOps](08-DevOps.md) | Build, Docker, config/segreti, ambienti |
 | 09 | [Deployment](09-Deployment.md) | Compose, install.sh/setup.sh, deploy cifratura |
 | 10 | [Testing](10-Testing.md) | Unit-first + validazione DB reale |
 | 11 | [Cifratura dati & GDPR](11-Data-Encryption.md) | Scelte di progetto, modello di minaccia, trade-off, roadmap |
-| 12 | [Modello cartella clinica](12-Clinical-Record-Model.md) | Entità, encounter, finalizzazione e addendum, audit, mappatura FHIR |
+| 12 | [Modello cartella clinica](12-Clinical-Record-Model.md) | Entità, encounter, dente da seduta (#65), genera piano (#66), episodi e fotografie (#67), finalizzazione e addendum, mappatura FHIR |
 | 13 | [Audit trail clinico](13-Audit-Trail.md) | Modello probatorio, taglio Tier 1 (gate) / Tier 2, decisioni di design |
 
 ## Sintesi tecnica

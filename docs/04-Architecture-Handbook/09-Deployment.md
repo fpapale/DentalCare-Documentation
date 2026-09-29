@@ -58,6 +58,32 @@ cd ~/docker/dentalcarepro-coll
 ./setup-coll.sh --update   # rebuild veloce collaudo
 ```
 
+### Accesso al repository
+Dal 24/09/2026 il repository applicativo è **privato**: i server lo leggono con una **deploy key
+in sola lettura**, una per macchina. Alla prima esecuzione `setup.sh` / `setup-coll.sh` creano
+la chiave e l'alias SSH, stampano la chiave pubblica e si fermano finché non è aggiunta su
+GitHub (*Settings → Deploy keys*, senza accesso in scrittura); poi convertono l'`origin` dei
+clone esistenti. Per revocare una macchina basta eliminarne la chiave. La documentazione resta
+pubblica.
+
+### Registrazione, prova gratuita, ambiente di prova degli studi (#69, #70)
+Tre porte indipendenti, in `config/application-prod.properties`:
+
+| Proprietà | Ambiente di prova pubblico | Produzione con pazienti reali |
+|---|---|---|
+| `app.registration.customer-enabled` | `true` | `true` |
+| `app.demo-workspace.public-registration` | `true` | **`false`** (aperta a chiunque) |
+| `app.demo-workspace.public-url` | vuoto | indirizzo dell'istanza di prova |
+| `app.sandbox.enabled` | `true` | `true` |
+| `app.academy.enabled` | `true` | `true` |
+| `app.academy.editor-emails` | chi scrive le lezioni | idem |
+| `app.demo-workspace.sales-email` | destinatario delle richieste di attivazione | idem |
+| `app.mail.send-real-emails` | `true`: la password temporanea arriva solo per e-mail | `true` |
+
+Durata, pulizia, tetti giornalieri e limiti per IP hanno default nel codice
+(`app.demo-workspace.*`, `app.rate-limit.*`). Il backend deve vedere l'IP vero del client:
+nginx inoltra `X-Forwarded-For`, che il backend legge solo se arriva dal proxy interno.
+
 ## 4. Creazione database
 
 ```bash

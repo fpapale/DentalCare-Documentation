@@ -28,7 +28,8 @@ Le prime tre domande riguardano il **modello dati**; la quarta l'**audit trail**
 | **Appointment** | pianificazione | ✅ implementato |
 | **Encounter (Seduta clinica)** | **episodio di cura effettivo** | ✅ **implementato (#56-#62)** |
 | **Anamnesi** | scheda clinica generale, voci strutturate da catalogo | ✅ implementato · tri-stato in Release 1.x |
-| **Reperto dentale** (odontogramma) | condizione per dente/superficie, con origine | ✅ implementato · storicità in Release 1.x |
+| **Reperto dentale** (odontogramma) | condizione per dente/superficie, con origine e, se registrata in seduta, autore e seduta (#65) | ✅ implementato · confronto fra date via episodi (#67) · storia per reperto in Release 1.x |
+| **Episodio clinico** + fotografie | visita o contatto fuori visita, con la situazione del paziente prima e dopo | ✅ **implementato (#67, Fase 1)** |
 | **Diagnosi** | problema, stato, data, risoluzione | ✅ implementato |
 | **Piano di cura** + voci | trattamento previsto | ✅ implementato |
 | **Voce di cartella** (visita/prestazione) | atto eseguito, note cliniche, materiali | ✅ implementato · **finalizzazione in Release 1.x** |
@@ -63,16 +64,29 @@ TreatmentPlanItem (piano di cura del paziente)
 
 #### Regole e vincoli di integrità clinica:
 1. **Tracciabilità probatoria dell'autore (#62):** L'atto clinico deve portare il nome di chi l'ha realmente svolto. Se un medico visita in una seduta originariamente assegnata a un collega, il sistema consente l'operazione ma registra nel DB `performed_by_provider_id = current_user`.
-2. **Confine di ruolo server-side (`CLINICAL_WRITE_ROLES`):** Gli endpoint `/api/appointments/{id}/session/**` sono protetti in `SecurityConfig` e riservati ai soli ruoli sanitari abilitati (`dentist`, `hygienist`, `orthodontist`, `surgeon`, `tenant_admin`). La segreteria non può firmare l'esecuzione di atti clinici.
+2. **Confine di ruolo server-side (`CLINICAL_WRITE_ROLES`):** Gli endpoint `/api/appointments/{id}/session/**` sono protetti in `SecurityConfig` e riservati ai ruoli sanitari (`dentist`, `hygienist`, `orthodontist`, `surgeon`) e agli amministratori (`tenant_admin`, più `admin` dell'utenza demo). La segreteria non può firmare l'esecuzione di atti clinici.
 3. **Inviolabilità temporale della seduta:** Il server rifiuta registrazioni su sedute già chiuse, annullate o no-show (`SESSION_ALREADY_CLOSED`, `SESSION_CANCELLED`, `SESSION_NO_SHOW`).
 4. **Tracciamento eventi in sospeso (`treatment_plan_item_events` #61):** Alla chiusura della seduta, ogni prestazione non eseguita non resta in un limbo: viene riprogrammata o stralciata con vincolo di motivazione clinica obbligatoria (`ck_tpie_reason`).
+5. **Il dente non cambia stato da solo (#65):** una prestazione eseguita può aggiornare l'odontogramma solo con un gesto del medico. Il listino dichiara lo stato che la prestazione lascia (`service_tooth_outcomes`, per sede e prestazione); in seduta è una proposta da applicare, cambiare o ignorare, e «lascia com'è» è il default. Gli stati di superficie (otturazione) chiedono le superfici, quelli del dente intero no. Dalla seduta si scrive, non si cancella: niente carie, niente «sano». La riga porta `source='session'`, `recorded_by_provider_id` e `recorded_appointment_id`; il tab Odontogramma resta l'autorità e può correggerla (diventa `manual` e perde l'attribuzione) o cancellarla.
+
+### 2.1.1 Dal reperto al piano di cura (#66)
+
+«Genera piano di cura» serve a non dimenticare nulla, non a decidere al posto del medico:
+
+- propone solo ciò che l'odontogramma indica **da fare**: `cavity` sulle superfici, `to_extract`, `missing`, `impacted` sul dente intero. Corona, impianto, ponte e devitalizzato sono cure presenti e non si ripropongono;
+- una voce per condizione: le carie di un dente diventano un'unica otturazione con le sue superfici, e la prestazione dipende dal numero di superfici (`condition_service_defaults.surface_count`);
+- ciò che si scarta resta **visibile con il motivo**: carie su un dente assente o da estrarre («Non proposte»), stessa prestazione già aperta sullo stesso dente (esclusa, recuperabile con «Aggiungi comunque»);
+- il server applica le **stesse regole** (`PlanItemApplicabilityService`) alla creazione da odontogramma, all'aggiunta e al singolo `addItem`: FDI valido, prestazione attiva, posizione, stato del dente (`service_catalog.requires_natural_tooth`), superfici valide. Tutti i problemi in un'unica risposta `422 SERVICE_NOT_APPLICABLE`;
+- l'aggiunta a un piano esistente è una sola transazione (`POST /api/treatment-plans/{id}/items/from-odontogram`), e si genera solo da un odontogramma salvato.
 
 ### 2.2 Reperto dentale: da snapshot a storia
 
 L'odontogramma è oggi la **fotografia dello stato corrente**: la condizione di un
-dente/superficie viene aggiornata in luogo, con la sua origine (`manual` | `ai`) e il
-riferimento all'analisi che l'ha prodotta. La provenienza è modellata bene; la **storia**
-no.
+dente/superficie viene aggiornata in luogo, con la sua origine (`manual` | `ai` |
+`session`) e il riferimento all'analisi o alla seduta che l'ha prodotta (#65). La
+provenienza è modellata bene; la **storia per singolo reperto** no. Il confronto fra date
+oggi lo danno gli **episodi clinici** (§2.3), che congelano l'odontogramma all'ingresso e
+all'uscita di ogni visita.
 
 Il modello di riferimento tratta ogni reperto come un **fatto clinico datato**:
 
@@ -92,7 +106,61 @@ come snapshot leggibile, ma non è mai la fonte.
 Questo abilita il **confronto tra date** — cioè la ricostruzione dell'evoluzione clinica
 di un dente, che è il motivo per cui esiste un odontogramma.
 
-### 2.3 Anamnesi: tre stati, non due
+### 2.3 Episodi clinici e fotografie (implementato #67, Fase 1)
+
+Un **episodio** è una visita in presenza, legata a un appuntamento, oppure un **contatto
+fuori visita** (telefonata, documento o RX esterno, altro). A ogni episodio il sistema
+associa la situazione clinica del paziente **all'ingresso** e **all'uscita**.
+
+```text
+clinical_episodes            (per sede, nello schema del tenant)
+  episode_type   visit | contact          contact_kind  phone | external_document | other
+  appointment_id (solo visit)             reason
+  status         open | closed            close_reason  completed | cancelled | no_show | closed | visit_started
+  opened_at / opened_by · closed_at / closed_by · entry_late
+     │ 1..N
+     ▼
+episode_snapshots            (append-only: trigger che rifiuta UPDATE e DELETE)
+  kind           entry | exit
+  format_version · content (jsonb) · content_hash (SHA-256) · taken_at / taken_by
+```
+
+**Cosa entra nella fotografia:** anamnesi in corso con allerte e gruppo sanguigno, diagnosi
+non risolte, terapie attive, tutto l'odontogramma, piani di cura aperti con tutte le voci. È
+composta lato server nella stessa transazione dell'evento che la scatta. La forma canonica
+(liste ordinate con chiavi stabili, chiavi JSON in ordine alfabetico, date `YYYY-MM-DD`)
+rende l'hash riproducibile: rileggere il `jsonb` e riserializzarlo dà lo stesso hash.
+
+**Ciclo di vita:**
+- la visita si apre quando l'appuntamento passa a **«in corso»**, e si chiude alla chiusura
+  della seduta o quando l'appuntamento diventa completato, annullato o non presentato;
+- un solo episodio aperto per paziente (indice unico parziale); una seconda visita «in
+  corso» risponde `409 EPISODE_VISIT_ALREADY_OPEN`, mentre un contatto aperto si chiude da solo
+  (`visit_started`);
+- se la seduta registra esiti su una visita mai passata da «in corso», l'ingresso si scatta in
+  quel momento, **prima** di scrivere gli esiti, marcato `entry_late`;
+- una visita riaperta aggiunge un'altra uscita: le fotografie non si cancellano mai, vale
+  l'ultima;
+- diario e documenti scritti con un episodio aperto ricevono `episode_id` lato server; le note
+  d'ingresso e d'uscita sono voci di diario con `note_kind`.
+
+**Richiesta di apertura.** Prima di un salvataggio clinico (odontogramma, anamnesi, diagnosi,
+prescrizioni, diario, documenti) senza episodio aperto, il frontend propone di mettere «in
+corso» la visita di oggi, di aprire un contatto, o di salvare **fuori episodio**. Il sistema
+propone, non crea da solo. La modifica fuori episodio comparirà come «cambiato fuori episodio»
+nell'episodio successivo.
+
+**Consultazione.** Differenze per area (anamnesi, diagnosi, terapie, odontogramma, piani) e un
+riepilogo testuale, una riga per cambiamento (es. `Odontogramma: 36 O, M: carie → otturazione`).
+Sono calcolati da una funzione **pura e deterministica** (`EpisodeDiffService`), senza AI: il
+riepilogo scritto dall'AI è Fase 2. Le API (`/api/patients/{id}/episodes/**`) sono riservate ai
+ruoli clinici anche in lettura.
+
+**Resta da fare:** il collegamento diretto (`encounter_id`) di diagnosi, prescrizioni, anamnesi
+e odontogramma all'episodio. La consultazione non ne ha bisogno, perché lavora sulle differenze
+fra fotografie.
+
+### 2.4 Anamnesi: tre stati, non due
 
 Una voce di anamnesi assente è ambigua: non si distingue *"negato dal paziente"* da *"non
 indagato"*. Il modello di riferimento richiede per ogni voce: **stato** (presente /
@@ -240,11 +308,13 @@ controllo di coerenza tra immagine e paziente selezionato.
 | Provenienza dell'output AI | ✅ modellata (origine + analisi di riferimento) |
 | Cifratura dei dati identificativi | ✅ in produzione |
 | Separazione dei ruoli | ✅ implementata · verifica end-to-end in Release 1.x |
-| **Encounter** | 🔨 Release 1.x |
+| **Encounter** (ciclo della seduta) | ✅ implementato (#56-#62) · FK `encounter_id` su diagnosi, prescrizioni, anamnesi e odontogramma in Release 1.x |
+| **Episodi clinici con fotografie prima/dopo** | ✅ implementato (#67, Fase 1) · riepilogo AI in Fase 2 |
+| Odontogramma aggiornato dalla seduta, con autore | ✅ implementato (#65), solo su conferma del medico |
 | **Finalizzazione e addendum** | 🔨 Release 1.x |
 | **Consensi versionati** | 🔨 Release 1.x |
 | **Audit trail clinico** | 🔨 Release 1.x |
-| Storicità dell'odontogramma | 🔨 Release 1.x |
+| Storicità dell'odontogramma | 🟡 confronto fra date via episodi (#67) · storia per singolo reperto in Release 1.x |
 | Merge duplicati | 🔨 Release 1.x |
 | Conservazione a norma · firma qualificata · FHIR · FSE | ⏸️ post Release 1.x |
 

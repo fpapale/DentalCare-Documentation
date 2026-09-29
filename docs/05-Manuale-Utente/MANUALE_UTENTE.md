@@ -16,6 +16,7 @@
    - [Anamnesi](#44-anamnesi)
    - [Odontogramma](#45-odontogramma)
    - [Piani di cura](#46-piani-di-cura)
+   - [Storico episodi](#47-storico-episodi)
 5. [Agenda](#5-agenda)
    - [Viste calendario](#51-viste-calendario)
    - [Nuovo appuntamento](#52-nuovo-appuntamento)
@@ -27,6 +28,7 @@
 10. [SegretarIA](#10-segretaria)
 11. [Impostazioni](#11-impostazioni)
 12. [Glossario stati](#12-glossario-stati)
+13. [Ambiente di prova e Academy](#13-ambiente-di-prova-e-academy)
 
 ---
 
@@ -232,7 +234,7 @@ Premere **Salva** nell'ultimo step per creare il paziente e tornare alla lista.
 La scheda paziente è il centro di tutte le informazioni cliniche e amministrative. È organizzata in tab:
 
 ```
-Anagrafica | Cartella | Anamnesi | Odontogramma | Piani di cura | Preventivi | Documenti
+Anagrafica | Cartella | Storico episodi | Anamnesi | Odontogramma | Piani di cura | Preventivi | Documenti
 ```
 
 #### Tab Anagrafica
@@ -258,7 +260,7 @@ Mostra i dati demografici e di contatto del paziente. Premere **Modifica** per a
 
 Questi indicatori vengono mostrati anche nell'agenda come allerta al momento dell'appuntamento.
 
-**Storico appuntamenti:** in fondo alla tab Anagrafica è presente lo storico di tutti gli appuntamenti del paziente. È possibile modificare lo stato direttamente dalla lista tramite il menu a tendina su ogni riga.
+**Storico appuntamenti:** in fondo alla tab Anagrafica è presente lo storico di tutti gli appuntamenti del paziente. È possibile modificare lo stato direttamente dalla lista tramite il menu a tendina su ogni riga. Fra gli stati ci sono **Presente** e **In corso**: portare l'appuntamento a *In corso* avvia la visita (vedi [Storico episodi](#47-storico-episodi)).
 
 ---
 
@@ -314,15 +316,23 @@ La tab **Odontogramma** permette di registrare le condizioni cliniche di ogni de
 3. Selezionare la condizione — la superficie cambia colore immediatamente
 4. Premere **Salva** per persistere le modifiche
 
-#### Pianifica trattamento dall'odontogramma
+#### Genera piano di cura dall'odontogramma
 
-Il pulsante **Pianifica** apre una procedura guidata per creare un piano di cura direttamente dall'odontogramma:
+Il pulsante **Genera Piano di Cura** propone le prestazioni partendo dall'odontogramma **salvato**. Se ci sono modifiche non salvate il pulsante è disattivato: premere prima **Salva**.
 
-1. Il sistema rileva automaticamente le condizioni che richiedono trattamento (carie, da estrarre, ecc.)
-2. Per ogni dente con condizione critica vengono suggeriti i servizi appropriati
-3. È possibile aggiungere/rimuovere righe e selezionare servizi da quelli configurati
-4. Scegliere se **creare un nuovo piano** o **aggiungere a un piano esistente**
-5. Premere **Crea piano** per generare il piano di cura
+1. Generano una proposta solo le condizioni da trattare: **carie**, **da estrarre**, **mancante** e **incluso**. Corona, impianto, ponte e devitalizzato sono cure già presenti e non vengono riproposte; un ritrattamento si aggiunge dal piano di cura.
+2. Ogni condizione è una voce. Le carie di un dente sono raggruppate con le loro superfici (es. «Carie su O, D») e la prestazione proposta dipende da quante sono: monofacciale, bifacciale o trifacciale, secondo i *Default per condizione* del listino. Le superfici arrivano nel piano e da lì nella scheda di seduta.
+3. Una carie su un dente mancante, estratto, sostituito da impianto o ponte, o da estrarre non viene proposta: compare in **Non proposte**, con il motivo.
+4. Se la stessa prestazione è già aperta sullo stesso dente in un piano, la riga compare **esclusa** con l'indicazione «già nel piano …». **Aggiungi comunque** la riprende.
+5. Le tendine offrono solo le prestazioni ammesse per quel dente: posizione (denti min/max, decidui) e stato. Su un dente mancante, estratto, impianto o elemento di ponte non compaiono le prestazioni che nel listino sono marcate **Richiede il dente naturale** (otturazioni, devitalizzazioni, estrazioni…).
+6. Scegliere **Nuovo piano** o **Aggiungi a piano esistente** (solo piani non completati, rifiutati o archiviati), poi confermare. L'aggiunta a un piano esistente avviene tutta insieme o per niente.
+
+Le stesse regole valgono quando si aggiunge una prestazione dal tab **Piani di cura**: se non è ammessa su quel dente, il messaggio indica dente e motivo (es. «richiede il dente naturale, ma in odontogramma il dente risulta mancante»).
+
+**Configurazione (pagina Prestazioni):**
+- **Richiede il dente naturale** — casella nella scheda della prestazione. È già attiva per conservativa ed endodonzia; va attivata per ogni prestazione che non ha senso su un dente assente.
+- **Default per condizione → Superfici** — per la carie si può indicare a quante superfici si applica una riga (1, 2, «3 o più»); le righe «qualsiasi» (es. radiografia) si aggiungono sempre.
+- **Lascia sul dente** — colonna dell'elenco: lo stato che la prestazione lascia sul dente (es. otturazione → *Otturato*). È solo una **proposta** che in scheda di seduta il medico applica, cambia o ignora (vedi [Scheda di seduta](#53-scheda-di-seduta)). La modificano i ruoli clinici e l'amministratore; il salvataggio è immediato.
 
 ---
 
@@ -370,6 +380,61 @@ Una prestazione in sospeso ha **due sole destinazioni**, entrambe da scegliere:
 > **«Togli dal piano» non cancella nulla.** La prestazione passa ad *annullata* e **resta nel piano**, insieme al motivo, alla data e al nome di chi ha deciso. Serve a poter ricostruire, anche a distanza di tempo, perché un lavoro previsto non è stato fatto.
 
 Il motivo si sceglie fra quattro frequenti — *il paziente ha rinunciato*, *non più necessaria*, *sostituita da un'altra prestazione*, *inserita per errore* — oppure si scrive.
+
+---
+
+### 4.7 Storico episodi
+
+Il tab **Storico episodi** raccoglie, episodio per episodio, la situazione del paziente **prima e dopo** ogni visita e ogni contatto fuori visita. È riservato ai ruoli clinici e agli amministratori: la segreteria non lo vede.
+
+**Cos'è un episodio**
+
+| Tipo | Quando si apre | Quando si chiude |
+|------|----------------|------------------|
+| **Visita** | quando l'appuntamento passa a **«In corso»**: dalla scheda di seduta con **Inizia visita**, o dal menu stato dell'appuntamento | alla chiusura della seduta, o quando l'appuntamento diventa *Completato*, *Annullato* o *Non presentato* |
+| **Contatto fuori visita** | quando lo apri tu (telefonata, documento o RX arrivato dall'esterno, altro), sempre con un motivo | con **Chiudi contatto**, oppure da solo quando per lo stesso paziente inizia una visita |
+
+Per ogni paziente può esserci **un solo episodio aperto** alla volta.
+
+**Le due fotografie**
+
+All'apertura il programma salva la **situazione d'ingresso**: anamnesi e allerte, diagnosi attive, terapie in corso, odontogramma, piani di cura aperti. Alla chiusura salva la **situazione d'uscita**, con lo stesso contenuto. Le fotografie **non si modificano più**: se dopo la visita correggi un dato, la correzione compare nell'episodio successivo e non riscrive il passato.
+
+**Cosa mostra**
+
+- l'**elenco degli episodi**, dal più recente, filtrabile per *Visite* o *Contatti*. Ogni riga dice data, tipo, professionista, motivo e quanti cambiamenti ha prodotto;
+- selezionando un episodio, per ogni area **cosa è cambiato** fra ingresso e uscita, e l'**odontogramma prima e dopo** affiancati, con i denti cambiati evidenziati. **Mostra situazione completa** affianca le due situazioni per intero;
+- a lato, il **riepilogo**: chi e quando, le prestazioni della seduta con il loro esito, le **note** d'ingresso e d'uscita, i documenti e il **riepilogo testuale**, una riga per ogni cambiamento (per esempio *Odontogramma: 36 O, M: carie → otturazione*). Il riepilogo lo compone il programma a partire dai dati: non è scritto dall'intelligenza artificiale;
+- **Confronta** mette a confronto la situazione dopo due episodi qualsiasi.
+
+**Avvisi che puoi incontrare**
+
+| Avviso | Significato |
+|--------|-------------|
+| **Aperto** | l'episodio è in corso: la situazione d'uscita non c'è ancora |
+| **Ingresso tardivo** | la visita non è passata da «In corso»: la situazione d'ingresso è stata fotografata alla registrazione della seduta, prima di scrivere gli esiti |
+| **Cambiato fuori episodio** | fra l'episodio precedente e questo qualcosa è cambiato senza un episodio aperto. Il blocco dice cosa |
+
+**Note d'ingresso e d'uscita**
+
+Con **Aggiungi nota** scrivi il motivo della visita o cosa riferisce il paziente (*nota d'ingresso*), oppure l'esito e le indicazioni (*nota d'uscita*). Le note compaiono anche nel diario della Cartella, con la loro etichetta, e si possono aggiungere anche a episodio chiuso.
+
+**Quando il programma ti chiede di aprire un episodio**
+
+Se salvi una modifica clinica (odontogramma, anamnesi, diagnosi, prescrizioni, diario, documenti) e per quel paziente non c'è un episodio aperto, compare una finestra:
+
+| Scelta | Cosa succede |
+|--------|--------------|
+| **Metti «in corso» la visita delle … e salva** | compare solo se il paziente ha un appuntamento oggi: avvia la visita e salva |
+| **Apri un contatto e salva** | chiede tipo e motivo, apre il contatto e salva |
+| **Salva fuori episodio** | salva comunque: la modifica comparirà come *cambiata fuori episodio* |
+| **Annulla** | non salva nulla |
+
+La finestra non compare alla segreteria e non compare sulle cancellazioni.
+
+> **Urgenze senza appuntamento.** Crea l'appuntamento al momento e mettilo subito «In corso»: vale la stessa regola delle altre visite.
+
+Il **contatto aperto** si vede in testa alla scheda paziente, con il pulsante **Chiudi contatto**. Nello stesso punto, durante una visita, compare *Visita in corso dalle …*.
 
 ---
 
@@ -458,6 +523,8 @@ Premere **Salva** per creare l'appuntamento e tornare all'agenda.
 
 > **Appuntamenti già trascorsi.** La seduta si registra *durante o dopo* la visita, quindi in fondo alla vista *Prossimi* c'è una sezione richiudibile **«Già trascorsi oggi»**: lì si trovano gli appuntamenti della giornata che sono già finiti, con lo stesso pulsante **Seduta** e il conteggio delle prestazioni eseguite.
 
+**Iniziare la visita.** Finché l'appuntamento non è «In corso», in alto compare **Inizia visita**. Premilo quando il paziente si siede in poltrona: in quel momento il programma fotografa la situazione d'ingresso del paziente, che ritrovi nello [Storico episodi](#47-storico-episodi). Se registri la seduta senza averla iniziata, la situazione d'ingresso viene fotografata alla registrazione, prima di scrivere gli esiti, e l'episodio risulta con *ingresso tardivo*.
+
 **Cosa mostra**
 
 In alto: paziente, orario, poltrona, professionista e — in evidenza sopra ogni altra cosa — gli **alert clinici** (allergie, terapie in corso).
@@ -475,6 +542,17 @@ Per ogni prestazione si sceglie uno dei tre esiti, con una nota facoltativa:
 | **Non eseguita** | Resta aperta, con la motivazione nelle note |
 
 Nessun esito è preselezionato. Cliccando due volte lo stesso esito lo si toglie.
+
+**Aggiornare il dente**
+
+Quando una prestazione su un dente preciso è segnata **Eseguita**, sotto l'esito compare il riquadro del dente: dice com'è **ora** nell'odontogramma e, di partenza, **«L'odontogramma non cambia»**. Il dente non cambia mai da solo.
+
+- Se nel listino la prestazione ha uno stato in **Lascia sul dente**, compare la **Proposta** (es. *Otturato*): si accetta con **Applica**.
+- **Scegli altro** (o **Aggiorna il dente**, quando non c'è proposta) permette di indicare lo stato che il dente assume: Otturato, Corona, Devitalizzato, Estratto, Mancante, Impianto, Da estrarre, Incluso, Pilastro o Elemento di ponte.
+- Per l'otturazione si indicano le **superfici** (O, M, D, B, L); se il piano le riporta sono già selezionate. Senza superfici la registrazione si blocca con un messaggio.
+- **Lascia il dente com'è** annulla la scelta.
+
+Alla registrazione il dente si aggiorna nell'odontogramma **a nome di chi registra e con il riferimento alla seduta**. Dalla seduta non si riporta un dente a sano e non si segna una carie: quello resta un gesto del tab Odontogramma, che può anche correggere o cancellare quanto registrato in seduta. Nel riepilogo prima della conferma compare una riga per dente (es. *Dente 37: Otturato su O, D*).
 
 **Chiudere la seduta**
 
@@ -1037,10 +1115,20 @@ Configurazione delle categorie e voci del questionario anamnestico:
 |-------|-------------|
 | `schedulato` | Appuntamento registrato, non ancora confermato |
 | `confermato` | Confermato dal paziente o dalla segreteria |
-| `in_corso` | Paziente in studio |
+| `presente` | Paziente arrivato in studio |
+| `in_corso` | Paziente in poltrona: apre l'episodio di visita e ne fotografa la situazione d'ingresso |
 | `completato` | Visita terminata |
 | `annullato` | Disdetto |
 | `no_show` | Paziente non presentato |
+
+### Episodi
+
+| Stato | Descrizione |
+|-------|-------------|
+| `aperto` | Episodio in corso: c'è la situazione d'ingresso, non ancora quella d'uscita |
+| `chiuso` | Episodio concluso, con la situazione d'uscita |
+| `ingresso tardivo` | Visita registrata senza essere passata da «In corso»: l'ingresso è stato fotografato alla registrazione della seduta |
+| `fuori episodio` | Modifica salvata senza un episodio aperto: compare fra un episodio e il successivo |
 
 ### Preventivi
 
@@ -1112,6 +1200,64 @@ Diversi dallo stato nel piano: valgono per **quella** seduta.
 | `confermato` | Appuntamento di follow-up confermato |
 | `chiuso` | Richiamo completato |
 | `annullato` | Richiamo cancellato |
+
+---
+
+## 13. Ambiente di prova e Academy
+
+Ci sono due modi di provare DentalCare Pro con dati inventati.
+
+### 13.1 Prova gratuita (per chi non è ancora cliente)
+
+Dalla pagina iniziale, **Prova gratis** (o l'indirizzo `/prova`) crea per ogni medico uno
+**studio suo**, già avviato: pazienti, agenda, piani di cura, preventivi, fatture e magazzino di
+esempio. I dati sono inventati e nessun paziente riceve messaggi. In alto compare sempre
+l'etichetta **Ambiente demo** con i giorni rimasti. Chi vuole invece attivare subito il proprio
+studio usa **Inizia ora** (`/registrati`), la registrazione di sempre.
+
+**Registrazione.** Bastano nome, cognome ed e-mail, più i due consensi. La password temporanea
+arriva per e-mail: al primo accesso si sceglie quella definitiva. Preparare lo studio richiede
+circa mezzo minuto.
+
+**Durata.** La prova dura 14 giorni. Alla scadenza l'accesso si blocca e la pagina di login
+mostra *La tua prova è terminata*, con il pulsante per chiedere l'attivazione. Lo studio di prova
+viene eliminato 30 giorni dopo la scadenza, e dopo 48 ore se non si entra mai.
+
+**Ripristinare i dati di esempio.** Dalla pagina iniziale dell'Academy, riquadro *Il tuo
+ambiente di prova*: tutto ciò che è stato inserito o modificato viene sostituito dai dati di
+esempio, con le date di oggi. I progressi nell'Academy restano. Lo può fare solo chi ha creato
+lo studio, fino a 10 volte al giorno.
+
+**Cambiare punto di vista.** Il menu a tendina in alto a destra mostra lo studio come lo vede la
+segreteria o un altro professionista. Cambia lo schermo, non chi registra: ciò che si scrive
+resta a nome del medico che ha creato lo studio.
+
+### 13.2 Ambiente di prova dello studio (per chi è già cliente)
+
+Ogni studio ha un **ambiente di prova** con gli stessi dati di esempio, separato dai dati veri:
+serve per imparare, formare un collega o provare una funzione senza toccare i pazienti reali.
+
+- **Aprirlo:** pulsante **Ambiente di prova** in alto, accanto al nome dell'applicazione (per
+  l'amministratore del tenant, in alto nella pagina di amministrazione). La prima volta si
+  prepara in circa mezzo minuto; poi si apre subito. Non serve un'altra password.
+- **Dove sei:** in alto l'etichetta **Ambiente di prova** e, sotto, la fascia *pazienti e dati sono
+  inventati: non inserire dati di pazienti reali*.
+- **Tornare allo studio:** pulsante **Torna a …** con il nome dello studio. Se nel frattempo la
+  sessione è scaduta, si rientra con le proprie credenziali.
+- **È condiviso** con i colleghi dello stesso studio: la segreteria entra come la segreteria
+  d'esempio, gli altri come il medico d'esempio. Chiunque dello staff può **ripristinarlo** dalla
+  pagina dell'Academy (fino a 10 volte al giorno): si cancella anche ciò che hanno fatto i colleghi.
+- Non scade: resta disponibile finché lo studio è attivo.
+
+### 13.3 Academy
+
+Voce *Academy* nel menu: 23 lezioni brevi in sei moduli (primi passi, pazienti, agenda e seduta,
+clinica, amministrazione, Copilot). Ogni lezione finisce con **Prova ora**, che apre il punto
+giusto dell'applicazione **sempre sui dati di esempio**: nella prova gratuita si resta lì, dallo
+studio vero si passa prima all'ambiente di prova. I progressi (*Segna come completata*) restano
+sul proprio utente anche quando si prova nell'ambiente di prova. Chi ha il ruolo di editor trova
+anche **Gestione Academy**, per correggere, riordinare, pubblicare o ritirare le lezioni senza
+aggiornare l'applicazione.
 
 ---
 

@@ -46,9 +46,25 @@ DentalCare non può. Al termine di Release 1.x, sì.
   revoca.
 - **Encounter / Ciclo della seduta** — ✅ **Fatta (dev, #56-#62)**: perno relazionale tra appuntamento e piano di cura (`appointment_treatment_items`), firma reale dell'atto (`performed_by_provider_id`), chiusura autonoma seduta (#60), gestione prestazioni in sospeso con riprogrammazione o rimozione motivata (#61).
 - **Odontogramma temporale**: storia dei reperti, non snapshot corrente; confronto tra date.
+  Il confronto tra date è coperto dallo **storico degli episodi (#67)**, che fotografa
+  l'odontogramma all'ingresso e all'uscita di ogni episodio; la storia per singolo reperto
+  (`supersedes_id`, certezza) resta da fare.
+- **Storico degli episodi clinici** — ✅ **Fatta (dev, #67, Fase 1)**: ogni visita e ogni
+  contatto fuori visita è un episodio con la situazione del paziente **prima e dopo**
+  (anamnesi, diagnosi, terapie, odontogramma, piani di cura) in fotografie **append-only con
+  hash**; differenze e riepilogo testuale composti dai dati, senza AI; richiesta di apertura
+  prima di un salvataggio clinico fuori episodio. Il riepilogo scritto dall'AI è Fase 2.
 - **Anamnesi tri-stato**: presente / assente / non noto, con fonte e data.
 - **Soft delete & export con password monouso**: ✅ **Fatta (dev, #47)**: archivio ZIP AES-256 e grace period con congelamento JWT.
-- **Odontogramma da seduta clinica** — 🔨 **In pianificazione (#65)**: mappatura configurabile prestazione → stato dente, con aggiornamento consapevole dell'odontogramma a valle dell'atto clinico.
+- **Odontogramma da seduta clinica** — ✅ **Fatta (dev, #65)**: il listino dichiara lo stato che
+  ogni prestazione lascia sul dente; in seduta è una **proposta** che il medico applica, cambia o
+  ignora (mai applicata da sola), con superfici per le otturazioni. La riga scritta in
+  odontogramma porta autore e seduta (`source='session'`).
+- **«Genera piano di cura» verificato** — ✅ **Fatta (dev, #66)**: dall'odontogramma si propone
+  solo ciò che è da fare (carie, da estrarre, mancante, incluso), con le superfici e la prestazione
+  secondo il loro numero; doppioni e carie su denti assenti restano visibili ed esclusi, con il
+  motivo. Il server applica le stesse regole (`422 SERVICE_NOT_APPLICABLE`) e l'aggiunta a un piano
+  esistente è atomica.
 
 ### Identità, accessi e usabilità operativa
 - **MFA** per professionisti e amministratori.
@@ -62,6 +78,20 @@ DentalCare non può. Al termine di Release 1.x, sì.
 
 ### Infrastruttura e affidabilità
 - **Zero-downtime schema patching** — ✅ **Fatta (dev, #64)**: esecuzione DDL transazionale per le viste in `EstimateSchemaInitializer`, azzerando i ritardi e gli errori 500 transitori nei riavvii.
+- **Vincolo nota di credito → fattura stornata sui tenant successivi al primo** — 🔨 **Proposta (#68)**: la patch di #52 cerca `fk_invoices_reverses` per nome in tutto il database e dal secondo tenant non lo crea. Le patch nuove (#67, #69) cercano i vincoli sulla tabella giusta.
+
+### Ambiente pubblico di prova e formazione
+- **Prova gratuita, ambiente di prova degli studi e Academy** — ✅ **Fatta (dev, #69, #70)**, in
+  attesa di integrazione sul branch principale. Tre porte indipendenti: registrazione di un
+  nuovo studio (`/registrati`), **prova gratuita** (`/prova`: ogni medico riceve un tenant demo
+  personale con dati di esempio, ripristinabile, attivo **14 giorni**, poi accesso bloccato con
+  richiesta di attivazione e cancellazione dopo altri **30**) e **ambiente di prova dello studio**
+  per chi è già cliente (uno per studio, dati di esempio, aperto dall'app senza seconda password,
+  dura quanto lo studio). La prova gratuita, aperta a chiunque, al go-live resta su un'istanza
+  separata dalla produzione. L'**Academy** (6 moduli, 23 lezioni) è per tutti: «Prova ora» apre
+  la schermata della lezione sempre sui dati di esempio; i contenuti li cura il ruolo di
+  piattaforma `ACADEMY_EDITOR`. Dettagli in
+  [06-Multitenancy §8](../04-Architecture-Handbook/06-Multitenancy.md#8-tenant-demo-e-workspace-demo).
 
 ### Integrità dei documenti
 - Impronta **SHA-256**, verifica del MIME reale, scansione malware, controllo di coerenza
@@ -289,6 +319,11 @@ Nessun paziente reale prima che **tutte** le voci siano verdi:
 - [ ] restore testato almeno una volta
 - [ ] pen test eseguito, remediation chiusa
 - [ ] export paziente (art. 15) funzionante
+- [ ] fotografie degli episodi clinici (#67) attive dal primo paziente: una visita senza
+      fotografia d'ingresso non si recupera dopo
+- [ ] prova gratuita (#69) separata dalla produzione: in produzione
+      `app.demo-workspace.public-registration=false` e `public-url` verso l'istanza di prova;
+      account demo condiviso spento dove ci sono dati reali
 
 > Il Gate è **binario**. Non esiste "andiamo live e sistemiamo dopo": nel momento in cui
 > entra il primo paziente reale, o il pacchetto è completo o il prodotto è non conforme

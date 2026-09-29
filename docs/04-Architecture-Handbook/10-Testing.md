@@ -5,7 +5,8 @@
 - **Framework**: `spring-boot-starter-test` (JUnit 5 + Mockito + AssertJ).
 - **Stile**: prevalentemente **unit test mockati** (nessun Testcontainers): i
   service sono testati con `NamedParameterJdbcTemplate`/dipendenze mockate,
-  asserendo SQL, parametri e comportamento. ~14 classi di test.
+  asserendo SQL, parametri e comportamento. Al 28/09/2026: **377 test**, 0 falliti,
+  1 saltato.
 - **Copertura mirata** sulle aree a rischio:
   - crypto: `TenantEncryptionServiceTest` (round-trip encrypt/decrypt,
     blind index deterministico e case-insensitive, chiavi schema-bound, HKDF),
@@ -15,7 +16,19 @@
   - provisioning: `TenantProvisioningServiceTest` (patchSchema al provisioning,
     best-effort);
   - dominio: `PatientServiceTest`, `ProductCategoryServiceTest`,
-    `FiscalCodeValidatorTest`, ecc.
+    `FiscalCodeValidatorTest`, ecc.;
+  - seduta e odontogramma (#65, #66): `SessionToothChoiceTest`,
+    `PlanItemApplicabilityServiceTest`, `TreatmentPlanOdontogramTest`,
+    `ServiceCatalogPlanningTest`;
+  - episodi (#67): `EpisodeDiffServiceTest` (ogni riga del riepilogo),
+    `EpisodeSnapshotServiceTest` (hash stabile e riproducibile), `EpisodeServiceTest`
+    (ciclo di vita), ordine «episodio prima degli esiti» in `SessionServiceTest`;
+  - ambiente di prova (#69): `DemoSeedServiceTest`, `DemoWorkspaceServiceTest`,
+    `RateLimiterTest`, `ClientIpResolverTest`, `JwtAuthenticationFilterTest`,
+    `TenantSchemaRegistryDemoTest`, `PlatformRoleServiceTest`, `AcademyServiceTest`;
+    ambiente di prova dello studio (#70): `SandboxServiceTest` (uno per studio, solo dallo studio
+    vero, persona per ruolo, token non oltre la sessione reale, creazione fallita senza residui)
+    e i casi aggiunti a filtro, registro e Academy.
 - **Gate**: `./mvnw test` deve essere verde prima di merge; la build è il gate
   principale.
 

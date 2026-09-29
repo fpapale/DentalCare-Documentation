@@ -43,13 +43,16 @@ nginx (frontend container) ── proxy /api ──►  Spring Boot API (:8080)
 ## 4. Moduli funzionali
 
 **Clinici**: pazienti, anamnesi, cartella clinica, odontogramma, diagnosi,
-prescrizioni, piani di cura (treatment plan), appuntamenti/agenda.
+prescrizioni, piani di cura (treatment plan), appuntamenti/agenda, scheda di seduta,
+storico degli episodi clinici (#67).
 
 **Amministrativi**: preventivi, fatturazione, prestazioni (service catalog),
 magazzino (prodotti/movimenti/fornitori), richiami (recall), impostazioni studio.
 
 **Piattaforma**: multi-tenant admin, provisioning studi, gestione utenti/ruoli,
-copilot AI, chat, analisi documenti/immagini AI, dashboard e KPI.
+copilot AI, chat, analisi documenti/immagini AI, dashboard e KPI. Prova gratuita con
+workspace demo per medico, ambiente di prova per ogni studio cliente e Academy e-learning
+(#69, #70).
 
 ## 5. Principi architetturali applicati
 
@@ -71,6 +74,9 @@ copilot AI, chat, analisi documenti/immagini AI, dashboard e KPI.
 | Copilot AI + chat | Implementato |
 | Analisi immagini radiologiche (ONNX/YOLO) | Implementato (immagini standard) |
 | Cifratura GDPR (birth_date, fiscal_code) | Implementato (#7, Slice 1 + 2a) |
+| Ciclo della seduta + odontogramma aggiornato su conferma | Implementato (#56-#62, #65) |
+| Storico episodi clinici (fotografie prima/dopo, senza AI) | Implementato (#67, Fase 1) |
+| Prova gratuita, ambiente di prova degli studi, Academy | Implementato in dev (#69, #70) |
 | DICOM nativo | **Non implementato** (roadmap) — vedi [05-DICOM](05-DICOM.md) |
 | Secret store esterno (Vault) | Predisposto (seam), non ancora attivo |
 

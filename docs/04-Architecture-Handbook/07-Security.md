@@ -6,8 +6,14 @@
   una sola clinica ritorna `direct` con token; se ne ha più di una ritorna
   `choose` con le opzioni, e si conferma con `POST /api/public/login/confirm`.
 - Il **JWT** (JJWT, HS512) porta nei claim: `sub` (providerId), `clinicId`,
-  `schemaName`, `role`, `tenantName`. È la fonte del tenant (vedi
-  [06-Multitenancy](06-Multitenancy.md)).
+  `schemaName`, `role`, `tenantName` e, solo se presenti, `platformRoles` (§2, ruoli di
+  piattaforma). È la fonte del tenant (vedi [06-Multitenancy](06-Multitenancy.md)).
+- **Token dell'ambiente di prova dello studio (#70)**: rilasciato solo a partire da un token
+  reale (`POST /api/sandbox/session`), porta `originSchema`/`originProviderId`, scade **non
+  dopo** il token d'origine e non porta ruoli di piattaforma. Il filtro usa l'origine solo se lo
+  schema del token è davvero l'ambiente di prova di quello studio. Il ritorno allo studio non
+  passa dal server: il frontend riprende la sessione reale conservata, quindi un token di prova
+  non si converte mai in uno reale.
 - `JwtService` firma/valida; `JwtAuthenticationFilter` popola il contesto.
 - Password con hashing sicuro; cambio obbligatorio al primo accesso
   (`password_temporary`).
@@ -25,11 +31,32 @@ Ruoli (enum `dentalcare.provider_role`): `tenant_admin`, `admin`, `dentist`,
 | `/api/internal/**` | permitAll (rete interna) |
 | `/api/tenant-admin/**` | `hasRole('TENANT_ADMIN')` |
 | `/api/admin/**` | `hasAnyRole('ADMIN','TENANT_ADMIN')` |
-| `/api/appointments/*/session/**` | `hasAnyRole('DENTIST','HYGIENIST','ORTHODONTIST','SURGEON','TENANT_ADMIN')` (#62) |
+| `/api/appointments/*/session/**` | `CLINICAL_WRITE_ROLES` (#62) |
+| `POST /api/treatment-plans/*/items/*/remove` | `CLINICAL_WRITE_ROLES` (#61) |
+| `PUT`/`DELETE /api/services/*/tooth-outcome` | `CLINICAL_WRITE_ROLES` (#65): la mappa prestazione → stato del dente è configurazione clinica; lettura libera |
+| `/api/patients/*/episodes/**` | `CLINICAL_WRITE_ROLES`, **anche in lettura** (#67): la segreteria non vede il clinico |
+| `/api/academy/admin/**` | `hasRole('ACADEMY_EDITOR')`, ruolo di piattaforma (#69) |
 | ogni altra | authenticated |
+
+`CLINICAL_WRITE_ROLES` = `DENTIST`, `HYGIENIST`, `ORTHODONTIST`, `SURGEON`, `ADMIN`,
+`TENANT_ADMIN`. `ADMIN` è dentro perché è il ruolo dell'utenza demo e del service account;
+separarli è il lavoro di #27.
 
 I controlli di autorizzazione sono **sempre** lato server, mai delegati al
 frontend. `401` = non autenticato, `403` = non autorizzato.
+
+### Ruoli di piattaforma (#69)
+
+Alcuni ruoli non appartengono a un tenant: oggi solo `academy_editor`, chi scrive le lezioni
+dell'Academy (condivise da tutti i workspace). Stanno in `dentalcare.platform_role_grants`,
+indicizzati per e-mail, e si assegnano solo da configurazione (`app.academy.editor-emails`,
+letta all'avvio): **nessun amministratore di tenant può concederli**.
+
+Al login `PlatformRoleService.rolesFor()` li mette nel claim `platformRoles`, e il filtro JWT
+li trasforma in authority (`ROLE_ACADEMY_EDITOR`), accettando solo nomi `^[a-z_]+$`. Non
+vengono **mai** concessi a un utente di un workspace demo, né all'account demo condiviso:
+chiunque può registrarsi, e nessuno deve poter modificare i contenuti di tutti con una
+registrazione.
 
 > **`tenant_admin` vs `admin`:** `tenant_admin` è il proprietario dell'account,
 > amministra **tutte** le cliniche/sedi del proprio tenant (non esiste un ruolo di
@@ -142,6 +169,25 @@ dev.** Perdita della chiave = dati cifrati **irrecuperabili**. Generazione:
 - Callback del servizio AI firmati **HMAC** (`HmacVerifier`).
 - Nessun dato sensibile nei log; stack trace non esposti in prod.
 - Validazione input server-side (Bean Validation, `@ValidFiscalCode`).
+- **Limiti per IP sugli endpoint pubblici (#69)** — `PublicRateLimitFilter`, finestra
+  scorrevole in memoria: registrazione 5 all'ora, login e conferma login 20 ogni 5 minuti,
+  recupero password 5 all'ora. Oltre: `429 RATE_LIMITED` con `Retry-After`. L'IP del client
+  (`ClientIpResolver`) legge `X-Forwarded-For` **solo** se la richiesta arriva da un proxy
+  interno, e da destra: le voci a sinistra le scrive il client e non valgono nulla.
+- **Registrazione pubblica dell'ambiente di prova (#69)** — tetto giornaliero di registrazioni;
+  campo esca (honeypot) che fa scartare in silenzio le richieste automatiche; consensi
+  obbligatori. A un indirizzo già registrato la risposta è **identica** a quella di una
+  registrazione nuova, e l'e-mail dice all'utente che ha già un ambiente: la pagina non rivela
+  quali indirizzi esistono.
+- **Scadenza della prova (#69)** — un workspace demo scaduto risponde `403 DEMO_EXPIRED` sia al
+  login sia ai token già emessi ([06-Multitenancy §8.1](06-Multitenancy.md#81-workspace-demo-per-medico-69)).
+- **Prova gratuita fuori dalla produzione (#70)** — la registrazione di prova è aperta a chiunque;
+  dove ci sono pazienti reali resta spenta (`app.demo-workspace.public-registration=false`) e il
+  sito rimanda all'istanza di prova. L'ambiente di prova degli studi invece sta in produzione:
+  vi si entra solo da autenticati ([06-Multitenancy §8.3](06-Multitenancy.md#83-ambiente-di-prova-di-uno-studio-cliente-70)).
+- **Link «Prova ora» dell'Academy** — solo rotte interne dell'applicazione: il server rifiuta
+  URL esterni o protocol-relative, e il frontend naviga solo dentro l'app. Il testo delle
+  lezioni (markdown) passa dalla sanitizzazione di Angular.
 
 ## 5. Postura regolatoria (AI Act, MDR, GDPR)
 
@@ -188,9 +234,11 @@ e osservazione umana) è in [04-AI](04-AI.md).
   ruoli Postgres per-tenant): oggi l'isolamento cross-tenant è **applicativo**
   (schema dal JWT + prefissatura query), senza rete DB — vedi
   [06-Multitenancy §3.2](06-Multitenancy.md);
-- **guardia di cancellazione tenant/clinica** con export imposto + token + copia
-  in retention + soft-delete/grace period (#47) — vedi
-  [06-Multitenancy §7](06-Multitenancy.md);
+- ~~**guardia di cancellazione tenant/clinica** con export imposto + token + copia
+  in retention + soft-delete/grace period (#47)~~ — **fatta**, vedi
+  [06-Multitenancy §7.2](06-Multitenancy.md);
+- limiti per IP **condivisi fra più istanze** del backend: oggi il contatore è in memoria
+  (#69), adeguato a una sola istanza;
 - `VaultMasterKeyProvider` (rotazione/gestione centralizzata chiavi);
 - Slice 2b cifratura: `phone` / `email` / `address` (normalizzazione blind index dedicata);
 - `DROP` delle colonne plaintext dopo verifica prod prolungata;

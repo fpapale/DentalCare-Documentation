@@ -102,6 +102,21 @@ ricostruita vanno aggiunte **prima** del rebuild della vista; altrimenti
 cancellata fino al riavvio successivo. Questa regola è stata la causa di un bug
 risolto durante l'introduzione della cifratura di `fiscal_code`.
 
+**Vincoli cercati sulla tabella, non per nome.** Un controllo di esistenza del tipo
+`SELECT … FROM pg_constraint WHERE conname = '…'` guarda **tutto il database**: trovato il
+vincolo nel primo tenant, la patch non lo crea più negli altri. È successo con
+`fk_invoices_reverses` (#52), assente dal secondo tenant in poi (#68, da correggere). Le patch
+nuove filtrano per tabella (`conrelid = to_regclass('<schema>.<tabella>')`).
+
+**Schema di piattaforma.** Le tabelle globali di `dentalcare` (colonne del registro tenant,
+Academy, ruoli di piattaforma: vedi §8) le allinea `PlatformSchemaInitializer`, che gira
+**prima** delle patch per-tenant.
+
+**Workspace demo allineati alla prima richiesta.** All'avvio `EstimateSchemaInitializer`
+salta i tenant `kind='demo'`: con centinaia di workspace l'avvio durerebbe minuti (lo stesso
+fenomeno di #64). `DemoSchemaPatcher` applica `patchSchema` alla prima richiesta autenticata
+che usa lo schema dopo il riavvio, una volta per esecuzione e con un lock per schema.
+
 ## 6. Configurazione per-tenant
 
 Alcuni comportamenti sono configurabili per singolo studio, sempre dallo schema
@@ -195,7 +210,7 @@ hash poi PDF/A + PAdES per la documentazione clinica; **fatture** delegate a un
 **conservatore accreditato esterno**. La conservazione a norma è roadmap e
 dominata da terzi — vedi [13-Audit-Trail](13-Audit-Trail.md).
 
-## 8. Tenant demo
+## 8. Tenant demo e workspace demo
 
 Lo schema `t_9d754153` è il tenant demo, materializzato con dati di esempio da
 `database/install.sql`. La combo di **impersonazione** (assumere l'identità di un
@@ -203,6 +218,93 @@ altro operatore) è un privilegio del solo **account** demo
 `demo@demo.dentalcare.it`, non di ogni utente del tenant: il frontend la abilita
 confrontando l'email dell'utente con quella esposta da `/api/public/demo-config`,
 che a demo spenta (produzione) non restituisce né email né password.
+
+### 8.1 Workspace demo per medico (#69)
+
+La **prova gratuita** (`/prova`, accesa da `app.demo-workspace.public-registration`) crea un
+**workspace demo personale**: un tenant come gli altri, con schema proprio, marcato nel registro.
+Convive con la registrazione di un nuovo studio (`/registrati`), che crea il tenant cliente vuoto
+di sempre.
+
+| Colonna di `dentalcare.tenants` | Significato |
+|---|---|
+| `kind` | `customer` (default), `demo` o `sandbox` (§8.3) |
+| `expires_at` | fine della prova, obbligatoria per `demo` (`ck_tenants_demo_expires`) |
+| `owner_provider_id` | il medico che si è registrato |
+| `seed_version` | versione dei dati di esempio caricati |
+| `last_reset_at` | ultimo ripristino |
+| `parent_tenant_id` | solo `sandbox`: il tenant dello studio (§8.3) |
+
+Un indice unico parziale su `lower(email)` impedisce due workspace demo per lo stesso indirizzo.
+
+**Creazione** (`DemoWorkspaceService.register`, ~20 s):
+1. `create_tenant()` + `patchSchema()`, come un tenant cliente;
+2. il provider del medico prende l'id fisso del medico principale dei dati di esempio: i link
+   «Prova ora» dell'Academy puntano a id fissi e valgono in ogni workspace;
+3. caricamento dei **dati di esempio versionati** (`demo-seed/v1/`, 34 tabelle, circa 3.400
+   righe, ~23 pazienti) in una transazione: date spostate a settimane intere rispetto ad oggi
+   (fuso Europe/Rome), campi cifrati e blind index **ricalcolati con la chiave del nuovo
+   tenant**, documenti di esempio caricati sul bucket dopo il commit;
+4. e-mail con password temporanea. Se qualcosa fallisce, il workspace viene eliminato e la
+   registrazione si può ripetere.
+
+I dati di esempio si esportano dal tenant demo con uno script che toglie i dati AI e le chat,
+rende fittizi e-mail e telefoni e fallisce se trova un indirizzo reale.
+
+**Ripristino** (`POST /api/demo/reset`): solo il titolare del workspace, al massimo 10 volte al
+giorno. Svuota le tabelle del tenant (tranne sede e titolare) e ricarica i dati di esempio. I
+progressi dell'Academy restano, perché stanno fuori dallo schema (§8.2).
+
+**Scadenza e cancellazione.** Dopo `expires_at` (14 giorni) il login risponde `403 DEMO_EXPIRED`
+e il `JwtAuthenticationFilter` rifiuta anche i token già emessi, come per il congelamento di
+§7.2; il frontend mostra la richiesta di attivazione. Un job notturno elimina i workspace
+scaduti da più di 30 giorni e quelli mai usati (password temporanea mai cambiata) dopo 48 ore;
+ogni eliminazione è scritta in `tenant_audit_log`. Per i workspace demo non si genera l'export
+di §7.2: i dati sono solo di esempio.
+
+**Limiti:** 50 registrazioni al giorno, 5 per IP all'ora (vedi
+[07-Security §4](07-Security.md#4-altre-misure)). Tutti configurabili in
+`app.demo-workspace.*`.
+
+### 8.2 Tabelle di piattaforma: Academy e ruoli (#69)
+
+Nello schema `dentalcare`, fuori dai tenant: le lezioni sono le stesse per tutti, e i
+progressi devono sopravvivere al ripristino del workspace.
+
+| Tabella | Contenuto |
+|---|---|
+| `training_modules` | moduli del corso: `slug` unico, titolo, descrizione, icona, ordine, attivo |
+| `training_lessons` | lezioni: modulo, `slug` unico, testo markdown, immagine, video (`MINIO`/`EXTERNAL_URL`/`DID`/`OTHER`), rotta «Prova ora», durata, ordine, pubblicata, `content_version` |
+| `training_progress` | avanzamento per (`schema_name`, `provider_id`, lezione): stato `NOT_STARTED`/`IN_PROGRESS`/`COMPLETED`, percentuale 0-100, posizione nel video |
+| `platform_role_grants` | ruoli di piattaforma per e-mail (oggi solo `academy_editor`) |
+
+Il catalogo iniziale (6 moduli, 23 lezioni) è nelle risorse del backend; all'avvio si
+inseriscono solo le lezioni mancanti, senza mai sovrascrivere quelle modificate dagli editor.
+Con `app.academy.enabled=false` le API rispondono 404. Da #70 l'Academy è anche per gli studi
+clienti: nell'ambiente di prova di uno studio i progressi si registrano sull'**identità reale**
+(schema e provider d'origine portati dal token), non sulla persona d'esempio con cui si entra.
+
+### 8.3 Ambiente di prova di uno studio cliente (#70)
+
+Chi è già cliente ha un ambiente di prova con gli stessi dati d'esempio, separato dai dati veri
+(`app.sandbox.enabled`).
+
+- **Uno per studio**: tenant `kind='sandbox'` con `parent_tenant_id` = tenant del cliente; un
+  indice unico parziale impedisce il secondo anche con due aperture contemporanee.
+- **Si apre dallo studio vero**, senza password: `POST /api/sandbox/session` con il token reale.
+  La prima volta `SandboxService` crea il tenant e carica i dati d'esempio (~20 s); il titolare
+  tecnico è il medico principale del seed, **senza password**. Il token dell'ambiente di prova
+  porta `originSchema`/`originProviderId`, **scade non dopo** il token reale e non porta ruoli di
+  piattaforma. La segreteria entra come la segreteria del seed, gli altri come il medico
+  principale.
+- **Ritorno**: il frontend riprende la sessione reale che ha conservato; il server non rilascia
+  mai un token reale a partire da uno di prova.
+- **Vita**: nessuna scadenza. Con lo studio in soft-delete (§7.2) l'ambiente di prova risponde
+  403 come lo studio; eliminato lo studio, il registro lo congela subito e la pulizia notturna
+  lo elimina. Ripristinabile da tutto lo staff, 10 volte al giorno.
+- **Sicurezza**: vi si entra solo da autenticati, per questo al go-live può stare in produzione,
+  mentre la prova gratuita (aperta a chiunque) resta su un'istanza separata
+  (`app.demo-workspace.public-url` in produzione).
 
 ## 9. `install.sql` come specchio del DB
 

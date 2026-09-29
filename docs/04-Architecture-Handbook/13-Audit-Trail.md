@@ -44,6 +44,9 @@ Due conseguenze guidano tutto il resto:
 | Cosa | Stato |
 |---|---|
 | **`ai_audit_log`** (per-tenant) | Esiste ma traccia **solo il Copilot**: colonne piatte (`clinic_id, provider_id, action_type, tool_name, args_summary, result, created_at`). **Non** append-only enforced, **niente** hash chain. È il §11 del modello (inferenza AI): da **assorbire e irrobustire**, non da buttare. |
+| **`tenant_audit_log`** (globale, schema `dentalcare`) | Ciclo di vita del tenant (#47: prepare, confirm, cancel, drop) e, da #69, eventi degli ambienti di prova: creazione ed eliminazione dei workspace demo, creazione e apertura dell'ambiente di prova di uno studio (#70, con l'utente reale), lezioni dell'Academy iniziate e completate, «Prova ora». Sopravvive al DROP dello schema. Non è audit clinico. |
+| **`episode_snapshots`** (per-tenant, #67) | Prima tabella clinica **append-only imposta dal database**: un trigger rifiuta `UPDATE` e `DELETE`. Ogni fotografia porta `content_hash` (SHA-256 della forma canonica) ed è riproducibile. Documenta *cosa* è cambiato fra ingresso e uscita di un episodio, non *chi* ha letto o scritto cosa: non sostituisce l'audit degli accessi, ma ne è un pezzo di prova. Vedi [12 §2.3](12-Clinical-Record-Model.md). |
+| **Attribuzione delle scritture di seduta** (#62, #65) | Esecuzione delle prestazioni e stato del dente registrato in seduta portano autore (dal JWT) e seduta. |
 | **Audit clinico su accessi / letture / scritture** della cartella | **Assente.** È il buco che la Release 1.x chiude. |
 | **Versionamento / finalizzazione** delle note cliniche | **Assente** → intervento correlato (finalizzazione + addendum, [12 §3.1](12-Clinical-Record-Model.md#31-stati-di-una-nota-clinica)). Vedi la dipendenza in §5. |
 | **Architettura di riferimento** | Schema-per-tenant, evoluzione via `patchSchema` idempotente (colonne/tabelle `IF NOT EXISTS` a ogni avvio, vedi [06-Multitenancy](06-Multitenancy.md)). |

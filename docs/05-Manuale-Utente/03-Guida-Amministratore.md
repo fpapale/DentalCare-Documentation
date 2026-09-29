@@ -61,13 +61,23 @@ Centro di configurazione. A seconda della build trovi:
 Il listino alimenta piani di cura, preventivi e fatture. Tenerlo aggiornato è
 compito chiave dell'amministratore.
 
-1. Apri **Prestazioni**.
+1. Apri **Prestazioni** (ricerca e filtro per categoria in testa all'elenco).
 2. Aggiungi/modifica una voce: **nome**, **prezzo**, **categoria**, eventuali
    **default** e **bundle** (pacchetti).
 3. Salva: le nuove voci sono subito disponibili per medici e segreteria.
 
 > Prezzi coerenti = preventivi e fatture coerenti. Rivedi il listino
 > periodicamente.
+
+**Impostazioni cliniche del listino (#65, #66)** — decidono cosa il programma *propone* ai medici:
+
+| Impostazione | Dove | Effetto |
+|--------------|------|---------|
+| **Lascia sul dente** | colonna dell'elenco, salvataggio immediato | lo stato che la prestazione lascia sul dente (es. otturazione → *Otturato*), proposto in scheda di seduta; il medico lo applica, lo cambia o lo ignora |
+| **Richiede il dente naturale** | casella nella scheda della prestazione | la prestazione non si propone né si accetta su un dente mancante, estratto, impianto o elemento di ponte. Già attiva per conservativa ed endodonzia: attivala per ogni prestazione che non ha senso su un dente assente (es. estrazioni) |
+| **Default per condizione → Superfici** | *Default per condizione* | per la carie, a quante superfici si applica una riga (1, 2, «3 o più»): «Genera piano» sceglie mono-, bi- o trifacciale; le righe «qualsiasi» (es. radiografia) si aggiungono sempre |
+
+*Lascia sul dente* la modificano l'amministratore e i ruoli clinici, non la segreteria.
 
 **▶️ Prova nel demo:** apri **Prestazioni**, modifica il prezzo di una voce e
 verifica l'aggiornamento.
@@ -104,6 +114,7 @@ correzione:
 | **Agenda** | Verifica carico poltrone, riorganizza |
 | **Pazienti** | Consulta anagrafiche, apre schede (crea anche nuovi pazienti) |
 | **Cartella clinica** | Controllo clinico-amministrativo |
+| **Storico episodi** | Cosa è cambiato in ogni visita e contatto (fotografie prima/dopo, #67) |
 | **Preventivi** | Monitoraggio conversione (inviati → accettati) |
 | **Fatturazione** | Controllo incassato / da incassare |
 | **Richiami** | Verifica copertura dei controlli periodici |
@@ -126,7 +137,8 @@ con un `tenant_admin` si accede a:
 
 - provisioning di nuovi studi (tenant);
 - configurazioni globali di piattaforma;
-- funzioni amministrative sovra-studio.
+- funzioni amministrative sovra-studio;
+- il pulsante **Ambiente di prova** in alto nella pagina di amministrazione (§8).
 
 ---
 
@@ -141,8 +153,39 @@ con un `tenant_admin` si accede a:
 - **Account demo:** `demo@demo` ("Demo Tutto") è l'account vetrina con login
   facilitato; `admin@demo` è l'amministratore "standard". Stessi permessi.
 
+- **Ambiente di prova:** pazienti e dati inventati. Nessuno deve inserirvi dati di pazienti
+  reali; l'avviso è sempre in vista (§8).
+
 Dettagli tecnici nell'handbook: `04-Architecture-Handbook/07-Security.md` e
 `11-Data-Encryption.md`.
+
+---
+
+## 8. Ambiente di prova, prova gratuita e Academy (#69, #70)
+
+Sono due cose diverse:
+
+| | Prova gratuita | Ambiente di prova dello studio |
+|---|---|---|
+| Per chi | chi non è ancora cliente (da **Prova gratis** / `/prova`) | lo staff di uno studio già cliente |
+| Cos'è | uno studio di prova personale, 14 giorni | un ambiente con dati d'esempio accanto allo studio vero |
+| Come si entra | password ricevuta per e-mail | pulsante **Ambiente di prova**, senza altra password |
+| Quanto dura | 14 giorni, poi si chiede l'attivazione | finché lo studio è attivo |
+
+**Ambiente di prova dello studio.**
+1. Premi **Ambiente di prova** in alto (la prima volta si prepara in circa mezzo minuto).
+2. Dentro: etichetta **Ambiente di prova**, fascia *non inserire dati di pazienti reali*, e
+   **Torna a …** per rientrare nello studio vero.
+3. È **uno per studio**, condiviso da tutto lo staff: la segreteria entra come la segreteria
+   d'esempio, gli altri come il medico d'esempio.
+4. **Ripristino:** dalla pagina Academy, riquadro dell'ambiente di prova. Rimette i dati d'esempio
+   con le date di oggi e cancella quello che hanno fatto tutti; fino a 10 volte al giorno.
+5. Se lo studio viene sospeso o eliminato, l'ambiente di prova segue la stessa sorte.
+
+**Academy.** Voce *Academy* nel menu, per tutto lo staff: 23 lezioni in sei moduli. **Prova ora**
+apre il punto dell'applicazione di cui parla la lezione, **sempre nell'ambiente di prova**. I
+progressi sono personali. La redazione delle lezioni (**Gestione Academy**) spetta agli editor
+della piattaforma: non è un ruolo che l'amministratore dello studio assegna.
 
 ---
 
@@ -150,7 +193,8 @@ Dettagli tecnici nell'handbook: `04-Architecture-Handbook/07-Security.md` e
 
 1. **Dashboard** → stato generale dello studio.
 2. **Impostazioni** → dati studio, utenti, parametri.
-3. **Prestazioni** → listino aggiornato.
+3. **Prestazioni** → listino aggiornato, con *Lascia sul dente* e *Richiede il dente naturale*.
 4. **Impostazioni → AI/Prompt** → personalizza il Copilot.
 5. **Preventivi / Fatturazione** → monitora la parte economica.
 6. **Richiami / Magazzino** → controllo copertura e scorte.
+7. **Ambiente di prova / Academy** → fai formare i nuovi colleghi senza toccare i dati veri.

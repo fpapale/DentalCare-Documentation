@@ -17,8 +17,10 @@ dall'amministratore (Maria Rossi, segretaria).
 3. Arrivi alla **Dashboard** con i KPI della giornata.
 
 > La segreteria **non** accede alla parte clinica (cartella clinica, diagnosi,
-> prescrizioni): quei tab sono in sola lettura o nascosti. Vede però tutto ciò
-> che serve al front-office.
+> prescrizioni, **Storico episodi**, **scheda di seduta**): quei tab sono in sola lettura o
+> nascosti, e il confine è verificato dal server. Non vede nemmeno la finestra che chiede di
+> aprire un episodio clinico: quella riguarda i medici. Vede però tutto ciò che serve al
+> front-office.
 
 ---
 
@@ -58,10 +60,17 @@ in **Pazienti**.
 
 ### Spostare / modificare / annullare
 1. In **Agenda** clicca l'appuntamento.
-2. Modifica orario o stato (confermato, in corso, annullato…). Per l'annullamento
+2. Modifica orario o stato (confermato, presente, annullato…). Per l'annullamento
    indica la **motivazione**.
 3. Le modifiche sono **immediate**: i medici che tengono l'agenda aperta le vedono
    in tempo reale.
+
+### Presente e In corso (#67)
+Quando il paziente arriva in studio, segnalalo come **Presente** (anche dallo storico appuntamenti in
+fondo alla scheda paziente). **In corso** significa che è in poltrona: di solito lo mette il medico
+con **Inizia visita**, perché in quel momento il programma fotografa la situazione clinica
+d'ingresso. Per un'urgenza senza appuntamento: crea l'appuntamento al momento, poi il medico lo
+porta «In corso».
 
 > Gli appuntamenti creati dall'assistente telefonico/AI (se attivo) arrivano nella
 > stessa agenda: nessuna doppia gestione.
@@ -78,7 +87,8 @@ di un'ora.
 I richiami sono i promemoria di controllo/igiene periodici.
 
 1. Apri **Richiami**: vedi l'elenco con le **scadenze**.
-2. Filtra per periodo/stato per capire chi va contattato.
+2. Filtra per periodo/stato o **cerca** per nome per capire chi va contattato. Clic
+   sull'intestazione di una colonna per ordinarla (le date partono dalle più urgenti).
 3. Da un richiamo puoi contattare il paziente e, dopo il contatto,
    aggiornarne lo stato o fissare l'appuntamento.
 4. Per creare un richiamo dedicato: apri la **scheda paziente → tab Richiami** e
@@ -114,12 +124,17 @@ La segreteria gestisce l'iter del preventivo verso il paziente.
 **Percorso** → **Fatturazione** (e scheda paziente → tab Fatture)
 
 1. Apri **Fatturazione**: visualizzi l'elenco dei documenti emessi, gli stati e gli importi.
+   Ogni colonna si ordina con un clic sull'intestazione: date e importi partono dal più
+   recente/alto, le celle vuote restano in fondo, gli stati seguono il ciclo di vita (Bozza →
+   Emessa → Pagata). Lo stesso vale per **Preventivi**, **Richiami** e **Magazzino**. I KPI
+   tengono separato lo stornato.
 2. Premi **+ Nuovo documento** e seleziona la tipologia corretta:
    - **Fattura a saldo (da piano/preventivo)**: emette la fattura solo per le prestazioni che il medico ha **già completato in seduta clinica** (#50). Il sistema calcola l'importo fatturabile effettivo ed impedisce la fatturazione anticipata di prestazioni cliniche non ancora eseguite.
    - **Acconto**: permette di emettere una fattura per un anticipo concordato con il paziente, prima dell'esecuzione delle cure.
-   - **Nota di credito (#52)**: serve per stornare parzialmente o totalmente una fattura emessa in precedenza. Non si crea da zero: si apre la fattura da rettificare e si preme **Storna con nota di credito**. Il sistema genera il documento con importi negativi collegato alla fattura di origine.
+   - **Nota di credito (#52)**: serve per stornare **per intero** una fattura emessa. Non si crea da zero: si apre la fattura da rettificare e si preme **Storna con nota di credito** (causale facoltativa). Il sistema genera il documento di pari importo con segno invertito, numerato nella serie `NC-` e collegato alla fattura, che passa ad *Annullata* ma resta in archivio. Ogni fattura si storna una sola volta.
 3. **Regola di conservazione fiscale e non eliminabilità**:
    - Una fattura o nota di credito **emessa non si elimina mai**: l'azione "Elimina" è consentita solo per le **bozze**.
+   - **Numerazione (#63)**: il numero si assegna all'emissione, dopo l'ultimo emesso. Una bozza eliminata non è mai entrata nella sequenza, quindi non lascia buchi e non fa riusare numeri.
    - I preventivi e i piani di cura collegati a documenti fiscali emessi non possono essere cancellati, per garantire la tracciabilità probatoria e fiscale.
 4. Registra pagamento e metodo quando incassi (contanti, POS, bonifico).
 
@@ -136,7 +151,7 @@ voci e il totale; prova a creare una nota di credito da una fattura emessa.
 
 Gestione scorte dei materiali di studio.
 
-1. Apri **Magazzino**: elenco prodotti con **giacenza** e soglie.
+1. Apri **Magazzino**: elenco prodotti con **giacenza** e soglie, ordinabile per colonna.
 2. Registra un **movimento**: carico (nuovo arrivo) o scarico (consumo).
 3. Tieni d'occhio i prodotti **sotto scorta** per riordinare in tempo.
 
@@ -164,10 +179,25 @@ Esempi:
 
 ---
 
+## 8. Ambiente di prova e Academy (#69, #70)
+
+**Ambiente di prova dello studio.** Pulsante **Ambiente di prova** in alto: si apre un ambiente
+con pazienti e dati **inventati**, separato da quelli veri. Serve per imparare o far pratica
+(nuovo appuntamento, preventivo, fattura) senza toccare i pazienti reali. Entri come la
+segreteria d'esempio; in alto restano l'etichetta **Ambiente di prova** e la fascia *non inserire
+dati di pazienti reali*. Per rientrare: **Torna a …** con il nome dello studio. L'ambiente è
+condiviso con i colleghi: ripristinarlo (pagina Academy) cancella anche ciò che hanno fatto loro.
+
+**Academy.** Voce *Academy* nel menu: lezioni brevi su pazienti, agenda, preventivi, fatturazione,
+richiami, magazzino e Copilot. **Prova ora** apre il punto giusto **nell'ambiente di prova**;
+*Segna come completata* aggiorna i tuoi progressi.
+
+---
+
 ## Riepilogo giornata tipo (Segretaria)
 
 1. **Dashboard** → richiami in scadenza e agenda del giorno.
-2. **Agenda** → conferma/riorganizza gli appuntamenti.
+2. **Agenda** → conferma/riorganizza gli appuntamenti; segna **Presente** chi arriva.
 3. **Pazienti → Nuovo paziente** → registra i nuovi arrivi.
 4. **Richiami** → contatta chi è in scadenza e fissa i controlli.
 5. **Preventivi** → invia e registra accettazioni.

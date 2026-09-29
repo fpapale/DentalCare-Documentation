@@ -11,16 +11,16 @@ esempi usano il **tenant demo** e sono riproducibili passo-passo.
 
 | # | Guida | Per chi | Contenuti principali |
 |---|-------|---------|----------------------|
-| 1 | [Guida Dottoressa](01-Guida-Dottoressa.md) | Dentista / Igienista / Ortodontista / Chirurgo | Agenda clinica, scheda di seduta (#56-#62), cartella clinica, odontogramma, anamnesi, piani di cura, preventivi, analisi AI radiografie, Copilot |
-| 2 | [Guida Segretaria](02-Guida-Segretaria.md) | Segreteria / Front-office | Appuntamenti, anagrafica pazienti, richiami, preventivi, fatturazione conforme (saldo, acconto, nota credito #50-#52), magazzino, Copilot AI |
-| 3 | [Guida Amministratore](03-Guida-Amministratore.md) | Titolare / Responsabile studio | Dashboard, impostazioni, listino prestazioni, Prompt Manager AI, Errori intelligenti (#54), export protetto (#47) |
-| 4 | [**Manuale Utente Integrale**](MANUALE_UTENTE.md) | Tutti i ruoli | **Documento completo e dettagliato (1120 righe)** con tutti i moduli, schermate, ciclo seduta, gestione errori e glossario stati |
+| 1 | [Guida Dottoressa](01-Guida-Dottoressa.md) | Dentista / Igienista / Ortodontista / Chirurgo | Agenda clinica, scheda di seduta con «Inizia visita» e aggiornamento del dente (#56-#62, #65), storico episodi (#67), odontogramma e «Genera piano» (#66), anamnesi, piani di cura, preventivi, listino, analisi AI radiografie, Copilot, ambiente di prova e Academy (#70) |
+| 2 | [Guida Segretaria](02-Guida-Segretaria.md) | Segreteria / Front-office | Appuntamenti e stati Presente / In corso, anagrafica pazienti, richiami, preventivi, fatturazione conforme (saldo, acconto, nota credito, numerazione #50-#53, #63), liste ordinabili, magazzino, Copilot AI, ambiente di prova e Academy (#70) |
+| 3 | [Guida Amministratore](03-Guida-Amministratore.md) | Titolare / Responsabile studio | Dashboard, impostazioni, listino con le impostazioni cliniche (#65, #66), Prompt Manager AI, Errori intelligenti (#54), export protetto (#47), prova gratuita, ambiente di prova dello studio e Academy (#69, #70) |
+| 4 | [**Manuale Utente Integrale**](MANUALE_UTENTE.md) | Tutti i ruoli | **Documento completo e dettagliato (circa 1270 righe)** con tutti i moduli, schermate, ciclo seduta, gestione errori e glossario stati |
 
 ## Manuale con schermate reali (per la presentazione)
 
 Manuale a **percorsi guidati** con le **schermate reali** dell'applicazione per i tre ruoli, pensato come materiale di presentazione:
 
-- **[MANUALE_UTENTE.md](MANUALE_UTENTE.md)** — **Manuale utente completo di riferimento**, aggiornato a tutte le feature recenti (#50-#62, ciclo seduta, fatturazione, AI error humanize).
+- **[MANUALE_UTENTE.md](MANUALE_UTENTE.md)** — **Manuale utente completo di riferimento**, aggiornato a tutte le feature recenti (#50-#70: ciclo seduta, dente da seduta, «Genera piano», storico episodi, fatturazione, errori intelligenti, ambiente di prova e Academy).
 - **[Manuale-Completo.md](Manuale-Completo.md)** — sintesi percorsi con gli screenshot embedded.
 - **[Manuale_Utente_DentalCare_Pro.docx](Manuale_Utente_DentalCare_Pro.docx)** — versione Word (12 schermate), pronta da stampare o inviare.
 
@@ -75,6 +75,10 @@ Legenda: ✅ accesso pieno · 🔎 solo lettura/consultazione · — nessun acce
 | Magazzino | ✅ | ✅ | ✅ |
 | Listino prestazioni | ✅ | — | ✅ |
 | Copilot AI (Segreteria) | ✅ | ✅ | — |
+| Scheda di seduta | ✅ | — | ✅ |
+| Storico episodi | ✅ | — | ✅ |
+| Ambiente di prova dello studio | ✅ | ✅ | ✅ |
+| Academy | ✅ | ✅ | ✅ |
 | Impostazioni (studio + AI) | — | — | ✅ |
 
 > **Perché la Dottoressa NON crea l'anagrafica paziente?** Per separazione dei
@@ -92,8 +96,8 @@ Legenda: ✅ accesso pieno · 🔎 solo lettura/consultazione · — nessun acce
 
 ## Concetti chiave (glossario rapido)
 
-- **Scheda paziente**: pagina centrale con tab (Panoramica, Cartella clinica,
-  Odontogramma, Anamnesi, Documenti, Preventivi, Richiami, Fatture).
+- **Scheda paziente**: pagina centrale con tab (Anagrafica, Cartella clinica,
+  Storico episodi, Anamnesi, Odontogramma, Piani di cura, Preventivi, Documenti).
 - **Cartella clinica**: storico delle visite e delle prestazioni erogate.
 - **Odontogramma**: mappa dei denti con le condizioni (carie, corone, impianti…),
   compilabile a mano o **suggerita dall'AI** da una radiografia.
@@ -101,5 +105,9 @@ Legenda: ✅ accesso pieno · 🔎 solo lettura/consultazione · — nessun acce
 - **Piano di cura → Preventivo → Fattura**: il flusso economico. Dal piano di
   cura si genera il preventivo; accettato, diventa fatturabile.
 - **Richiamo (recall)**: promemoria di controllo/igiene periodico per il paziente.
+- **Episodio clinico**: una visita o un contatto fuori visita, con la situazione del paziente
+  fotografata prima e dopo (tab Storico episodi).
+- **Ambiente di prova**: pazienti e dati inventati, separati da quelli veri, per imparare e
+  provare; si apre dal pulsante in alto e si torna con **Torna a …**.
 - **Copilot AI**: assistente conversazionale che legge e (con i permessi giusti)
   scrive sui moduli — agenda, pazienti, preventivi, ecc.

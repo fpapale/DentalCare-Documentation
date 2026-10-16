@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1790017128.0,
-    "ast_hash": "a4929e61d8f8a872e61ccf16ed33591e",
+    "mtime": 1792175646.0,
+    "ast_hash": "af67ea390ec16109230bf4ddd94f386e",
     "semantic_hash": ""
   },
   "docs/01-Studio-di-Fattibilita/01-Executive-Summary.md": {
@@ -290,8 +290,8 @@
     "semantic_hash": "0079f1fc5dffe229309f93e41e7c30fd"
   },
   "docs/03-Product-Roadmap/Release-1.x.md": {
-    "mtime": 1790179172.0,
-    "ast_hash": "f561e60b420e40205823aae7f2046f4b",
+    "mtime": 1791357138.0,
+    "ast_hash": "f751a5ac6e1156ce0dd589626c89f7e7",
     "semantic_hash": ""
   },
   "docs/03-Product-Roadmap/Release-2.x.md": {
@@ -320,23 +320,23 @@
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/01-Overview.md": {
-    "mtime": 1784546048.0,
-    "ast_hash": "7d2ed7428dec3f6674e12c0d1182edde",
+    "mtime": 1790631398.0,
+    "ast_hash": "aa1891568dd6a2c242369258b768c8eb",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/02-Backend.md": {
-    "mtime": 1790179182.0,
-    "ast_hash": "9e7edbcf249d4f271ea258ef0002ba74",
+    "mtime": 1790631398.0,
+    "ast_hash": "842d1003cf1c2d37c1543a76a300596c",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/03-Frontend.md": {
-    "mtime": 1784546048.0,
-    "ast_hash": "b58a88a8d220ca3df0b4f99462bf025b",
+    "mtime": 1790631398.0,
+    "ast_hash": "519382f4f4ee01bec35cceaf316a77bd",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/04-AI.md": {
-    "mtime": 1790016934.0,
-    "ast_hash": "187e21e23b2339cd81e6eed59ddb91b6",
+    "mtime": 1792175638.0,
+    "ast_hash": "1c4b8e90a91285995a066b7292f0f7ce",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/05-DICOM.md": {
@@ -345,28 +345,28 @@
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/06-Multitenancy.md": {
-    "mtime": 1785162898.0,
-    "ast_hash": "aadb54266a252afb142978aed43e8fcf",
+    "mtime": 1790631398.0,
+    "ast_hash": "6cb5e489187b23641578efef60d7cdeb",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/07-Security.md": {
-    "mtime": 1790016942.0,
-    "ast_hash": "b4c3e43db27713c00ac4dba03de00101",
+    "mtime": 1790631398.0,
+    "ast_hash": "bbde3317dbcfc518f507f34f4e5bcbba",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/08-DevOps.md": {
-    "mtime": 1790016948.0,
-    "ast_hash": "2a27d36869416ae0bfc578511f8ea906",
+    "mtime": 1790666534.0,
+    "ast_hash": "86aa80431300dc97b9f7ce84c01790dc",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/09-Deployment.md": {
-    "mtime": 1790016954.0,
-    "ast_hash": "2a50fc1cb8e9f9bbd766a34c505719d8",
+    "mtime": 1790631398.0,
+    "ast_hash": "b2b9583480081809a85385da84aeee7a",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/10-Testing.md": {
-    "mtime": 1784546048.0,
-    "ast_hash": "300b12c398e5e0dc448509ebf41ec642",
+    "mtime": 1790631398.0,
+    "ast_hash": "a5638c727b6994a480bf0362f2c364c3",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/11-Data-Encryption.md": {
@@ -375,33 +375,33 @@
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/12-Clinical-Record-Model.md": {
-    "mtime": 1790016902.0,
-    "ast_hash": "4d0906d5e43f4d72f1425b76526dcf37",
+    "mtime": 1790623398.0,
+    "ast_hash": "0ff7ebfe9869d021e21480d22b4e1d08",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/13-Audit-Trail.md": {
-    "mtime": 1784628398.0,
-    "ast_hash": "e9e87e587b2ec4c425275254d8a39ce6",
+    "mtime": 1790631398.0,
+    "ast_hash": "3af1a1e4cbcfc46540c76a763ece879d",
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/Architecture-Handbook.md": {
-    "mtime": 1784628456.0,
-    "ast_hash": "5280b25b2e7a558fdef101f061db359c",
+    "mtime": 1792175626.0,
+    "ast_hash": "366d419702f846d8386847fb80f479ca",
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/01-Guida-Dottoressa.md": {
-    "mtime": 1790016866.0,
-    "ast_hash": "e129e3440941a9429fda155629fa3413",
+    "mtime": 1790666912.0,
+    "ast_hash": "f1229e45e90d3d1246b14691ebcf0d13",
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/02-Guida-Segretaria.md": {
-    "mtime": 1790016876.0,
-    "ast_hash": "78dd08c230eacfecb8efd9db4cd57499",
+    "mtime": 1790666958.0,
+    "ast_hash": "26dcc7ca2c81c809f12e36106754b610",
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/03-Guida-Amministratore.md": {
-    "mtime": 1790016884.0,
-    "ast_hash": "e6a6a22e9c7bc05ca091066eed1f2e05",
+    "mtime": 1790666984.0,
+    "ast_hash": "645a3a9c552379d4fcf34e3109207040",
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/Manuale-Completo.md": {
@@ -410,8 +410,8 @@
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/README.md": {
-    "mtime": 1790016890.0,
-    "ast_hash": "0e8e14f3128d47b8b52c15eb15a089d9",
+    "mtime": 1790667012.0,
+    "ast_hash": "11a2ba2697e9f286b5370d0003cd4754",
     "semantic_hash": ""
   },
   "docs/templates/ADR.md": {
@@ -545,8 +545,8 @@
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/MANUALE_UTENTE.md": {
-    "mtime": 1790016590.0,
-    "ast_hash": "eb26161ed306cf98dc9a517c74707488",
+    "mtime": 1790631298.0,
+    "ast_hash": "62078b82b12a72cb2a576aab8ad95a41",
     "semantic_hash": ""
   },
   "docs/06-Compliance/AI-Act-Compliance.md": {
@@ -555,8 +555,8 @@
     "semantic_hash": ""
   },
   "docs/06-Compliance/inventario-flussi-ai-per-dpo.md": {
-    "mtime": 1789758156.0,
-    "ast_hash": "06e84530a69e3db2e31aced4a4fa5bb0",
+    "mtime": 1792175658.0,
+    "ast_hash": "3cde5615e5b989231c00b963180c7e44",
     "semantic_hash": ""
   },
   "docs/06-Compliance/retell/INDEX-2026-07-28.md": {
@@ -747,6 +747,11 @@
   "docs/05-Manuale-Utente/img/20-pannello-errori.png": {
     "mtime": 1790018022.0,
     "ast_hash": "80166b737b352a07a6fc3181e86eeb0a",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/14-LLM-NER-Gateway.md": {
+    "mtime": 1792175618.0,
+    "ast_hash": "d87f705a49abaef987743c20c22ef481",
     "semantic_hash": ""
   }
 }

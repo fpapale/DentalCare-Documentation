@@ -22,6 +22,7 @@ ancora presente.
 | 11 | [Cifratura dati & GDPR](11-Data-Encryption.md) | Scelte di progetto, modello di minaccia, trade-off, roadmap |
 | 12 | [Modello cartella clinica](12-Clinical-Record-Model.md) | Entità, encounter, dente da seduta (#65), genera piano (#66), episodi e fotografie (#67), finalizzazione e addendum, mappatura FHIR |
 | 13 | [Audit trail clinico](13-Audit-Trail.md) | Modello probatorio, taglio Tier 1 (gate) / Tier 2, decisioni di design |
+| 14 | [LLM NER Gateway & Demo](14-LLM-NER-Gateway.md) | Proxy privacy-preserving, Dual-Engine NER (0.3B / spaCy), Pass-Through, e simulatore demo |
 
 ## Sintesi tecnica
 

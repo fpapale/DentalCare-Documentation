@@ -36,6 +36,7 @@ Benvenuti nella documentazione ufficiale di **DentalCare Pro**, la piattaforma g
 - [Cifratura Dati Sanitari](docs/04-Architecture-Handbook/11-Data-Encryption.md) — Cifratura campo-per-campo con chiavi per-tenant (Art. 32 GDPR).
 - [Modello Cartella Clinica](docs/04-Architecture-Handbook/12-Clinical-Record-Model.md) — Ciclo della seduta (`Encounter` #56-#62), odontogramma e diari clinici.
 - [Audit Trail Probatorio](docs/04-Architecture-Handbook/13-Audit-Trail.md) — Immutabilità e valore legale ex art. 2236 c.c.
+- [LLM NER Gateway & Demo](docs/04-Architecture-Handbook/14-LLM-NER-Gateway.md) — Trust boundary privacy-preserving, Dual-Engine NER (0.3B / spaCy), modalità pass-through e test bench demo.
 
 ### 5. Manuale Utente (`docs/05-Manuale-Utente/`)
 - 📖 [**Manuale Utente Integrale**](docs/05-Manuale-Utente/MANUALE_UTENTE.md) — Manuale completo di riferimento (1120 righe) con tutti i moduli, schermate, ciclo seduta, fatturazione conforme e glossario stati.

@@ -1,16 +1,16 @@
-# Graph Report - DentalCare-Pro-Documentation  (2026-09-23)
+# Graph Report - DentalCare-Pro-Documentation  (2026-10-16)
 
 ## Corpus Check
-- 104 files · ~332,276 words
+- 105 files · ~343,070 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1131 nodes · 1127 edges · 128 communities (126 shown, 2 thin omitted)
+- 1182 nodes · 1183 edges · 130 communities (128 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `80dd9218`
+- Built from commit: `bd3e55ed`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -89,6 +89,7 @@
 - 5.1 Viste calendario
 - 2. Accesso e navigazione
 - 6. Preventivi
+- 10 — Testing
 - 15. GESTIONE DELL’ESITO DEI TOOL E DEI WEBHOOK
 - 3. Dashboard
 - 8. Richiami
@@ -96,31 +97,32 @@
 - 14. USO DEI TOOL
 - 10. SegretarIA
 - 9. Magazzino
+- DentalCare Pro — Manuale Utente
 
 ## God Nodes (most connected - your core abstractions)
 1. `AI Roadmap — DentalCare Pro` - 34 edges
 2. `Release 1.x — Gestionale odontoiatrico con AI amministrativa` - 34 edges
 3. `Release 2.x — AI radiologica certificata (percorso MDR)` - 28 edges
 4. `Product Roadmap — DentalCare Pro` - 26 edges
-5. `01 — Guida Dottoressa (medico)` - 16 edges
-6. `DentalCare Pro — Manuale Utente` - 14 edges
-7. `12. RACCOLTA E CONFERMA DELL’EMAIL` - 12 edges
-8. `02 — Backend (Spring Boot)` - 11 edges
-9. `13 — Audit trail clinico (modello probatorio)` - 11 edges
-10. `04b — Ranking Competitor (ricerca web, luglio 2026)` - 10 edges
+5. `01 — Guida Dottoressa (medico)` - 17 edges
+6. `DentalCare Pro — Manuale Utente` - 15 edges
+7. `4. Scope` - 13 edges
+8. `12. RACCOLTA E CONFERMA DELL’EMAIL` - 12 edges
+9. `02 — Backend (Spring Boot)` - 11 edges
+10. `13 — Audit trail clinico (modello probatorio)` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (128 total, 2 thin omitted)
+## Communities (130 total, 2 thin omitted)
 
 ### Community 0 - "Studio-di-Fattibilita.md"
 Cohesion: 0.05
 Nodes (39): 10 Piano di Validazione Scientifica, 11 Piano Commerciale, 12 Strategia Marketing, 13 Agenti AI Commerciali, 14 Roadmap, 15 Funzionalità Future, 16 Piano Economico, 17 Piano Finanziario (+31 more)
 
 ### Community 1 - "Release 1.x — Gestionale odontoiatrico con AI amministrativa"
-Cohesion: 0.05
-Nodes (43): 10. Architettura, 11. Moduli Core, 12. Moduli AI, 13. Sicurezza, 14. Compliance, 15. DICOM, 16. Clinical Workflow, 17. Funzionalità Dettagliate (+35 more)
+Cohesion: 0.04
+Nodes (46): 10. Architettura, 11. Moduli Core, 12. Moduli AI, 13. Sicurezza, 14. Compliance, 15. DICOM, 16. Clinical Workflow, 17. Funzionalità Dettagliate (+38 more)
 
 ### Community 2 - "08-Piano-Validazione.md"
 Cohesion: 0.06
@@ -171,16 +173,16 @@ Cohesion: 0.06
 Nodes (33): 1. Come è organizzato il lavoro, 2. Accesso, 3. La segreteria, 4.1 L'agenda del medico, 4.2 La scheda di seduta, 4.3 Registrare cosa è stato fatto, 4.4 Le prestazioni rimaste in sospeso, 4.5 Il preventivo si aggiorna da solo (+25 more)
 
 ### Community 14 - "12 — Modello della cartella clinica"
-Cohesion: 0.12
-Nodes (17): 12 — Modello della cartella clinica, 1. Principio: la cartella non è un file, 2.1 Encounter & Ciclo della Seduta Clinica (implementato #56–#62), 2.2 Reperto dentale: da snapshot a storia, 2.3 Anamnesi: tre stati, non due, 2. Entità del modello, 3.1 Stati di una nota clinica, 3.2 Correzione: addendum, non UPDATE (+9 more)
+Cohesion: 0.11
+Nodes (19): 12 — Modello della cartella clinica, 1. Principio: la cartella non è un file, 2.1.1 Dal reperto al piano di cura (#66), 2.1 Encounter & Ciclo della Seduta Clinica (implementato #56–#62), 2.2 Reperto dentale: da snapshot a storia, 2.3 Episodi clinici e fotografie (implementato #67, Fase 1), 2.4 Anamnesi: tre stati, non due, 2. Entità del modello (+11 more)
 
 ### Community 15 - "13 — Audit trail clinico (modello probatorio)"
 Cohesion: 0.13
 Nodes (15): 13 — Audit trail clinico (modello probatorio), 1. "Probatorio" non è "salvare i log", 2. Stato attuale (verificato sul codice), 3. Il taglio: Tier 1 (gate) vs Tier 2 (differito), 4. Tier 1 — obbligatorio per il go-live, 5. Tier 2 — differito (eccellente, ma non blocca il go-live), 6. Decisioni di design aperte, 7. Dipendenza con finalizzazione e versionamento (+7 more)
 
 ### Community 16 - "01 — Guida Dottoressa (medico)"
-Cohesion: 0.10
-Nodes (21): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 12. Gestione errori ed Errori intelligenti (#51, #54), 1.1 Scheda di seduta clinica e chiusura (#56-#62), 1. Agenda: la giornata clinica, 2. Scheda paziente (+13 more)
+Cohesion: 0.08
+Nodes (25): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 12. Gestione errori ed Errori intelligenti (#51, #54), 13. Ambiente di prova e Academy (#69, #70), 1.1 Scheda di seduta clinica e chiusura (#56-#62, #65, #67), 1. Agenda: la giornata clinica (+17 more)
 
 ### Community 17 - "03-Analisi-Mercato.md"
 Cohesion: 0.17
@@ -191,16 +193,16 @@ Cohesion: 0.06
 Nodes (29): 04b — Ranking Competitor (ricerca web, luglio 2026), 1. Assistente Vocale "Hands-Free" da Poltrona (Chairside Agent), 1. Metodo, 2. Lettura esecutiva, 2. Peer Consensus & Clinical Reputation Network (DentalCare Credits), 3. Scoreboard (36, ordinati per score), 3. Visualizzatore PACS Cloud & Radiologia AI Integrata (YOLO), 4. Giulia Voice (Receptionist Telefonico AI 24/7) (+21 more)
 
 ### Community 19 - "07 — Sicurezza"
-Cohesion: 0.13
-Nodes (15): 07 — Sicurezza, 1. Autenticazione (JWT), 2. Autorizzazione (ruoli), 3. Cifratura campo-per-campo (GDPR art. 32) — #7, 4. Altre misure, 5. Postura regolatoria (AI Act, MDR, GDPR), 6. Roadmap sicurezza, Autorizzazione atti clinici server-side (#62) (+7 more)
+Cohesion: 0.12
+Nodes (16): 07 — Sicurezza, 1. Autenticazione (JWT), 2. Autorizzazione (ruoli), 3. Cifratura campo-per-campo (GDPR art. 32) — #7, 4. Altre misure, 5. Postura regolatoria (AI Act, MDR, GDPR), 6. Roadmap sicurezza, Autorizzazione atti clinici server-side (#62) (+8 more)
 
 ### Community 20 - "02 — Guida Segretaria (front-office)"
-Cohesion: 0.17
-Nodes (12): 02 — Guida Segretaria (front-office), 0. Accesso, 1. Nuovo paziente (anagrafica), 2. Agenda e appuntamenti, 3. Richiami (recall), 4. Preventivi, 5. Fatturazione e incassi (#50, #52, #53), 6. Magazzino (+4 more)
+Cohesion: 0.14
+Nodes (14): 02 — Guida Segretaria (front-office), 0. Accesso, 1. Nuovo paziente (anagrafica), 2. Agenda e appuntamenti, 3. Richiami (recall), 4. Preventivi, 5. Fatturazione e incassi (#50, #52, #53), 6. Magazzino (+6 more)
 
 ### Community 21 - "02 — Backend (Spring Boot)"
-Cohesion: 0.17
-Nodes (12): 03 — Guida Amministratore (titolare / responsabile studio), 0. Accesso e ruolo, 1. Dashboard, 2. Impostazioni dello studio, 3. Listino prestazioni, 4. Prompt Manager AI e Errori intelligenti (#17, #54), 5. Supervisione operativa, 6. Multi-studio (Admin Tenant) — nota (+4 more)
+Cohesion: 0.15
+Nodes (13): 03 — Guida Amministratore (titolare / responsabile studio), 0. Accesso e ruolo, 1. Dashboard, 2. Impostazioni dello studio, 3. Listino prestazioni, 4. Prompt Manager AI e Errori intelligenti (#17, #54), 5. Supervisione operativa, 6. Multi-studio (Admin Tenant) — nota (+5 more)
 
 ### Community 22 - "Marketing"
 Cohesion: 0.20
@@ -211,8 +213,8 @@ Cohesion: 0.20
 Nodes (9): Assunzioni di base, Break-even, Costi principali, Driver economici, Financial Plan, Obiettivo, Ricavi, Scenari (+1 more)
 
 ### Community 24 - "04 — AI"
-Cohesion: 0.15
-Nodes (13): 04 — AI, 1.1 Errori intelligenti via AI (#54), 1. Copilot, 2. Analisi radiologica (servizio Python), 3. Automazione conversazionale (n8n) e assistente vocale "Giulia", 4. Storage degli asset AI, 5. Governance e inventario flussi AI per il DPO (#55), Audit delle azioni AI (+5 more)
+Cohesion: 0.14
+Nodes (14): 04 — AI, 1.1 Errori intelligenti via AI (#54), 1.2 LLM Gateway: Trust Boundary e Anonimizzazione Privacy-Preserving, 1. Copilot, 2. Analisi radiologica (servizio Python), 3. Automazione conversazionale (n8n) e assistente vocale "Giulia", 4. Storage degli asset AI, 5. Governance e inventario flussi AI per il DPO (#55) (+6 more)
 
 ### Community 25 - "03 — Guida Amministratore (titolare / responsabile studio)"
 Cohesion: 0.14
@@ -239,8 +241,8 @@ Cohesion: 0.22
 Nodes (9): 03 — Frontend (Angular), 1. Panoramica, 2. Struttura, 3. Feature, 4. Service HTTP, 5. Layout a tre colonne, 6. Cross-cutting, 7. Form e stato (+1 more)
 
 ### Community 31 - "06 — Multi-tenancy"
-Cohesion: 0.12
-Nodes (16): 06 — Multi-tenancy, 1.1 Terminologia (convenzione ufficiale), 1. Modello: schema-per-tenant, 2. Contesto tenant, 3.1 Scope del dato: per-tenant condiviso vs per-clinica, 3.2 Postura di isolamento: applicativa, non a livello DB, 3. Isolamento dei dati, 4. Provisioning di un nuovo tenant (+8 more)
+Cohesion: 0.11
+Nodes (19): 06 — Multi-tenancy, 1.1 Terminologia (convenzione ufficiale), 1. Modello: schema-per-tenant, 2. Contesto tenant, 3.1 Scope del dato: per-tenant condiviso vs per-clinica, 3.2 Postura di isolamento: applicativa, non a livello DB, 3. Isolamento dei dati, 4. Provisioning di un nuovo tenant (+11 more)
 
 ### Community 32 - "12.2 Messaggi chiave"
 Cohesion: 0.25
@@ -275,8 +277,8 @@ Cohesion: 0.29
 Nodes (7): 08 — DevOps, 1. Build, 2. Containerizzazione, 3. Configurazione e segreti, 4. Ambienti, 5. Versioning e convenzioni, 6. Osservabilità
 
 ### Community 40 - "09 — Deployment"
-Cohesion: 0.22
-Nodes (9): 09 — Deployment, 1. Topologia di produzione, 2. Servizi (docker-compose), 3. Script di deploy, 4. Creazione database, 5. Deploy della cifratura GDPR (#7), 6. Rollback applicativo, Collaudo (#41) (+1 more)
+Cohesion: 0.18
+Nodes (11): 09 — Deployment, 1. Topologia di produzione, 2. Servizi (docker-compose), 3. Script di deploy, 4. Creazione database, 5. Deploy della cifratura GDPR (#7), 6. Rollback applicativo, Accesso al repository (+3 more)
 
 ### Community 41 - "13. TAM, SAM, SOM: stima ragionata"
 Cohesion: 0.33
@@ -363,8 +365,8 @@ Cohesion: 0.12
 Nodes (16): 1-bis. Tabella per il ROPA (art. 30), 1. Quadro in una pagina, 2.1 Quali dati personali escono verso il fornitore del modello?, 2.2 Il fornitore usa i dati per addestrare i propri modelli?, 2.3 Dove sono trattati i dati? Serve un trasferimento extra-UE?, 2.4 Quanto a lungo restano i dati *dentro* l'applicazione?, 2.5 Che misure di sicurezza sono già implementate?, 2.6 Il trattamento si può disattivare? Con quale granularità? (+8 more)
 
 ### Community 111 - "4. Pazienti"
-Cohesion: 0.14
-Nodes (14): 4.1 Lista pazienti, 4.2 Nuovo paziente, 4.3 Scheda paziente, 4.4 Anamnesi, 4.5 Odontogramma, 4.6 Piani di cura, 4. Pazienti, Navigazione (+6 more)
+Cohesion: 0.18
+Nodes (11): 4.1 Lista pazienti, 4.3 Scheda paziente, 4.4 Anamnesi, 4.5 Odontogramma, 4.6 Piani di cura, 4.7 Storico episodi, 4. Pazienti, Genera piano di cura dall'odontogramma (+3 more)
 
 ### Community 112 - "12. RACCOLTA E CONFERMA DELL’EMAIL"
 Cohesion: 0.17
@@ -379,8 +381,8 @@ Cohesion: 0.20
 Nodes (10): Classificazione sistemi AI, Copilot interno (SegretarIA), DentalCare Pro — Conformità EU AI Act, Documenti di riferimento, Giulia Voice Agent (Retell AI), Inspection Readiness Binder, Misure implementate al 2026-07-28, Privacy & Governance per il DPO (+2 more)
 
 ### Community 115 - "12. Glossario stati"
-Cohesion: 0.22
-Nodes (9): 12. Glossario stati, Appuntamenti, Esiti di seduta, Fatture, Piani di cura, Prestazioni del piano di cura, Preventivi, Richiami (+1 more)
+Cohesion: 0.20
+Nodes (10): 12. Glossario stati, Appuntamenti, Episodi, Esiti di seduta, Fatture, Piani di cura, Prestazioni del piano di cura, Preventivi (+2 more)
 
 ### Community 116 - "7. Fatturazione"
 Cohesion: 0.22
@@ -401,6 +403,10 @@ Nodes (7): 2. Accesso e navigazione, Cambio operatore, Errori intelligenti, Inte
 ### Community 120 - "6. Preventivi"
 Cohesion: 0.29
 Nodes (7): 6. Preventivi, Avanzamento delle prestazioni, Dettaglio preventivo, Gestione stati, Lista preventivi, Nuovo preventivo, Voci di preventivo
+
+### Community 121 - "10 — Testing"
+Cohesion: 0.08
+Nodes (25): 14 — LLM NER Gateway & Demo Simulator, 1. Visione Architetturale e Ruolo nel Sistema, 2.1 Autenticazione Client tramite JWT `ES256` (Curva Ellittica P-256), 2.2 Policy di Sanitizzazione per Finalità (`ApplicationPolicy`), 2. Modello di Sicurezza e Controllo Accessi, 3.1 Architettura Dual-Engine (`config/config.yaml`), 3.2 Modello Fine-Tuned Specializzato: `llm-ner-dentalcare-0.3B`, 3.3 Checksum Algoritmici ed Entità PII Estese (+17 more)
 
 ### Community 122 - "15. GESTIONE DELL’ESITO DEI TOOL E DEI WEBHOOK"
 Cohesion: 0.33
@@ -427,11 +433,15 @@ Cohesion: 0.50
 Nodes (4): 10. SegretarIA, Attività, Chat, Chiamate
 
 ### Community 128 - "9. Magazzino"
-Cohesion: 0.29
-Nodes (7): 1. Introduzione, 9. Magazzino, DentalCare Pro — Manuale Utente, Indice, Tab Fornitori, Tab Movimenti, Tab Prodotti
+Cohesion: 0.18
+Nodes (11): 13.1 Prova gratuita (per chi non è ancora cliente), 13.2 Ambiente di prova dello studio (per chi è già cliente), 13.3 Academy, 13. Ambiente di prova e Academy, 1. Introduzione, 9. Magazzino, DentalCare Pro — Manuale Utente, Indice (+3 more)
+
+### Community 129 - "DentalCare Pro — Manuale Utente"
+Cohesion: 0.50
+Nodes (4): 4.2 Nuovo paziente, Step 1 — Dati anagrafici, Step 2 — Contatti, Step 3 — Dati clinici
 
 ## Knowledge Gaps
-- **852 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+847 more)
+- **889 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+884 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -439,16 +449,16 @@ Nodes (7): 1. Introduzione, 9. Magazzino, DentalCare Pro — Manuale Utente, Ind
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `DentalCare Pro — Manuale Utente` connect `9. Magazzino` to `Architecture-Handbook.md`, `4. Pazienti`, `11. Impostazioni`, `12. Glossario stati`, `7. Fatturazione`, `5.1 Viste calendario`, `2. Accesso e navigazione`, `6. Preventivi`, `3. Dashboard`, `8. Richiami`, `10. SegretarIA`?**
-  _High betweenness centrality (0.077) - this node is a cross-community bridge._
-- **Why does `Release 2.x — AI radiologica certificata (percorso MDR)` connect `Release 2.x — AI radiologica certificata (percorso MDR)` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.032) - this node is a cross-community bridge._
-- **Why does `Release 1.x — Gestionale odontoiatrico con AI amministrativa` connect `Release 1.x — Gestionale odontoiatrico con AI amministrativa` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.027) - this node is a cross-community bridge._
+  _High betweenness centrality (0.074) - this node is a cross-community bridge._
+- **Why does `DentalCare Pro — Manuale completo` connect `Manuale Utente — DentalCare Pro` to `Architecture-Handbook.md`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+- **Why does `06 — Multi-tenancy` connect `06 — Multi-tenancy` to `Architecture-Handbook.md`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **What connects `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)` to the rest of the system?**
-  _852 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _889 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Studio-di-Fattibilita.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Release 1.x — Gestionale odontoiatrico con AI amministrativa` be split into smaller, more focused modules?**
-  _Cohesion score 0.046511627906976744 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.043478260869565216 - nodes in this community are weakly interconnected._
 - **Should `08-Piano-Validazione.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._

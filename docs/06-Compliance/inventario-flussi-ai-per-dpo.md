@@ -96,7 +96,12 @@ conversazione.
 **Conclusione tecnica:** il Copilot trasferisce **dati relativi alla salute** al fornitore del
 modello. È il flusso dominante, ed è **già attivo**.
 
+> [!TIP]
+> **Presidio Tecnico Mitigante (Release 1.x / `llm-ner-gateway`):**
+> Tutte le chiamate verso OpenAI transitano attraverso il proxy di sicurezza [`llm-ner-gateway`](../04-Architecture-Handbook/14-LLM-NER-Gateway.md), che effettua la pseudonimizzazione preventiva dei dati identificativi e la sanitizzazione dei campi clinici non essenziali tramite motore Dual-Engine (modello clinico `llm-ner-dentalcare-0.3B` / spaCy), validazione Partita IVA (Luhn 11 cifre) e vault in RAM effimero (`InMemoryTokenVault`). Al fornitore LLM pervengono esclusivamente token pseudonimi (`PERSONA_1`, `TEL_1`), azzerando l'esportazione di anagrafiche in chiaro verso server terzi e agevolando la defensibilità del DPA e della DPIA ex Art. 35 GDPR.
+
 **Flusso B — Errori intelligenti** (`ErrorExplanationService.java`)
+
 
 Inviato: `operation`, `code`, `message`. Nient'altro — nessun tool collegato
 (`ErrorExplanationService.java:86`, commento esplicito). Vedi §4 per il contenuto effettivo.

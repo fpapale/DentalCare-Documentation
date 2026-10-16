@@ -128,6 +128,26 @@ localmente e nessun audio è conservato per default.
 parallelo. L'attivazione non è bloccante per il resto della Release: se il pilota non è
 verde, la funzione resta installata ma disabilitata tramite policy server-side.
 
+### Voice Agent Provisioner (`retell-provisioner`)
+
+Servizio indipendente per il provisioning dell'assistente vocale Giulia per-tenant.
+Astrae i provider voce (Retell) e telefonia (Twilio) tramite interfacce pluggabili, in
+modo che provider alternativi (ElevenLabs, Vonage, provider custom Chairside) possano
+essere aggiunti senza modificare il servizio. Al provisioning di ogni nuovo tenant:
+crea l'agent Retell da template parametrico (`{{studio_name}}`, `{{studio_address}}`
+ecc.), acquista e assegna il numero Twilio, salva `retell_agent_id` e `phone_number`
+nella riga `tenants`. Richiamato dal workflow n8n di onboarding; espone API REST con
+autenticazione `X-API-Key`. Stack: FastAPI + SQLite (template storage).
+
+### LLM Gateway (`dentalcare-llm-gateway`)
+
+Trust boundary tra DentalCare e i provider LLM (OpenAI). Intercetta ogni chiamata
+Copilot/AI, pseudonimizza PII/PHI prima dell'invio al provider e detokenizza la
+risposta prima di restituirla al backend. API OpenAI-compatible (`POST /v1/chat/completions`).
+Dopo la migrazione **nessuna API key LLM risiede in DentalCare**. Obbligatorio per il
+Gate 1: senza gateway il trasferimento di dati clinici verso OpenAI non è coperto da
+adeguate misure tecniche per il DPA. Spec completa: `directives/dentalcare-llm-gateway/`.
+
 ### Governance e privacy
 - **DPIA** approvata · ROPA · informative · **DPA + SCC + TIA** con i fornitori AI ·
   contratti studi con clausole deployer · registro claim.
@@ -193,7 +213,7 @@ non sulle funzioni.
 | Modulo | In Release 1.x |
 |---|---|
 | **Copilot conversazionale** | ✅ incluso, con conferma umana obbligatoria per ogni scrittura |
-| **Assistente vocale telefonico** (prenotazioni) | ✅ incluso, con disclosure e fallback umano |
+| **Assistente vocale telefonico** (prenotazioni) | ✅ incluso, con disclosure e fallback umano — provisioning per-tenant tramite `retell-provisioner` |
 | **Chairside Agent “Ehi Giulia”** (Copilot hands-free in poltrona) | 📋 incluso nello scope; attivazione subordinata a doppio gate, DPIA e pilota |
 | **Analisi radiologica** | 🔒 **disattivato** in produzione clinica → Release 2.x |
 
@@ -262,6 +282,11 @@ del Gate 1.
 Copilot (LLM con function calling) e assistente vocale. Il servizio di visione
 radiologica resta deployato ma **non raggiungibile dai tenant clinici**.
 
+Le chiamate LLM transitano obbligatoriamente per **`dentalcare-llm-gateway`** (privacy
+engine, pseudonimizzazione, audit). Il **`retell-provisioner`** gestisce il ciclo di vita
+degli agent vocali per-tenant. Entrambi i servizi sono indipendenti da DentalCare e
+riutilizzabili da altri prodotti futuri.
+
 ## 23. Performance
 
 Requisiti da fissare su: apertura cartella, rendering odontogramma, caricamento immagini,
@@ -314,6 +339,8 @@ Nessun paziente reale prima che **tutte** le voci siano verdi:
 - [ ] informative aggiornate (privacy + uso AI)
 - [ ] DPA firmati con tutti i fornitori AI
 - [ ] disclosure assistente vocale + fallback umano
+- [ ] `dentalcare-llm-gateway` attivo: nessuna API key LLM in DentalCare, privacy engine operativo
+- [ ] `retell-provisioner` attivo: agent vocale del tenant pilota provisonato tramite servizio
 - [ ] AI literacy erogata, con evidenze
 - [ ] contratto studio con clausole deployer
 - [ ] restore testato almeno una volta

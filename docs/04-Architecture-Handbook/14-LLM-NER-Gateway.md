@@ -5,8 +5,12 @@ Documentazione architetturale e operativa dei componenti di sicurezza e anonimiz
 - **`llm-gateway-demo`** (Repository: [`fpapale/llm-gateway-demo`](https://github.com/fpapale/llm-gateway-demo)): Suite web di collaudo, simulatore client e ispettore Side-by-Side a 3 pannelli.
 
 > [!IMPORTANT]
-> **Vincolo di Sola Lettura su `llm-gateway` originale:**
-> L'infrastruttura originale `llm-gateway` (spaCy standard) funge da baseline immutabile di confronto. Tutte le innovazioni architetturali (Dual-Engine 0.3B, checksum Luhn P.IVA, modalità Pass-Through, endpoint di telemetria `/v1/status`) risiedono nel repository indipendente **`llm-ner-gateway`**.
+> **AUTONOMIA TOTALE E ARCHITETTURA CONTAINER DOCKER**
+> Il sistema è completamente autonomo e opera nativamente tramite **container Docker** sulla rete `dentalcarepro_dentalcarepro`:
+> - Il repository **`llm-ner-gateway`** incapsula ed espone **entrambi i motori NER**: il modello fine-tuned `llm-ner-dentalcare-0.3B` e il modello standard `spaCy` (`it_core_news_lg`).
+> - Il deployment Docker Compose avvia sia l'istanza primaria (:8080 su 0.3B) sia l'istanza di confronto (:8085 con `NER_MODEL=spacy`), generate dalla **medesima immagine** di `llm-ner-gateway`.
+> - Non esiste alcuna dipendenza verso cartelle o repository legacy per l'esecuzione di spaCy.
+> - L'installazione e la manutenzione sul server (`192.168.0.72`) avvengono esclusivamente tramite gli script bash idempotenti `scripts/install-llm_gateway.sh` e `scripts/update-llm-gateway.sh`.
 
 ---
 
@@ -261,23 +265,20 @@ I test predefiniti nella demo riproducono fedelmente le strutture dati DTO e i f
 
 Tutti i container operano all'interno della rete Docker dedicata `dentalcarepro_dentalcarepro`:
 
-| Servizio | Container Docker | Porta Interna | Porta Esposta Host | Note |
-| :--- | :--- | :---: | :---: | :--- |
-| **`llm-ner-gateway`** | `llm-ner-gateway` | `8080` | **`8080`** | Gateway primario con modello 0.3B |
-| **`llm-ner-gateway-ner`**| `llm-ner-gateway-ner` | `8000` | — | Microservizio Dual-Engine (rete interna) |
-| **`llm-gateway`** | `llm-gateway` | `8085` | **`8085`** | Gateway secondario di confronto (spaCy) |
-| **`llm-gateway-ner`** | `llm-gateway-ner` | `8000` | — | Microservizio spaCy (rete interna) |
-| **`llm-gateway-demo`** | `llm-gateway-demo` | `8090` | **`8090`** | UI Web e simulatore di collaudo |
+| Servizio | Container Docker | Immagine Sorgente | Porta Interna | Porta Esposta Host | Note Operative |
+| :--- | :--- | :--- | :---: | :---: | :--- |
+| **`llm-ner-gateway`** | `llm-ner-gateway` | `llm-ner-gateway:latest` | `8080` | **`8080`** | Gateway primario con modello fine-tuned DentalCare 0.3B |
+| **`llm-ner-gateway-ner`**| `llm-ner-gateway-ner` | `llm-ner-gateway-ner:latest` | `8000` | — | Microservizio Dual-Engine (rete interna Docker) |
+| **`llm-gateway`** | `llm-gateway` | `llm-ner-gateway:latest` | `8085` | **`8085`** | Gateway secondario di confronto (stessa base codice Java) |
+| **`llm-gateway-ner`** | `llm-gateway-ner` | `llm-ner-gateway-ner:latest` | `8000` | — | Microservizio con `NER_MODEL=spacy` (stessa immagine Python) |
+| **`llm-gateway-demo`** | `llm-gateway-demo` | `llm-gateway-demo:latest` | `8090` | **`8090`** | UI Web, ispezione a 3 pannelli e simulatore client JWT |
 
-### 6.2 Ambiente di Sviluppo Locale (Windows senza Docker)
+### 6.2 Relazioni di Rete e Isolamento
 
-| Componente | Cartella Locale | Porta HTTP | Note |
-| :--- | :--- | :---: | :--- |
-| **`llm-gateway`** | `D:\llm-gateway` | `8095` | Copia `.runtime` in sola lettura |
-| **`llm-gateway-ner`** | `D:\llm-gateway\ner` | `8097` | spaCy `it_core_news_lg` |
-| **`llm-ner-gateway`** | `D:\llm-rizzo-gateway` | `8096` | Spring Boot 3.5 / Java 25 |
-| **`llm-ner-gateway-ner`**| `D:\llm-rizzo-gateway\ner` | `8098` | Dual-Engine Python (0.3B o spaCy) |
-| **`llm-gateway-demo`** | `D:\llm-gateway-demo` | `8090` | Avvio completo tramite `start-all.ps1` |
+- **Rete `dentalcarepro_dentalcarepro`**: Rete bridge condivisa su cui comunicano il backend di DentalCare, la suite demo e i due gateway esposti.
+- **Rete `internal`**: Rete isolata non esposta su cui i gateway Java comunicano con i microservizi Python NER su porta interna `8000`.
+- **Nessuna dipendenza legacy**: Tutti i container appartengono allo stack unificato di `llm-ner-gateway` e `llm-gateway-demo`.
+
 
 ---
 

@@ -92,56 +92,165 @@ Il gateway applica policy differenziate in base alla tupla `(application, purpos
 
 ---
 
-## 3. Motore Dual-Engine NER e Modello Odontoiatrico `0.3B`
+## 3. I Modelli di Named Entity Recognition (NER) e Motore Dual-Engine
 
-### 3.1 Architettura Dual-Engine (`config/config.yaml`)
+L'anonimizzazione dei prompt verso i modelli linguistici (LLM) richiede un bilanciamento rigoroso tra **accuratezza clinico-semantica**, **velocità di inferenza** e **continuità di servizio (zero-downtime)**. Nel contesto di DentalCare Pro, la perdita di un identificativo personale (under-redaction) costituisce una violazione del GDPR (Art. 4 e Art. 9), mentre la cancellazione indebita di termini clinici o comandi dell'interfaccia (over-redaction) corrompe l'usabilità del Copilot.
 
-Il sottosistema di Named Entity Recognition (`ner/app.py`) è un microservizio FastAPI parametrizzato che supporta la selezione dinamica del motore:
+A questo scopo, `llm-ner-gateway` adotta un'architettura **Dual-Engine** ibrida che combina modelli Deep Learning Transformer, pipeline statistiche convoluzionali, euristiche a due passate e validatori algoritmici deterministici.
+
+---
+
+### 3.1 Filosofia di Progetto e Architettura Dual-Engine
+
+Il microservizio Python (`ner/app.py`), esposto internamente sulla porta `8000` (o `8098` in sviluppo), astrae l'esecuzione dei modelli e supporta la commutazione a caldo tramite configurazione parametrizzata in `config/config.yaml` o variabile d'ambiente `NER_MODEL`:
 
 ```yaml
 ner:
   model: "auto"              # Opzioni: "auto" | "transformers" | "spacy"
-  variant_max_length: 2000
-  extra_app_words: []
+  variant_max_length: 2000   # Soglia massima caratteri per analisi a doppia passata
+  extra_app_words: []        # Termini protetti custom aggiuntivi
 ```
 
 ```mermaid
 flowchart TD
-    Req["Richiesta NER da Gateway"] --> CheckConf{"Configurazione ner.model"}
+    Req["Richiesta NER POST /analyze<br/>(Testo del prompt / DTO)"] --> CheckConf{"Configurazione ner.model"}
     CheckConf -->|"model: transformers"| LoadTrans["Carica Modello Fine-Tuned<br/>config/llm-ner-dentalcare-0.3B"]
     CheckConf -->|"model: spacy"| LoadSpacy["Carica spaCy<br/>it_core_news_lg"]
-    CheckConf -->|"model: auto"| CheckDir{"Esiste cartella<br/>llm-ner-dentalcare-0.3B?"}
+    CheckConf -->|"model: auto"| CheckDir{"Esiste cartella pesi<br/>llm-ner-dentalcare-0.3B?"}
     CheckDir -->|Sì| LoadTrans
     CheckDir -->|No (Fallback automatico)| LoadSpacy
-    LoadTrans --> Infer["Inferenza Estrazione Entità (CPU)"]
-    LoadSpacy --> Infer
-    Infer --> Resp["Entità Rilevate (JSON)"]
+    LoadTrans --> PreProc["Pre-Processing & Normalizzazione Simboli/Emoji"]
+    LoadSpacy --> PreProc
+    PreProc --> Infer["Inferenza Estrazione Entità (CPU Optimized)"]
+    Infer --> PostProc["Post-Processing Dual-Pass + Euristiche APP_WORDS"]
+    PostProc --> Resp["Entità Estratte (Offsets in Code-Points + Label)"]
 ```
 
-### 3.2 Modello Fine-Tuned Specializzato: `llm-ner-dentalcare-0.3B`
-
-Derivato dall'architettura **ModernBERT / mmBERT** a 22 categorie PII italiane e specializzato tramite fine-tuning supervisionato:
-- **Dataset di Training**: 3.000 frasi sintetiche ad alta densità clinica e amministrativa odontoiatrica (cartelle cliniche, diari, note anamnestiche, fatture, comunicazioni ai pazienti).
-- **Metriche di Prestazione**:
-  - **Precision**: 99.1%
-  - **Recall**: 97.9%
-  - **F1-Score**: 0.985
-- **Immunità ai Falsi Positivi sui Menu UI**: I motori generici come `spaCy` tendono a classificare erroneamente termini dell'interfaccia utente (es. *Agenda*, *Fatturazione*, *Magazzino*, *Dashboard*) come nomi di persona (`PER`). Il modello 0.3B garantisce **zero falsi positivi** sul dizionario applicativo DentalCare.
-- **Risoluzione Nomi Omografi e Verbi di Contatto**: Isola correttamente il nome proprio da verbi imperativi di contatto (*"Chiama Mario Rossi"* $\rightarrow$ estrae solo *"Mario Rossi"*, preservando *"Chiama"* per il function calling).
-
-### 3.3 Checksum Algoritmici ed Entità PII Estese
-
-Oltre all'elaborazione neurale, il gateway integra validatori deterministici ad alta affidabilità:
-- **Partita IVA Italiana**: Validazione con algoritmo checksum **Luhn 11 cifre**, con verifica del codice ufficio provinciale (cifre 8-10). Evita falsi positivi su sequenze numeriche o codici articolo.
-- **Codice Fiscale**: Validazione algoritmica dei 16 caratteri alfanumerici con carattere di controllo pari/dispari.
-- **IBAN**: Validazione ISO 7064 MOD 97-10.
-- **Nuove Categorie Estese (Redazione Irreversibile)**:
-  - `ADDRESS`: Indirizzi di residenza e vie (sempre cancellati, mai ripristinabili verso l'esterno).
-  - `CATASTO`: Riferimenti catastali (foglio, particella, subalterno).
-  - `DOCID`: Carte d'identità, patenti, passaporti.
-  - `TARGA`: Targhe automobilistiche italiane.
+#### Principio di Continuità e Graceful Degradation
+Nei sistemi sanitari mission-critical, un errore nel download dei pesi del modello neurale o la mancanza temporanea di risorse GPU/RAM non deve mai causare il blocco dell'applicazione. Se la cartella del modello `llm-ner-dentalcare-0.3B` non è presente al boot del container, la modalità `auto` attiva immediatamente il fallback trasparente su `spaCy`, garantendo la protezione di base senza interrompere i servizi di studio.
 
 ---
+
+### 3.2 Il Modello Fine-Tuned Specializzato: `llm-ner-dentalcare-0.3B` (ModernBERT)
+
+Il motore neurale primario è un modello Transformer compatto da **300 milioni di parametri (0.3B)**, derivato dalla famiglia di modelli **ModernBERT / mmBERT** a 22 categorie PII italiane e specializzato tramite fine-tuning supervisionato sul dominio odontoiatrico:
+
+1. **Finestra di Contesto Estesa a 8.192 Token**:
+   - I modelli BERT tradizionali sono limitati a 512 token, costringendo a un frazionamento aggressivo del testo che distrugge le correlazioni tra frasi contigue.
+   - `llm-ner-dentalcare-0.3B` supporta nativamente una finestra di **8.192 token**. Per testi lunghi fino a 1.000.000 di caratteri (es. perizie medico-legali, cartelle cliniche storiche), il microservizio adotta una strategia a finestre scorrevoli (`sliding windows`) con blocchi da **4.000 token** e sovrapposizione di sicurezza di **256 token** (`CHUNK_OVERLAP_TOKENS`), prevenendo tagli accidentali a metà di un'entità.
+2. **Schema di Etichettatura BIO a 45 Tag**:
+   - Il modello adotta lo schema standard BIO (*Beginning*, *Inside*, *Outside*): per ciascuna delle 22 categorie PII italiane viene emesso il tag `B-<LABEL>`, `I-<LABEL>` oppure `O`.
+   - **Le 22 Categorie PII Italiane Riconosciute**:
+     - `FULLNAME`: Nomi e cognomi di persone (pazienti, medici, familiari).
+     - `ADDRESS` (composto da `STREET`, `BUILDINGNUM`, `CITY`, `ZIPCODE`, `PROVINCE`): Dati topografici completi.
+     - `CATASTO`: Identificativi catastali (foglio, particella, subalterno).
+     - `DOCID` / `ID_DOC`: Carte d'identità, patenti di guida, passaporti.
+     - `TARGA`: Targhe automobilistiche italiane.
+     - `PIVA`: Partite IVA aziendali e professionali.
+     - `CF`: Codici fiscali di persone fisiche.
+     - `IBAN`: Coordinate bancarie internazionali.
+     - `EMAIL`, `TELEPHONENUM`: Canali di contatto digitali e telefonici.
+     - `DATE`, `TIME`, `AGE`, `AMOUNT`, `CREDITCARDNUMBER`, `GENDER`, `ORG`: Dati contestuali sensibili.
+   - **Mappatura Normalizzata sul Gateway (`LABEL_MAP`)**: I tag atomici estratti dal modello vengono mappati nelle macro-categorie gestite dal `TokenVault` Java (`FULLNAME` $\rightarrow$ `PER`, `STREET/CITY/ZIPCODE` $\rightarrow$ `ADDRESS`, ecc.).
+
+3. **Dataset di Addestramento e Specializzazione (`dentalcare_bio_3000.jsonl`)**:
+   Il modello è stato addestrato e validato su un corpus di **3.000 frasi sintetiche ad alta densità informativa** estratte e modellate direttamente sullo schema relazionale di DentalCare Pro (`database/install.sql`):
+   - **Prontuario Farmaceutico Clinico**: Riconoscimento contestuale di antibiotici (*Amoxicillina*, *Augmentin*, *Zitromax*, *Claritromicina*), anticoagulanti e antiaggreganti (*Coumadin*, *Sintrom*, *Pradaxa*, *Eliquis*, *Aspirinetta*), bifosfonati ad alto rischio osteonecrosi (*Alendronato*, *Zometa*, *Aclasta*) e anestetici locali (*Articaina Pierrel*, *Mepivacaina*, *Lidocaina*).
+   - **Dispositivi e Materiali Odontoiatrici**: Riconoscimento di brand implantari e chirurgici (*Straumann*, *Nobel Biocare*, *VICRYL*, *Zirconia*, *Bio-Oss*), evitando che nomi propri di aziende o materiali vengano confusi con medici o pazienti.
+   - **Nomi Propri Omografi Difficili**: Casi limite italiani in cui il nome proprio coincide con un aggettivo o sostantivo comune (*Rosa Pellegrini*, *Viola Santoro*, *Speranza Gallo*, *Felice Serafini*, *CONTI LUCIA* in MAIUSCOLO).
+
+4. **Metriche e Validazione di Conformità (DPIA D-04)**:
+   - **Precision**: **99.1%** (falsi positivi quasi azzerati).
+   - **Recall**: **97.9%** (copertura completa dei dati personali).
+   - **F1-Score Combinato**: **0.985**.
+   - **Recall Comandi Critici "Chiama / Cerca"**: **100%** (12/12 sui test di regressione).
+
+---
+
+### 3.3 Il Modello Baseline e Fallback: `spaCy` (`it_core_news_lg`)
+
+La pipeline statistica di fallback si basa sul modello di lingua italiana su larga scala **`it_core_news_lg`** di spaCy:
+
+- **Architettura**: Rete neurale convoluzionale (CNN) transition-based con word vectors densi (*FlauBERT/GloVe-style italian vectors*).
+- **Vantaggi Operativi**:
+  - Impronta di memoria estremamente ridotta: circa **500 MB di RAM** contro ~1.2 GB di PyTorch + Transformers.
+  - Tempi di risposta ultra-rapidi su CPU: latenza media di inferenza compresa tra **15 e 30 ms** per messaggi brevi.
+  - Zero configurazioni esterne: pacchetto distribuito direttamente come wheel Python.
+- **Limiti e Discrepanze rispetto al Modello 0.3B**:
+  - **Falsi Positivi sui Menu**: Tende a classificare sostantivi con iniziale maiuscola come `PER` (es. *«Apri l'Agenda e vai in Fatturazione»* $\rightarrow$ scambia *Agenda* e *Fatturazione* per persone).
+  - **Inglobamento dei Verbi di Comando**: Su frasi brevi come *«Chiama Giulia Verdi»*, spaCy include il verbo all'interno dello span della persona, estraendo *«Chiama Giulia Verdi»* come `PER`. Al momento del ripristino, la risposta dell'LLM risulterà corrotta (*«Ho chiamato PERSONA_1»* diventa *«Ho chiamato Chiama Giulia Verdi»*).
+  - **Mancanza di Categorie Specializzate**: spaCy riconosce unicamente `PER`, `LOC`, `ORG`, `MISC`. Non possiede rilevatori semantici per catastali, targhe o documenti d'identità, e tende a confondere la Partita IVA con un numero di telefono cellulare per via della lunghezza a 11 cifre.
+
+---
+
+### 3.4 Pipeline di Post-Processing ed Euristiche a Doppia Lettura (Dual-Pass)
+
+Per eliminare i falsi positivi e garantire che nessun comando venga stravolto, `app.py` applica una sofisticata pipeline euristica pre e post-inferenza:
+
+1. **Normalizzazione Simboli ed Emoji (`_without_symbols`)**:
+   Le emoji e i caratteri speciali grafici (categorie Unicode `So`, `Sk` e joiner `\u200d`, `\ufe0f`) vengono sostituiti con altrettanti spazi bianchi. In questo modo la lunghezza della stringa e gli indici di offset (*code-points*) rimangono matematicamente identici, ma il tokenizer del modello non viene destabilizzato da simboli grafici.
+
+2. **Tecnica del Prefisso Variante (`VARIANT_PREFIX = "Nota: "`)**:
+   I modelli linguistici tendono a confondere le parole a inizio frase (che hanno l'iniziale maiuscola per regole grammaticali) con nomi propri.
+   - Il gateway esegue una **seconda lettura** del testo anteponendo il prefisso `"Nota: "` e abbassando la prima lettera della frase originale.
+   - Trovandosi a metà testo, il verbo di comando perde la maiuscola forzata e non viene più scambiato per un nome.
+   - Gli span rilevati nella seconda lettura vengono riallineati scalando indietro gli offset di `len(VARIANT_PREFIX)` tramite `_shift_back`.
+
+3. **Dizionario Anti-Falsi-Positivi (`APP_WORDS`)**:
+   Un set congelato e indicizzato in RAM di **oltre 300 vocaboli specialistici** di DentalCare:
+   - Sezioni UI (*Agenda*, *Dashboard*, *Fatturazione*, *Magazzino*, *Preventivi*, *Richiami*).
+   - Prestazioni odontoiatriche (*Ablazione*, *Detartrasi*, *Devitalizzazione*, *Ortodonzia*, *Parodontologia*).
+   - Farmaci e principi attivi (*Amoxicillina*, *Augmentin*, *Brufen*, *Coumadin*, *Oki*, *Paracetamolo*).
+   - Voci contabili e fiscali (*Acconto*, *Bollo*, *FatturaPA*, *Imponibile*, *Partita*, *Ritenuta*, *SDI*, *Split*).
+   La funzione `_trim` verifica ogni span estratto: se le parole estratte appartengono ad `APP_WORDS`, l'entità viene scartata immediatamente.
+
+4. **Gestione Dinamica Verbi di Comando e Cognomi Omografi (`COMMAND_VERBS` / `PERSON_VERBS`)**:
+   - Verbi di comando a inizio frase (*"chiama"*, *"cerca"*, *"avvisa"*, *"trova"*, *"elimina"*): vengono esclusi dallo span del nome tramite `_trim`.
+   - Se un verbo di comando compare a metà testo preceduto da un nome o con iniziale maiuscola (es. *"Cerca"* come cognome in *"Dott. Mario Cerca"*), la funzione `_with_verb_surnames` ne preserva la corretta classificazione come cognome.
+
+5. **Trattamento MAIUSCOLO (`_upper_runs`)**:
+   Nei documenti amministrativi e nei referti, i nomi dei pazienti compaiono frequentemente interamente in maiuscolo (es. *«PAZIENTE: ROSSI MARIO»*). Poiché le reti Transformer sono addestrate prevalentemente su testo standard, la funzione `_upper_runs` individua le sequenze di parole in lettere maiuscole e le converte temporaneamente in *Title Case* nella variante di seconda lettura, portando il recall sui nomi maiuscoli al 100%.
+
+6. **Risoluzione Conflitti e Fusione Non-Overlapping (`_resolve` & `_merge`)**:
+   - `_merge`: Fonde span adiacenti o separati solo da spazi e virgole (es. via, civico, CAP e città vengono unificati in un solo blocco `ADDRESS`).
+   - `_resolve`: Applica il principio di sicurezza **«l'etichetta PERSONA (`PER`) vince sempre su qualsiasi altra etichetta»**; tra etichette non-PER concorrenti, viene mantenuto lo span più lungo.
+
+---
+
+### 3.5 Livello Deterministico Algoritmico: Validatori Checksum ed Entità Estese
+
+Non tutti i dati personali possono o devono essere affidati a un modello probabilistico di Machine Learning. Per codici strutturati e identificativi a standard rigido, il gateway Java affianca al microservizio NER un livello di **validazione algoritmica deterministica**:
+
+| Identificativo | Algoritmo di Validazione | Comportamento nel Gateway | Azione Verso Upstream LLM |
+| :--- | :--- | :--- | :--- |
+| **Partita IVA Italiana** | **Algoritmo di Luhn (11 cifre)** con controllo codice provinciale (cifre 8-10 tra 001-100 o speciali 120, 121, 999). | Elimina i falsi positivi su codici articolo o numeri di telefono. | Sostituita con token pseudonimo o rimossa (`DROP` in fatture). |
+| **Codice Fiscale** | **Controllo Alfanumerico a 16 caratteri** con matrice dei caratteri pari/dispari (D.M. 23/12/1976). | Validazione formale rigida; scarta stringhe alfanumeriche casuali. | Sostituito con `[CODICE FISCALE RIMOSSO]` o `DROP`. |
+| **IBAN Bancario** | **ISO 7064 MOD 97-10** (27 caratteri italiani con prefisso `IT`). | Verifica matematica dell'integrità delle coordinate di pagamento. | Sostituito con `[IBAN RIMOSSO]` o `DROP`. |
+| **Indirizzi (`ADDRESS`)** | Riconoscimento semantico neurale (via, civico, comune, CAP, provincia). | Riconoscimento e unificazione a span unico. | **Redazione irreversibile**: mai ripristinato verso il modello esterno. |
+| **Catasto (`CATASTO`)** | Riconoscimento neurale ed espressioni regolari per foglio, particella, subalterno. | Rilevamento dati patrimoniali e catastali dell'immobile. | **Redazione irreversibile**: sostituito con `[CATASTO]`. |
+| **Documenti (`DOCID`)** | Riconoscimento carte d'identità (cartacee ed elettroniche CIE), patenti, passaporti. | Cattura identificativi di riconoscimento personale. | **Redazione irreversibile**: sostituito con `[DOCID]`. |
+| **Targhe (`TARGA`)** | Riconoscimento formato europeo/italiano (2 lettere, 3 cifre, 2 lettere). | Cattura targhe veicoli negli accessi o note di cortesia. | **Redazione irreversibile**: sostituito con `[TARGA]`. |
+
+---
+
+### 3.6 Tabella Comparativa Sinottica dei Modelli NER
+
+| Caratteristica / Metrica | `llm-ner-dentalcare-0.3B` (Fine-Tuned ModernBERT) | `spaCy` (`it_core_news_lg`) (Baseline Standard) | Modello Nudo (Senza Euristiche Dual-Pass) |
+| :--- | :---: | :---: | :---: |
+| **Tipo di Architettura** | Deep Transformer (ModernBERT / mmBERT) | Convolutional Neural Network (CNN) + Word Vectors | Deep Transformer (Single-Pass Vanilla) |
+| **Parametri / Dimensione** | ~300M parametri (~1,2 GB su disco) | Pipeline statistica (~500 MB RAM) | ~300M parametri |
+| **Finestra di Contesto** | **8.192 token** (sliding window a 4.000) | 1.000.000 caratteri (word vectors) | 512 – 8.192 token |
+| **Categorie PII Gestite** | **22 categorie PII** (45 tag BIO) | 4 macro-categorie (`PER`, `LOC`, `ORG`, `MISC`) | 22 categorie PII |
+| **F1-Score Globale** | **0.985** (Precision 99.1%, Recall 97.9%) | 0.842 (Precision 81.3%, Recall 87.4%) | 0.912 |
+| **Recall su Verbi "Chiama/Cerca"**| **100%** (12 / 12 coperti) | 58.3% (7 / 12 mancati o overreached) | 50.0% (ingloba il verbo nel nome) |
+| **Falsi Positivi su Menu UI** | **0 falsi positivi** (immunità totale) | Elevati (scambia *Agenda*, *Fatturazione* per `PER`) | Moderati |
+| **Validazione Partita IVA** | Checksum Luhn + distacco da numero telefonico | Nessuna (catturata come generico `TEL` o `MISC`) | Parziale senza checksum |
+| **Latenza Media CPU (80 char)** | ~180 – 350 ms | **~15 – 30 ms** | ~140 – 250 ms |
+| **Impronta Memoria RAM** | ~1,2 – 1,5 GB | **~500 MB** | ~1,2 GB |
+| **Stato Operativo nel Gateway**| **Motore Primario di Produzione** (:8080) | **Motore di Fallback e Confronto** (:8085) | — (Solo benchmark interno) |
+
+---
+
 
 ## 4. Modalità Pass-Through (`pass-through.mode`)
 

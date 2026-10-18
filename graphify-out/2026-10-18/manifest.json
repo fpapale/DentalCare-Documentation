@@ -1,0 +1,757 @@
+{
+  ".agents/rules/graphify.md": {
+    "mtime": 1784629220.0,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1784629220.0,
+    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792175646.0,
+    "ast_hash": "af67ea390ec16109230bf4ddd94f386e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "ba4414aafcb75fddbbb216b24a480e23",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/00-Cover.md": {
+    "mtime": 1782901912.51,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/01-Lettera-del-Founder.md": {
+    "mtime": 1782901912.51,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/02-La-Nostra-Visione.md": {
+    "mtime": 1782901912.51,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/03-Il-Problema.md": {
+    "mtime": 1782901912.51,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/04-La-Soluzione.md": {
+    "mtime": 1782901912.52,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/05-Perch\u00e9-Ora.md": {
+    "mtime": 1782901912.52,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/06-Mercato.md": {
+    "mtime": 1782901912.52,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/07-Il-Vantaggio-Competitivo.md": {
+    "mtime": 1782901912.52,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/08-La-Piattaforma.md": {
+    "mtime": 1782901912.52,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/09-La-Strategia.md": {
+    "mtime": 1782901912.52,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/10-La-Roadmap.md": {
+    "mtime": 1782901912.53,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/11-I-Numeri.md": {
+    "mtime": 1782901912.53,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/12-Clinical-Advisory-Board.md": {
+    "mtime": 1782901912.53,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/13-Investment-Highlights.md": {
+    "mtime": 1782901912.53,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/14-Call-To-Action.md": {
+    "mtime": 1782901912.53,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/01-Executive-Summary/Executive-Summary-Completo.md": {
+    "mtime": 1782901912.53,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/02-Vision.md": {
+    "mtime": 1782900468.0,
+    "ast_hash": "57a054e4f732f4884ccb2e03ca19719c",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/03-Analisi-Mercato.md": {
+    "mtime": 1782901102.0,
+    "ast_hash": "015beb41d55dac3a255de5b3e8fd8ec8",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/04-Competitor.md": {
+    "mtime": 1784751872.0,
+    "ast_hash": "39795d8fd7d246ea9a558272e17bdf3c",
+    "semantic_hash": "39795d8fd7d246ea9a558272e17bdf3c"
+  },
+  "docs/01-Studio-di-Fattibilita/05-SWOT.md": {
+    "mtime": 1782901280.0,
+    "ast_hash": "7b3a5fe6c0e9692b4136b37c475ad8b9",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/06-Rischi.md": {
+    "mtime": 1782901338.0,
+    "ast_hash": "4106b6d355b4c4a231d4edd58894d578",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/07-Clinical-Advisory-Board.md": {
+    "mtime": 1782901418.0,
+    "ast_hash": "e68d1dcb3f3d767d6339c7777b39010d",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione.md": {
+    "mtime": 1782901498.0,
+    "ast_hash": "8526f9e94cbe51af406564efa3913f96",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/00-Introduzione.md": {
+    "mtime": 1782901769.97,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/01-Validation-Master-Plan.md": {
+    "mtime": 1782901769.98,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/02-Framework-Normativo.md": {
+    "mtime": 1782901769.98,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/03-Quality-Management-System.md": {
+    "mtime": 1782901769.98,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/04-Requisiti-e-Traceability.md": {
+    "mtime": 1782901769.98,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/05-Software-Validation.md": {
+    "mtime": 1782901769.98,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/06-Clinical-Validation.md": {
+    "mtime": 1782901769.98,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/07-AI-Validation.md": {
+    "mtime": 1782901769.99,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/08-Radiology-AI-Validation.md": {
+    "mtime": 1782901769.99,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/09-Testing-Strategy.md": {
+    "mtime": 1782901769.99,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/10-Cybersecurity-Validation.md": {
+    "mtime": 1782901769.99,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/11-Performance-Validation.md": {
+    "mtime": 1782901769.99,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/12-Deployment-Qualification.md": {
+    "mtime": 1782901769.99,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/13-Post-Market-Surveillance.md": {
+    "mtime": 1782901769.99,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/14-KPI.md": {
+    "mtime": 1782901770.0,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/15-Roadmap.md": {
+    "mtime": 1782901770.0,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/16-Templates.md": {
+    "mtime": 1782901770.0,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/08-Piano-Validazione/Piano-Validazione-Definitivo.md": {
+    "mtime": 1782901770.0,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/Studio-di-Fattibilita.md": {
+    "mtime": 1784751900.0,
+    "ast_hash": "c0325b21a48e227a512455dcf5fd8c49",
+    "semantic_hash": "c0325b21a48e227a512455dcf5fd8c49"
+  },
+  "docs/02-Business-Plan/01-Executive-Summary.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "b1278804b31af42f70d4ab44fe0d92e6",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/02-Business-Model.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "bc205312d287d2e967bd067b5d4fb7f6",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/03-Market-Strategy.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "a6f0da4e467732974746057a55dd0e72",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/04-Piano-Commerciale.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "af3526574df0f745529932a3e603a31d",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/05-Marketing.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "eb566babc92c09ab8b94bb76cf16c2ca",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/06-Pricing.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "c790e34347d05ac5a1c0ac56f3821406",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/07-Financial-Plan.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "dfb89ef9cc59a3b5d3f27521099fa49b",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/08-Investimenti.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "89cac5c1b9970a1dcee0bb5a94050d8d",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/09-KPI.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "debb4ecb1402737edf8f237c800ebebf",
+    "semantic_hash": ""
+  },
+  "docs/02-Business-Plan/Business-Plan.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "979ece93c4f551cdf79b1f131d1b63a9",
+    "semantic_hash": ""
+  },
+  "docs/03-Product-Roadmap/AI-Roadmap.md": {
+    "mtime": 1784756638.0,
+    "ast_hash": "5518e7b0f1cc4c1bdea6cdf03759c60f",
+    "semantic_hash": "5518e7b0f1cc4c1bdea6cdf03759c60f"
+  },
+  "docs/03-Product-Roadmap/Product-Roadmap.md": {
+    "mtime": 1784756638.0,
+    "ast_hash": "0079f1fc5dffe229309f93e41e7c30fd",
+    "semantic_hash": "0079f1fc5dffe229309f93e41e7c30fd"
+  },
+  "docs/03-Product-Roadmap/Release-1.x.md": {
+    "mtime": 1791357138.0,
+    "ast_hash": "f751a5ac6e1156ce0dd589626c89f7e7",
+    "semantic_hash": ""
+  },
+  "docs/03-Product-Roadmap/Release-2.x.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "8135736073aab3a5fb7496240dc0b300",
+    "semantic_hash": ""
+  },
+  "docs/03-Product-Roadmap/Release-3.x.md": {
+    "mtime": 1782902824.0,
+    "ast_hash": "dd86d794fcb55942f6460fde207fb46a",
+    "semantic_hash": ""
+  },
+  "docs/03-Product-Roadmap/Release-4.x.md": {
+    "mtime": 1782902850.0,
+    "ast_hash": "8c03a71e1764be6d3530ec36493950c5",
+    "semantic_hash": ""
+  },
+  "docs/03-Product-Roadmap/Release-5.x.md": {
+    "mtime": 1782902892.0,
+    "ast_hash": "380f5a0fa6a42256b71c484f05b7a559",
+    "semantic_hash": ""
+  },
+  "docs/03-Product-Roadmap/Vision.md": {
+    "mtime": 1782902922.0,
+    "ast_hash": "26e63c1040be9b5705f1dd70f763ec1d",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/01-Overview.md": {
+    "mtime": 1790631398.0,
+    "ast_hash": "aa1891568dd6a2c242369258b768c8eb",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/02-Backend.md": {
+    "mtime": 1790631398.0,
+    "ast_hash": "842d1003cf1c2d37c1543a76a300596c",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/03-Frontend.md": {
+    "mtime": 1790631398.0,
+    "ast_hash": "519382f4f4ee01bec35cceaf316a77bd",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/04-AI.md": {
+    "mtime": 1792175638.0,
+    "ast_hash": "1c4b8e90a91285995a066b7292f0f7ce",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/05-DICOM.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "72e0103970914bebc8d797eb34d6d3f4",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/06-Multitenancy.md": {
+    "mtime": 1790631398.0,
+    "ast_hash": "6cb5e489187b23641578efef60d7cdeb",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/07-Security.md": {
+    "mtime": 1790631398.0,
+    "ast_hash": "bbde3317dbcfc518f507f34f4e5bcbba",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/08-DevOps.md": {
+    "mtime": 1790666534.0,
+    "ast_hash": "86aa80431300dc97b9f7ce84c01790dc",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/09-Deployment.md": {
+    "mtime": 1790631398.0,
+    "ast_hash": "b2b9583480081809a85385da84aeee7a",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/10-Testing.md": {
+    "mtime": 1790631398.0,
+    "ast_hash": "a5638c727b6994a480bf0362f2c364c3",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/11-Data-Encryption.md": {
+    "mtime": 1784546048.0,
+    "ast_hash": "2dd981f5ef25e38983a87c368329b1b9",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/12-Clinical-Record-Model.md": {
+    "mtime": 1790623398.0,
+    "ast_hash": "0ff7ebfe9869d021e21480d22b4e1d08",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/13-Audit-Trail.md": {
+    "mtime": 1790631398.0,
+    "ast_hash": "3af1a1e4cbcfc46540c76a763ece879d",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/Architecture-Handbook.md": {
+    "mtime": 1792175626.0,
+    "ast_hash": "366d419702f846d8386847fb80f479ca",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/01-Guida-Dottoressa.md": {
+    "mtime": 1790666912.0,
+    "ast_hash": "f1229e45e90d3d1246b14691ebcf0d13",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/02-Guida-Segretaria.md": {
+    "mtime": 1790666958.0,
+    "ast_hash": "26dcc7ca2c81c809f12e36106754b610",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/03-Guida-Amministratore.md": {
+    "mtime": 1790666984.0,
+    "ast_hash": "645a3a9c552379d4fcf34e3109207040",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/Manuale-Completo.md": {
+    "mtime": 1790075074.0,
+    "ast_hash": "9c2e596999147782b67d19d6abe7923c",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/README.md": {
+    "mtime": 1790667012.0,
+    "ast_hash": "11a2ba2697e9f286b5370d0003cd4754",
+    "semantic_hash": ""
+  },
+  "docs/templates/ADR.md": {
+    "mtime": 1782903484.0,
+    "ast_hash": "26226f1aaeece32da9457745d72fb762",
+    "semantic_hash": ""
+  },
+  "docs/templates/ArchitectureDecision.md": {
+    "mtime": 1782903570.0,
+    "ast_hash": "082eee7d2d9a2fb865811caf49e004a6",
+    "semantic_hash": ""
+  },
+  "docs/templates/BusinessCase.md": {
+    "mtime": 1782903614.0,
+    "ast_hash": "1b6ff969c36fb98ee4f63c7345e8de55",
+    "semantic_hash": ""
+  },
+  "docs/templates/ClinicalValidation.md": {
+    "mtime": 1782903656.0,
+    "ast_hash": "76556055d2e55f0230ae54cee1a6b5c3",
+    "semantic_hash": ""
+  },
+  "docs/templates/Feature.md": {
+    "mtime": 1782903710.0,
+    "ast_hash": "9d938217445a01c5e866b7eec87f3319",
+    "semantic_hash": ""
+  },
+  "docs/templates/Meeting.md": {
+    "mtime": 1782903740.0,
+    "ast_hash": "9d938217445a01c5e866b7eec87f3319",
+    "semantic_hash": ""
+  },
+  "docs/templates/RFC.md": {
+    "mtime": 1782903818.0,
+    "ast_hash": "158ecf1c4a4ed3b6a7c040bda6cc3e9d",
+    "semantic_hash": ""
+  },
+  "docs/templates/Release.md": {
+    "mtime": 1782903770.0,
+    "ast_hash": "6ea061df83611f41218779e2e8a19d80",
+    "semantic_hash": ""
+  },
+  "docs/templates/UseCase.md": {
+    "mtime": 1782903862.0,
+    "ast_hash": "854f0170a6979ad35de609f9a03ce6ba",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/01-login.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "bf84875cd0798f34575362f7794d6532",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/02-seg-dashboard.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "82ff1fccaa46b214b2fc1091b6890462",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/03-seg-agenda.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "bf4e8425712809cddc5099d34be3d5a3",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/04-seg-pazienti.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "74ea5c2bb0208cefe821ca8ffc876e6a",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/05-seg-copilot.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "c0d876e82c36b4e840898672640e169e",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/06-med-dashboard.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "969436e32f66ab39fd27e85642bfb475",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/07-med-scheda.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "7eacea95345781388f62fd7556f4d723",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/08-med-odontogramma.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "4becdd97db953f1359477a1b4eb996d4",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/09-med-cartella.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "31a4c4f2bf177cd942832523f73e8508",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/10-admin-impostazioni.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "9e1791f8804be75bfbc62c78bc7ebd97",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/11-admin-ai.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "282eaacb5af877632241add288df1a7e",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/12-admin-prestazioni.png": {
+    "mtime": 1784546048.0,
+    "ast_hash": "9a6456b929b60b3935465a6188176d5e",
+    "semantic_hash": ""
+  },
+  "docs/Presentazione-Medico-DentalCare-Pro.md": {
+    "mtime": 1784629788.0,
+    "ast_hash": "36cc428760a3ff909594df1087b30fbc",
+    "semantic_hash": ""
+  },
+  "docs/03-Product-Roadmap/DentalCare-Credits-and-Reputation-Spec.md": {
+    "mtime": 1784642452.0,
+    "ast_hash": "87e3f9b454e85321351a14cb673fdb3c",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/07-Open-Data-and-Reputation-Strategy.md": {
+    "mtime": 1784643482.0,
+    "ast_hash": "ead89b7d8484324c3edc9a324f78b082",
+    "semantic_hash": ""
+  },
+  "docs/01-Studio-di-Fattibilita/04b-Competitor-Ranking-2026-07.md": {
+    "mtime": 1784754976.0,
+    "ast_hash": "33640a280e16a8a93fed28ad86ffbf5e",
+    "semantic_hash": "33640a280e16a8a93fed28ad86ffbf5e"
+  },
+  "docs/03-Product-Roadmap/Chairside-Voice-Agent-Spec.md": {
+    "mtime": 1784801516.0,
+    "ast_hash": "8f1ea134052448d48b571a693268a57b",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/MANUALE_UTENTE.md": {
+    "mtime": 1790631298.0,
+    "ast_hash": "62078b82b12a72cb2a576aab8ad95a41",
+    "semantic_hash": ""
+  },
+  "docs/06-Compliance/AI-Act-Compliance.md": {
+    "mtime": 1790016848.0,
+    "ast_hash": "af07cb7cb153fb68fcb5623017dee0d2",
+    "semantic_hash": ""
+  },
+  "docs/06-Compliance/inventario-flussi-ai-per-dpo.md": {
+    "mtime": 1792175658.0,
+    "ast_hash": "3cde5615e5b989231c00b963180c7e44",
+    "semantic_hash": ""
+  },
+  "docs/06-Compliance/retell/INDEX-2026-07-28.md": {
+    "mtime": 1789994188.0,
+    "ast_hash": "948fd3c91a44f44b282edc4fb81f52ab",
+    "semantic_hash": ""
+  },
+  "docs/06-Compliance/retell/attivazione.md": {
+    "mtime": 1785248238.0,
+    "ast_hash": "a3c6e6a19dffa9f43976ee14ae48e952",
+    "semantic_hash": ""
+  },
+  "docs/06-Compliance/retell/messaggi-configurati.md": {
+    "mtime": 1789994208.0,
+    "ast_hash": "1fc47c13c65987f0ccac66da756eefad",
+    "semantic_hash": ""
+  },
+  "docs/06-Compliance/retell/system-prompt-REL1.0-2026-07-28.md": {
+    "mtime": 1785247868.0,
+    "ast_hash": "8c8e53e43f4c108ae576736574a6cbab",
+    "semantic_hash": ""
+  },
+  "docs/06-Compliance/retell/retell-system-prompt-2026-07-28.png": {
+    "mtime": 1789993858.0,
+    "ast_hash": "0976045d19cdac6f2a126be66ec30f2f",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/13-seg-preventivi-avanzamento.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "5c8a03fffef493af86f3359c88d4a7e0",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/14-seg-fatturazione.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "10b7f8ab2865c7595f54f94fc1c36da8",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/15-seg-richiami.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "774a35829c2c4720b067df429031c6d9",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/16-med-agenda-trascorsi.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "2d60749771abfaf98268891def7f745c",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/17-med-seduta-vuota.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "d31d60682fd90f3525d5e80970f53e24",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/18-med-selettore-etichette.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "c8b8492fa6ce6a81b18b48c3d6ee446f",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/19-med-seduta-esiti.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "1d8660a80970ae3433b18fd2c62054b0",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/20-med-riepilogo-chiusura.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "a3c691197546ad418d85a6c277b8aa0f",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/21-med-piano-sospeso.png": {
+    "mtime": 1790020402.0,
+    "ast_hash": "633f519b91dc6970ae8b3afdb1ea5e35",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/22-med-togli-dal-piano.png": {
+    "mtime": 1790020404.0,
+    "ast_hash": "2d8b7d9b10be5a4bc0b47e7416a11b2f",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/23-preventivo-avanzamento.png": {
+    "mtime": 1790020404.0,
+    "ast_hash": "ef095520374e3db98932c2742a8cfc7d",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/24-admin-sistema.png": {
+    "mtime": 1790020404.0,
+    "ast_hash": "9f3b8df06f59366deb4670b7dbc1dfde",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/screenshots/25-pannello-errori.png": {
+    "mtime": 1790020404.0,
+    "ast_hash": "80166b737b352a07a6fc3181e86eeb0a",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/01-login.png": {
+    "mtime": 1790017562.0,
+    "ast_hash": "ac951696ede85405657d363269c56377",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/02-segreteria-dashboard.png": {
+    "mtime": 1790017582.0,
+    "ast_hash": "41067be153559f6e5ef3b6ec01e320ed",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/03-segreteria-agenda.png": {
+    "mtime": 1790017590.0,
+    "ast_hash": "0a8d37dc550938a2edaad44ff811df93",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/04-segreteria-pazienti.png": {
+    "mtime": 1790017608.0,
+    "ast_hash": "aef555544d82d6c8f90d86f141c7bc97",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/05-preventivi-lista.png": {
+    "mtime": 1790017618.0,
+    "ast_hash": "5c8a03fffef493af86f3359c88d4a7e0",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/06-fatturazione.png": {
+    "mtime": 1790017632.0,
+    "ast_hash": "10b7f8ab2865c7595f54f94fc1c36da8",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/07-richiami.png": {
+    "mtime": 1790017642.0,
+    "ast_hash": "774a35829c2c4720b067df429031c6d9",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/08-medico-agenda-trascorsi.png": {
+    "mtime": 1790017678.0,
+    "ast_hash": "2d60749771abfaf98268891def7f745c",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/09-piano-cura-in-sospeso.png": {
+    "mtime": 1790017696.0,
+    "ast_hash": "633f519b91dc6970ae8b3afdb1ea5e35",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/10-togli-dal-piano-motivo.png": {
+    "mtime": 1790017718.0,
+    "ast_hash": "2d8b7d9b10be5a4bc0b47e7416a11b2f",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/11-scheda-seduta-vuota.png": {
+    "mtime": 1790017758.0,
+    "ast_hash": "d31d60682fd90f3525d5e80970f53e24",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/12-selettore-etichette.png": {
+    "mtime": 1790017798.0,
+    "ast_hash": "c8b8492fa6ce6a81b18b48c3d6ee446f",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/13-scheda-seduta-esiti.png": {
+    "mtime": 1790017846.0,
+    "ast_hash": "1d8660a80970ae3433b18fd2c62054b0",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/14-riepilogo-chiusura.png": {
+    "mtime": 1790017876.0,
+    "ast_hash": "a3c691197546ad418d85a6c277b8aa0f",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/15-preventivo-avanzamento.png": {
+    "mtime": 1790017904.0,
+    "ast_hash": "ef095520374e3db98932c2742a8cfc7d",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/16-admin-impostazioni.png": {
+    "mtime": 1790017938.0,
+    "ast_hash": "092aabd599b718ec973385dcbc5c0739",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/17-admin-professionisti.png": {
+    "mtime": 1790017954.0,
+    "ast_hash": "91f85e06ce87b2e877fabab7a4921faf",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/18-admin-sistema-errori.png": {
+    "mtime": 1790017964.0,
+    "ast_hash": "9f3b8df06f59366deb4670b7dbc1dfde",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/19-admin-ai-prompt.png": {
+    "mtime": 1790017992.0,
+    "ast_hash": "427575f700690531646b0ff807976c14",
+    "semantic_hash": ""
+  },
+  "docs/05-Manuale-Utente/img/20-pannello-errori.png": {
+    "mtime": 1790018022.0,
+    "ast_hash": "80166b737b352a07a6fc3181e86eeb0a",
+    "semantic_hash": ""
+  },
+  "docs/04-Architecture-Handbook/14-LLM-NER-Gateway.md": {
+    "mtime": 1792176542.0,
+    "ast_hash": "46ccc261f74807d3281f078e038936b0",
+    "semantic_hash": ""
+  }
+}

@@ -1,16 +1,16 @@
-# Graph Report - DentalCare-Pro-Documentation  (2026-10-16)
+# Graph Report - DentalCare-Pro-Documentation  (2026-10-18)
 
 ## Corpus Check
-- 105 files · ~343,137 words
+- 105 files · ~344,805 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1182 nodes · 1183 edges · 130 communities (128 shown, 2 thin omitted)
+- 1186 nodes · 1187 edges · 138 communities (136 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `34406784`
+- Built from commit: `2b69604d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -98,6 +98,14 @@
 - 10. SegretarIA
 - 9. Magazzino
 - DentalCare Pro — Manuale Utente
+- DentalCare Pro — Manuale Utente
+- 5. Analisi sintetica dei principali competitor
+- 8. Nuove Opportunità di Prodotto e Stime di Pricing
+- 4. Perché contano (per tier)
+- 03 - Analisi di Mercato
+- Go-To-Market
+- 9. Magazzino
+- 3. Segmentazione competitiva
 
 ## God Nodes (most connected - your core abstractions)
 1. `AI Roadmap — DentalCare Pro` - 34 edges
@@ -114,7 +122,7 @@
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (130 total, 2 thin omitted)
+## Communities (138 total, 2 thin omitted)
 
 ### Community 0 - "Studio-di-Fattibilita.md"
 Cohesion: 0.05
@@ -165,8 +173,8 @@ Cohesion: 0.08
 Nodes (26): 10-15. Core / AI / Clinical / Enterprise / Developer / Marketplace, 16. API Strategy, 17. Product Lifecycle, 18. Innovation Framework, 19. Product Governance, 1. Executive Summary, 20. Prioritization Framework, 21. Release Strategy (+18 more)
 
 ### Community 12 - "04-Competitor.md"
-Cohesion: 0.11
-Nodes (18): 04 - Analisi dei Competitor, 10. Conclusioni, 1. Obiettivo, 2. Executive Summary, 3. Segmentazione competitiva, 4. Criteri di confronto, 5. Analisi sintetica dei principali competitor, 6. Competitive Matrix (+10 more)
+Cohesion: 0.18
+Nodes (10): 04 - Analisi dei Competitor, 10. Conclusioni, 1. Obiettivo, 2. Executive Summary, 4. Criteri di confronto, 6. Competitive Matrix, 7. Posizionamento strategico, 8. Vantaggi competitivi sostenibili (+2 more)
 
 ### Community 13 - "Manuale Utente — DentalCare Pro"
 Cohesion: 0.06
@@ -185,12 +193,12 @@ Cohesion: 0.08
 Nodes (25): 01 — Guida Dottoressa (medico), 0. Accesso e orientamento, 10. Listino prestazioni, 11. Copilot AI, 12. Gestione errori ed Errori intelligenti (#51, #54), 13. Ambiente di prova e Academy (#69, #70), 1.1 Scheda di seduta clinica e chiusura (#56-#62, #65, #67), 1. Agenda: la giornata clinica (+17 more)
 
 ### Community 17 - "03-Analisi-Mercato.md"
-Cohesion: 0.17
-Nodes (11): 03 - Analisi di Mercato, 17. Conclusioni, 18. Fonti, 1. Executive Summary del mercato, 2.1 Driver principali, 2.2 Opportunità specifica per DentalCare Pro, 2. Perché il mercato è interessante oggi, DentalCare Pro (+3 more)
+Cohesion: 0.25
+Nodes (7): 17. Conclusioni, 18. Fonti, 1. Executive Summary del mercato, 2.1 Driver principali, 2.2 Opportunità specifica per DentalCare Pro, 2. Perché il mercato è interessante oggi, Nota metodologica
 
 ### Community 18 - "Market Strategy"
-Cohesion: 0.06
-Nodes (29): 04b — Ranking Competitor (ricerca web, luglio 2026), 1. Assistente Vocale "Hands-Free" da Poltrona (Chairside Agent), 1. Metodo, 2. Lettura esecutiva, 2. Peer Consensus & Clinical Reputation Network (DentalCare Credits), 3. Scoreboard (36, ordinati per score), 3. Visualizzatore PACS Cloud & Radiologia AI Integrata (YOLO), 4. Giulia Voice (Receptionist Telefonico AI 24/7) (+21 more)
+Cohesion: 0.22
+Nodes (7): Canali, Ideal Customer Profile iniziale, Market Strategy, Messaggio chiave, Obiettivo, Posizionamento competitivo, Segmentazione
 
 ### Community 19 - "07 — Sicurezza"
 Cohesion: 0.12
@@ -365,8 +373,8 @@ Cohesion: 0.12
 Nodes (16): 1-bis. Tabella per il ROPA (art. 30), 1. Quadro in una pagina, 2.1 Quali dati personali escono verso il fornitore del modello?, 2.2 Il fornitore usa i dati per addestrare i propri modelli?, 2.3 Dove sono trattati i dati? Serve un trasferimento extra-UE?, 2.4 Quanto a lungo restano i dati *dentro* l'applicazione?, 2.5 Che misure di sicurezza sono già implementate?, 2.6 Il trattamento si può disattivare? Con quale granularità? (+8 more)
 
 ### Community 111 - "4. Pazienti"
-Cohesion: 0.18
-Nodes (11): 4.1 Lista pazienti, 4.3 Scheda paziente, 4.4 Anamnesi, 4.5 Odontogramma, 4.6 Piani di cura, 4.7 Storico episodi, 4. Pazienti, Genera piano di cura dall'odontogramma (+3 more)
+Cohesion: 0.13
+Nodes (15): 4.1 Lista pazienti, 4.2 Nuovo paziente, 4.3 Scheda paziente, 4.4 Anamnesi, 4.5 Odontogramma, 4.6 Piani di cura, 4.7 Storico episodi, 4. Pazienti (+7 more)
 
 ### Community 112 - "12. RACCOLTA E CONFERMA DELL’EMAIL"
 Cohesion: 0.17
@@ -393,8 +401,8 @@ Cohesion: 0.22
 Nodes (8): Come aggiungere gli screenshot, Documenti collegati, Domande tipiche ispezione (da §29 documento compliance), Evidenze richieste, Inspection Readiness Binder — Cartella 13: Trasparenza, Obbligatorie entro 2026-08-02, Raccomandate entro 30 giorni, Sezione: Giulia Voice Agent (Retell AI)
 
 ### Community 118 - "5.1 Viste calendario"
-Cohesion: 0.18
-Nodes (11): 5.1 Viste calendario, 5.2 Nuovo appuntamento, 5.3 Scheda di seduta, 5. Agenda, Codici colore appuntamenti, Filtro per professionista, Navigazione temporale, Vista Giorno (+3 more)
+Cohesion: 0.25
+Nodes (8): 5.1 Viste calendario, Codici colore appuntamenti, Filtro per professionista, Navigazione temporale, Vista Giorno, Vista Mese, Vista Prossimi, Vista Settimana
 
 ### Community 119 - "2. Accesso e navigazione"
 Cohesion: 0.29
@@ -405,8 +413,8 @@ Cohesion: 0.29
 Nodes (7): 6. Preventivi, Avanzamento delle prestazioni, Dettaglio preventivo, Gestione stati, Lista preventivi, Nuovo preventivo, Voci di preventivo
 
 ### Community 121 - "10 — Testing"
-Cohesion: 0.08
-Nodes (25): 14 — LLM NER Gateway & Demo Simulator, 1. Visione Architetturale e Ruolo nel Sistema, 2.1 Autenticazione Client tramite JWT `ES256` (Curva Ellittica P-256), 2.2 Policy di Sanitizzazione per Finalità (`ApplicationPolicy`), 2. Modello di Sicurezza e Controllo Accessi, 3.1 Architettura Dual-Engine (`config/config.yaml`), 3.2 Modello Fine-Tuned Specializzato: `llm-ner-dentalcare-0.3B`, 3.3 Checksum Algoritmici ed Entità PII Estese (+17 more)
+Cohesion: 0.07
+Nodes (29): 14 — LLM NER Gateway & Demo Simulator, 1. Visione Architetturale e Ruolo nel Sistema, 2.1 Autenticazione Client tramite JWT `ES256` (Curva Ellittica P-256), 2.2 Policy di Sanitizzazione per Finalità (`ApplicationPolicy`), 2. Modello di Sicurezza e Controllo Accessi, 3.1 Filosofia di Progetto e Architettura Dual-Engine, 3.2 Il Modello Fine-Tuned Specializzato: `llm-ner-dentalcare-0.3B` (ModernBERT), 3.3 Il Modello Baseline e Fallback: `spaCy` (`it_core_news_lg`) (+21 more)
 
 ### Community 122 - "15. GESTIONE DELL’ESITO DEI TOOL E DEI WEBHOOK"
 Cohesion: 0.33
@@ -433,29 +441,61 @@ Cohesion: 0.50
 Nodes (4): 10. SegretarIA, Attività, Chat, Chiamate
 
 ### Community 128 - "9. Magazzino"
-Cohesion: 0.18
-Nodes (11): 13.1 Prova gratuita (per chi non è ancora cliente), 13.2 Ambiente di prova dello studio (per chi è già cliente), 13.3 Academy, 13. Ambiente di prova e Academy, 1. Introduzione, 9. Magazzino, DentalCare Pro — Manuale Utente, Indice (+3 more)
+Cohesion: 0.50
+Nodes (4): 13.1 Prova gratuita (per chi non è ancora cliente), 13.2 Ambiente di prova dello studio (per chi è già cliente), 13.3 Academy, 13. Ambiente di prova e Academy
 
 ### Community 129 - "DentalCare Pro — Manuale Utente"
+Cohesion: 0.25
+Nodes (8): 04b — Ranking Competitor (ricerca web, luglio 2026), 1. Metodo, 2. Lettura esecutiva, 3. Scoreboard (36, ordinati per score), 5. Deep-dive: i 4 critici italiani vs DentalCare Pro, 6. Implicazioni strategiche, 7. Caveat qualità dati, Riferimenti
+
+### Community 130 - "DentalCare Pro — Manuale Utente"
+Cohesion: 0.33
+Nodes (6): 1. Introduzione, 5.2 Nuovo appuntamento, 5.3 Scheda di seduta, 5. Agenda, DentalCare Pro — Manuale Utente, Indice
+
+### Community 131 - "5. Analisi sintetica dei principali competitor"
+Cohesion: 0.40
+Nodes (5): 5. Analisi sintetica dei principali competitor, Byte / Sesamo, Carestream / Planmeca, Curve Dental, Dentally
+
+### Community 132 - "8. Nuove Opportunità di Prodotto e Stime di Pricing"
+Cohesion: 0.40
+Nodes (5): 1. Assistente Vocale "Hands-Free" da Poltrona (Chairside Agent), 2. Peer Consensus & Clinical Reputation Network (DentalCare Credits), 3. Visualizzatore PACS Cloud & Radiologia AI Integrata (YOLO), 4. Giulia Voice (Receptionist Telefonico AI 24/7), 8. Nuove Opportunità di Prodotto e Stime di Pricing
+
+### Community 133 - "4. Perché contano (per tier)"
+Cohesion: 0.40
+Nodes (5): 4. Perché contano (per tier), 🔴 Critical (≥75), 🟠 High (60-74), ⚪ Low (<45) — overlap minimo o geografia/architettura sbagliata, 🟡 Medium (45-59) — benchmark di categoria, geografia lontana
+
+### Community 134 - "03 - Analisi di Mercato"
 Cohesion: 0.50
-Nodes (4): 4.2 Nuovo paziente, Step 1 — Dati anagrafici, Step 2 — Contatti, Step 3 — Dati clinici
+Nodes (4): 03 - Analisi di Mercato, DentalCare Pro, Focus Italia ed Europa per piattaforma SaaS AI-Native odontoiatrica, Indice
+
+### Community 135 - "Go-To-Market"
+Cohesion: 0.50
+Nodes (4): Aprile-giugno 2027: vendita controllata, Gennaio-marzo 2027: Design Partner Program, Go-To-Market, Secondo semestre 2027: espansione
+
+### Community 136 - "9. Magazzino"
+Cohesion: 0.50
+Nodes (4): 9. Magazzino, Tab Fornitori, Tab Movimenti, Tab Prodotti
+
+### Community 137 - "3. Segmentazione competitiva"
+Cohesion: 0.67
+Nodes (3): 3. Segmentazione competitiva, Player europei e internazionali, Player italiani
 
 ## Knowledge Gaps
-- **889 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+884 more)
+- **892 isolated node(s):** `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)`, `2. Business Plan (`docs/02-Business-Plan/`)`, `3. Product Roadmap & Specifiche (`docs/03-Product-Roadmap/`)` (+887 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `DentalCare Pro — Manuale Utente` connect `9. Magazzino` to `Architecture-Handbook.md`, `4. Pazienti`, `11. Impostazioni`, `12. Glossario stati`, `7. Fatturazione`, `5.1 Viste calendario`, `2. Accesso e navigazione`, `6. Preventivi`, `3. Dashboard`, `8. Richiami`, `10. SegretarIA`?**
-  _High betweenness centrality (0.074) - this node is a cross-community bridge._
-- **Why does `DentalCare Pro — Manuale completo` connect `Manuale Utente — DentalCare Pro` to `Architecture-Handbook.md`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+- **Why does `DentalCare Pro — Manuale Utente` connect `DentalCare Pro — Manuale Utente` to `9. Magazzino`, `Architecture-Handbook.md`, `9. Magazzino`, `4. Pazienti`, `11. Impostazioni`, `12. Glossario stati`, `7. Fatturazione`, `2. Accesso e navigazione`, `6. Preventivi`, `3. Dashboard`, `8. Richiami`, `10. SegretarIA`?**
+  _High betweenness centrality (0.073) - this node is a cross-community bridge._
 - **Why does `06 — Multi-tenancy` connect `06 — Multi-tenancy` to `Architecture-Handbook.md`?**
   _High betweenness centrality (0.034) - this node is a cross-community bridge._
+- **Why does `14 — LLM NER Gateway & Demo Simulator` connect `10 — Testing` to `Architecture-Handbook.md`?**
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **What connects `graphify`, `Workflow: graphify`, `1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)` to the rest of the system?**
-  _889 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _892 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Studio-di-Fattibilita.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Release 1.x — Gestionale odontoiatrico con AI amministrativa` be split into smaller, more focused modules?**

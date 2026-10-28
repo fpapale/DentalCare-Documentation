@@ -8,6 +8,7 @@ Microservizio che rende il **manuale di DentalCare Pro** interrogabile da Claude
 | Fonte | lezioni dell'Academy (`backend/src/main/resources/academy/v1`: `catalog.json` + `lessons/*.md`), le stesse da cui si genera il [manuale utente](../05-Manuale-Utente/MANUALE_UTENTE.md) |
 | Tecnologia | Node 20, Express, SQLite FTS5 in memoria |
 | Autenticazione | nessuna: il contenuto è il manuale, già pubblico |
+| Stato | **in sospeso** (28/10/2026): attivo e raggiungibile sulla 8085, ma Claude non si collega (vedi §7) |
 
 ---
 
@@ -105,6 +106,20 @@ Fonti: [Connecting custom MCP servers in ChatGPT](https://help.openai.com/en/art
 - **Nessun limite di richieste** oggi. Il servizio gira sullo stesso host della vetrina: se venisse martellato, rallenterebbe anche quella. Caddy non ha un limite di richieste di serie (serve il modulo `rate_limit`); da valutare se il collegamento si diffonde tra molti studi.
 
 ## 7. Aperti
+
+### Pubblicazione bloccata: serve la porta 443
+
+Il 28/10/2026 la prova con un account Claude è fallita con «Impossibile raggiungere Manuale DentalCare Pro», senza alcuna richiesta nel registro del servizio. **claude.ai raggiunge i server MCP solo sulla porta 443** (risposta di un manutentore Anthropic in [anthropics/claude-ai-mcp #1155](https://github.com/anthropics/claude-ai-mcp/issues/1155)): la 8085 non viene nemmeno contattata. Dagli altri nodi di internet la 8085 risponde regolarmente.
+
+Sul router la 443 è assegnata a un'altra macchina (Home Assistant); da internet oggi risponde «connection refused». Strade possibili, da decidere:
+
+1. spostare l'inoltro della 443 su Caddy e servire il manuale come `https://papalef.duckdns.org/mcp` (blocco nel sito `papalef.duckdns.org` del Caddyfile, filtrato su `Host papalef.duckdns.org` e sui percorsi del servizio). Prima vanno tolti o limitati i blocchi `auth.`/`api.papalef.duckdns.org`, che con la 443 aperta diventerebbero pubblici;
+2. tenere la 443 su Home Assistant con l'add-on «NGINX Home Assistant SSL proxy» e una regola `/mcp` verso il servizio;
+3. un tunnel con una sua 443 (Tailscale Funnel, indirizzo `*.ts.net`).
+
+Quando l'indirizzo cambia vanno aggiornati: `GUIDA_COLLEGAMENTO_MANUALE.md`, questo capitolo, `openapi.yaml` (`servers`) e il commento in `docker-compose.coll.yml`.
+
+### Altri punti
 
 - Limite di richieste (vedi §6).
 - Passaggio alla vera produzione: oggi il servizio è nello stack di collaudo, che segue il ramo `staging`.

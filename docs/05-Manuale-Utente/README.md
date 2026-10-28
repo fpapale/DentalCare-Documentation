@@ -1,30 +1,26 @@
-# 05 — Manuale Utente (tenant demo)
+# 05 — Manuale Utente
 
-Guida pratica all'uso di **DentalCare Pro** per i tre ruoli operativi di uno
-studio: **Dottoressa** (medico), **Segretaria** e **Amministratore**. Tutti gli
-esempi usano il **tenant demo** e sono riproducibili passo-passo.
+Guida all'uso di **DentalCare Pro** per i ruoli di una clinica: **medico e igienista**, **segreteria**,
+**titolare e amministratore**. Gli esempi usano l'ambiente dimostrativo e sono riproducibili.
 
-> Approfondito ma usabile: ogni sezione ha il **percorso a menu**, i **passi
-> numerati** e un riquadro **▶️ Prova nel demo** con l'account giusto.
+> **Fonte unica: l'Academy.** Dal 22/10/2026 il manuale ufficiale è l'Academy dentro il programma (47 lezioni in
+> 10 moduli). I documenti di questa cartella si **generano** dalle lezioni con
+> `python tools/genera_manuale.py <repo dentalcare>`: per correggerli si corregge la lezione e si rigenera.
+> Ultima generazione: 28 ottobre 2026 (allineata alle proposte fino a #117).
 
 ## Indice
 
-| # | Guida | Per chi | Contenuti principali |
-|---|-------|---------|----------------------|
-| 1 | [Guida Dottoressa](01-Guida-Dottoressa.md) | Dentista / Igienista / Ortodontista / Chirurgo | Agenda clinica, scheda di seduta con «Inizia visita» e aggiornamento del dente (#56-#62, #65), storico episodi (#67), odontogramma e «Genera piano» (#66), anamnesi, piani di cura, preventivi, listino, analisi AI radiografie, Copilot, ambiente di prova e Academy (#70) |
-| 2 | [Guida Segretaria](02-Guida-Segretaria.md) | Segreteria / Front-office | Appuntamenti e stati Presente / In corso, anagrafica pazienti, richiami, preventivi, fatturazione conforme (saldo, acconto, nota credito, numerazione #50-#53, #63), liste ordinabili, magazzino, Copilot AI, ambiente di prova e Academy (#70) |
-| 3 | [Guida Amministratore](03-Guida-Amministratore.md) | Titolare / Responsabile studio | Dashboard, impostazioni, listino con le impostazioni cliniche (#65, #66), Prompt Manager AI, Errori intelligenti (#54), export protetto (#47), prova gratuita, ambiente di prova dello studio e Academy (#69, #70) |
-| 4 | [**Manuale Utente Integrale**](MANUALE_UTENTE.md) | Tutti i ruoli | **Documento completo e dettagliato (circa 1270 righe)** con tutti i moduli, schermate, ciclo seduta, gestione errori e glossario stati |
+| # | Documento | Per chi | Contenuti |
+|---|-----------|---------|-----------|
+| 1 | [Guida per il medico e l'igienista](01-Guida-Dottoressa.md) | Dentisti, ortodontisti, chirurghi, igienisti | Percorsi del medico e dell'igienista e le lezioni che richiamano: agenda, presenze, scheda di seduta in tre passi, odontogramma, piani di cura, storico episodi, casi particolari, tariffe e impostazioni personali, Copilot |
+| 2 | [Guida per la segreteria](02-Guida-Segretaria.md) | Segreteria, front-office | Percorso della segreteria: appuntamenti e stati (anche automatici), avvisi ai pazienti per WhatsApp o e-mail, pazienti, preventivi, fatture con acconto e saldo, PDF via e-mail, richiami, magazzino, Copilot |
+| 3 | [Guida per il titolare e l'amministratore](03-Guida-Amministratore.md) | Titolare dell'account, amministratore della clinica | Percorso del titolare: cliniche dell'account, impostazioni della clinica (dati, poltrone, orari, presenze, documenti, WhatsApp, AI), professionisti, listino, esportazione e chiusura dell'account |
+| 4 | [**Manuale integrale**](MANUALE_UTENTE.md) | Tutti | Tutti i moduli e le lezioni dell'Academy, con le schermate |
+| 5 | [Sintesi del manuale](Manuale-Completo.md) | Tutti | Una riga per lezione e le schermate principali: per una presentazione |
+| 6 | [Versione Word](Manuale_Utente_DentalCare_Pro.docx) | Tutti | Il manuale integrale in .docx, da stampare o inviare |
 
-## Manuale con schermate reali (per la presentazione)
-
-Manuale a **percorsi guidati** con le **schermate reali** dell'applicazione per i tre ruoli, pensato come materiale di presentazione:
-
-- **[MANUALE_UTENTE.md](MANUALE_UTENTE.md)** — **Manuale utente completo di riferimento**, aggiornato a tutte le feature recenti (#50-#70: ciclo seduta, dente da seduta, «Genera piano», storico episodi, fatturazione, errori intelligenti, ambiente di prova e Academy).
-- **[Manuale-Completo.md](Manuale-Completo.md)** — sintesi percorsi con gli screenshot embedded.
-- **[Manuale_Utente_DentalCare_Pro.docx](Manuale_Utente_DentalCare_Pro.docx)** — versione Word (12 schermate), pronta da stampare o inviare.
-
-Le schermate provengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
+Le schermate (`img/academy/`) vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi. Le cartelle
+`img/` e `screenshots/` contengono le schermate delle versioni precedenti del manuale, non più aggiornate.
 
 ## Accesso all'applicazione
 
@@ -43,8 +39,8 @@ per sicurezza).
 
 | Ruolo nel manuale | Email | Nome | Ruolo tecnico |
 |-------------------|-------|------|---------------|
-| **Dottoressa** | `ferretti@demo.dentalcare.it` | Laura Ferretti | dentist |
-| **Segretaria** | `segreteria@demo.dentalcare.it` | Maria Rossi | secretary |
+| **Medico** | `ferretti@demo.dentalcare.it` | Laura Ferretti | dentist |
+| **Segreteria** | `segreteria@demo.dentalcare.it` | Maria Rossi | secretary |
 | **Amministratore** | `admin@demo.dentalcare.it` | Admin Demo | admin |
 | (demo vetrina) | `demo@demo.dentalcare.it` | Demo Tutto | admin |
 | Altri medici | `amato@…` (ortodontista), `marchetti@…` (chirurgo) | | medical |
@@ -56,58 +52,62 @@ per sicurezza).
 
 Legenda: ✅ accesso pieno · 🔎 solo lettura/consultazione · — nessun accesso.
 
-| Funzione (voce di menu) | Dottoressa | Segretaria | Amministratore |
-|-------------------------|:----------:|:----------:|:--------------:|
-| Dashboard | ✅ | ✅ | ✅ |
-| Agenda (appuntamenti) | ✅ | ✅ | ✅ |
-| Nuovo appuntamento | ✅ | ✅ | ✅ |
+| Funzione (voce di menu) | Medico / igienista | Segreteria | Amministratore |
+|-------------------------|:------------------:|:----------:|:--------------:|
+| Dashboard (anche «Da avvisare») | ✅ | ✅ | ✅ |
+| Agenda (appuntamenti, poltrone, filtro) | ✅ | ✅ | ✅ |
+| Nuovo appuntamento e avviso al paziente (WhatsApp / e-mail) | ✅ | ✅ | ✅ |
 | Pazienti (lista + scheda) | ✅ | ✅ | ✅ |
 | Nuovo paziente (anagrafica) | — | ✅ | ✅ |
-| Cartella clinica / Nuova visita | ✅ | — | ✅ |
+| Cartella clinica | ✅ | — | ✅ |
 | Odontogramma | ✅ | 🔎 | ✅ |
 | Anamnesi | ✅ | 🔎 | ✅ |
 | Diagnosi | ✅ | — | ✅ |
 | Prescrizioni | ✅ | — | ✅ |
 | Piani di cura | ✅ | 🔎 | ✅ |
 | Preventivi | ✅ | ✅ | ✅ |
-| Fatturazione | ✅ | ✅ | ✅ |
-| Richiami | ✅ | ✅ | ✅ |
+| Fatturazione (PDF ed e-mail al paziente) | ✅ (i propri) | ✅ | ✅ |
+| Richiami (e-mail, WhatsApp, storico contatti) | ✅ | ✅ | ✅ |
 | Magazzino | ✅ | ✅ | ✅ |
 | Listino prestazioni | ✅ | — | ✅ |
-| Copilot AI (Segreteria) | ✅ | ✅ | — |
+| Copilot AI | ✅ | ✅ | — |
 | Scheda di seduta | ✅ | — | ✅ |
 | Storico episodi | ✅ | — | ✅ |
-| Ambiente di prova dello studio | ✅ | ✅ | ✅ |
+| Ambiente di prova | ✅ | ✅ | ✅ |
 | Academy | ✅ | ✅ | ✅ |
-| Impostazioni (studio + AI) | — | — | ✅ |
+| Impostazioni della clinica (dati, poltrone, orari, presenze, documenti, WhatsApp, AI) | — | — | ✅ |
+| Impostazioni personali (Le mie tariffe, I miei richiami, La mia fatturazione, Il mio calendario) | ✅ | — | ✅ (per professionista) |
+| Amministrazione account (cliniche, utenti, esportazione, chiusura) | — | — | solo il **titolare** |
 
-> **Perché la Dottoressa NON crea l'anagrafica paziente?** Per separazione dei
+> **Perché il medico NON crea l'anagrafica paziente?** Per separazione dei
 > compiti: la registrazione anagrafica è della segreteria; il medico lavora sulla
 > parte clinica. In demo puoi comunque provare tutto usando i tre account.
 
 ## Convenzioni del manuale
 
-- **Percorso** → in grassetto la sequenza di menu, es. **Pazienti → scheda →
-  tab Cartella clinica**.
-- **▶️ Prova nel demo** → account e passi esatti per riprodurre.
+- **Percorso** → in grassetto la sequenza di menu, es. **Impostazioni → Anagrafiche → Poltrone**.
+- **Prova nel programma** → in fondo a ogni lezione, cosa provare nell'ambiente di prova.
 - I dati sensibili del paziente (data di nascita, codice fiscale) sono **cifrati
   a riposo** nel database: nell'app li vedi in chiaro, ma nel DB sono protetti
   (vedi handbook tecnico `04-Architecture-Handbook/11-Data-Encryption.md`).
 
 ## Concetti chiave (glossario rapido)
 
-- **Scheda paziente**: pagina centrale con tab (Anagrafica, Cartella clinica,
-  Storico episodi, Anamnesi, Odontogramma, Piani di cura, Preventivi, Documenti).
-- **Cartella clinica**: storico delle visite e delle prestazioni erogate.
-- **Odontogramma**: mappa dei denti con le condizioni (carie, corone, impianti…),
-  compilabile a mano o **suggerita dall'AI** da una radiografia.
-- **Anamnesi**: scheda clinica generale (patologie, allergie, farmaci, abitudini).
-- **Piano di cura → Preventivo → Fattura**: il flusso economico. Dal piano di
-  cura si genera il preventivo; accettato, diventa fatturabile.
-- **Richiamo (recall)**: promemoria di controllo/igiene periodico per il paziente.
-- **Episodio clinico**: una visita o un contatto fuori visita, con la situazione del paziente
-  fotografata prima e dopo (tab Storico episodi).
-- **Ambiente di prova**: pazienti e dati inventati, separati da quelli veri, per imparare e
-  provare; si apre dal pulsante in alto e si torna con **Torna a …**.
-- **Copilot AI**: assistente conversazionale che legge e (con i permessi giusti)
-  scrive sui moduli — agenda, pazienti, preventivi, ecc.
+Il glossario completo è la lezione [Glossario](MANUALE_UTENTE.md#lezione-glossario). Termini concordati con il committente:
+
+- **Account** (tenant): l'abbonamento, con una o più **cliniche**; lo gestisce il **titolare** dalla pagina
+  *Amministrazione account*, l'unico posto in cui si creano cliniche.
+- **Clinica** (= sede): il luogo fisico in cui si lavora; dati, orari, **poltrone** e professionisti sono suoi.
+  Nell'interfaccia non si usa «Centro» né «Studio» da solo.
+- **Poltrona**: il posto di lavoro, una colonna dell'agenda; anagrafica in Impostazioni → Anagrafiche → Poltrone.
+- **Scheda paziente**: pagina centrale con le schede Panoramica, Cartella clinica, Storico episodi, Anamnesi,
+  Odontogramma, Piani di cura, Richiami, Preventivi, Documenti.
+- **Scheda di seduta**: la registrazione della visita in tre passi (prima della visita, esito, odontogramma).
+- **Piano di cura → Preventivo → Fattura**: il flusso economico; acconti e saldo si scalano a vicenda.
+- **Avviso al paziente**: messaggio dopo una prenotazione, uno spostamento o una cancellazione (WhatsApp in modalità
+  manuale, o e-mail); quelli non mandati restano in Dashboard, *Da avvisare*.
+- **Richiamo**: promemoria per ricontattare il paziente; il testo si manda per e-mail o WhatsApp dal programma.
+- **Episodio clinico**: una visita o un contatto fuori visita, con la situazione del paziente prima e dopo.
+- **Ambiente di prova**: dati inventati, separati da quelli veri, per imparare e provare.
+- **Copilot AI**: assistente che legge i dati della clinica e prepara le modifiche, salvate solo dopo conferma.
+- **Giulia**: la segreteria telefonica AI, un numero unico per tutte le cliniche (riconosce la clinica dal codice).

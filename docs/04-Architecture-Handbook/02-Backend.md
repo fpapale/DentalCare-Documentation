@@ -44,15 +44,22 @@ logica di business. Esempi: `PatientController`, `AppointmentController`,
 `TreatmentPlanController`, `OdontogramController`, `ProductController` (magazzino),
 `RecallController` (richiami), `ErrorExplanationController` (spiegazione AI errori),
 `CopilotController`, `ChatController`, `TenantAdminController`,
-`ClinicSettingsController` (dati fatturazione + orari studio per-tenant),
+`ClinicSettingsController` (dati della clinica corrente, orari, documenti, modalità di fatturazione, codice e
+limite di Giulia, WhatsApp; da #117 niente elenco né creazione di cliniche, che stanno solo in
+`TenantAdminController`), `ClinicChairController` (poltrone della clinica corrente, #115),
+`ProviderPresenceController` (orari e assenze dei professionisti, #99), `ProviderPreferencesController` e
+`ProviderPriceOverrideController` (impostazioni e tariffe personali, #96, #98), `AppointmentNoticeController`
+(avvisi al paziente, #111), `VoiceIdentifyController` (riconoscimento della clinica per Giulia, #100),
 `EpisodeController` (storico episodi, #67), `DemoController` (stato e ripristino del
 workspace demo, #69), `SandboxController` (ambiente di prova dello studio, #70), `AcademyController` e `AcademyAdminController` (lezioni, progressi e
 redazione dell'Academy, #69).
 
-`AppointmentController` espone anche `GET /availability`: dato un servizio e una
-data, `AppointmentService.findAvailability()` restituisce i primi slot liberi
-rispettando gli orari studio del tenant e le sovrapposizioni con appuntamenti
-non cancellati (`starts_at < candidateEnd AND ends_at > candidateStart`).
+`AppointmentController` espone anche `GET /availability`: data la durata (e facoltativi professionista, paziente,
+giorno di partenza), `AppointmentService.findAvailability()` restituisce gli slot liberi a passi di slot (#90), dentro
+le presenze del professionista (#99), con la prima poltrona attiva libera dell'anagrafica (#115) e senza
+sovrapposizioni con appuntamenti non cancellati (`starts_at < candidateEnd AND ends_at > candidateStart`). Le stesse
+regole valgono in creazione e spostamento, anche per Copilot e Giulia. `GET /{id}/whatsapp-link` prepara il link
+`wa.me` del promemoria o dell'annullamento; `POST /{id}/notify` manda l'e-mail (usato da Giulia).
 
 ## 5. Service
 
@@ -85,6 +92,26 @@ Contengono la logica e le transazioni. Pattern ricorrenti:
 - `InvoiceService`: gestisce l'intero ciclo documentale e calcola i numeri fattura mediante `nextProgressive(clinicId, year, prefix)` (#63) leggendo il valore massimo assegnato: in caso di eliminazione di una bozza, i numeri rimangono buchi storici senza causare collisioni sul vincolo `ux_invoices_number`.
 - `ErrorExplanationService`: interroga il modello OpenAI (`error.humanize`) con
   cache locale in-memory e sanitizzazione preventiva di identificatori o dati sensibili.
+- `ClinicChairService` (#115): anagrafica `clinic_chairs` della clinica corrente; `activeLabels()` è la sola fonte
+  delle poltrone prenotabili (agenda, disponibilità, Copilot, Giulia); la rinomina aggiorna `appointments.chair_label`;
+  una clinica senza poltrone parte da «Poltrona 1».
+- `ProviderPresenceService` (#99): fasce orarie e assenze; `AppointmentService` rifiuta fuori presenza
+  (`PROVIDER_NOT_PRESENT`) proponendo i primi orari liberi.
+- `AppointmentNoShowScheduler` (#108): ogni notte (`app.appointments.no-show.cron`, 01:30) `markNoShows()` porta a
+  `no_show` gli appuntamenti dei giorni precedenti senza esiti né visita avviata, con `status_auto_at` («automatico»);
+  ogni scelta manuale lo azzera. `SessionService` porta a «In corso» quando si registrano esiti.
+- `AppointmentNoticeService` (#111): `AppointmentService.create / reschedule / updateStatus('cancelled') / cancel`
+  registrano un avviso in `appointment_notices` con l'origine (`gestionale`, `copilot` via `asCopilot()`, `giulia` dal
+  token dell'agente vocale); conta solo l'ultimo avviso aperto per appuntamento. `AppointmentNotificationService`
+  compone e-mail (`EmailService`) e testi WhatsApp; `WhatsAppLinks` costruisce i link `wa.me`; `WhatsAppSettingsService`
+  legge attivo/modalità/numero della clinica e blocca i link con WhatsApp spento.
+- `RecallMessagingService` (#111): invio del richiamo per e-mail e link WhatsApp, con registrazione del contatto.
+- `PatientMailRouting` (#103): destinatario delle e-mail ai pazienti (con dati fittizi va a chi prova il programma).
+- `InvoicePdfService` e `InvoiceDeliveryService` (#101): PDF del documento generato sul server e invio al paziente.
+- `voice/*` (#100, #109): `VoiceClinicIdentificationService` (codice, numero chiamante, nome e città),
+  `ClinicTicketService` (biglietto firmato), `VoiceAgentTokenService` (token `voice_agent` limitato da
+  `VoiceAgentScope`), `VoiceAttemptLimiter`, `PatientPhoneIndexService` (indice HMAC dei numeri),
+  `VoiceTrialQuotaService` (limite di Giulia negli studi di prova).
 
 ## 6. Persistenza e migrazioni a caldo
 
@@ -115,6 +142,12 @@ le risposte di errore nel contratto `{ code, message, fieldErrors? }`:
   - Seduta clinica: `SESSION_ALREADY_CLOSED`, `SESSION_CANCELLED`, `SESSION_NO_SHOW`, `SESSION_CHANGED`, `SESSION_ITEM_ALREADY_PERFORMED`.
   - Episodi (#67): `EPISODE_ALREADY_OPEN`, `EPISODE_VISIT_ALREADY_OPEN` (con data e ora dell'altra visita), `EPISODE_VISIT_CLOSES_WITH_SESSION`, `EPISODE_ALREADY_CLOSED`, `EPISODE_AUTHOR_UNKNOWN`.
 - Richiesta ben formata ma non ammessa → 422: `SERVICE_NOT_APPLICABLE` (#66, prestazione non applicabile al dente, con dente e motivo), come `SchedulingConstraintException`.
+  - Agenda: `OFF_GRID` (#90), `PROVIDER_NOT_PRESENT` (#99), `PROVIDER_NOT_CLINICAL` (#95), `CHAIR_UNKNOWN` (#115),
+    `VOICE_TRIAL_LIMIT` (#109), `NOTICE_STATUS_MISMATCH` (#100/#111), oltre a `CHAIR_CONFLICT`, `PROVIDER_CONFLICT`,
+    `PROVIDER_LOCKED` (409).
+  - Fatturazione: `DEPOSIT_EXCEEDS_ESTIMATE`, `DEPOSIT_DRAFT_PENDING` (#102), `INVOICE_NOT_SENDABLE` (#101).
+- Permessi personali → 403: `PRESENCE_NOT_OWNER` (#99), `PREFERENCES_NOT_OWNER` (#98), `PRICES_NOT_OWNER`;
+  `TRIAL_NO_ACCOUNTS` negli studi di prova (#87); `INVALID_SERVICE_KEY` per n8n.
 - Operazione non consentita → 403 con codice: `DEMO_EXPIRED` (prova terminata, anche su token già emessi), `DEMO_ONLY`, `DEMO_OWNER_ONLY`, `DEMO_RESET_LIMIT` (#69); `SANDBOX_FROM_STUDIO_ONLY`, `SANDBOX_CUSTOMERS_ONLY`, `SANDBOX_USER_INACTIVE` (#70).
 - Troppe richieste → 429: `RATE_LIMITED` (limiti per IP, con `Retry-After`), `DEMO_REGISTRATIONS_PAUSED` (tetto giornaliero delle registrazioni di prova).
 - `EncryptionException` → 500 senza mai esporre plaintext o dettagli crittografici.
@@ -123,8 +156,12 @@ le risposte di errore nel contratto `{ code, message, fieldErrors? }`:
 
 ## 9. Integrazioni server-side
 
-- **n8n**: endpoint `POST /api/public/service-token` autenticato con header
-  `X-N8N-Key`; rilascia un JWT di servizio per i workflow (prenotazioni).
+- **n8n / Giulia** (#100): `POST /api/public/voice/identify` (header `X-N8N-Key`) riconosce la clinica e rilascia un
+  biglietto firmato; `POST /api/public/service-token` con l'id dell'agente centrale e il biglietto rilascia un JWT
+  `voice_agent` (ruolo segreteria) valido solo per quella clinica e limitato agli endpoint di `VoiceAgentScope`.
+- **Posta**: `EmailService` (SMTP di DentalCare, oppure FakeSMTP su file in sviluppo) per fatture, richiami, avvisi
+  e conferme di Giulia; le risposte vanno all'e-mail della clinica.
+- **WhatsApp** (#111, modalità manuale): solo link `wa.me` aperti dal browser della clinica; nessuna chiamata a Meta.
 - **Servizio AI Python**: chiamate outbound + callback firmati HMAC
   (`HmacVerifier`) per l'esito delle analisi immagini.
 - **SSE**: streaming eventi (suggerimenti copilot, analisi documenti,

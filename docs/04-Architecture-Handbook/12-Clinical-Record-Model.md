@@ -311,6 +311,8 @@ controllo di coerenza tra immagine e paziente selezionato.
 | **Encounter** (ciclo della seduta) | ✅ implementato (#56-#62) · FK `encounter_id` su diagnosi, prescrizioni, anamnesi e odontogramma in Release 1.x |
 | **Episodi clinici con fotografie prima/dopo** | ✅ implementato (#67, Fase 1) · riepilogo AI in Fase 2 |
 | Odontogramma aggiornato dalla seduta, con autore | ✅ implementato (#65), solo su conferma del medico |
+| Scheda di seduta in tre passi (prima, esito, odontogramma) | ✅ implementato (#106): nessun esito né dente preselezionato, chiusura separata |
+| Stato «Non presentato» automatico | ✅ implementato (#108): la notte dopo, solo senza esiti né visita avviata; marcato «automatico» (`status_auto_at`) e correggibile, mai silenzioso (DPIA D-27) |
 | **Finalizzazione e addendum** | 🔨 Release 1.x |
 | **Consensi versionati** | 🔨 Release 1.x |
 | **Audit trail clinico** | 🔨 Release 1.x |

@@ -36,6 +36,9 @@ Ruoli (enum `dentalcare.provider_role`): `tenant_admin`, `admin`, `dentist`,
 | `PUT`/`DELETE /api/services/*/tooth-outcome` | `CLINICAL_WRITE_ROLES` (#65): la mappa prestazione → stato del dente è configurazione clinica; lettura libera |
 | `/api/patients/*/episodes/**` | `CLINICAL_WRITE_ROLES`, **anche in lettura** (#67): la segreteria non vede il clinico |
 | `/api/academy/admin/**` | `hasRole('ACADEMY_EDITOR')`, ruolo di piattaforma (#69) |
+| `PUT`/`POST`/`DELETE /api/settings/**` | `hasAnyRole('ADMIN','TENANT_ADMIN')` (#97, #115): le impostazioni della clinica le cambia l'amministratore; la lettura è libera |
+| `/api/providers/{id}/presence`, `/preferences`, tariffe personali | il professionista stesso o l'amministratore (`PRESENCE_NOT_OWNER`, `PREFERENCES_NOT_OWNER`, `PRICES_NOT_OWNER`, #98-#99) |
+| token `voice_agent` (Giulia, #100) | solo gli endpoint di `VoiceAgentScope` (pazienti, disponibilità, creazione/spostamento/stato/avviso degli appuntamenti) e solo la clinica del biglietto |
 | ogni altra | authenticated |
 
 `CLINICAL_WRITE_ROLES` = `DENTIST`, `HYGIENIST`, `ORTHODONTIST`, `SURGEON`, `ADMIN`,

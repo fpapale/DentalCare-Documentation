@@ -1,431 +1,186 @@
-# DentalCare Pro — Manuale completo
+# DentalCare Pro — Sintesi del manuale
 
-> Versione 2.0 · 21 settembre 2026
-> Schermate riprese dall'applicazione reale, con i tre ruoli: segreteria, medico, amministratore.
-> Per la consultazione tecnica modulo-per-modulo e il glossario approfondito di tutte le impostazioni, vedi anche il [Manuale Utente Integrale (1120 righe)](MANUALE_UTENTE.md).
+> Versione 28 ottobre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
 
----
+Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo completo è nel [manuale integrale](MANUALE_UTENTE.md).
 
-## Indice
+## 1. Primi passi
 
-1. [Come è organizzato il lavoro](#1-come-è-organizzato-il-lavoro)
-2. [Accesso](#2-accesso)
-3. [La segreteria](#3-la-segreteria)
-4. [Il medico](#4-il-medico)
-   - [4.1 L'agenda del medico](#41-lagenda-del-medico)
-   - [4.2 La scheda di seduta](#42-la-scheda-di-seduta)
-   - [4.3 Registrare cosa è stato fatto](#43-registrare-cosa-è-stato-fatto)
-   - [4.4 Le prestazioni rimaste in sospeso](#44-le-prestazioni-rimaste-in-sospeso)
-   - [4.5 Il preventivo si aggiorna da solo](#45-il-preventivo-si-aggiorna-da-solo)
-5. [L'amministratore](#5-lamministratore)
-6. [Quando qualcosa non funziona](#6-quando-qualcosa-non-funziona)
-7. [Glossario](#7-glossario)
+*Com'è fatto l'ambiente di prova, come ci si muove, chi sei e come si entra.*
 
----
+- **[Benvenuto nella prova](MANUALE_UTENTE.md#lezione-benvenuto)** — Cosa trovi nel tuo ambiente e come usare l'Academy.
+- **[L'interfaccia in un minuto](MANUALE_UTENTE.md#lezione-interfaccia)** — Menu, contenuto, pannello laterale, spazio sul tablet e striscia degli errori.
+- **[La dashboard](MANUALE_UTENTE.md#lezione-dashboard)** — Indicatori, prossimi appuntamenti, allerte e scadenze.
+- **[Medico, segreteria o amministratore](MANUALE_UTENTE.md#lezione-punto-di-vista)** — Guardare la clinica con gli occhi degli altri ruoli; il Copilot segue la persona.
+- **[Accesso e password](MANUALE_UTENTE.md#lezione-accesso-e-password)** — Primo accesso, password temporanea, password dimenticata.
 
-## 1. Come è organizzato il lavoro
+![La segnalazione di un errore: cosa, perché e cosa fare.](img/academy/20-pannello-errori.png)
 
-DentalCare Pro segue il ciclo reale di uno studio:
+*La segnalazione di un errore: cosa, perché e cosa fare.*
 
-```
-piano di cura  →  appuntamento  →  seduta  →  fattura
-```
+![La dashboard: indicatori, prossimi appuntamenti e scheda dell'appuntamento scelto.](img/academy/02-segreteria-dashboard.png)
 
-Ogni passo è **collegato** al precedente. Una prestazione nasce in un piano di cura, viene
-prenotata in un appuntamento, eseguita in una seduta e infine fatturata. Il sistema tiene
-insieme la catena: quando il medico registra un'esecuzione, il preventivo lo sa; quando tutte
-le prestazioni sono state fatte, la segreteria vede che si può fatturare.
+*La dashboard: indicatori, prossimi appuntamenti e scheda dell'appuntamento scelto.*
 
-### Chi vede cosa
+## 2. Percorsi di lavoro
 
-Non tutti fanno le stesse cose, e il programma lo rispetta.
+*Le tappe per ruolo, dalle basi ai casi particolari: da qui si sceglie cosa studiare.*
 
-| | Segreteria | Medico | Amministratore |
-|---|:---:|:---:|:---:|
-| Agenda, pazienti, anagrafiche | ✅ | ✅ | ✅ |
-| Preventivi e fatturazione | ✅ | ✅ | ✅ |
-| **Scheda di seduta** (registrare prestazioni eseguite) | ❌ | ✅ | ✅ |
-| Catalogo prestazioni | ❌ | ✅ | ✅ |
-| Impostazioni dello studio | ❌ | ❌ | ✅ |
+- **[Percorso della segreteria](MANUALE_UTENTE.md#lezione-percorso-segreteria)** — Agenda, accoglienza, preventivi, incassi e richiami, giorno per giorno.
+- **[Percorso del medico](MANUALE_UTENTE.md#lezione-percorso-medico)** — Dalla prima visita alla fine della cura, con le sedute e i loro casi particolari.
+- **[Percorso dell'igienista](MANUALE_UTENTE.md#lezione-percorso-igienista)** — Sedute di igiene, mantenimento, richiami e collaborazione con il medico.
+- **[Percorso del titolare](MANUALE_UTENTE.md#lezione-percorso-titolare)** — Avvio dell'account e delle cliniche, configurazione, controllo dell'andamento, cura dei dati.
+- **[Il viaggio del paziente](MANUALE_UTENTE.md#lezione-percorso-paziente)** — Dal primo contatto al richiamo di controllo: chi fa cosa, e dove.
 
-> **Perché la segreteria non registra le prestazioni.** Segnare che una prestazione è stata
-> eseguita è un **atto clinico**: resta in cartella con la data e il nome di chi l'ha svolta.
-> Una firma di chi non era alla poltrona non ha valore. Il limite non è solo un pulsante
-> nascosto: il programma rifiuta la richiesta anche se arriva per altre vie.
+## 3. Pazienti
 
----
+*Trovare, registrare e conoscere un paziente, anamnesi compresa.*
 
-## 2. Accesso
+- **[Trovare un paziente](MANUALE_UTENTE.md#lezione-cercare-paziente)** — Ricerca, filtri e cosa dice ogni riga dell'elenco.
+- **[Registrare un nuovo paziente](MANUALE_UTENTE.md#lezione-nuovo-paziente)** — I tre passi dell'anagrafica e il codice fiscale.
+- **[La scheda paziente](MANUALE_UTENTE.md#lezione-scheda-paziente)** — Le schede della cartella e gli appuntamenti del paziente.
+- **[L'anamnesi e le allerte](MANUALE_UTENTE.md#lezione-anamnesi)** — Compilare l'anamnesi e far comparire le allerte dove servono.
 
-![Schermata di accesso](img/01-login.png)
+![L'elenco dei pazienti.](img/academy/04-segreteria-pazienti.png)
 
-Si entra con l'indirizzo email e la password ricevuti dallo studio.
+*L'elenco dei pazienti.*
 
-Se la password non si ricorda, **«Password dimenticata?»** invia un codice temporaneo
-all'indirizzo registrato. Al primo accesso con quel codice il programma chiede di sceglierne
-una nuova.
+## 4. Agenda e seduta
 
-> Per motivi di sicurezza il programma risponde allo stesso modo sia che l'indirizzo esista sia
-> che non esista: non rivela quali email sono registrate. Se l'email non arriva entro qualche
-> minuto, il primo controllo da fare è che l'indirizzo sia scritto giusto.
+*Dalla prenotazione alla registrazione di ciò che è stato fatto in poltrona.*
 
----
+- **[Le viste dell'agenda](MANUALE_UTENTE.md#lezione-viste-agenda)** — Prossimi, giorno, settimana, mese; stati, filtri e griglia degli slot.
+- **[Fissare un appuntamento](MANUALE_UTENTE.md#lezione-nuovo-appuntamento)** — Orari a slot, durata, Proponi orario e prenotazione dal piano.
+- **[Gestire gli appuntamenti](MANUALE_UTENTE.md#lezione-gestire-appuntamenti)** — Stati, spostamenti, cancellazioni e cosa succede al piano di cura.
+- **[Dal paziente in sala alla visita in corso](MANUALE_UTENTE.md#lezione-inizia-visita)** — Presente, In corso, Inizia visita e la fotografia d'ingresso.
+- **[La scheda di seduta](MANUALE_UTENTE.md#lezione-scheda-seduta)** — Registrare gli esiti e chiudere la seduta.
 
-## 3. La segreteria
+![La vista Giorno: una colonna per poltrona, i pulsanti per scegliere le poltrone mostrate, una riga tratteggiata per ogni slot.](img/academy/03-segreteria-agenda.png)
 
-La segreteria è il punto di regia: vede tutto lo studio, tutti i medici, tutti i pazienti.
+*La vista Giorno: una colonna per poltrona, i pulsanti per scegliere le poltrone mostrate, una riga tratteggiata per ogni slot.*
 
-### La giornata a colpo d'occhio
+![Un nuovo appuntamento: orari a passi di slot e primi orari liberi proposti.](img/academy/35-nuovo-appuntamento.png)
 
-![Dashboard segreteria](img/02-segreteria-dashboard.png)
+*Un nuovo appuntamento: orari a passi di slot e primi orari liberi proposti.*
 
-In alto i numeri della giornata: pazienti, appuntamenti di oggi, preventivi inviati, piani
-attivi. L'**occupazione** dice quanto sono piene le poltrone.
+![La modifica di un appuntamento dalla scheda del paziente.](img/academy/36-modifica-appuntamento.png)
 
-A destra il pannello **Motivo appuntamento** mostra, per il paziente selezionato, perché viene:
-trattamento previsto, poltrona, medico, e soprattutto gli **alert clinici** — allergie, terapie
-in corso — prima ancora che entri.
+*La modifica di un appuntamento dalla scheda del paziente.*
 
-### L'agenda
+![La vista Prossimi con gli appuntamenti già trascorsi oggi.](img/academy/08-medico-agenda-trascorsi.png)
 
-![Agenda della segreteria](img/03-segreteria-agenda.png)
+*La vista Prossimi con gli appuntamenti già trascorsi oggi.*
 
-Quattro viste: **Prossimi** (il resto della giornata), **Giorno**, **Settimana**, **Mese**.
+![Gli esiti di una seduta prima della registrazione.](img/academy/13-scheda-seduta-esiti.png)
 
-Quando la giornata non ha più appuntamenti in programma, l'agenda passa da sola a quelli di
-domani e lo segnala in alto.
+*Gli esiti di una seduta prima della registrazione.*
 
-Le pastiglie colorate filtrano per stato: *Programmato*, *Confermato*, *Presente*.
+## 5. Sedute: casi particolari
 
-### I pazienti
+*Quando le cose non vanno come previsto: assenze, rinvii, spostamenti, dimenticanze, vincoli.*
 
-![Elenco pazienti](img/04-segreteria-pazienti.png)
+- **[Paziente non presentato](MANUALE_UTENTE.md#lezione-paziente-non-presentato)** — Registrare l'assenza e decidere cosa fare delle prestazioni previste.
+- **[Prestazione rinviata o non eseguita](MANUALE_UTENTE.md#lezione-prestazione-rinviata)** — I tre esiti, le prestazioni in sospeso e quando togliere dal piano.
+- **[Seduta fuori programma](MANUALE_UTENTE.md#lezione-seduta-fuori-programma)** — Prestazioni non previste e la seduta di un collega.
+- **[Seduta dimenticata o già chiusa](MANUALE_UTENTE.md#lezione-seduta-dimenticata)** — Ingresso tardivo, registrazione a fine giornata, seduta da riaprire.
+- **[Spostare o annullare un appuntamento collegato](MANUALE_UTENTE.md#lezione-spostare-appuntamento-collegato)** — Cosa succede alle prestazioni del piano, e perché il medico non si cambia.
+- **[I vincoli dell'agenda](MANUALE_UTENTE.md#lezione-vincoli-agenda)** — Festivi, orari, griglia degli slot, conflitti, pazienti a rischio infettivo.
 
-Ricerca per nome o cognome, con i filtri *Tutti / Attivi / Archiviati*.
+![Un piano con prestazioni in sospeso.](img/academy/09-piano-cura-in-sospeso.png)
 
-### I preventivi
+*Un piano con prestazioni in sospeso.*
 
-![Elenco preventivi](img/05-preventivi-lista.png)
+![Una seduta senza prestazioni previste: si aggiungono dal piano.](img/academy/11-scheda-seduta-vuota.png)
 
-Oltre a importo e stato, due colonne dicono **a che punto è il lavoro**:
+*Una seduta senza prestazioni previste: si aggiungono dal piano.*
 
-- **Avanzamento** — quante prestazioni del preventivo sono già state eseguite;
-- **«Fatturabile»** — compare quando **tutte** sono state fatte.
+![Il riepilogo prima di registrare la seduta.](img/academy/14-riepilogo-chiusura.png)
 
-Quel badge serve a trovare i lavori finiti e non ancora fatturati: il caso in cui il denaro
-resta fermo solo perché nessuno se n'è accorto. Accanto compare una scorciatoia verso la
-fatturazione.
+*Il riepilogo prima di registrare la seduta.*
 
-> L'etichetta è un'**informazione, non un permesso**: al momento dell'emissione il programma
-> ricontrolla e può comunque rifiutare, spiegando perché.
+## 6. Clinica
 
-### La fatturazione
+*Odontogramma, piani di cura, storico degli episodi, documenti e analisi AI.*
 
-![Fatturazione](img/06-fatturazione.png)
+- **[L'odontogramma](MANUALE_UTENTE.md#lezione-odontogramma)** — Superfici, condizioni del dente e legenda.
+- **[Dal dente al piano: «Genera piano di cura»](MANUALE_UTENTE.md#lezione-genera-piano)** — Cosa viene proposto, cosa no e perché.
+- **[Il piano di cura](MANUALE_UTENTE.md#lezione-piano-di-cura)** — Stati, prestazioni, Pianifica appuntamento e prestazioni in sospeso.
+- **[Lo storico degli episodi](MANUALE_UTENTE.md#lezione-storico-episodi)** — Com'era il paziente prima di una visita, e cosa è cambiato.
+- **[Diagnosi, prescrizioni e documenti](MANUALE_UTENTE.md#lezione-diagnosi-prescrizioni-documenti)** — Il diario clinico, le terapie in corso e i documenti del paziente.
+- **[Analisi AI delle radiografie](MANUALE_UTENTE.md#lezione-analisi-ai-radiografie)** — Lanciare l'analisi di un'ortopanoramica e rivederla da medico.
 
-Si emette da un preventivo accettato. I tipi di documento sono:
+![L'odontogramma con la legenda: da curare, già curato, assente.](img/academy/22-odontogramma.png)
 
-| Tipo | Quando si usa |
-|---|---|
-| **Fattura**, **Ricevuta**, **Parcella** | documenti *a saldo*: ammessi solo su prestazioni già eseguite |
-| **Acconto** | per incassare un anticipo su lavoro non ancora fatto (prassi normale in implantologia) |
-| **Nota di credito** | per rettificare una fattura già emessa |
+*L'odontogramma con la legenda: da curare, già curato, assente.*
 
-> **Un documento emesso non si cancella.** Il suo numero resta consumato nella sequenza anche se
-> viene annullato: per correggerlo si emette una **nota di credito**. Solo le bozze si
-> eliminano. La stessa regola protegge il preventivo e il piano di cura collegati.
+![Un piano con prestazioni in sospeso.](img/academy/09-piano-cura-in-sospeso.png)
 
-### I richiami
+*Un piano con prestazioni in sospeso.*
 
-![Richiami](img/07-richiami.png)
+![Un episodio: odontogramma prima e dopo, cambiamenti e riepilogo.](img/academy/21-storico-episodi.png)
 
-Elenco dei pazienti da richiamare, con lo stato del contatto e la possibilità di generare i
-richiami periodici.
+*Un episodio: odontogramma prima e dopo, cambiamenti e riepilogo.*
 
----
+## 7. Amministrazione
 
-## 4. Il medico
+*Preventivi, fatture, richiami, magazzino, listino e tariffe.*
 
-Il medico vede filtrati sui **propri** appuntamenti e, in più, ha la **scheda di seduta** e il
-catalogo prestazioni.
+- **[Preventivi e avanzamento](MANUALE_UTENTE.md#lezione-preventivi)** — Dal piano al preventivo, stati e lavoro fatturabile.
+- **[Fatture, acconti e storni](MANUALE_UTENTE.md#lezione-fatturazione)** — Saldo e acconto, vita di un documento, note di credito, intestazione.
+- **[I richiami](MANUALE_UTENTE.md#lezione-richiami)** — Chi ricontattare e quando; registrare i contatti.
+- **[Il magazzino](MANUALE_UTENTE.md#lezione-magazzino)** — Prodotti, soglie, movimenti e fornitori.
+- **[Prestazioni e listino](MANUALE_UTENTE.md#lezione-prestazioni-listino)** — Prezzi, durate, denti ammessi, effetto sul dente e default per condizione.
+- **[Le tariffe del medico](MANUALE_UTENTE.md#lezione-tariffe-medico)** — Prezzi personali diversi dal listino, quando si fattura a nome del medico.
 
-### 4.1 L'agenda del medico
+![L'avanzamento delle prestazioni di un preventivo.](img/academy/15-preventivo-avanzamento.png)
 
-![Agenda del medico con gli appuntamenti trascorsi](img/08-medico-agenda-trascorsi.png)
+*L'avanzamento delle prestazioni di un preventivo.*
 
-Accanto a ogni appuntamento c'è il pulsante **Seduta**.
+![L'elenco dei documenti fiscali.](img/academy/06-fatturazione.png)
 
-In fondo alla lista, la sezione **«Già trascorsi oggi»** raccoglie gli appuntamenti della
-giornata che sono **già finiti ma non ancora chiusi** — con il conteggio e la frase *«da qui si
-registra la seduta»*.
+*L'elenco dei documenti fiscali.*
 
-> **Perché esiste.** La seduta si registra *durante o dopo* la visita, non prima. Senza questa
-> sezione, alle 18 un appuntamento delle 9 sarebbe irraggiungibile proprio quando serve
-> registrarlo. Accanto a ciascuno, se ci sono prestazioni collegate, compare il conteggio
-> `n/m eseguite`.
+![Registra contatto: il testo del richiamo, da copiare o da inviare per e-mail o WhatsApp.](img/academy/07-richiami.png)
 
-La sezione si può richiudere, e non compare alla segreteria.
+*Registra contatto: il testo del richiamo, da copiare o da inviare per e-mail o WhatsApp.*
 
-### 4.2 La scheda di seduta
+![Il listino, con categorie, prezzi, durate e default per condizione.](img/academy/33-prestazioni.png)
 
-Si apre dal pulsante **Seduta**. È la schermata da tenere aperta mentre il paziente è in
-poltrona.
+*Il listino, con categorie, prezzi, durate e default per condizione.*
 
-![Scheda di seduta vuota](img/11-scheda-seduta-vuota.png)
+## 8. Copilot AI
 
-In alto: paziente, data, orario, poltrona, medico dell'appuntamento, e in evidenza gli **alert
-clinici**. A destra l'**avanzamento dei piani di cura** del paziente.
+*L'assistente che legge i dati dello studio: modalità, domande, conferme e limiti.*
 
-Se la seduta non ha prestazioni collegate — per esempio una visita — si aggiungono con
-**«Aggiungi prestazione»**.
+- **[Chiedere al Copilot](MANUALE_UTENTE.md#lezione-copilot)** — Modalità amministrativa e clinica, domande, anteprime e suggerimenti.
+- **[Copilot clinico](MANUALE_UTENTE.md#lezione-copilot-clinico)** — Interrogare la cartella in linguaggio naturale, da medico.
+- **[Cosa fa il Copilot e cosa no](MANUALE_UTENTE.md#lezione-copilot-limiti)** — Limiti, conferme e riservatezza delle conversazioni.
 
-#### Scegliere cosa fare
+![Il Copilot clinico: appuntamenti di oggi con le allerte di ogni paziente.](img/academy/34-copilot-clinico.png)
 
-![Selettore con le etichette](img/12-selettore-etichette.png)
+*Il Copilot clinico: appuntamenti di oggi con le allerte di ogni paziente.*
 
-Il selettore elenca **tutte** le prestazioni aperte del paziente, anche di piani diversi.
-Accanto a ognuna, un'etichetta dice **quale appuntamento la riguarda**:
+## 9. Impostazioni della clinica
 
-| Etichetta | Significato |
-|---|---|
-| **In questa seduta** | è già nell'elenco di lavoro aperto |
-| **Fissata per il 28/09 alle 10:00** | è prevista in **un'altra seduta futura** |
-| **In sospeso · seduta del 21/09** | è passata per una seduta conclusa senza essere eseguita |
-| **Da pianificare** | non ha alcun appuntamento |
+*Per il titolare e l'amministratore: dati, persone, agenda, documenti, Copilot.*
 
-Selezionando una prestazione *fissata per un'altra seduta* compare un avviso: aggiungendola qui
-la si esegue oggi, e l'altro appuntamento resterà in agenda da rivedere. **È un avviso, non un
-blocco** — anticipare un lavoro è legittimo, farlo senza saperlo no.
+- **[Clinica e professionisti](MANUALE_UTENTE.md#lezione-impostazioni-studio)** — Dati della clinica, modalità di fatturazione, professionisti, poltrone e catalogo dell'anamnesi.
+- **[Agenda e visibilità](MANUALE_UTENTE.md#lezione-impostazioni-agenda)** — Slot, orario e giorni di lavoro, chi vede quali pazienti.
+- **[Calendario delle presenze](MANUALE_UTENTE.md#lezione-calendario-presenze)** — Orario di ogni professionista, assenze e appuntamenti da spostare.
+- **[Preventivi, fatture, richiami e sistema](MANUALE_UTENTE.md#lezione-impostazioni-documenti)** — Valori predefiniti dei documenti, intervalli dei richiami, preferenze.
+- **[Copilot e AI](MANUALE_UTENTE.md#lezione-impostazioni-ai)** — Modo del Copilot (spento, amministrativo, clinico) e istruzioni.
+- **[Ambiente di prova e amministrazione dell'account](MANUALE_UTENTE.md#lezione-ambiente-prova-studio)** — Esercitarsi senza toccare i dati veri; sedi, esportazione, chiusura.
 
-#### La seduta di un collega
+![Un professionista: profilo, ruolo, dati di fatturazione e azioni.](img/academy/32-impostazioni-professionisti.png)
 
-Se apri la seduta di un altro medico, in testata compare un riquadro azzurro:
+*Un professionista: profilo, ruolo, dati di fatturazione e azioni.*
 
-> **Questa seduta è di Paolo Marchetti** — le prestazioni che segni come eseguite risulteranno
-> *a tuo nome*, non al suo.
+![Durata dello slot, orario di lavoro, giorni lavorativi.](img/academy/31-impostazioni-agenda.png)
 
-Puoi procedere: sostituzioni e urgenze capitano. L'avviso serve perché sia una scelta e non una
-svista, perché in cartella resterà il nome di chi ha scritto.
+*Durata dello slot, orario di lavoro, giorni lavorativi.*
 
-### 4.3 Registrare cosa è stato fatto
+## 10. Riferimento
 
-![Scheda di seduta con gli esiti](img/13-scheda-seduta-esiti.png)
+*Le parole del programma, con il loro significato preciso.*
 
-Ogni prestazione porta con sé il contesto: **dente**, note cliniche, **piano di cura** e
-**numero di preventivo**, con i collegamenti per aprirli.
-
-Per ciascuna si sceglie uno dei tre esiti:
-
-| Esito | Effetto sul piano di cura |
-|---|---|
-| **Eseguita** | risulta completata, con la data e il nome di chi l'ha eseguita |
-| **Rinviata** | **resta aperta**: si potrà ripianificare in un'altra seduta |
-| **Non eseguita** | resta aperta, con la motivazione nelle note |
-
-Nessun esito è preselezionato. Cliccando due volte lo stesso esito lo si toglie. Finché non si
-sceglie, sotto i pulsanti resta scritto *«Nessun esito scelto — la prestazione resta aperta»*.
-
-Ogni esito può avere una **nota** facoltativa.
-
-#### Confermare
-
-![Riepilogo prima della conferma](img/14-riepilogo-chiusura.png)
-
-**«Registra seduta»** apre un riepilogo da leggere *prima* di confermare:
-
-- i conteggi per esito — *1 eseguita*, *1 rinviata*;
-- l'elenco prestazione per prestazione;
-- se ce ne sono, l'avviso delle prestazioni **rimaste senza esito**, che non vengono registrate
-  e restano aperte nel piano.
-
-In fondo, separata, una casella **mai preselezionata** per chiudere anche l'appuntamento. Se
-non la si spunta, la seduta resta aperta e si può completare più tardi.
-
-> **«Chiudi seduta»** è un pulsante a sé. Serve quando **non c'è nulla da dichiarare**: gli esiti
-> sono già stati registrati prima, oppure il paziente è venuto senza che si facesse nulla di
-> pianificato. A seduta chiusa, al posto del pulsante compare l'etichetta *«Seduta chiusa»*.
-
-#### Dopo la chiusura
-
-Su una seduta chiusa non si registra più nulla. Se la chiusura è avvenuta per errore,
-l'appuntamento si **riapre** dalla scheda paziente.
-
-Su un appuntamento **annullato** il rifiuto è definitivo: una prestazione non può risultare
-eseguita in una seduta che non si è svolta, e va registrata su quella in cui è avvenuta.
-
-Se un collega registra sulla stessa seduta mentre la stai compilando, alla conferma il
-programma rifiuta **una volta sola** e dice chi è stato; la scheda si ricarica da sola, così si
-rilegge cosa c'è adesso prima di confermare di nuovo.
-
-### 4.4 Le prestazioni rimaste in sospeso
-
-![Piano di cura con le prestazioni in sospeso](img/09-piano-cura-in-sospeso.png)
-
-Se una prestazione attraversa una seduta che viene chiusa **senza** che le sia stato dato un
-esito, non sparisce e non resta a metà: viene marcata **«In sospeso»**, e in testa all'elenco
-compare un avviso con il conteggio.
-
-Una prestazione in sospeso ha **due sole destinazioni**, entrambe da scegliere:
-
-| Pulsante | Cosa fa |
-|---|---|
-| **Riprogramma** | apre la prenotazione per fissarle una nuova seduta. Appena prenotata, l'etichetta sparisce da sola |
-| **Togli dal piano** | chiede un **motivo obbligatorio** e la toglie dalle cose da fare |
-
-![Finestra del motivo](img/10-togli-dal-piano-motivo.png)
-
-> **«Togli dal piano» non cancella nulla.** La prestazione passa ad *annullata* e **resta nel
-> piano**, con il motivo, la data e il nome di chi ha deciso. Serve a poter ricostruire, anche a
-> distanza di tempo, perché un lavoro previsto non è stato fatto.
-
-Il motivo si sceglie fra quattro frequenti — *il paziente ha rinunciato*, *non più necessaria*,
-*sostituita da un'altra prestazione*, *inserita per errore* — oppure si scrive. La conferma
-resta spenta finché il motivo è vuoto.
-
-### 4.5 Il preventivo si aggiorna da solo
-
-![Dettaglio preventivo con avanzamento](img/15-preventivo-avanzamento.png)
-
-Il preventivo mostra in testata l'**avanzamento** — *«2 di 5 prestazioni del piano eseguite»* —
-e una colonna **Esecuzione** riga per riga: *Eseguita*, *In agenda*, *Pianificata*.
-
-Non c'è niente da aggiornare a mano: cambia quando il medico registra la seduta.
-
-> **Righe libere.** Una riga aggiunta a mano, non collegata a una prestazione del piano di cura,
-> non ha uno stato di esecuzione e non entra nel conteggio. Per questo un preventivo di tre
-> righe può mostrare *«1 di 2 eseguite»* — non è un errore.
-
----
-
-## 5. L'amministratore
-
-L'amministratore ha in più la voce **Impostazioni**.
-
-![Impostazioni](img/16-admin-impostazioni.png)
-
-Le schede coprono i dati dello studio, i professionisti, le anagrafiche, i parametri di agenda,
-preventivi, fatturazione, richiami, l'AI e il sistema.
-
-### Professionisti
-
-![Professionisti](img/17-admin-professionisti.png)
-
-Qui si creano e si modificano medici, igienisti e segreteria. Alla creazione il programma manda
-per email una **password temporanea**: al primo accesso l'interessato ne sceglie una propria.
-
-> **L'indirizzo email non è un dettaglio.** Un professionista senza email **non può accedere**,
-> perché il programma identifica l'utente proprio dall'indirizzo. Comparirà in agenda come
-> assegnatario, ma non potrà registrare le proprie sedute: lo farà sempre qualcun altro, e in
-> cartella resterà il nome di chi ha scritto.
-
-### Sistema
-
-![Impostazioni di sistema](img/18-admin-sistema-errori.png)
-
-**Errori intelligenti** — attivo di default. Quando un'operazione non riesce, l'AI riscrive il
-messaggio tecnico in linguaggio comune. Il messaggio originale resta sempre consultabile come
-«Dettaglio tecnico».
-
-> A funzione **disattivata**, il pannello mostra il messaggio del sistema così com'è e **nessun
-> testo viene inviato al servizio AI**.
-
-Nella stessa scheda si regolano le righe degli appuntamenti in Dashboard e per quanti giorni
-conservare la cronologia delle conversazioni con il Copilot.
-
-### AI
-
-![Impostazioni AI](img/19-admin-ai-prompt.png)
-
-I testi che guidano l'assistente AI sono modificabili qui, senza toccare il codice.
-
----
-
-## 6. Quando qualcosa non funziona
-
-![Pannello errori](img/20-pannello-errori.png)
-
-Quando un'operazione fallisce compare una **striscia in fondo alla schermata**, sempre nella
-stessa posizione. Riporta tre cose:
-
-- **cosa** non è riuscito;
-- **perché**, con i dati concreti che bloccano l'operazione;
-- **cosa fare**, quando esiste un'alternativa.
-
-La striscia **resta finché non viene chiusa**: non scompare da sola, così c'è il tempo di
-leggerla. Se si accumulano più errori, un pulsante apre lo storico della sessione.
-
-Sotto il messaggio, il link **«Dettaglio tecnico»** mostra l'orario, il **codice** e lo stato
-HTTP — nell'esempio `RESOURCE_NOT_FOUND · HTTP 404`. **Sono questi i dati da riportare
-all'assistenza**: identificano la causa esatta.
-
----
-
-## 7. Glossario
-
-### Stati dell'appuntamento
-
-| Stato | Significato |
-|---|---|
-| `Programmato` | inserito in agenda |
-| `Confermato` | confermato dal paziente |
-| `Presente` | il paziente è arrivato |
-| `Completato` | la seduta è stata chiusa |
-| `Annullato` | non si svolgerà |
-| `Non presentato` | il paziente non si è presentato |
-
-### Stati della prestazione nel piano di cura
-
-| Stato | Significato |
-|---|---|
-| `Pianificata` | inserita nel piano, senza appuntamento |
-| `Accettata` | approvata dal paziente |
-| `In agenda` | ha un appuntamento |
-| `Eseguita` | registrata dal medico, con data e autore |
-| `Annullata` | non verrà eseguita. Se tolta dal piano, porta con sé il motivo |
-
-**In sospeso** non è uno stato a sé: è una **condizione**, e significa che la prestazione è
-passata per una seduta conclusa senza esito e non ha una nuova data. Nelle schermate ha la
-precedenza sullo stato, perché dire *«pianificata»* non racconterebbe che è già stata saltata
-una volta.
-
-### Esiti di seduta
-
-Diversi dallo stato nel piano: valgono per **quella** seduta.
-
-| Esito | Significato |
-|---|---|
-| `Da registrare` | prevista, esito non ancora dichiarato |
-| `Eseguita` | effettuata: risulta completata nel piano |
-| `Rinviata` | non fatta oggi, **resta aperta** e ripianificabile |
-| `Non eseguita` | non fatta, con motivazione. Resta aperta |
-
-### Stati del preventivo
-
-| Stato | Significato |
-|---|---|
-| `Bozza` | in compilazione |
-| `Inviato` | inviato al paziente |
-| `Accettato` | approvato: si può fatturare |
-| `Rifiutato` | non accettato |
-| `Scaduto` | oltre la data di validità |
-
----
-
-## Una regola che attraversa tutto il programma
-
-> **Nessuno stato clinico o contabile cambia da solo.**
-
-Una prestazione risulta eseguita solo se il medico l'ha dichiarato. Una seduta si chiude solo
-se qualcuno lo chiede. Un piano di cura non si completa da sé nemmeno quando tutte le sue
-prestazioni sono state fatte: resta una decisione clinica.
-
-Non ci sono caselle già spuntate, perché una casella già spuntata passa se si clicca in fretta —
-e sarebbe un automatismo travestito da scelta.
-
-L'unica eccezione è organizzativa: prenotando una prestazione, il programma la segna *In
-agenda*. Non afferma che sia stato fatto qualcosa al paziente.
-
----
-
-*DentalCare Pro © 2026 — Tutti i diritti riservati*
-*Per assistenza: supporto@dentalcarepro.it*
+- **[Glossario](MANUALE_UTENTE.md#lezione-glossario)** — I termini del manuale, in ordine alfabetico.

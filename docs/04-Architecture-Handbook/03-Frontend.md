@@ -36,6 +36,18 @@ Componenti condivisi introdotti di recente:
 - `features/pazienti/episodi-tab/` (#67): tab «Storico episodi», nascosto alla segreteria;
 - `features/academy/` (#69): home, lezione (markdown renderizzato con `marked` e sanitizzato da
   Angular, video con ripresa dal punto lasciato) ed editor delle lezioni con anteprima.
+- `shared/components/patient-notice-prompt/` + `core/services/appointment-notice.service.ts` (#111): finestra
+  «Avvisa il paziente», montata una volta nella shell come il prompt degli episodi; la aprono il nuovo appuntamento,
+  la scheda paziente (spostamento, cancellazione), i pulsanti nelle risposte del Copilot e l'elenco «Da avvisare»
+  della Dashboard.
+- `core/services/whatsapp-config.service.ts` (#111): configurazione WhatsApp della clinica, condivisa e legata
+  alla clinica dell'utente; vale come spenta finché il server non risponde (i link si chiedono dopo). Va letta, non
+  caricata, dai metodi chiamati nei template (scrivere un signal durante il rendering dà NG0600).
+- `features/agenda/`: colonne della vista Giorno dalle poltrone attive (`GET /api/appointments/chairs`), colonna
+  degli orari `sticky`, colori per posizione, filtro delle poltrone in `localStorage` (#115).
+- `features/impostazioni/`: schede della clinica (Clinica, Professionisti, Anagrafiche → Poltrone | Anamnesi,
+  Agenda, Per professionista, Preventivi, Fatturazione, Richiami, AI, Sistema → WhatsApp) e schede personali per
+  medici e igienisti (#98); `features/admin-tenant/` è la pagina del titolare (*Amministrazione account*, #117).
 
 ## 4. Service HTTP
 

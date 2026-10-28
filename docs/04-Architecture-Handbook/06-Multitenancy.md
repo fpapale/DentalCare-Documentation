@@ -17,16 +17,20 @@ schema (mappate via `dentalcare.tenant_clinics`).
 |---|---|---|
 | **Tenant** | Account/abbonamento = lo studio come entità. Titolare del trattamento. 1 schema dedicato | `dentalcare.tenants` + `t_XXXX` |
 | **Clinica / sede** | Sede fisica del tenant (`clinic` = `clinica` = `sede`, sinonimi). **1..N per tenant** | `clinics` + `dentalcare.tenant_clinics` |
+| **Poltrona** | Posto di lavoro della clinica, colonna dell'agenda (#115). **1..N per clinica** | `clinic_chairs` (gli appuntamenti tengono il nome in `chair_label`) |
 | **Provider** | Medici e personale | `providers` |
 
 - Chi crea l'account è il **`TENANT_ADMIN`**: possiede il tenant e amministra
-  **tutte** le sue cliniche (`createClinic`/`updateClinic`/`deleteClinic`). **Non
-  esiste** un ruolo "amministratore di singola clinica": l'amministrazione è al
+  **tutte** le sue cliniche (`createClinic`/`updateClinic`/`deleteClinic`, solo da
+  `/api/tenant-admin/clinics`, #117: dalle Impostazioni di una clinica e dagli ambienti di prova non si
+  creano cliniche). **Non esiste** un ruolo "amministratore di singola clinica": l'amministrazione è al
   livello del tenant.
 - **`ADMIN` ≠ `TENANT_ADMIN`**: `ADMIN` è legacy/di servizio (tenant demo +
   service-token n8n), non il ruolo di un cliente reale.
 - Evitare la parola **"studio"** da sola: ambigua (a volte = tenant, a volte =
-  sede). Usare "tenant" o "sede del tenant".
+  sede). Usare "tenant" o "sede del tenant". **Nell'interfaccia** (decisione del committente, 28/10/2026): la
+  sede si chiama **Clinica** (mai «Centro»), il posto in agenda **Poltrona** (mai «Studio»), il tenant
+  **account** (pagina del titolare: *Amministrazione account*).
 
 ## 2. Contesto tenant
 
@@ -51,7 +55,9 @@ schema (mappate via `dentalcare.tenant_clinics`).
 Dentro lo schema di un tenant convivono due tipi di tabella:
 
 - **per-clinica** — hanno `clinic_id`: isolate per singola sede (pazienti,
-  appuntamenti, fatture, selezioni di anamnesi del paziente…).
+  appuntamenti, fatture, selezioni di anamnesi del paziente, poltrone `clinic_chairs`, avvisi
+  `appointment_notices`…). Le poltrone si gestiscono solo dalla clinica corrente: il server rifiuta quelle di
+  un'altra clinica dello stesso tenant.
 - **per-tenant condiviso** — **senza** `clinic_id`: uguali per tutte le sedi del
   tenant. Caso principale: il **catalogo anamnesi**
   (`anamnesis_categories`/`anamnesis_items`), reso per-tenant in #43. Due sedi
@@ -140,10 +146,24 @@ del tenant (mai da input client):
   `provider_price_overrides` (override prezzi per medico, versionati per intervallo)
   e la vista `v_provider_effective_prices`.
 
+- **Impostazioni dei documenti (#97)** — validità e prefisso dei preventivi, IVA, pagamento, scadenza, intervalli e
+  testo dei richiami su `clinics`, applicati dal server; i professionisti possono sostituirli con i propri (#98,
+  colonne su `providers`).
+- **Presenze dei professionisti (#99)** — `provider_work_hours` e `provider_absences`; senza orario proprio vale
+  quello della clinica.
+- **Poltrone (#115)** — `clinic_chairs` (nome, attiva, ordine): si prenota solo sulle attive.
+- **WhatsApp (#111)** — `clinics.whatsapp_enabled`, `whatsapp_mode` (`manual`; `automatic` non ancora ammesso),
+  `whatsapp_business_phone`.
+- **Giulia (#100, #109)** — codice a 5 cifre della clinica (`tenant_clinics`), indice HMAC dei telefoni dei pazienti,
+  `tenants.voice_operations_used` per il limite negli studi di prova.
+- **Stati automatici (#108)** — `appointments.status_auto_at`.
+
 Queste colonne sono aggiunte in modo idempotente da `patchSchema()` (vedi §5),
 quindi un tenant preesistente le riceve al primo avvio dopo il deploy. Solo
 l'amministratore può cambiare `patient_visibility_mode` e `billing_mode` (matcher
-`PUT /api/settings/**` in `SecurityConfig`).
+`PUT /api/settings/**` in `SecurityConfig`; dal #97 anche `POST`, dal #115 `DELETE`). Le tabelle nuove degli
+schemi tenant (`appointment_notices`, `clinic_chairs`) le crea `patchSchema()`; gli schemi delle prove le ricevono
+al primo accesso (`DemoSchemaPatcher`), e `DemoSeedService` allinea le poltrone ai dati d'esempio.
 
 ## 7. Ciclo di vita del tenant: export e cancellazione
 

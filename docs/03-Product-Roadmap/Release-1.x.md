@@ -1,6 +1,6 @@
 # Release 1.x — Gestionale odontoiatrico con AI amministrativa
 
-**Fase 1** · **Target: gennaio 2027** · **Versione doc:** 1.1 (22 luglio 2026)
+**Fase 1** · **Target: gennaio 2027** · **Versione doc:** 1.2 (28 ottobre 2026, allineata alle proposte fino a #117)
 
 ---
 
@@ -8,7 +8,9 @@
 
 Release 1.x porta DentalCare Pro dallo stato **demo** al primo **studio pagante con
 pazienti reali**. Il prodotto include il gestionale completo e l'AI **amministrativa**
-(Copilot conversazionale e assistente vocale). Il modulo di analisi radiologica resta
+(Copilot conversazionale in modalità amministrativa e Giulia, la segreteria telefonica). Il **Copilot clinico** è
+spento in Fase 1 (decisione del committente, #114) e passa con il resto dell'AI clinica alla
+[Release 2.x](Release-2.x.md). Il modulo di analisi radiologica resta
 **disattivato in produzione clinica**: senza marcatura CE non può essere usato su
 pazienti reali (vedi [Release 2.x](Release-2.x.md)).
 
@@ -71,14 +73,52 @@ DentalCare non può. Al termine di Release 1.x, sì.
 - **Segregazione dei ruoli verificata lato server** — ✅ **Fatta (dev, #42, #44, #62)**: `AccessScopeService` per visibilità pazienti e `/api/appointments/*/session/**` protetto da `CLINICAL_WRITE_ROLES` (la segreteria non può firmare atti clinici).
 - **Relazione di cura** come criterio di autorizzazione.
 - **Merge dei duplicati** paziente con approvazione e audit.
+- **Layout tablet 10" e mobile** — ✅ **Fatta (dev, #72)**: menu con etichette da `md`, logout sempre visibile,
+  target touch; menu riducibile alle icone e pannello destro nascondibile.
+- **Account e cliniche** — ✅ **Fatta (dev, #117)**: le cliniche dell'account si creano, modificano ed eliminano
+  solo dalla pagina del titolare (*Amministrazione account*); dalle Impostazioni di una clinica e dagli ambienti di
+  prova non si creano cliniche. Terminologia fissata (28/10/2026): **account** → **clinica** (= sede) →
+  **poltrona**; nell'interfaccia mai «Centro» né «Studio» da solo.
 - **Ordinamento e ricerca liste operative** — ✅ **Fatta (dev)**: ordinamento per colonna intelligente (date/importi decrescenti per default, celle vuote in fondo), ricerca testuale e filtri rapidi su Fatturazione, Richiami, Magazzino, Preventivi e Prestazioni; separazione dello stornato nei KPI contabili.
+
+### Agenda, poltrone e comunicazione con i pazienti
+- **Poltrone come anagrafica della clinica** — ✅ **Fatta (dev, #115)**: tabella `clinic_chairs`; si prenota solo su
+  poltrone attive (`422 CHAIR_UNKNOWN`); rinomina propagata agli appuntamenti; una poltrona con appuntamenti si
+  disattiva, non si elimina. Agenda, disponibilità, Giulia e Copilot usano l'anagrafica. Vista Giorno con orari
+  fissi a sinistra, colori per posizione e filtro delle poltrone; avviso oltre 8 poltrone attive.
+- **Calendario delle presenze** — ✅ **Fatta (dev, #99)**: fasce orarie e assenze per professionista; fuori presenza
+  l'appuntamento è rifiutato con alternative (`422 PROVIDER_NOT_PRESENT`), anche da Copilot e Giulia.
+- **Appuntamenti a passi di slot** — ✅ **Fatta (dev, #90)**: orari e durate a multipli dello slot della clinica;
+  fuori griglia `422 OFF_GRID` con i due slot vicini. Solo professionisti clinici assegnabili (#95).
+- **Stati automatici degli appuntamenti** — ✅ **Fatta (dev, #108)**: la notte dopo, «Non presentato» per gli
+  appuntamenti senza seguito, con il segno «automatico» e la conferma manuale; registrare esiti in seduta porta a
+  «In corso». Ordine cronologico nella scheda paziente (#107).
+- **Scheda di seduta in tre passi** — ✅ **Fatta (dev, #106)**: prima della visita, esito, odontogramma; sintesi del
+  paziente in una finestra; prestazioni raggruppate per piano; barra fissa con «Registra» e «Chiudi».
+- **Avvisi ai pazienti** — ✅ **Fatta (dev, #111, modalità manuale)**: ogni prenotazione, spostamento o cancellazione
+  (gestionale, Copilot, Giulia) lascia un avviso (`appointment_notices`); WhatsApp con link `wa.me` dal WhatsApp
+  Business della clinica, oppure e-mail dal server; quelli non mandati restano in Dashboard, *Da avvisare*.
+  WhatsApp si attiva per clinica in Impostazioni → Sistema, con il numero WhatsApp Business. Gli SMS non sono un
+  canale (#110). La modalità automatica (API Meta) è fuori scope (§5).
+- **Richiami** — ✅ **Fatta (dev, #97, #98, #104, #111)**: intervalli e testo della clinica o del medico; storico dei
+  contatti con autore; invio del testo per e-mail o WhatsApp con registrazione del contatto.
+- **E-mail ai pazienti in prova** — ✅ **Fatta (dev, #103)**: con dati fittizi l'e-mail va a chi prova il programma.
 
 ### Ciclo economico e fatturazione
 - **Fatturazione conforme** — ✅ **Fatta (dev, #50, #52, #53, #63)**: fattura a saldo vincolata all'avanzamento reale delle prestazioni completate in seduta, documento di acconto, flusso di storno con nota di credito, e numerazione documentale robusta (#63, `nextProgressive` per eliminare collisioni su bozze cancellate).
+- **Acconto e saldo coerenti** — ✅ **Fatta (dev, #102)**: l'acconto è l'importo incassato, entro il residuo del
+  preventivo; il saldo scala gli acconti emessi con righe di storno.
+- **PDF ed e-mail del documento** — ✅ **Fatta (dev, #101)**: PDF generato dal server, inviato al paziente dal server
+  di posta, data d'invio registrata (DPIA D-23).
+- **Impostazioni dei documenti applicate dal server** — ✅ **Fatta (dev, #97, #98)**: validità e prefissi, IVA,
+  pagamento e scadenza della clinica o del medico; «Le mie tariffe» e impostazioni personali per i professionisti
+  (#96, #98).
 
 ### Infrastruttura e affidabilità
 - **Zero-downtime schema patching** — ✅ **Fatta (dev, #64)**: esecuzione DDL transazionale per le viste in `EstimateSchemaInitializer`, azzerando i ritardi e gli errori 500 transitori nei riavvii.
-- **Vincolo nota di credito → fattura stornata sui tenant successivi al primo** — 🔨 **Proposta (#68)**: la patch di #52 cerca `fk_invoices_reverses` per nome in tutto il database e dal secondo tenant non lo crea. Le patch nuove (#67, #69) cercano i vincoli sulla tabella giusta.
+- **Vincolo nota di credito → fattura stornata sui tenant successivi al primo** — ✅ **Fatta (dev, #68)**: il vincolo si cerca sulla tabella giusta e c'è in ogni tenant.
+- **Rilascio continuo** — ✅ GitHub Actions: push su `staging` → collaudo, push su `master` → istanza di prova
+  pubblica; le patch di schema sono idempotenti e girano all'avvio (gli ambienti di prova al primo accesso).
 
 ### Ambiente pubblico di prova e formazione
 - **Prova gratuita, ambiente di prova degli studi e Academy** — ✅ **Fatta (dev, #69, #70)**, in
@@ -88,10 +128,15 @@ DentalCare non può. Al termine di Release 1.x, sì.
   richiesta di attivazione e cancellazione dopo altri **30**) e **ambiente di prova dello studio**
   per chi è già cliente (uno per studio, dati di esempio, aperto dall'app senza seconda password,
   dura quanto lo studio). La prova gratuita, aperta a chiunque, al go-live resta su un'istanza
-  separata dalla produzione. L'**Academy** (6 moduli, 23 lezioni) è per tutti: «Prova ora» apre
+  separata dalla produzione. L'**Academy** (oggi 10 moduli e 47 lezioni, manuale ufficiale del corso dal 22/10/2026,
+  #85) è per tutti: «Prova ora» apre
   la schermata della lezione sempre sui dati di esempio; i contenuti li cura il ruolo di
   piattaforma `ACADEMY_EDITOR`. Dettagli in
   [06-Multitenancy §8](../04-Architecture-Handbook/06-Multitenancy.md#8-tenant-demo-e-workspace-demo).
+  Aggiornamenti: creazione della prova in ~30 secondi (#84); il titolare della prova può fare da amministratore
+  (#87, DPIA D-20) ma non creare account né cliniche (#117); Giulia nella prova con un limite di prenotazioni e
+  spostamenti (5, impostabile), comunicato in Dashboard, nell'e-mail di benvenuto e da Giulia (#109). I manuali
+  utente in `05-Manuale-Utente` si generano dalle lezioni (`tools/genera_manuale.py`).
 
 ### Integrità dei documenti
 - Impronta **SHA-256**, verifica del MIME reale, scansione malware, controllo di coerenza
@@ -106,6 +151,11 @@ DentalCare non può. Al termine di Release 1.x, sì.
 - **Disclosure** dell'assistente vocale a inizio interazione + fallback umano sempre
   disponibile (✅ **Fatta, Art. 50 AI Act** con Inspection Binder Retell Cartella 13).
 - **Errori intelligenti** — ✅ **Fatta (dev, #54)**: riscrittura AI dei messaggi d'errore applicativi e conflitti DB in linguaggio comprensibile.
+- **Copilot amministrativo senza indicazioni cliniche** — ✅ **Fatta (dev, #88)**: regola fissa nel codice, valida
+  anche con prompt personalizzati; pannello con dati veri (#92); tutti gli strumenti esposti al modello (#79,
+  DPIA D-16).
+- **Copilot clinico spento in Fase 1** — 📋 **Confermata (#114)**: la modalità clinica (anamnesi, odontogramma,
+  piani) passa alla Release 2.x; gli studi di prova non nasceranno più in modalità clinica (oggi D-19).
 - **Limiti operativi**: nessun triage, nessuna diagnosi, nessuna prescrizione.
 - **Informativa al paziente** sull'uso dell'AI (L. 132/2025).
 - **Kill switch** per modulo e **gate no-clinical** sul modulo radiologico.
@@ -128,18 +178,20 @@ localmente e nessun audio è conservato per default.
 parallelo. L'attivazione non è bloccante per il resto della Release: se il pilota non è
 verde, la funzione resta installata ma disabilitata tramite policy server-side.
 
-### Voice Agent Provisioner (`retell-provisioner`)
+### Giulia centralizzata (#100)
 
-Servizio indipendente per il provisioning dell'assistente vocale Giulia per-tenant.
-Astrae i provider voce (Retell) e telefonia (Twilio) tramite interfacce pluggabili, in
-modo che provider alternativi (ElevenLabs, Vonage, provider custom Chairside) possano
-essere aggiunti senza modificare il servizio. Al provisioning di ogni nuovo tenant:
-crea l'agent Retell da template parametrico (`{{studio_name}}`, `{{studio_address}}`
-ecc.), acquista e assegna il numero Twilio, salva `retell_agent_id` e `phone_number`
-nella riga `tenants`. Richiamato dal workflow n8n di onboarding; espone API REST con
-autenticazione `X-API-Key`. Stack: FastAPI + SQLite (template storage).
+Un solo agente vocale e **un numero unico** per tutte le cliniche, al posto di un agente e un numero per tenant.
+Giulia si presenta come segreteria AI (AI Act art. 50) e riconosce la clinica dal **codice a 5 cifre** (a voce o
+da tastiera), dal numero chiamante con il cognome, o da nome e città, con conferma a voce. Il riconoscimento rilascia
+un **biglietto firmato** (30 minuti, una chiamata) con cui si ottiene un token di servizio ristretto alla clinica
+(`VoiceAgentScope`); un modello linguistico non può scegliere la clinica. Le e-mail di conferma partono dal server
+di posta di DentalCare (D-26). Stato: in collaudo; go-live con la vera produzione (gennaio 2027). Il
+`retell-provisioner` per-tenant è **in dismissione**.
 
 ### LLM Gateway (`dentalcare-llm-gateway`)
+
+✅ **Fatta (dev, #74)**: servizio `llm-ner-gateway` (repo `llm-rizzo-gateway`, riconoscitore 0.3B). Aperto: n8n
+usa ancora una propria chiave OpenAI per gli agenti di Giulia (#105).
 
 Trust boundary tra DentalCare e i provider LLM (OpenAI). Intercetta ogni chiamata
 Copilot/AI, pseudonimizza PII/PHI prima dell'invio al provider e detokenizza la
@@ -166,6 +218,11 @@ Rimandati consapevolmente al post-Release 1.x:
 - portale paziente;
 - terminology service;
 - charting parodontale avanzato ed esame obiettivo strutturato;
+- **WhatsApp automatico** (API Meta: promemoria del giorno prima, stato di consegna, risposte) e **prenotazioni e
+  disdette via WhatsApp** dei pazienti registrati (#111 fasi B-D, #112);
+- interfaccia nelle **lingue dell'UE** con traduzione assistita (#71);
+- **AI clinica**: Copilot clinico (#114), sintesi del percorso clinico scritta dall'AI (#67), proposta delle
+  condizioni dall'analisi radiografica (#94 B);
 - **modulo radiologico AI** → [Release 2.x](Release-2.x.md).
 
 Sono funzioni per crescere, non per il primo studio.
@@ -185,8 +242,8 @@ cartella regge un controllo.
 
 ## 8. User Personas
 
-Tre ruoli operativi, documentati nel [Manuale Utente](../05-Manuale-Utente/README.md):
-**dottoressa** (medico), **segretaria** (front-office), **amministratore** (titolare).
+Tre ruoli operativi, documentati nel [Manuale Utente](../05-Manuale-Utente/README.md) (generato dall'Academy):
+**medico e igienista**, **segreteria**, **titolare e amministratore**.
 Le personas commerciali sono da definire.
 
 ## 9. User Journey
@@ -203,17 +260,18 @@ schema-per-tenant; MinIO per documenti e immagini; servizi AI disaccoppiati.
 
 ## 11. Moduli Core
 
-Agenda · Pazienti · Cartella clinica · Odontogramma · Anamnesi · Diagnosi · Prescrizioni
-· Piani di cura · Preventivi · Fatturazione · Richiami · Magazzino · Prestazioni ·
-Impostazioni. **Tutti implementati**; il lavoro di Release 1.x è sul livello probatorio,
+Agenda (poltrone, presenze, slot, stati automatici) · Pazienti · Cartella clinica · Scheda di seduta · Storico
+episodi · Odontogramma · Anamnesi · Diagnosi · Prescrizioni · Piani di cura · Preventivi · Fatturazione · Richiami ·
+Avvisi ai pazienti (e-mail, WhatsApp manuale) · Magazzino · Prestazioni · Impostazioni della clinica e personali ·
+Amministrazione account · Academy. **Tutti implementati**; il lavoro di Release 1.x è sul livello probatorio,
 non sulle funzioni.
 
 ## 12. Moduli AI
 
 | Modulo | In Release 1.x |
 |---|---|
-| **Copilot conversazionale** | ✅ incluso, con conferma umana obbligatoria per ogni scrittura |
-| **Assistente vocale telefonico** (prenotazioni) | ✅ incluso, con disclosure e fallback umano — provisioning per-tenant tramite `retell-provisioner` |
+| **Copilot conversazionale** | ✅ modalità amministrativa, con conferma umana obbligatoria per ogni scrittura; modalità clinica spenta in Fase 1 (#114) |
+| **Giulia, segreteria telefonica** (prenotazioni, spostamenti, cancellazioni) | ✅ inclusa, con disclosure e fallback umano — un agente e un numero per tutte le cliniche (#100); limite nelle prove (#109) |
 | **Chairside Agent “Ehi Giulia”** (Copilot hands-free in poltrona) | 📋 incluso nello scope; attivazione subordinata a doppio gate, DPIA e pilota |
 | **Analisi radiologica** | 🔒 **disattivato** in produzione clinica → Release 2.x |
 
@@ -273,7 +331,9 @@ stato di annullamento al posto della cancellazione fisica.
 
 ## 21. Integrazioni
 
-Assistente vocale (fornitore esterno) e automazioni di workflow. Ogni fornitore che tratta
+Assistente vocale (fornitore esterno) e automazioni di workflow; server di posta per le e-mail ai pazienti;
+WhatsApp in modalità manuale con link `wa.me` (DentalCare non scambia dati con Meta: il messaggio lo invia la
+clinica dal proprio WhatsApp Business, D-28). Ogni fornitore che tratta
 dati personali richiede DPA, valutazione del trasferimento e divieto di training: è parte
 del Gate 1.
 
@@ -283,9 +343,9 @@ Copilot (LLM con function calling) e assistente vocale. Il servizio di visione
 radiologica resta deployato ma **non raggiungibile dai tenant clinici**.
 
 Le chiamate LLM transitano obbligatoriamente per **`dentalcare-llm-gateway`** (privacy
-engine, pseudonimizzazione, audit). Il **`retell-provisioner`** gestisce il ciclo di vita
-degli agent vocali per-tenant. Entrambi i servizi sono indipendenti da DentalCare e
-riutilizzabili da altri prodotti futuri.
+engine, pseudonimizzazione, audit). Giulia è un unico agente per tutte le cliniche (#100): il
+**`retell-provisioner`** per-tenant è in dismissione. Il gateway è indipendente da DentalCare e riutilizzabile da
+altri prodotti futuri.
 
 ## 23. Performance
 
@@ -340,7 +400,8 @@ Nessun paziente reale prima che **tutte** le voci siano verdi:
 - [ ] DPA firmati con tutti i fornitori AI
 - [ ] disclosure assistente vocale + fallback umano
 - [ ] `dentalcare-llm-gateway` attivo: nessuna API key LLM in DentalCare, privacy engine operativo
-- [ ] `retell-provisioner` attivo: agent vocale del tenant pilota provisonato tramite servizio
+- [ ] Giulia centralizzata (#100) collaudata: riconoscimento della clinica, biglietto firmato, numero dedicato
+- [ ] Copilot clinico spento in produzione (#114)
 - [ ] AI literacy erogata, con evidenze
 - [ ] contratto studio con clausole deployer
 - [ ] restore testato almeno una volta

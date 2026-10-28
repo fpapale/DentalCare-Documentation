@@ -19,7 +19,7 @@ livelli con separazione netta UI / API / persistenza.
 | AI Copilot | Spring AI + OpenAI GPT-4.1 (function calling) |
 | AI Radiologia | Servizio Python FastAPI + ONNX Runtime (modelli YOLO) |
 | Object storage | MinIO (S3-compatible) per documenti paziente |
-| Automazione | n8n (prenotazioni via WhatsApp/voce, webhook) |
+| Automazione | n8n (Giulia: webhook da Retell verso le API, #100) |
 | Deploy | Docker Compose (macchina <app-server-lan>), DB `dentalcare_prod` su <db-host-lan> |
 
 ## 3. Componenti e flusso
@@ -46,10 +46,12 @@ nginx (frontend container) ── proxy /api ──►  Spring Boot API (:8080)
 prescrizioni, piani di cura (treatment plan), appuntamenti/agenda, scheda di seduta,
 storico degli episodi clinici (#67).
 
-**Amministrativi**: preventivi, fatturazione, prestazioni (service catalog),
-magazzino (prodotti/movimenti/fornitori), richiami (recall), impostazioni studio.
+**Amministrativi**: preventivi, fatturazione (acconto e saldo, PDF ed e-mail), prestazioni (service catalog),
+magazzino (prodotti/movimenti/fornitori), richiami (recall), avvisi ai pazienti (e-mail, WhatsApp manuale),
+poltrone e presenze, impostazioni della clinica e personali dei professionisti.
 
-**Piattaforma**: multi-tenant admin, provisioning studi, gestione utenti/ruoli,
+**Piattaforma**: amministrazione dell'account (cliniche, utenti, esportazione, chiusura), provisioning,
+gestione utenti/ruoli, Giulia (segreteria telefonica centralizzata),
 copilot AI, chat, analisi documenti/immagini AI, dashboard e KPI. Prova gratuita con
 workspace demo per medico, ambiente di prova per ogni studio cliente e Academy e-learning
 (#69, #70).
@@ -76,7 +78,12 @@ workspace demo per medico, ambiente di prova per ogni studio cliente e Academy e
 | Cifratura GDPR (birth_date, fiscal_code) | Implementato (#7, Slice 1 + 2a) |
 | Ciclo della seduta + odontogramma aggiornato su conferma | Implementato (#56-#62, #65) |
 | Storico episodi clinici (fotografie prima/dopo, senza AI) | Implementato (#67, Fase 1) |
-| Prova gratuita, ambiente di prova degli studi, Academy | Implementato in dev (#69, #70) |
+| Prova gratuita, ambiente di prova degli studi, Academy | Implementato in dev (#69, #70, #84-#87) |
+| Agenda: slot, presenze, poltrone, stati automatici | Implementato in dev (#90, #99, #108, #115) |
+| Avvisi ai pazienti (e-mail, WhatsApp manuale) | Implementato in dev (#111); WhatsApp automatico: proposta |
+| Giulia centralizzata | In collaudo (#100, #109) |
+| LLM Gateway (pseudonimizzazione) | Implementato in dev (#74) — vedi [14-LLM-NER-Gateway](14-LLM-NER-Gateway.md) |
+| Copilot clinico | Spento in Fase 1 (#114), passa alla Fase 2 |
 | DICOM nativo | **Non implementato** (roadmap) — vedi [05-DICOM](05-DICOM.md) |
 | Secret store esterno (Vault) | Predisposto (seam), non ancora attivo |
 

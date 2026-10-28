@@ -10,7 +10,7 @@ Documentazione architetturale e operativa dei componenti di sicurezza e anonimiz
 > - Il repository **`llm-ner-gateway`** incapsula ed espone **entrambi i motori NER**: il modello fine-tuned `llm-ner-dentalcare-0.3B` e il modello standard `spaCy` (`it_core_news_lg`).
 > - Il deployment Docker Compose avvia sia l'istanza primaria (:8080 su 0.3B) sia l'istanza di confronto (:8085 con `NER_MODEL=spacy`), generate dalla **medesima immagine** di `llm-ner-gateway`.
 > - Non esiste alcuna dipendenza verso cartelle o repository legacy per l'esecuzione di spaCy.
-> - L'installazione e la manutenzione sul server (`192.168.0.72`) avvengono esclusivamente tramite gli script bash idempotenti `scripts/install-llm_gateway.sh` e `scripts/update-llm-gateway.sh`.
+> - L'installazione e la manutenzione sul server (`<server-app>`) avvengono esclusivamente tramite gli script bash idempotenti `scripts/install-llm_gateway.sh` e `scripts/update-llm-gateway.sh`.
 
 ---
 
@@ -370,7 +370,7 @@ I test predefiniti nella demo riproducono fedelmente le strutture dati DTO e i f
 
 ## 6. Mappatura Porte e Topologia di Rete
 
-### 6.1 Ambiente di Produzione / Staging Docker (Server `192.168.0.72`)
+### 6.1 Ambiente di Produzione / Staging Docker (Server `<server-app>`)
 
 Tutti i container operano all'interno della rete Docker dedicata `dentalcarepro_dentalcarepro`:
 
@@ -391,7 +391,7 @@ Tutti i container operano all'interno della rete Docker dedicata `dentalcarepro_
 
 ---
 
-## 7. Script di Deploy e Gestione Server (`192.168.0.72`)
+## 7. Script di Deploy e Gestione Server (`<server-app>`)
 
 I due repository includono script di automazione bash idempotenti e completi nella cartella `scripts/`:
 

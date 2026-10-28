@@ -10,9 +10,10 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792175646.0,
-    "ast_hash": "af67ea390ec16109230bf4ddd94f386e",
-    "semantic_hash": ""
+    "mtime": 1793192038.0,
+    "seen": 1793192828.4680474,
+    "ast_hash": "2dcb4a118f43b48dcce09c1c68a2b069",
+    "semantic_hash": "2dcb4a118f43b48dcce09c1c68a2b069"
   },
   "docs/01-Studio-di-Fattibilita/01-Executive-Summary.md": {
     "mtime": 1784546048.0,
@@ -280,19 +281,22 @@
     "semantic_hash": ""
   },
   "docs/03-Product-Roadmap/AI-Roadmap.md": {
-    "mtime": 1784756638.0,
-    "ast_hash": "5518e7b0f1cc4c1bdea6cdf03759c60f",
-    "semantic_hash": "5518e7b0f1cc4c1bdea6cdf03759c60f"
+    "mtime": 1793191868.0,
+    "seen": 1793192828.468049,
+    "ast_hash": "7db4c66bd0a67d46f90bb57c6b3f229e",
+    "semantic_hash": "7db4c66bd0a67d46f90bb57c6b3f229e"
   },
   "docs/03-Product-Roadmap/Product-Roadmap.md": {
-    "mtime": 1784756638.0,
-    "ast_hash": "0079f1fc5dffe229309f93e41e7c30fd",
-    "semantic_hash": "0079f1fc5dffe229309f93e41e7c30fd"
+    "mtime": 1793191868.0,
+    "seen": 1793192828.46805,
+    "ast_hash": "6a81405ff0fca4f69b2fb6407b67b38c",
+    "semantic_hash": "6a81405ff0fca4f69b2fb6407b67b38c"
   },
   "docs/03-Product-Roadmap/Release-1.x.md": {
-    "mtime": 1791357138.0,
-    "ast_hash": "f751a5ac6e1156ce0dd589626c89f7e7",
-    "semantic_hash": ""
+    "mtime": 1793188354.0,
+    "seen": 1793192828.468051,
+    "ast_hash": "057ddb7548cd83f852139df4b3add5b2",
+    "semantic_hash": "057ddb7548cd83f852139df4b3add5b2"
   },
   "docs/03-Product-Roadmap/Release-2.x.md": {
     "mtime": 1784546048.0,
@@ -320,24 +324,28 @@
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/01-Overview.md": {
-    "mtime": 1790631398.0,
-    "ast_hash": "aa1891568dd6a2c242369258b768c8eb",
-    "semantic_hash": ""
+    "mtime": 1793188438.0,
+    "seen": 1793192828.468052,
+    "ast_hash": "53e0162786121c1318e0a3c4b9c83164",
+    "semantic_hash": "53e0162786121c1318e0a3c4b9c83164"
   },
   "docs/04-Architecture-Handbook/02-Backend.md": {
-    "mtime": 1790631398.0,
-    "ast_hash": "842d1003cf1c2d37c1543a76a300596c",
-    "semantic_hash": ""
+    "mtime": 1793188406.0,
+    "seen": 1793192828.4680526,
+    "ast_hash": "bf00c3e09ecf5aafd41502dbbbb1f32d",
+    "semantic_hash": "bf00c3e09ecf5aafd41502dbbbb1f32d"
   },
   "docs/04-Architecture-Handbook/03-Frontend.md": {
-    "mtime": 1790631398.0,
-    "ast_hash": "519382f4f4ee01bec35cceaf316a77bd",
-    "semantic_hash": ""
+    "mtime": 1793188472.0,
+    "seen": 1793192828.4680533,
+    "ast_hash": "09e63395f3b22203fc8c5c5c96f8ebab",
+    "semantic_hash": "09e63395f3b22203fc8c5c5c96f8ebab"
   },
   "docs/04-Architecture-Handbook/04-AI.md": {
-    "mtime": 1792175638.0,
-    "ast_hash": "1c4b8e90a91285995a066b7292f0f7ce",
-    "semantic_hash": ""
+    "mtime": 1793188438.0,
+    "seen": 1793192828.468054,
+    "ast_hash": "8003efbeaa7f608d041714bc0938dc9a",
+    "semantic_hash": "8003efbeaa7f608d041714bc0938dc9a"
   },
   "docs/04-Architecture-Handbook/05-DICOM.md": {
     "mtime": 1784546048.0,
@@ -345,14 +353,16 @@
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/06-Multitenancy.md": {
-    "mtime": 1790631398.0,
-    "ast_hash": "6cb5e489187b23641578efef60d7cdeb",
-    "semantic_hash": ""
+    "mtime": 1793188472.0,
+    "seen": 1793192828.4680545,
+    "ast_hash": "56570a688c351545f0a9dd8ae5ebc68d",
+    "semantic_hash": "56570a688c351545f0a9dd8ae5ebc68d"
   },
   "docs/04-Architecture-Handbook/07-Security.md": {
-    "mtime": 1790631398.0,
-    "ast_hash": "bbde3317dbcfc518f507f34f4e5bcbba",
-    "semantic_hash": ""
+    "mtime": 1793188472.0,
+    "seen": 1793192828.4680552,
+    "ast_hash": "e73182aedb71ddfa976a79fca5cfbcc1",
+    "semantic_hash": "e73182aedb71ddfa976a79fca5cfbcc1"
   },
   "docs/04-Architecture-Handbook/08-DevOps.md": {
     "mtime": 1790666534.0,
@@ -375,9 +385,10 @@
     "semantic_hash": ""
   },
   "docs/04-Architecture-Handbook/12-Clinical-Record-Model.md": {
-    "mtime": 1790623398.0,
-    "ast_hash": "0ff7ebfe9869d021e21480d22b4e1d08",
-    "semantic_hash": ""
+    "mtime": 1793188484.0,
+    "seen": 1793192828.4680562,
+    "ast_hash": "76f3c91312562499d2da0b7013290173",
+    "semantic_hash": "76f3c91312562499d2da0b7013290173"
   },
   "docs/04-Architecture-Handbook/13-Audit-Trail.md": {
     "mtime": 1790631398.0,
@@ -390,29 +401,34 @@
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/01-Guida-Dottoressa.md": {
-    "mtime": 1790666912.0,
-    "ast_hash": "f1229e45e90d3d1246b14691ebcf0d13",
-    "semantic_hash": ""
+    "mtime": 1793188280.0,
+    "seen": 1793192828.468057,
+    "ast_hash": "3ed209543b3fab53246b782d25502b18",
+    "semantic_hash": "3ed209543b3fab53246b782d25502b18"
   },
   "docs/05-Manuale-Utente/02-Guida-Segretaria.md": {
-    "mtime": 1790666958.0,
-    "ast_hash": "26dcc7ca2c81c809f12e36106754b610",
-    "semantic_hash": ""
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680576,
+    "ast_hash": "f80c946ae9016ab9034059d00b66b091",
+    "semantic_hash": "f80c946ae9016ab9034059d00b66b091"
   },
   "docs/05-Manuale-Utente/03-Guida-Amministratore.md": {
-    "mtime": 1790666984.0,
-    "ast_hash": "645a3a9c552379d4fcf34e3109207040",
-    "semantic_hash": ""
+    "mtime": 1793188280.0,
+    "seen": 1793192828.468058,
+    "ast_hash": "315b9dbae16bc17209d6ef38e7a8c2e8",
+    "semantic_hash": "315b9dbae16bc17209d6ef38e7a8c2e8"
   },
   "docs/05-Manuale-Utente/Manuale-Completo.md": {
-    "mtime": 1790075074.0,
-    "ast_hash": "9c2e596999147782b67d19d6abe7923c",
-    "semantic_hash": ""
+    "mtime": 1793188280.0,
+    "seen": 1793192828.46806,
+    "ast_hash": "219cdbf6fcc33982fcfaa24691b0ec59",
+    "semantic_hash": "219cdbf6fcc33982fcfaa24691b0ec59"
   },
   "docs/05-Manuale-Utente/README.md": {
-    "mtime": 1790667012.0,
-    "ast_hash": "11a2ba2697e9f286b5370d0003cd4754",
-    "semantic_hash": ""
+    "mtime": 1793185090.0,
+    "seen": 1793192828.4680607,
+    "ast_hash": "326deaec7689f6cc9fffbfdc4a7098f8",
+    "semantic_hash": "326deaec7689f6cc9fffbfdc4a7098f8"
   },
   "docs/templates/ADR.md": {
     "mtime": 1782903484.0,
@@ -545,9 +561,10 @@
     "semantic_hash": ""
   },
   "docs/05-Manuale-Utente/MANUALE_UTENTE.md": {
-    "mtime": 1790631298.0,
-    "ast_hash": "62078b82b12a72cb2a576aab8ad95a41",
-    "semantic_hash": ""
+    "mtime": 1793188280.0,
+    "seen": 1793192828.468059,
+    "ast_hash": "bea8fd961af4b91f77b9f899c6b3222c",
+    "semantic_hash": "bea8fd961af4b91f77b9f899c6b3222c"
   },
   "docs/06-Compliance/AI-Act-Compliance.md": {
     "mtime": 1790016848.0,
@@ -555,14 +572,16 @@
     "semantic_hash": ""
   },
   "docs/06-Compliance/inventario-flussi-ai-per-dpo.md": {
-    "mtime": 1792175658.0,
-    "ast_hash": "3cde5615e5b989231c00b963180c7e44",
-    "semantic_hash": ""
+    "mtime": 1793192000.0,
+    "seen": 1793192828.4680624,
+    "ast_hash": "6f12fc97d26a1292a7e560f820aa72db",
+    "semantic_hash": "6f12fc97d26a1292a7e560f820aa72db"
   },
   "docs/06-Compliance/retell/INDEX-2026-07-28.md": {
-    "mtime": 1789994188.0,
-    "ast_hash": "948fd3c91a44f44b282edc4fb81f52ab",
-    "semantic_hash": ""
+    "mtime": 1793191918.0,
+    "seen": 1793192828.4680629,
+    "ast_hash": "5c3ea41c046eed81588f0f4dffda6b4d",
+    "semantic_hash": "5c3ea41c046eed81588f0f4dffda6b4d"
   },
   "docs/06-Compliance/retell/attivazione.md": {
     "mtime": 1785248238.0,
@@ -753,5 +772,137 @@
     "mtime": 1792344174.0,
     "ast_hash": "2543e16357d3e0f0761542843ba014e6",
     "semantic_hash": ""
+  },
+  "tools/genera_manuale.py": {
+    "mtime": 1793185046.0,
+    "seen": 1793192828.4680436,
+    "ast_hash": "92afdc8892375d5c6925a8f1abdb298c",
+    "semantic_hash": "92afdc8892375d5c6925a8f1abdb298c"
+  },
+  "docs/06-Compliance/dichiarazioni-dpia.md": {
+    "mtime": 1793192000.0,
+    "seen": 1793192828.4680617,
+    "ast_hash": "5828faae2a2e81c86c66d5bedf8e25c3",
+    "semantic_hash": "5828faae2a2e81c86c66d5bedf8e25c3"
+  },
+  "docs/05-Manuale-Utente/img/academy/02-segreteria-dashboard.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.468064,
+    "ast_hash": "6147225595a43efcf290d2bcdc2c93db",
+    "semantic_hash": "6147225595a43efcf290d2bcdc2c93db"
+  },
+  "docs/05-Manuale-Utente/img/academy/03-segreteria-agenda.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680645,
+    "ast_hash": "0dd074934c72731d9a69c63984d64725",
+    "semantic_hash": "0dd074934c72731d9a69c63984d64725"
+  },
+  "docs/05-Manuale-Utente/img/academy/04-segreteria-pazienti.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680655,
+    "ast_hash": "aef555544d82d6c8f90d86f141c7bc97",
+    "semantic_hash": "aef555544d82d6c8f90d86f141c7bc97"
+  },
+  "docs/05-Manuale-Utente/img/academy/06-fatturazione.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680662,
+    "ast_hash": "10b7f8ab2865c7595f54f94fc1c36da8",
+    "semantic_hash": "10b7f8ab2865c7595f54f94fc1c36da8"
+  },
+  "docs/05-Manuale-Utente/img/academy/07-richiami.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.468067,
+    "ast_hash": "f10b7ee5c4f9ff0692f912ab87667e75",
+    "semantic_hash": "f10b7ee5c4f9ff0692f912ab87667e75"
+  },
+  "docs/05-Manuale-Utente/img/academy/08-medico-agenda-trascorsi.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680676,
+    "ast_hash": "2d60749771abfaf98268891def7f745c",
+    "semantic_hash": "2d60749771abfaf98268891def7f745c"
+  },
+  "docs/05-Manuale-Utente/img/academy/09-piano-cura-in-sospeso.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680681,
+    "ast_hash": "633f519b91dc6970ae8b3afdb1ea5e35",
+    "semantic_hash": "633f519b91dc6970ae8b3afdb1ea5e35"
+  },
+  "docs/05-Manuale-Utente/img/academy/11-scheda-seduta-vuota.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680686,
+    "ast_hash": "ed0b0b5181771a1256ab6257351a4bef",
+    "semantic_hash": "ed0b0b5181771a1256ab6257351a4bef"
+  },
+  "docs/05-Manuale-Utente/img/academy/13-scheda-seduta-esiti.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680693,
+    "ast_hash": "445de6fe137f2b893c97d8177ca7064f",
+    "semantic_hash": "445de6fe137f2b893c97d8177ca7064f"
+  },
+  "docs/05-Manuale-Utente/img/academy/14-riepilogo-chiusura.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680705,
+    "ast_hash": "a3c691197546ad418d85a6c277b8aa0f",
+    "semantic_hash": "a3c691197546ad418d85a6c277b8aa0f"
+  },
+  "docs/05-Manuale-Utente/img/academy/15-preventivo-avanzamento.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680712,
+    "ast_hash": "ef095520374e3db98932c2742a8cfc7d",
+    "semantic_hash": "ef095520374e3db98932c2742a8cfc7d"
+  },
+  "docs/05-Manuale-Utente/img/academy/20-pannello-errori.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.468072,
+    "ast_hash": "80166b737b352a07a6fc3181e86eeb0a",
+    "semantic_hash": "80166b737b352a07a6fc3181e86eeb0a"
+  },
+  "docs/05-Manuale-Utente/img/academy/21-storico-episodi.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680727,
+    "ast_hash": "2396d0141fb55fdf202f831e6531ea76",
+    "semantic_hash": "2396d0141fb55fdf202f831e6531ea76"
+  },
+  "docs/05-Manuale-Utente/img/academy/22-odontogramma.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680734,
+    "ast_hash": "721f8952ead24f29ab15a39e94d32f5f",
+    "semantic_hash": "721f8952ead24f29ab15a39e94d32f5f"
+  },
+  "docs/05-Manuale-Utente/img/academy/31-impostazioni-agenda.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.468074,
+    "ast_hash": "a682b83030a0bd0abef9231ce35fb260",
+    "semantic_hash": "a682b83030a0bd0abef9231ce35fb260"
+  },
+  "docs/05-Manuale-Utente/img/academy/32-impostazioni-professionisti.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680748,
+    "ast_hash": "57f5669897676a86764e2d2873997bc0",
+    "semantic_hash": "57f5669897676a86764e2d2873997bc0"
+  },
+  "docs/05-Manuale-Utente/img/academy/33-prestazioni.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680753,
+    "ast_hash": "386d2f64e980071d3dd10bd61173a7ee",
+    "semantic_hash": "386d2f64e980071d3dd10bd61173a7ee"
+  },
+  "docs/05-Manuale-Utente/img/academy/34-copilot-clinico.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680758,
+    "ast_hash": "0d93d739b842ade3e523475e0ef8587d",
+    "semantic_hash": "0d93d739b842ade3e523475e0ef8587d"
+  },
+  "docs/05-Manuale-Utente/img/academy/35-nuovo-appuntamento.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680798,
+    "ast_hash": "e2e27504cb9ae63a72e035ee58b82030",
+    "semantic_hash": "e2e27504cb9ae63a72e035ee58b82030"
+  },
+  "docs/05-Manuale-Utente/img/academy/36-modifica-appuntamento.png": {
+    "mtime": 1793188280.0,
+    "seen": 1793192828.4680803,
+    "ast_hash": "013c3d579ce24ced99bd64daabc1dbe3",
+    "semantic_hash": "013c3d579ce24ced99bd64daabc1dbe3"
   }
 }

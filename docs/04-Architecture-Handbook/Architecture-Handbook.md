@@ -23,7 +23,7 @@ ancora presente.
 | 12 | [Modello cartella clinica](12-Clinical-Record-Model.md) | Entità, encounter, dente da seduta (#65), genera piano (#66), episodi e fotografie (#67), finalizzazione e addendum, mappatura FHIR |
 | 13 | [Audit trail clinico](13-Audit-Trail.md) | Modello probatorio, taglio Tier 1 (gate) / Tier 2, decisioni di design |
 | 14 | [LLM NER Gateway & Demo](14-LLM-NER-Gateway.md) | Proxy privacy-preserving, Dual-Engine NER (0.3B / spaCy), Pass-Through, e simulatore demo |
-| 15 | [Manuale per ChatGPT e Claude](15-Docs-Service.md) | `dentalcare-docs-service`: ricerca sulle lezioni Academy, Custom GPT, connettori MCP, esposizione via Caddy |
+| 15 | [Manuale per ChatGPT e Claude](15-Docs-Service.md) | `dentalcare-docs-service`: ricerca sulle lezioni Academy, connettore MCP per Claude e ChatGPT, esposizione via Caddy |
 
 ## Sintesi tecnica
 

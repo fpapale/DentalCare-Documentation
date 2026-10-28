@@ -66,7 +66,7 @@ Questo repo ha anche un proprio `graphify-out/`: il grafo dei documenti di quest
 - [Modello Cartella Clinica](docs/04-Architecture-Handbook/12-Clinical-Record-Model.md) — Ciclo della seduta (`Encounter` #56-#62), odontogramma e diari clinici.
 - [Audit Trail Probatorio](docs/04-Architecture-Handbook/13-Audit-Trail.md) — Immutabilità e valore legale ex art. 2236 c.c.
 - [LLM NER Gateway & Demo](docs/04-Architecture-Handbook/14-LLM-NER-Gateway.md) — Trust boundary privacy-preserving, Dual-Engine NER (0.3B / spaCy), modalità pass-through e test bench demo.
-- [Manuale per ChatGPT e Claude](docs/04-Architecture-Handbook/15-Docs-Service.md) — `dentalcare-docs-service`: le lezioni dell'Academy interrogabili da un Custom GPT e dai connettori MCP; come si pubblica e come si collega.
+- [Manuale per ChatGPT e Claude](docs/04-Architecture-Handbook/15-Docs-Service.md) — `dentalcare-docs-service`: le lezioni dell'Academy interrogabili da Claude e ChatGPT con un connettore MCP; come si pubblica, piani necessari, come si collega.
 
 ### 5. Manuale Utente (`docs/05-Manuale-Utente/`) — generato dall'Academy
 - 📖 [**Manuale integrale**](docs/05-Manuale-Utente/MANUALE_UTENTE.md) — tutti i moduli e le lezioni dell'Academy, con le schermate.

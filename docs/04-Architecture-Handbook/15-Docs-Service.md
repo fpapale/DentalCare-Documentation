@@ -1,6 +1,6 @@
 # 15 — Servizio del manuale per ChatGPT e Claude (`dentalcare-docs-service`)
 
-Microservizio che rende il **manuale di DentalCare Pro** interrogabile da ChatGPT (Custom GPT o connettore MCP) e da Claude (connettore MCP). Codice nel repository applicativo, cartella `dentalcare-docs-service/`; in collaudo dal 28/10/2026.
+Microservizio che rende il **manuale di DentalCare Pro** interrogabile da Claude e da ChatGPT tramite un **connettore MCP**. Codice nel repository applicativo, cartella `dentalcare-docs-service/`; in collaudo dal 28/10/2026.
 
 | | |
 |---|---|
@@ -17,15 +17,14 @@ All'avvio legge `catalog.json` e le lezioni, le indicizza per testo pieno e risp
 
 | Endpoint | Uso |
 |---|---|
-| `GET /api/search?q=…` | ricerca (Action `searchDocs`) |
-| `GET /api/page?slug=…` | testo completo di una lezione (Action `getDocPage`) |
-| `GET /api/topics` | elenco dei moduli e delle lezioni (Action `listTopics`) |
-| `POST /mcp` | MCP JSON-RPC: `search_docs`, `get_page`, `list_topics` |
-| `GET /privacy` | informativa, richiesta da OpenAI per condividere il GPT |
+| `POST /mcp` | **MCP** (Streamable HTTP, JSON-RPC): `search_docs`, `get_page`, `list_topics`, tutti in sola lettura (`readOnlyHint`); versioni del protocollo 2025-06-18, 2025-03-26, 2024-11-05 |
+| `GET /api/search?q=…`, `/api/page?slug=…`, `/api/topics` | le stesse funzioni in REST (schema `openapi.yaml`), nate per la Action del Custom GPT |
+| `GET /privacy` | informativa |
 | `GET /health` | stato e numero di lezioni indicizzate |
 | `POST /api/reindex` | reindicizza a caldo; solo con header `X-Reindex-Token` uguale a `DOCS_REINDEX_TOKEN` (vuoto = spento) |
 
-Lo schema per la Action del Custom GPT è `dentalcare-docs-service/openapi.yaml`.
+> [!WARNING]
+> **Niente Custom GPT.** OpenAI ritira i Custom GPT l'11/12/2026 e gli account personali (Free, Go, Plus, Pro) non possono più crearne né pubblicarne; le Action non passano ai nuovi plugin. L'unica strada per ChatGPT è il connettore MCP (§3). L'API REST e `openapi.yaml` restano solo per prove e integrazioni future.
 
 ---
 
@@ -66,56 +65,47 @@ curl -s -X POST https://papalef.duckdns.org:8085/mcp \
 
 ---
 
-## 3. Collegarlo a ChatGPT: Custom GPT (consigliato)
+## 3. Collegarlo all'assistente: chi può e con quale piano
 
-Serve un abbonamento ChatGPT Plus o Team. Il GPT si crea una volta e si condivide con un link.
+La guida per gli studi, passo per passo e scritta per chi non è tecnico, è nel repository applicativo: `dentalcare-docs-service/GUIDA_COLLEGAMENTO_MANUALE.md`. È quella da mandare ai clienti.
 
-1. chatgpt.com → **Esplora GPT** → **Crea** → scheda **Configura**.
-2. Compilare:
-   - **Nome:** «Manuale DentalCare Pro»
-   - **Istruzioni:**
-     ```text
-     Sei l'assistente del manuale di DentalCare Pro. Per ogni domanda sul programma
-     usa searchDocs, poi getDocPage sulla lezione più pertinente. Rispondi in italiano,
-     solo con quello che trovi nel manuale, e cita sempre il link "url" della lezione.
-     Se il manuale non copre la domanda, dillo chiaramente. Non dare consigli clinici.
-     ```
-   - togliere **Ricerca web** e **Generazione immagini**, così risponde solo dal manuale.
-3. **Azioni** → **Crea nuova azione**:
-   - **Autenticazione:** Nessuna;
-   - **Schema:** incollare tutto `dentalcare-docs-service/openapi.yaml`; devono comparire `searchDocs`, `getDocPage`, `listTopics`;
-   - **Informativa sulla privacy:** `https://papalef.duckdns.org:8085/privacy`.
-4. Provare nell'anteprima, per esempio «Come si crea un preventivo?». Alla prima chiamata ChatGPT chiede il permesso per `papalef.duckdns.org`: **Consenti sempre**.
-5. **Crea** → **Condividi**: «Chiunque abbia il link» (per gli studi) oppure «Solo io».
+Indirizzo da inserire: `https://papalef.duckdns.org:8085/mcp`, autenticazione **nessuna**.
 
-Se cambia `openapi.yaml` (nuovi parametri o endpoint) lo schema va incollato di nuovo nella Action; se cambiano solo le lezioni non serve fare nulla.
+| Assistente | Piani che possono collegarlo (verificato il 28/10/2026) | Note |
+|---|---|---|
+| **Claude** | **Free**, Pro, Max, Team, Enterprise | Free: un solo connettore personalizzato. Team/Enterprise: lo aggiunge il proprietario dell'organizzazione, poi ognuno preme Connetti |
+| **ChatGPT** | **Pro** (strumenti di sola lettura, come i nostri), **Business**, Enterprise, Edu | Free, Go e Plus: non disponibile. Un plugin si condivide solo dentro un workspace Business/Enterprise, non con studi esterni |
 
----
+**Canale consigliato per gli studi: Claude**, perché basta l'account gratuito. ChatGPT resta per chi ha già Pro o Business.
 
-## 4. Collegarlo a ChatGPT: connettore MCP
+### Claude
 
-Adatto per uso personale o di prova; per gli studi è meglio il Custom GPT.
+- **Personale:** Impostazioni → Connettori → + Aggiungi → Aggiungi connettore personalizzato; nome e URL; accesso «No sign in».
+- **Team/Enterprise:** Impostazioni dell'organizzazione → Connettori → Add → Custom → Web.
+- **In chat:** + → Connettori → attivarlo.
 
-1. **Impostazioni** → **App e connettori** → **Avanzate** → attivare **Modalità sviluppatore**.
-2. **Crea connettore**: URL `https://papalef.duckdns.org:8085/mcp`, autenticazione **Nessuna**.
-3. In una chat attivarlo dal pulsante **+**.
+Fonte: [Claude Help Center, custom connectors](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
-## 5. Collegarlo a Claude: connettore MCP
+### ChatGPT
 
-1. claude.ai → **Impostazioni** → **Connettori** → **Aggiungi connettore personalizzato**.
-2. URL `https://papalef.duckdns.org:8085/mcp`, nessuna autenticazione.
-3. In una chat attivarlo dal menu degli strumenti.
+- Plugin (o Impostazioni → App) → + → Aggiungi server MCP personalizzato; nome, URL, autenticazione nessuna; accettare l'avviso, creare, installare.
+- Su alcuni account serve prima la Modalità sviluppatore.
+- **In chat:** `@` e scegliere il plugin.
+- I menu cambiano spesso: verificare sull'account prima di aggiornare la guida.
+
+Fonti: [Connecting custom MCP servers in ChatGPT](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt), [Custom GPT retirement FAQ](https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq).
 
 ---
 
 ## 6. Sicurezza e privacy
 
 - **Nessun login**, per scelta: il servizio espone solo le lezioni del manuale, già pubbliche in questo wiki. Nessun dato dei pazienti, nessun codice, nessun documento di progetto.
-- **Cosa riceve:** i termini di ricerca che ChatGPT o Claude ricavano dalle domande degli utenti. Il servizio non li registra; Caddy non ha log degli accessi per questo sito. Un utente potrebbe comunque scrivere dati di un paziente nella domanda: per questo l'informativa e le istruzioni del GPT parlano solo del programma. Voce **D-71** nel [registro DPIA](../06-Compliance/dichiarazioni-dpia.md).
+- **Cosa riceve:** i termini di ricerca che ChatGPT o Claude ricavano dalle domande degli utenti. Il servizio non li registra; Caddy non ha log degli accessi per questo sito. Un utente potrebbe comunque scrivere dati di un paziente nella domanda: per questo la guida per gli studi lo vieta esplicitamente e le istruzioni del server MCP (`instructions`) limitano l'assistente al programma. Voce **D-71** nel [registro DPIA](../06-Compliance/dichiarazioni-dpia.md).
 - **Reindicizzazione** chiusa da token; senza `DOCS_REINDEX_TOKEN` l'endpoint risponde sempre 403.
-- **Nessun limite di richieste** oggi. Il servizio gira sullo stesso host della vetrina: se venisse martellato, rallenterebbe anche quella. Caddy non ha un limite di richieste di serie (serve il modulo `rate_limit`); da valutare se il GPT viene condiviso ampiamente.
+- **Nessun limite di richieste** oggi. Il servizio gira sullo stesso host della vetrina: se venisse martellato, rallenterebbe anche quella. Caddy non ha un limite di richieste di serie (serve il modulo `rate_limit`); da valutare se il collegamento si diffonde tra molti studi.
 
 ## 7. Aperti
 
 - Limite di richieste (vedi §6).
 - Passaggio alla vera produzione: oggi il servizio è nello stack di collaudo, che segue il ramo `staging`.
+- Prova reale del connettore su un account Claude Free e su ChatGPT Pro/Business, da ripetere quando cambiano i menu.

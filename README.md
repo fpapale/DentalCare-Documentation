@@ -4,6 +4,35 @@ Benvenuti nella documentazione ufficiale di **DentalCare Pro**, la piattaforma g
 
 ---
 
+## 🧭 Come è organizzato e come si aggiorna questo wiki
+
+DentalCare Pro ha **due wiki ufficiali** (decisione del committente, 28/10/2026):
+
+| Wiki | Dove | Cosa contiene |
+|---|---|---|
+| **Documentazione** | questo repo (`fpapale/DentalCare-Documentation`, locale `D:\DentalCare-Pro-Documentation`) | tutto ciò che si legge: fattibilità, business plan, roadmap e analisi funzionale, architettura, manuale utente, compliance |
+| **Codice** | `graphify-out/` del repo applicativo (`fpapale/dentalcare`, privato) | grafo della conoscenza del codice e delle directive di lavoro (`GRAPH_REPORT.md`, `graph.json`), per domande su «come funziona» e «chi chiama cosa» |
+
+Questo repo ha anche un proprio `graphify-out/`: il grafo dei documenti di questo wiki, da rigenerare dopo ogni aggiornamento importante.
+
+### Da dove viene ogni sezione
+
+| Sezione | Fonte | Come si aggiorna |
+|---|---|---|
+| `05-Manuale-Utente` | **lezioni dell'Academy** nel programma (`backend/src/main/resources/academy/v1` del repo applicativo) | **generata**: `python tools/genera_manuale.py <repo dentalcare>`. Non modificare i `.md` a mano: si corregge la lezione e si rigenera |
+| `03-Product-Roadmap` (Release, roadmap, analisi funzionale) | scritta qui | a ogni gruppo di proposte fatte (`directives/proposte-modifiche.md` nel repo applicativo), citando i numeri `#NN` |
+| `04-Architecture-Handbook` | scritta qui, verificata sul codice | quando cambiano componenti, API, sicurezza o modello dati |
+| `06-Compliance` (registro DPIA, inventario flussi AI, AI Act, fascicolo Retell) | **fonte ufficiale qui** (dal 28/10/2026; prima nel repo applicativo) | ogni decisione con effetto sulla privacy aggiunge una voce D-xx al registro, nella stessa sessione |
+| `01`, `02` (fattibilità, business plan, listino) | scritta qui | solo su decisione del committente |
+
+### Regole
+
+- **Pubblico:** questo repo è pubblico. Niente indirizzi interni, credenziali, dati reali; il manuale usa solo dati fittizi.
+- **Termini** (concordati il 28/10/2026): **account** (tenant) → **clinica** (= sede) → **poltrona**. Nell'interfaccia e nel manuale mai «Centro» né «Studio» da solo.
+- **Stato dichiarato:** ✅ fatto (dev/collaudo/produzione), 📋 confermato, 🔨 in lavorazione, ⏸️ rimandato. Le funzioni non fatte non si descrivono come presenti.
+
+---
+
 ## 📚 Indice della Documentazione
 
 ### 1. Studio di Fattibilità & Visione (`docs/01-Studio-di-Fattibilita/`)
@@ -38,17 +67,16 @@ Benvenuti nella documentazione ufficiale di **DentalCare Pro**, la piattaforma g
 - [Audit Trail Probatorio](docs/04-Architecture-Handbook/13-Audit-Trail.md) — Immutabilità e valore legale ex art. 2236 c.c.
 - [LLM NER Gateway & Demo](docs/04-Architecture-Handbook/14-LLM-NER-Gateway.md) — Trust boundary privacy-preserving, Dual-Engine NER (0.3B / spaCy), modalità pass-through e test bench demo.
 
-### 5. Manuale Utente (`docs/05-Manuale-Utente/`)
-- 📖 [**Manuale Utente Integrale**](docs/05-Manuale-Utente/MANUALE_UTENTE.md) — Manuale completo di riferimento (1120 righe) con tutti i moduli, schermate, ciclo seduta, fatturazione conforme e glossario stati.
-- [Guida Dottoressa / Medico](docs/05-Manuale-Utente/01-Guida-Dottoressa.md) — Flusso clinico, agenda, scheda di seduta (#56-#62) e Copilot.
-- [Guida Segretaria](docs/05-Manuale-Utente/02-Guida-Segretaria.md) — Gestione appuntamenti, fatturazione a saldo/acconto/nota credito (#50-#52) e richiami.
-- [Guida Amministratore](docs/05-Manuale-Utente/03-Guida-Amministratore.md) — Configurazione studio, impostazioni AI e gestione errori intelligenti (#54).
-- [Manuale Presentazione con Schermate](docs/05-Manuale-Utente/Manuale-Completo.md) — Percorsi guidati con screenshot reali per i tre ruoli.
+### 5. Manuale Utente (`docs/05-Manuale-Utente/`) — generato dall'Academy
+- 📖 [**Manuale integrale**](docs/05-Manuale-Utente/MANUALE_UTENTE.md) — tutti i moduli e le lezioni dell'Academy, con le schermate.
+- [Guida per il medico e l'igienista](docs/05-Manuale-Utente/01-Guida-Dottoressa.md) · [Guida per la segreteria](docs/05-Manuale-Utente/02-Guida-Segretaria.md) · [Guida per il titolare e l'amministratore](docs/05-Manuale-Utente/03-Guida-Amministratore.md) — percorsi per ruolo con le lezioni che richiamano.
+- [Sintesi con le schermate](docs/05-Manuale-Utente/Manuale-Completo.md) · [Versione Word](docs/05-Manuale-Utente/Manuale_Utente_DentalCare_Pro.docx) · [Indice, matrice per ruolo e glossario](docs/05-Manuale-Utente/README.md).
 
-### 6. Compliance, Privacy & EU AI Act (`docs/06-Compliance/`)
-- 📄 [**Conformità EU AI Act**](docs/06-Compliance/AI-Act-Compliance.md) — Classificazione sistemi, scadenze, disclosure Art. 50 e Inspection Readiness Binder.
-- 📄 [**Inventario Flussi AI per il DPO**](docs/06-Compliance/inventario-flussi-ai-per-dpo.md) — Censimento tecnico per ROPA (Art. 30), DPIA (Art. 35) e accordi DPA con mappatura dati Art. 9 GDPR.
-- 📁 [**Cartella 13 Inspection Binder (Retell)**](docs/06-Compliance/retell/) — Evidenze verificabili: snapshot immutabile del system prompt, screenshot configurazione, trascrizione messaggi di disclosure.
+### 6. Compliance, Privacy & EU AI Act (`docs/06-Compliance/`) — fonte ufficiale
+- 📄 [**Registro delle dichiarazioni DPIA**](docs/06-Compliance/dichiarazioni-dpia.md) — scelte di progetto e rischi residui (D-xx) da portare nella DPIA.
+- 📄 [**Inventario dei flussi AI per il DPO**](docs/06-Compliance/inventario-flussi-ai-per-dpo.md) — censimento tecnico per ROPA (art. 30), DPIA (art. 35) e DPA, con i dati art. 9.
+- 📄 [**Conformità EU AI Act**](docs/06-Compliance/AI-Act-Compliance.md) — classificazione dei sistemi, scadenze, disclosure art. 50.
+- 📁 [**Fascicolo di Giulia (Retell)**](docs/06-Compliance/retell/) — REL 1.0 del 28/07/2026, **superata dalla #100** (Giulia centralizzata); il nuovo fascicolo si redige al go-live.
 
 ### 7. Presentazioni & Materiali Clinici (`docs/`)
 - [Presentazione Clinico-Tecnico-Legale per il Medico](docs/Presentazione-Medico-DentalCare-Pro.md) — Panoramica integrata delle funzionalità attuali e future per odontoiatri e direttori sanitari.

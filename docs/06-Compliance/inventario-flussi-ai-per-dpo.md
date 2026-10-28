@@ -1,8 +1,13 @@
 # Inventario dei flussi AI — risposte tecniche per il DPO
 
+> **Fonte ufficiale.** Dal 28/10/2026 questo documento vive qui, nel wiki della documentazione (prima stava nel repo applicativo, `compliance/`): le modifiche si fanno qui.
+
 **Versione:** 1.0 — 18/09/2026
 **Scopo:** dare al DPO, in un unico posto, le risposte *tecniche* verificabili sul codice, così
 che ROPA (art. 30), DPIA (art. 35) e negoziazione dei DPA (art. 28) non debbano ricostruirle.
+**Vedi anche:** [`dichiarazioni-dpia.md`](dichiarazioni-dpia.md) (dal 14/10/2026) — scelte di progetto e
+rischi residui da dichiarare nella DPIA, compreso il gateway LLM (#74).
+**Riconoscitore di nomi del gateway:** dal 19/10/2026 il gateway è llm-ner-gateway, con il modello locale `llm-ner-dentalcare-0.3B` e spaCy (`it_core_news_lg`) come ripiego; numeri e rischio residuo in D-04.
 
 > **Cosa questo documento è e cosa non è.**
 > È un **inventario tecnico**, redatto leggendo il codice sorgente: ogni affermazione è
@@ -81,11 +86,11 @@ dell'utente, **e i risultati dei tool** che il modello invoca. Quest'ultimo punt
 sostanziale: i tool leggono il database clinico e il loro output rientra nel contesto della
 conversazione.
 
-`DentalCareAiTools` espone **151 tool** (`grep -c "@Tool"`). Fra i dati restituiti:
+`DentalCareAiTools` dichiara **35 tool** (`grep -c "@Tool("`; *corretto il 14/10/2026: il conteggio originale di 151 includeva i 116 `@ToolParam`*). **Arrivano al modello tutti i 35** (dal 15/10/2026, decisione #79, registro DPIA D-16). Fra i dati restituiti:
 
 | Dato | Tool | Art. 9 |
 |---|---|:-:|
-| Anagrafica paziente completa | *"Get detailed information about a specific patient. Medical staff see full clinical data"* | — |
+| Anagrafica paziente (senza dati clinici) | *"Get the personal and contact data of a specific patient"* | — |
 | **Allergie, terapie in corso** (anticoagulanti, bifosfonati) | *"Get anamnesis alerts for a patient"* | **Sì** |
 | Odontogramma, incluse condizioni rilevate dall'AI radiologica | *"Get the odontogram (tooth conditions)"* | **Sì** |
 | Diagnosi | *"Prepare adding a diagnosis (diagnosi)"* | **Sì** |
@@ -101,7 +106,6 @@ modello. È il flusso dominante, ed è **già attivo**.
 > Tutte le chiamate verso OpenAI transitano attraverso il proxy di sicurezza [`llm-ner-gateway`](../04-Architecture-Handbook/14-LLM-NER-Gateway.md), che effettua la pseudonimizzazione preventiva dei dati identificativi e la sanitizzazione dei campi clinici non essenziali tramite motore Dual-Engine (modello clinico `llm-ner-dentalcare-0.3B` / spaCy), validazione Partita IVA (Luhn 11 cifre) e vault in RAM effimero (`InMemoryTokenVault`). Al fornitore LLM pervengono esclusivamente token pseudonimi (`PERSONA_1`, `TEL_1`), azzerando l'esportazione di anagrafiche in chiaro verso server terzi e agevolando la defensibilità del DPA e della DPIA ex Art. 35 GDPR.
 
 **Flusso B — Errori intelligenti** (`ErrorExplanationService.java`)
-
 
 Inviato: `operation`, `code`, `message`. Nient'altro — nessun tool collegato
 (`ErrorExplanationService.java:86`, commento esplicito). Vedi §4 per il contenuto effettivo.
@@ -168,13 +172,20 @@ Verificabili sul codice:
 |---|---|---|
 | Errori intelligenti | `app.ai.smart-errors.enabled` (server) | **Per studio** — a `false` nessun testo viene inviato |
 | Errori intelligenti | `AppSettings.smartErrors` (client) | Per utente/postazione, default attivo — **preferenza, non misura** (vedi nota) |
-| Copilot AI | — | ⚠️ **Nessun interruttore dedicato** |
+| Copilot AI | `dentalcare.tenants.copilot_mode` (`off` / `amministrativo` / `clinico`) — **dal rilascio di #74** (oggi in sviluppo), vedi [D-11](dichiarazioni-dpia.md) | **Per tenant**, cambiato solo dal `TENANT_ADMIN`; con `off` il backend rifiuta la chat. Fino al rilascio: ⚠️ **nessun interruttore dedicato** |
 | AI radiologica | `ai.radiology.enabled` (previsto dal gate no-clinical) | Per studio — `directives/piano-lungo-termine.md:93` |
 
 > **Nota sul flag client.** `AppSettings.smartErrors` vive nel `localStorage` del browser:
 > vale per quella postazione, si azzera svuotando la cache del browser e non è verificabile a
 > posteriori. Va letto come **preferenza dell'utente**, non come misura tecnica: l'unico
 > controllo opponibile sugli errori intelligenti è quello server-side.
+
+> **Aggiornamento 15/10/2026.** La lacuna descritta sotto sarà chiusa dal rilascio di #74, che assorbe #55: il
+> Copilot ha un interruttore per tenant, la colonna `dentalcare.tenants.copilot_mode` a tre
+> posizioni (`off`, `amministrativo`, `clinico`), con rifiuto applicato lato server e modifica
+> riservata al `TENANT_ADMIN` (scelta registrata come D-11 in [`dichiarazioni-dpia.md`](dichiarazioni-dpia.md)).
+> Vale dal rilascio di #74: il codice è completo e la prova end-to-end è stata fatta il 19/10/2026 in sviluppo, con il gateway llm-ner-gateway (repo llm-rizzo-gateway) e il riconoscitore 0.3B; il rilascio non è ancora avvenuto. Il
+> testo che segue descrive la situazione fino ad allora.
 
 > ⚠️ **Lacuna nota — tracciata come [#55].** Il flusso con l'esposizione maggiore (Copilot,
 > dati art. 9) è l'unico **privo di un interruttore dedicato**. Se la DPIA dovesse richiedere
@@ -286,7 +297,7 @@ restituire una nuova categoria di dati, o cambia un interruttore di disattivazio
 
 | # | Punto | Stato | Sblocca |
 |---|---|---|---|
-| [#55] | Il Copilot è l'unico flusso senza interruttore dedicato (§2.6) | **Tracciato, non implementato** — decisione del committente 18/09/2026 | Incontro col DPO / avvio DPIA |
+| [#55] | Il Copilot è l'unico flusso senza interruttore dedicato (§2.6) | **Assorbito da #74** (15/10/2026): codice completo in sviluppo, prova end-to-end fatta il 19/10/2026, non rilasciato. Prima: tracciato, non implementato (decisione del committente 18/09/2026) | Rilascio di #74 (D-11) |
 | — | DPA con OpenAI e Retell (§1, §3) | Non stipulati | Ingaggio del DPO |
 | — | Base giuridica art. 9(2) per le righe A3-A4 del ROPA | **[DPO]** | Ingaggio del DPO |
 | — | Retention del registro azioni Copilot (riga A5): nessuna cancellazione automatica | Aperto | Policy di conservazione |

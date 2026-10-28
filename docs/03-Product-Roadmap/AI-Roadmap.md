@@ -13,8 +13,9 @@ DentalCare ha tre sistemi AI in essere e un'estensione pianificata del Copilot:
 
 | Sistema | Cosa fa | Classificazione | Stato |
 |---|---|---|---|
-| **Copilot** | assistente conversazionale sui moduli (agenda, pazienti, preventivi…) | AI **non high-risk** | ✅ in Release 1.x |
-| **Assistente vocale telefonico** | prenotazioni e informazioni amministrative | AI con obblighi di **trasparenza** (art. 50) | ✅ in Release 1.x |
+| **Copilot amministrativo** | assistente conversazionale sui moduli (agenda, pazienti, preventivi…), senza indicazioni cliniche (#88) | AI **non high-risk** | ✅ in Release 1.x |
+| **Copilot clinico** | legge anamnesi, odontogramma e piani di cura per rispondere al medico | da valutare (confine MDSW, §7) | ⏸️ spento in Fase 1 (#114) → Release 2.x |
+| **Giulia, segreteria telefonica** | prenotazioni, spostamenti, cancellazioni; un agente e un numero per tutte le cliniche (#100) | AI con obblighi di **trasparenza** (art. 50) | ✅ in Release 1.x (in collaudo) |
 | **Chairside Agent “Ehi Giulia”** | input/output vocale del Copilot dalla poltrona: consultazione, navigazione e dettatura controllata | segue il perimetro **non high-risk** del Copilot finché non formula valutazioni cliniche | 📋 pianificato in Release 1.x |
 | **Analisi radiologica** | reperti su ortopanoramica | probabile **MDSW** + AI Act **high-risk** | 🔒 congelato → Release 2.x |
 
@@ -73,6 +74,11 @@ diagnosi, prescrizioni, cartella) sono ammessi. Un tool che **suggerisca** diagn
 terapia o priorità clinica renderebbe il Copilot un probabile dispositivo medico. È una
 decisione di governance, non di prodotto.
 
+**Modalità** (decisione del committente, 28/10/2026): in Fase 1 solo **amministrativa**, con una regola fissa nel
+codice che vieta indicazioni cliniche anche con prompt personalizzati (#88). La modalità **clinica** (lettura di
+anamnesi, odontogramma, piani) esiste nel codice ma è **spenta in Fase 1** (#114) e passa alla Release 2.x con il
+resto dell'AI clinica. Le chiamate al modello passano dal LLM Gateway, che pseudonimizza i dati (#74).
+
 **Roadmap:** logging esteso (paziente, esito, correlation ID) · test di prompt injection ·
 allowlist dei tool · kill switch.
 
@@ -84,6 +90,11 @@ allowlist dei tool · kill switch.
 informazioni, in modo comprensibile e non nascosto nelle condizioni · offrire sempre il
 passaggio a un operatore umano · informativa sulla registrazione distinta da quella
 sull'AI.
+
+**Architettura (#100):** un solo agente e un numero unico per tutte le cliniche; la clinica si riconosce dal codice a
+5 cifre, dal numero chiamante con il cognome o da nome e città, e il riconoscimento rilascia un biglietto firmato
+con cui si ottiene un token limitato a quella clinica. Indirizzi, orari e clinica delle e-mail di conferma li
+legge il backend, non il modello (D-26). Negli studi di prova le operazioni sono limitate (#109).
 
 **Limiti operativi:** nessuna diagnosi, nessuna valutazione di urgenza, nessuna
 prescrizione, nessuna interpretazione di referti. Escalation deterministica verso una
@@ -130,7 +141,14 @@ riscritte.
 
 ## 10. AI Knowledge
 
-*Non definita.* Presuppone una base giuridica per il riuso secondario dei dati.
+**Documentazione per i clienti (in preparazione, 28/10/2026).** `dentalcare-docs-service` espone il manuale di
+DentalCare Pro, cioè le lezioni dell'Academy (fonte unica), al ChatGPT o al Claude del cliente, tramite un Custom GPT
+con Action e un connettore MCP. Il modello lo paga il cliente con il proprio abbonamento; il servizio fa solo
+ricerca full-text e restituisce testo e link pubblici. Nessun dato di pazienti o di studi. Da decidere: dove
+ospitarlo (oggi Docker sul server di collaudo; ipotesi Cloudflare Workers + D1 con dominio proprio) e la
+pubblicazione nella directory delle app di ChatGPT.
+
+**Conoscenza sui dati clinici:** *non definita*. Presuppone una base giuridica per il riuso secondario dei dati.
 
 ## 11. AI Workflow
 

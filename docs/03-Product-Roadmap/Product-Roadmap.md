@@ -1,6 +1,6 @@
 # Product Roadmap — DentalCare Pro
 
-**Versione:** 1.1 · **Data:** 22 luglio 2026 · **Orizzonte:** 2026-2029
+**Versione:** 1.2 · **Data:** 28 ottobre 2026 (allineata alle proposte fino a #117) · **Orizzonte:** 2026-2029
 **Base:** stato dell'arte verificato su codice e database reali, non su documentazione.
 
 ---
@@ -16,8 +16,8 @@ data:
 
 | | Fase 1 — *Release 1.x* | Fase 2 — *Release 2.x* |
 |---|---|---|
-| **Cosa** | gestionale + AI **amministrativa** | AI **radiologica certificata CE** |
-| **AI inclusa** | Copilot, assistente vocale | analisi ortopanoramiche (MDSW) |
+| **Cosa** | gestionale + AI **amministrativa** | AI **clinica**, con la radiologica **certificata CE** |
+| **AI inclusa** | Copilot amministrativo, Giulia (segreteria telefonica) | Copilot clinico (#114), sintesi del percorso clinico, analisi ortopanoramiche (MDSW) |
 | **Regime** | AI Act (non high-risk) + GDPR | AI Act high-risk + **MDR** |
 | **Fine prevista** | **gennaio 2027** | **2029** |
 | **Vincolo dominante** | disponibilità di un DPO | organismo notificato + evidenza clinica |
@@ -222,6 +222,15 @@ scala: la scala funziona.
 
 ## 22. Roadmap 2026
 
+**Stato a fine ottobre 2026.** Fatto in sviluppo e in collaudo: ciclo della seduta e scheda in tre passi
+(#56-#62, #106), odontogramma da seduta e «Genera piano» (#65, #66), storico episodi (#67), prova gratuita,
+ambiente di prova e Academy come manuale ufficiale (#69, #70, #85), fatturazione conforme con acconto e saldo,
+PDF via e-mail (#50-#53, #63, #101, #102), agenda con slot, presenze, poltrone e stati automatici (#90, #99,
+#108, #115), avvisi ai pazienti per e-mail e WhatsApp manuale (#111), LLM Gateway (#74), Giulia centralizzata
+in collaudo (#100, #109), cliniche gestite dal titolare (#117). Da fare per il Gate 1: audit trail clinico,
+finalizzazione e addendum, consensi, MFA (#73), export art. 15, integrità dei documenti, Copilot clinico spento
+(#114), pacchetto privacy con il DPO.
+
 | Periodo | Milestone |
 |---|---|
 | Luglio | **Ingaggio DPO** (percorso critico) · gate no-clinical sul modulo radiologico · disclosure assistente vocale |
@@ -230,6 +239,7 @@ scala: la scala funziona.
 | Settembre-Novembre | *(binario parallelo #39)* Chairside Agent: conversazione Copilot condivisa → impostazioni voce/lingua → push-to-talk/STT → TTS → hotword locale → doppio gate clinico |
 | Ottobre-Novembre | MFA · merge duplicati · integrità documenti · export paziente (art. 15) |
 | Settembre-Dicembre | *(binario parallelo, dipende dal DPO)* DPIA · informative · DPA fornitori · contratti studi |
+| Novembre-Dicembre | Giulia centralizzata: numero dedicato e collaudo completo (#100) · Copilot clinico spento in Fase 1 (#114) · pagamento dell'abbonamento Mollie + SEPA (#75, da progettare) |
 | Dicembre | Pen test · restore test · test cross-tenant · formazione · pilota Chairside su una postazione |
 
 ## 23. Roadmap 2027
@@ -238,6 +248,8 @@ scala: la scala funziona.
 |---|---|
 | **Gennaio** | **GATE 1 — go-live: primo studio pagante** |
 | H1 | consolidamento, feedback pilota · conservazione a norma · politica documentale |
+| H1 | WhatsApp automatico (API Meta, numero della clinica collegato come Tech Provider, promemoria del giorno prima) e prenotazioni o disdette via WhatsApp per i pazienti registrati (#111 fasi B-D, #112) · manuale consultabile dai clienti dal proprio ChatGPT o Claude (`dentalcare-docs-service`, fonte Academy) |
+| H1-H2 | interfaccia nelle lingue dell'UE con traduzione assistita (#71) |
 | H1-H2 | *(se Gate 2)* decisione MDR, ingaggio Regulatory Affairs, scelta organismo notificato |
 | H2 | interoperabilità: DICOMweb · FHIR adapter · terminology service |
 
@@ -261,7 +273,10 @@ scala: la scala funziona.
 
 - [ ] Audit trail clinico append-only
 - [ ] Note cliniche finalizzabili con hash e addendum
-- [ ] Encounter come perno del modello
+- [x] Encounter come perno del modello (ciclo della seduta #56-#62; scheda in tre passi #106)
+- [x] Storico episodi con fotografie prima/dopo (#67)
+- [x] LLM Gateway con pseudonimizzazione (#74)
+- [ ] Giulia centralizzata in produzione (#100: in collaudo)
 - [ ] Consensi versionati
 - [ ] Odontogramma temporale (storia, non snapshot)
 - [ ] MFA

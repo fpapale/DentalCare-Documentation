@@ -57,6 +57,8 @@ Il JWT non è più l'unica prova di accesso: dietro ogni login c'è una **sessio
   Il primo PIN si sceglie senza password solo nei **primi 10 minuti** dopo il login (la richiesta che
   compare all'accesso); dopo, e per cambiarlo, serve la password: chi trova un PC sbloccato non può
   scegliere un PIN valido per le sessioni future di un altro.
+  Con una seduta in corso il blocco per inattività può restare sospeso, ma solo per la **durata massima**
+  scelta dalla clinica (60-300 minuti, predefinita 180) dall'inizio della seduta: poi torna a valere.
 - **Revoca** — le sessioni di un utente vengono revocate al cambio o al reset della password, quando
   il professionista viene disattivato e con «Esci da tutti i dispositivi»; l'amministratore può
   azzerare il PIN di un utente. Le altre schede e gli altri dispositivi escono al rinnovo successivo.

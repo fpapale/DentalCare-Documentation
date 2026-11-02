@@ -18,6 +18,46 @@
 - Password con hashing sicuro; cambio obbligatorio al primo accesso
   (`password_temporary`).
 
+### Sessioni e blocco dello schermo (#118)
+
+Il JWT non è più l'unica prova di accesso: dietro ogni login c'è una **sessione sul server**.
+
+- **Registro** — `dentalcare.auth_sessions`: una riga per sessione (utente, e-mail, ruolo, tenant), con scadenza assoluta (default
+  **14 ore**, `app.auth.session-hours`), stato del blocco, hash del token di rinnovo e **user agent**
+  del browser. L'indirizzo IP **non** si registra. Nel registro dei token ruotati,
+  `dentalcare.auth_session_retired`, si tiene solo l'impronta del token sostituito.
+- **Token di accesso** — il JWT di §1 dura **15 minuti** (`app.auth.access-ttl-ms=900000`), porta in
+  più il claim `sid` (la sessione) e il frontend lo tiene **solo in memoria**: niente
+  `localStorage`, quindi uno script iniettato non lo trova.
+- **Token di rinnovo** — cookie `dc_session`, `HttpOnly`, `SameSite=Strict`, `Path=/api/public/session`,
+  `Secure` da `app.auth.cookie-secure` (`true`; `false` solo dove si risponde in HTTP, cioè nel
+  collaudo). Il frontend chiama `/api` dello stesso sito, così il cookie viaggia anche in
+  sviluppo. Il cookie non è mai leggibile da JavaScript.
+- **Rotazione e riuso** — a ogni rinnovo il token cambia. Il token appena sostituito vale ancora
+  **30 secondi** (due schede che rinnovano insieme non si ostacolano); oltre, il suo riuso viene
+  riconosciuto grazie a `auth_session_retired` come possibile furto e **tutta la famiglia di
+  sessioni è revocata**.
+- **CSRF** — la sicurezza HTTP ha CSRF spento, quindi gli endpoint a cookie
+  (`/api/public/session/*`: rinnovo, blocco, sblocco, uscita) esigono l'header
+  `X-DentalCare-Session: 1`, altrimenti `403`. Un modulo di un altro sito non può aggiungerlo, e
+  `SameSite=Strict` impedisce comunque l'invio del cookie.
+- **Blocco dello schermo** — dopo l'inattività (minuti per ruolo, in Impostazioni → Sistema:
+  5, 10, 15, 30, 60, 120 oppure «mai») o con «Blocca ora» la sessione passa a *bloccata*: il
+  browser scarta il token di accesso e il rinnovo risponde `423 SESSION_LOCKED`. Lo sblocco
+  chiede il **PIN di 4 cifre** (hash **BCrypt** su `providers.lock_pin_hash`, mai il PIN in chiaro)
+  o, senza PIN, la password. **5 tentativi sbagliati** revocano la sessione: serve di nuovo il
+  login. Il blocco è vero, non solo grafico, perché senza token il browser non può chiamare il server.
+- **Revoca** — le sessioni di un utente vengono revocate al cambio o al reset della password, quando
+  il professionista viene disattivato e con «Esci da tutti i dispositivi»; l'amministratore può
+  azzerare il PIN di un utente. Le altre schede e gli altri dispositivi escono al rinnovo successivo.
+- **Demo pubblica condivisa** — l'account della vetrina è usato da molti visitatori: il blocco è
+  sempre «mai» e il PIN non esiste (un PIN scelto da uno chiuderebbe fuori gli altri). Il
+  token del servizio AI (`SYSTEM`) e quelli degli agenti vocali restano sul vecchio schema, legati a
+  `app.jwt.expiration-ms`.
+- **Limite noto** — il server controlla lo stato della sessione **solo al rinnovo**. Un token di accesso
+  già emesso resta valido lato server fino a **15 minuti** dopo un blocco o una revoca. I JWT emessi prima
+  del rilascio della funzione non sono revocabili e valgono fino alla loro scadenza naturale.
+
 ## 2. Autorizzazione (ruoli)
 
 Ruoli (enum `dentalcare.provider_role`): `tenant_admin`, `admin`, `dentist`,

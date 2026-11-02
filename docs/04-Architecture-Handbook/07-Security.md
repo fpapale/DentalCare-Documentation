@@ -26,15 +26,22 @@ Il JWT non è più l'unica prova di accesso: dietro ogni login c'è una **sessio
   **14 ore**, `app.auth.session-hours`), stato del blocco, hash del token di rinnovo e **user agent**
   del browser. L'indirizzo IP **non** si registra. Nel registro dei token ruotati,
   `dentalcare.auth_session_retired`, si tiene solo l'impronta del token sostituito.
+- **Conservazione** — ogni notte (04:45, `app.auth.session-purge.cron`) un job cancella le sessioni
+  scadute o chiuse da più di **24 ore** (`app.auth.session-purge.retention-hours`), con e-mail, ruolo e
+  user agent, insieme alle impronte dei loro token sostituiti; le impronte più vecchie della durata di
+  una sessione si cancellano comunque. Una riga resta al più la durata della sessione più 24 ore più
+  l'attesa del job: circa 2 giorni e mezzo dal login nel caso peggiore. Nel log solo i conteggi.
 - **Token di accesso** — il JWT di §1 dura **15 minuti** (`app.auth.access-ttl-ms=900000`), porta in
   più il claim `sid` (la sessione) e il frontend lo tiene **solo in memoria**: niente
   `localStorage`, quindi uno script iniettato non lo trova.
 - **Token di rinnovo** — cookie `dc_session`, `HttpOnly`, `SameSite=Strict`, `Path=/api/public/session`,
-  `Secure` da `app.auth.cookie-secure` (`true`; `false` solo dove si risponde in HTTP, cioè nel
-  collaudo). Il frontend chiama `/api` dello stesso sito, così il cookie viaggia anche in
+  `Secure` da `app.auth.cookie-secure` (`true`; `false` solo dove si risponde in HTTP: il collaudo
+  e, finché risponde anche in HTTP, la vetrina con dati fittizi; con `false` il backend scrive un
+  avviso all'avvio). Il frontend chiama `/api` dello stesso sito, così il cookie viaggia anche in
   sviluppo. Il cookie non è mai leggibile da JavaScript.
 - **Rotazione e riuso** — a ogni rinnovo il token cambia. Il token appena sostituito vale ancora
-  **30 secondi** (due schede che rinnovano insieme non si ostacolano); oltre, il suo riuso viene
+  **30 secondi** (due schede che rinnovano insieme non si ostacolano, anche se le loro richieste
+  arrivano in disordine e il token è già stato sostituito di nuovo); oltre, il suo riuso viene
   riconosciuto grazie a `auth_session_retired` come possibile furto e **tutta la famiglia di
   sessioni è revocata**.
 - **CSRF** — la sicurezza HTTP ha CSRF spento, quindi gli endpoint a cookie
@@ -47,6 +54,9 @@ Il JWT non è più l'unica prova di accesso: dietro ogni login c'è una **sessio
   chiede il **PIN di 4 cifre** (hash **BCrypt** su `providers.lock_pin_hash`, mai il PIN in chiaro)
   o, senza PIN, la password. **5 tentativi sbagliati** revocano la sessione: serve di nuovo il
   login. Il blocco è vero, non solo grafico, perché senza token il browser non può chiamare il server.
+  Il primo PIN si sceglie senza password solo nei **primi 10 minuti** dopo il login (la richiesta che
+  compare all'accesso); dopo, e per cambiarlo, serve la password: chi trova un PC sbloccato non può
+  scegliere un PIN valido per le sessioni future di un altro.
 - **Revoca** — le sessioni di un utente vengono revocate al cambio o al reset della password, quando
   il professionista viene disattivato e con «Esci da tutti i dispositivi»; l'amministratore può
   azzerare il PIN di un utente. Le altre schede e gli altri dispositivi escono al rinnovo successivo.

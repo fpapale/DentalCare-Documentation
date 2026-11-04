@@ -40,6 +40,10 @@ Il revisore è sempre Opus a sforzo extra-high.
 5. **Correzioni.** Il coordinatore decide i dubbi e rimanda le correzioni agli **stessi** agenti (`SendMessage`: ricordano il lavoro). Poi il revisore ricontrolla, sempre via `SendMessage`. **Due giri al massimo**: dopo, la slice passa a Opus. Le correzioni minori dopo un «APPROVATO» le applica il coordinatore.
 6. **Integrazione.** Il coordinatore aggiorna i documenti (registro delle proposte, DPIA se serve, Academy). Fa il commit solo col via del committente, separando le correzioni fuori tema.
 
+## 4bis. Ricognizione del codice
+
+Prima di una ricognizione, o di una parte di lavoro, il coordinatore aggiorna il grafo del codice (`graphify update .`: solo codice, senza LLM, quindi quasi gratis). Gli agenti interrogano prima il grafo (`graphify query`) e usano `git grep` solo per i dettagli mirati. Indicazione del committente del 04/11/2026: due ricognizioni fatte solo con `git grep` sono costate circa 700 mila token.
+
 ## 5. Isolamento e sicurezza
 
 - Agenti in parallelo sullo stesso working tree solo con file disgiunti. Altrimenti cloni `--shared` su C:, perché i worktree su D: falliscono (dubious ownership). Mai `safe.directory` globale.

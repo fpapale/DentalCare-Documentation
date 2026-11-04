@@ -246,7 +246,7 @@ Ogni parte passa per il revisore Opus, secondo il [metodo](../../04-Architecture
 | **F — Avvisi** | regole, job, impostazioni, elenco degli avvisi e loro destinatari | Sonnet | A, B, C | ~3-5h |
 | **G — Chiusura** | Academy (firma delle note, cosa vede la segreteria), `install.sql`, Architecture Handbook (07, 12, 13), registro DPIA | Sonnet | tutte | ~2-3h |
 
-**Totale ≈ 42-60h agente.** La stima di luglio (~22-29h) non contava:
+**Totale ≈ 42-60h agente.** Il piano di lavoro compito per compito sta nel repo applicativo (privato), perché cita i punti oggi scoperti. La stima di luglio (~22-29h) non contava:
 - i dati clinici misti in scheda paziente, agenda e dashboard;
 - le scritture dello stato clinico fuori dalla seduta;
 - le cancellazioni fisiche su sei tabelle;

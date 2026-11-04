@@ -21,13 +21,14 @@ Questo repo ha anche un proprio `graphify-out/`: il grafo dei documenti di quest
 |---|---|---|
 | `05-Manuale-Utente` | **lezioni dell'Academy** nel programma (`backend/src/main/resources/academy/v1` del repo applicativo) | **generata**: `python tools/genera_manuale.py <repo dentalcare>`. Non modificare i `.md` a mano: si corregge la lezione e si rigenera |
 | `03-Product-Roadmap` (Release, roadmap, analisi funzionale) | scritta qui | a ogni gruppo di proposte fatte (`directives/proposte-modifiche.md` nel repo applicativo), citando i numeri `#NN` |
+| `03-Product-Roadmap/Progetti` (progetti delle singole proposte: design, fattibilità) | **fonte ufficiale qui** (dal 04/11/2026); il repo applicativo tiene solo un rimando | si scrive prima dello sviluppo e si aggiorna con le decisioni del committente; a lavoro fatto si aggiorna anche `04` |
 | `04-Architecture-Handbook` | scritta qui, verificata sul codice | quando cambiano componenti, API, sicurezza o modello dati |
 | `06-Compliance` (registro DPIA, inventario flussi AI, AI Act, fascicolo Retell) | **fonte ufficiale qui** (dal 28/10/2026; prima nel repo applicativo) | ogni decisione con effetto sulla privacy aggiunge una voce D-xx al registro, nella stessa sessione |
 | `01`, `02` (fattibilità, business plan, listino) | scritta qui | solo su decisione del committente |
 
 ### Regole
 
-- **Pubblico:** questo repo è pubblico. Niente indirizzi interni, credenziali, dati reali; il manuale usa solo dati fittizi.
+- **Pubblico:** questo repo è pubblico. Niente indirizzi interni, credenziali, dati reali, né dettagli di difetti di sicurezza non ancora corretti (restano nel repo applicativo, privato); il manuale usa solo dati fittizi.
 - **Termini** (concordati il 28/10/2026): **account** (tenant) → **clinica** (= sede) → **poltrona**. Nell'interfaccia e nel manuale mai «Centro» né «Studio» da solo.
 - **Stato dichiarato:** ✅ fatto (dev/collaudo/produzione), 📋 confermato, 🔨 in lavorazione, ⏸️ rimandato. Le funzioni non fatte non si descrivono come presenti.
 

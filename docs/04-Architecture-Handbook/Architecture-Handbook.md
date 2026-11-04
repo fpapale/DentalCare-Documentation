@@ -24,6 +24,7 @@ ancora presente.
 | 13 | [Audit trail clinico](13-Audit-Trail.md) | Modello probatorio, taglio Tier 1 (gate) / Tier 2, decisioni di design |
 | 14 | [LLM NER Gateway & Demo](14-LLM-NER-Gateway.md) | Proxy privacy-preserving, Dual-Engine NER (0.3B / spaCy), Pass-Through, e simulatore demo |
 | 15 | [Manuale per ChatGPT e Claude](15-Docs-Service.md) | `dentalcare-docs-service`: ricerca sulle lezioni Academy, connettore MCP per Claude e ChatGPT, esposizione via Caddy |
+| 16 | [Metodo di sviluppo ad agenti](16-Metodo-Sviluppo-Agenti.md) | Coordinatore, implementatori su modelli economici, revisore Opus; esito delle prove |
 
 ## Sintesi tecnica
 

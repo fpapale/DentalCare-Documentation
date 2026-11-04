@@ -391,6 +391,7 @@ Nessun paziente reale prima che **tutte** le voci siano verdi:
 
 - [ ] modulo radiologico disattivato in produzione clinica (flag + claim + contratto)
 - [ ] audit trail clinico attivo e append-only
+- [ ] sigilli dell'audit trail marcati ogni giorno con marca temporale qualificata eIDAS (requisito di prodotto dal 04/11/2026, [13 §4 T1.9](../04-Architecture-Handbook/13-Audit-Trail.md#4-tier-1--obbligatorio-per-il-go-live))
 - [ ] note finalizzabili, immutabili dopo la firma, addendum funzionante
 - [ ] consensi versionati collegati ai piani
 - [ ] segreteria non vede anamnesi/diagnosi/odontogramma/note (**verificato lato server**)

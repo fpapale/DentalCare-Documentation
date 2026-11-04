@@ -10,7 +10,7 @@
 > e il **quanto**: forza probatoria, decisioni di design ancora aperte,
 > dipendenza dagli altri interventi della cartella.
 >
-> **Stato: 🔨 non implementato.** È la **prima milestone tecnica** della
+> **Stato: 🔨 in implementazione** ([#18 Blocco 1](../03-Product-Roadmap/Progetti/2026-11-04-018-blocco-1-valore-probatorio.md), dal 04/11/2026). È la **prima milestone tecnica** della
 > Release 1.x. Nessuno studio usa la piattaforma su pazienti reali finché questo
 > livello non è chiuso.
 
@@ -62,6 +62,8 @@ QTSP) fuori dai tempi della Release 1.x. Il taglio isola il **minimo legale**.
 > concreto lo richiede (contenzioso, ispezione, apertura Release 2.x). Mettere il
 > Tier 2 nel gate significa non arrivare alla data di go-live.
 
+> **Decisione del 04/11/2026.** La **marca temporale qualificata eIDAS sui sigilli** esce dal Tier 2 ed entra nel gate come **T1.9**: costa circa €50-90 l'anno con pacchetti prepagati, senza contratto QTSP dedicato, e l'integrazione richiede poche ore. Il resto del Tier 2 resta differito.
+
 L'MVP è difendibile senza QTSP: **DB append-only + hash chain interna** soddisfa
 il requisito legale di tracciabilità inalterabile; il livello eIDAS **alza** la
 data da "server" a "opponibile a terzi", ma è un rafforzamento, non la soglia
@@ -82,20 +84,22 @@ obbligatorie.
 | T1.6 | **Logging delle CONSULTAZIONI** (letture) | apertura paziente / anamnesi / odontogramma / referto / documento → evento. **Costo dominante**: trasversale ai service clinici | Garante 10262049 (esplicito) | **alto** |
 | T1.7 | **Alert base anomalie** | versione batch/query, non realtime: "N pazienti in M minuti", accesso senza relazione di cura, negati ripetuti, break-glass | Garante 10262049 | medio |
 | T1.8 | **Eventi break-glass + admin** | accesso straordinario con motivazione obbligatoria + evento; accessi amministrativi nominativi tracciati | modello §5 | medio |
+| T1.9 | **Marca temporale qualificata eIDAS sui sigilli** (requisito di prodotto dal 04/11/2026) | una marca al giorno per tutta la piattaforma, sull'albero di Merkle dei sigilli di tutti i tenant; a ogni tenant la sua prova d'inclusione; se il prestatore non risponde si riprova, senza mai bloccare il lavoro clinico | eIDAS art. 41.2 · decisione del committente · proposta #129 | medio-basso (~8-12h) + circa €50-90/anno |
 
 **Definizione di "fatto" (mappa sul gate della [Release 1.x §29](../03-Product-Roadmap/Release-1.x.md)):**
 audit clinico **append-only** attivo (T1.3), che copre le **consultazioni** oltre
 alle scritture (T1.6), con contenuto minimo e attribuzione (T1.2, T1.5); ogni
 accesso **negato** registrato **con la ragione** (T1.5, accoppiato
 all'enforcement dei ruoli lato server, [07-Security §2](07-Security.md));
-break-glass tracciato (T1.8); retention configurata (T1.1); alert base (T1.7).
+break-glass tracciato (T1.8); retention configurata (T1.1); alert base (T1.7);
+sigilli marcati ogni giorno da un prestatore qualificato (T1.9).
 
 ## 5. Tier 2 — differito (eccellente, ma non blocca il go-live)
 
 | Requisito | Perché è Tier 2 | Trigger per farlo |
 |---|---|---|
 | **Audit Evidence Service** separato + transactional outbox + SIEM | Infrastruttura, settimane. L'MVP per-tenant append-only regge il requisito legale | Scala / SOC / più tenant reali |
-| **Timestamp e sigilli qualificati eIDAS** + radici Merkle | Richiede **contratto QTSP** (costo + integrazione). Alza la data da "server" a "opponibile a terzi" | Primo contenzioso / richiesta legale |
+| **Sigillo elettronico qualificato eIDAS** sui pacchetti di prova (la marca temporale qualificata è passata nel Tier 1, T1.9) | Richiede un certificato di sigillo qualificato intestato al fornitore | Con l'Evidence Package |
 | **Evidence Package generator** (pacchetto di prova firmato) | Feature intera; serve quando c'è una prova da produrre | Reclamo / ispezione / causa |
 | **Catena di custodia con tooling** | Il minimo procedurale (log dell'export) è già in T1.6/T1.8; il tooling completo è dopo | Con l'Evidence Package |
 | **Log inferenza AI clinica** | La radiologia è **spenta** in Fase 1 → roba Release 2.x. Il copilot (AI amministrativa) è già in `ai_audit_log` | Apertura Release 2.x (MDR) |
@@ -231,13 +235,20 @@ tecnico, ma sono il prodotto del percorso con il DPO.
 
 ## 9. Sintesi
 
-> **Database clinico versionato + audit log append-only + hash chain + (Tier 2)
-> manifest periodici sigillati e timestampati + procedura documentata di
-> estrazione e verifica.**
+> **Database clinico versionato + audit log append-only + hash chain + sigilli
+> periodici concatenati con marca temporale qualificata eIDAS (T1.9) + procedura
+> documentata di estrazione e verifica.**
 
-La blockchain non serve: architettura WORM, hash concatenati, e — al Tier 2 —
-sigillo e validazione temporale qualificati con conservazione governata sono più
-semplici, controllabili e difendibili. Il collo di bottiglia del percorso **non è
+Requisito di prodotto stabilito dal committente il 04/11/2026: **l'integrità del registro si dimostra con la catena di impronte e la marca temporale qualificata eIDAS, non con una blockchain.** È la scelta migliore per questi motivi:
+1. **Presunzione legale.** Una marca temporale qualificata si presume esatta nella data e nell'integrità dei dati marcati (eIDAS, art. 41.2): in giudizio l'onere della prova passa a chi la contesta. Una marcatura su blockchain, in Italia, avrebbe lo stesso effetto solo con le regole tecniche che l'art. 8-ter del DL 135/2018 affida all'AgID, che non risultano adottate (verifica del 04/11/2026). Senza, vale come validazione temporale non qualificata, che il giudice valuta liberamente (art. 41.1).
+2. **Fiducia in un terzo qualificato e vigilato** (prestatore iscritto all'elenco AgID), invece che in nodi anonimi di una rete pubblica.
+3. **Costo e semplicità.** Circa €50-90 l'anno con una marca al giorno per tutta la piattaforma; niente token, niente commissioni variabili, nessuna dipendenza dallo stato di una rete pubblica.
+4. **Privacy.** Al prestatore arriva solo un'impronta aggregata; su un registro pubblico immutabile non finisce nulla che non si possa più togliere.
+
+Un ancoraggio in più su una blockchain pubblica (per esempio OpenTimestamps) resta possibile come complemento, mai come sostituto della marca qualificata.
+
+Architettura WORM, hash concatenati e validazione temporale qualificata con
+conservazione governata sono più semplici, controllabili e difendibili. Il collo di bottiglia del percorso **non è
 il codice** (settimane), ma l'ingaggio del **DPO** per la governance.
 
 ---

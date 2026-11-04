@@ -1,6 +1,6 @@
 # #18 Blocco 1 — Valore probatorio della cartella clinica
 
-**Data:** 04/11/2026 · **Stato:** 📋 progetto completo (decisioni D1-D7 del 04/11/2026), da approvare · **Gate di go-live:** sì, nessun paziente reale prima della chiusura
+**Data:** 04/11/2026 · **Stato:** 📋 **approvato dal committente il 04/11/2026** (decisioni D1-D7) · piano di lavoro in preparazione · **Gate di go-live:** sì, nessun paziente reale prima della chiusura
 **Per chi:** chi pianifica e costruisce (coordinatore e agenti) e il committente.
 **Fonti:** [13 — Audit trail](../../04-Architecture-Handbook/13-Audit-Trail.md) (modello probatorio, taglio Tier 1/Tier 2), [12 — Modello cartella clinica](../../04-Architecture-Handbook/12-Clinical-Record-Model.md), guida alla digitalizzazione della cartella (§6.1 stati di una nota, §6.2 addendum, §12 audit trail, §26.2 segreteria), ricognizione del codice del 04/11/2026.
 **Allegato riservato:** lo stato attuale dei punti scoperti sta nel repo applicativo (privato). Qui si descrive solo lo stato da raggiungere.

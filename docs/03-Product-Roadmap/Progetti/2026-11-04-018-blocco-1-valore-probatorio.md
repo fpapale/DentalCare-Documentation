@@ -94,7 +94,7 @@ Indici almeno su `(patient_id, occurred_at)`, `(actor_provider_id, occurred_at)`
 - `root_hash` è calcolato sulle impronte degli eventi. `seal_hash` concatena `root_hash` e `previous_seal_hash`: chi toglie o cambia un evento, o un sigillo, rompe la catena da lì in avanti.
 - **I sigilli sono HMAC-SHA256** con una chiave che **non sta nel database**. La chiave è derivata con HKDF dalla master key della cifratura GDPR, con un'etichetta propria («audit-seal»), e ha lo stesso fail-fast all'avvio. Chi ha accesso al database come proprietario può alterare eventi e impronte, ma non può ricalcolare i sigilli senza la chiave. Scelta del coordinatore.
 - Ogni sigillo porta `algorithm_version`: si può cambiare algoritmo senza invalidare i sigilli vecchi.
-- Limite dichiarato: la chiave è della piattaforma, quindi la tamper-evidence Tier 1 vale contro chi tocca il database, non contro chi gestisce la piattaforma. L'opponibilità a terzi (timestamp qualificato sui sigilli, o ancoraggio fuori dal sistema) è Tier 2, e si aggancia qui senza rifare nulla.
+- Limite dichiarato: la chiave è della piattaforma, quindi la tamper-evidence Tier 1 vale contro chi tocca il database, non contro chi gestisce la piattaforma. L'opponibilità a terzi (timestamp qualificato sui sigilli, o ancoraggio fuori dal sistema) è Tier 2, e si aggancia qui senza rifare nulla. Confermato dal committente il 04/11/2026 come lavoro da fare prima della produzione con dati reali (proposta #129: marca temporale qualificata eIDAS sull'impronta dell'ultimo sigillo, ed eventualmente l'impronta inviata ogni giorno al titolare).
 
 **5.1.4 Interfaccia.**
 - `ClinicalAuditService.record(event)` per le scritture: gira **nella stessa transazione** della modifica clinica.

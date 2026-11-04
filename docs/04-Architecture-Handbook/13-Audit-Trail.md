@@ -245,7 +245,7 @@ Requisito di prodotto stabilito dal committente il 04/11/2026: **l'integrità de
 3. **Costo e semplicità.** Circa €50-90 l'anno con una marca al giorno per tutta la piattaforma; niente token, niente commissioni variabili, nessuna dipendenza dallo stato di una rete pubblica.
 4. **Privacy.** Al prestatore arriva solo un'impronta aggregata; su un registro pubblico immutabile non finisce nulla che non si possa più togliere.
 
-Un ancoraggio in più su una blockchain pubblica (per esempio OpenTimestamps) resta possibile come complemento, mai come sostituto della marca qualificata.
+Il meccanismo accettato è **solo la marca temporale qualificata**. Ancoraggi su blockchain pubbliche (per esempio OpenTimestamps) non sono previsti, neppure come complemento.
 
 Architettura WORM, hash concatenati e validazione temporale qualificata con
 conservazione governata sono più semplici, controllabili e difendibili. Il collo di bottiglia del percorso **non è

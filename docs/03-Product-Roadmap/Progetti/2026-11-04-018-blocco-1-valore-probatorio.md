@@ -142,6 +142,7 @@ Indici almeno su `(patient_id, occurred_at)`, `(actor_provider_id, occurred_at)`
   - più di K accessi negati in un'ora;
   - consultazioni fuori dall'orario dello studio, se l'orario è impostato.
 - Produce righe in `<schema>.clinical_audit_alerts`, con stato «da vedere» e «visto da…».
+- **Rotture d'integrità** (decisione del committente del 05/11/2026): un registro alterato resta rotto per sempre, perché è append-only. La verifica quindi conta **tutte** le rotture, con un tetto, e non si ferma alla prima. L'avviso parte solo per le rotture nuove, e la stessa rottura non genera un'email ogni notte. Il titolare non può «prendere atto» di una rottura per toglierla dall'elenco: un falso allarme resta in elenco con la sua spiegazione.
 - **Li riceve il titolare dello studio** (D5): elenco in Impostazioni → Sicurezza, e un riepilogo giornaliero via e-mail facoltativo. Vede chi, quando e quanti pazienti; l'elenco dei pazienti solo su richiesta, e la richiesta finisce nel registro.
 
 **5.1.10 Verifica d'integrità.**

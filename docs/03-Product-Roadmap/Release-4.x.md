@@ -61,3 +61,9 @@ Release-4.md
 30. Marketing Strategy
 
 31. Vision 2040
+
+---
+
+## Nota di perimetro: Fase 4 Clinical Intelligence
+
+La [Fase 4 — Clinical Intelligence](Progetti/2026-11-12-fase-4-clinical-intelligence.md) è una specifica evolutiva funzionale datata 12/11/2026 e non implica la programmazione o il rilascio della **Release 4.x** delineata in questo documento. Ne approfondisce gli aspetti di odontoiatria predittiva, eventi clinici e decision intelligence, ma non sostituisce la visione della release. Stato: 📋 non implementata.

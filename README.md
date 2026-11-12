@@ -90,3 +90,13 @@ Questo repo ha anche un proprio `graphify-out/`: il grafo dei documenti di quest
 - **Eccellenza Clinica**: Riduzione del carico burocratico alla poltrona, cartella clinica digitale e supporto decisionale di seconda opinione.
 - **Solidità Tecnica**: Architettura Cloud-Native multi-tenant, microservizi reattivi, cifratura AES-256 e tracciabilità audit log.
 - **Compliance Normativa**: Conforme a **GDPR Art. 32**, **EU AI Act** (supervisione umana *human-in-the-loop*) e predisposto per la qualificazione **MDR (UE 2017/745)**.
+
+---
+
+## 📌 Fase 4 — Clinical Intelligence (progetto evolutivo)
+
+📋 Specifica **pianificata e non implementata**. La Fase 2 rimane dedicata all'AI Copilot clinico e all'analisi delle ortopanoramiche. La Fase 4 non corrisponde automaticamente alla Release 4.x commerciale.
+
+- [Progetto, scelte architetturali e roadmap Fase 4](docs/03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md)
+- [Architecture Handbook 17 — DC-CEM, pgvector, FHIR e ML](docs/04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md)
+- [Addendum DPIA per la Fase 4](docs/06-Compliance/Fase-4-Clinical-Intelligence-DPIA-Addendum.md)

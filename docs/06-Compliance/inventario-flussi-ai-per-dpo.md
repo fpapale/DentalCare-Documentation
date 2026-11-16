@@ -304,3 +304,9 @@ restituire una nuova categoria di dati, o cambia un interruttore di disattivazio
 
 Le funzionalità restano **come sono** finché il DPO non si esprime: nessuna delle voci qui
 sopra è stata modificata nel codice per anticiparne il parere.
+
+---
+
+## Addendum — Flussi Fase 4 NON in esercizio
+
+Questo inventario descrive i flussi correnti documentati; il [progetto Fase 4](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md) introduce solo **flussi futuri**, non ancora attivati: proiezioni storiche degli eventi clinici, embeddings di referti per account/paziente, retrieval con pgvector, eventuale server HAPI FHIR isolato, dataset derivati per ML e proposte di richiami. Vedere [D-105..D-109](Fase-4-Clinical-Intelligence-DPIA-Addendum.md). Nessun uso cross-tenant per training autorizzato da questa specifica.

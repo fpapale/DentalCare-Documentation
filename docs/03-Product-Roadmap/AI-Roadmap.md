@@ -311,3 +311,9 @@ catena, nessuna delle visioni successive è difendibile.
 - [Product Roadmap](Product-Roadmap.md) · [Release 1.x](Release-1.x.md) · [Release 2.x](Release-2.x.md)
 - [04-AI](../04-Architecture-Handbook/04-AI.md) · [07-Security](../04-Architecture-Handbook/07-Security.md)
 - Regolamento (UE) 2024/1689 (AI Act) · Regolamento (UE) 2017/745 (MDR) · L. 132/2025
+
+---
+
+## Addendum — Progetto Fase 4 Clinical Intelligence
+
+📋 Pianificato, non implementato. [Progetto completo](Progetti/2026-11-12-fase-4-clinical-intelligence.md). I modelli predittivi della Fase 4 utilizzano il Clinical Event Model derivato dalla cartella (patient/tooth/site/care pathway), con pgvector per retrieval e modelli ML distinti dall'LLM. Tutti i suggerimenti su complicanze, piani e richiami richiedono valutazione regolatoria/clinica e approvazione del medico. La Fase 2 resta dedicata al Copilot clinico e alle ortopanoramiche.

@@ -82,3 +82,9 @@ La piattaforma è in **stato dimostrativo**: nessuno studio la usa su pazienti r
 Il modulo di **analisi radiologica** è disattivato in produzione clinica in attesa del
 percorso MDR ([Release 2.x](../03-Product-Roadmap/Release-2.x.md)). Il piano completo è in
 [Product Roadmap](../03-Product-Roadmap/Product-Roadmap.md).
+
+---
+
+## Estensione 17 — Clinical Event Model, FHIR e Predictive AI
+
+📋 [17 — Specifica architetturale Fase 4](17-Clinical-Event-Model-and-Predictive-AI.md): schema-per-tenant, Clinical Event Model a granularità anatomica, Care Pathway distinto dagli episodi visita/contatto già implementati, pgvector, adapter FHIR R4/HAPI PoC, ML predittivo validato e controllo umano. **Solo progetto**; non descrive componenti già rilasciati.

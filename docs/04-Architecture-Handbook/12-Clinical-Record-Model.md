@@ -332,3 +332,9 @@ questa distanza prima che il primo paziente reale entri nel sistema.
 - [Release 1.x](../03-Product-Roadmap/Release-1.x.md) — scope e criteri di go-live
 - [07-Security](07-Security.md) · [11-Data-Encryption](11-Data-Encryption.md) · [13-Audit-Trail](13-Audit-Trail.md) · [04-AI](04-AI.md)
 - Regolamento (UE) 2016/679 (GDPR) · HL7 FHIR · DICOM · FSE 2.0
+
+---
+
+## Estensione futura — DC-CEM Fase 4
+
+📋 [17 — Clinical Event Model, FHIR e Predictive AI](17-Clinical-Event-Model-and-Predictive-AI.md). Il progetto introduce siti anatomici e Care Pathway longitudinali e deriva eventi dagli oggetti esistenti. **Non** ridefinisce gli episodi #67 (visita/contatto e snapshot entry/exit); fonte originale e workflow probatori restano immutati.

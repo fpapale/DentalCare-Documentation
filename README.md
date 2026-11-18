@@ -93,10 +93,11 @@ Questo repo ha anche un proprio `graphify-out/`: il grafo dei documenti di quest
 
 ---
 
-## 📌 Fase 4 — Clinical Intelligence (progetto evolutivo)
+## 📌 CLIPS — Clinical Intelligence Predictive System (progetto evolutivo)
 
-📋 Specifica **pianificata e non implementata**. La Fase 2 rimane dedicata all'AI Copilot clinico e all'analisi delle ortopanoramiche. La Fase 4 non corrisponde automaticamente alla Release 4.x commerciale.
+📋 Specifica **pianificata e non implementata**. La Fase 2 del prodotto rimane dedicata all'AI Copilot clinico e all'analisi delle ortopanoramiche. CLIPS (in origine «Fase 4») non corrisponde automaticamente alla Release 4.x commerciale.
 
-- [Progetto, scelte architetturali e roadmap Fase 4](docs/03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md)
+- [Progetto, scelte architetturali e roadmap di CLIPS](docs/03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md)
 - [Architecture Handbook 17 — DC-CEM, pgvector, FHIR e ML](docs/04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md)
-- [Addendum DPIA per la Fase 4](docs/06-Compliance/Fase-4-Clinical-Intelligence-DPIA-Addendum.md)
+- [Addendum DPIA per CLIPS](docs/06-Compliance/Fase-4-Clinical-Intelligence-DPIA-Addendum.md)
+- [Clinical Knowledge di CLIPS: AnalysisFunctionLLM](docs/03-Product-Roadmap/Progetti/CLIPS-AnalysisFunctionLLM.md)

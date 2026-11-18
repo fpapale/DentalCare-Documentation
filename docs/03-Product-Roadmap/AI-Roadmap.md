@@ -314,6 +314,6 @@ catena, nessuna delle visioni successive è difendibile.
 
 ---
 
-## Addendum — Progetto Fase 4 Clinical Intelligence
+## Addendum — Progetto CLIPS (Clinical Intelligence Predictive System)
 
-📋 Pianificato, non implementato. [Progetto completo](Progetti/2026-11-12-fase-4-clinical-intelligence.md). I modelli predittivi della Fase 4 utilizzano il Clinical Event Model derivato dalla cartella (patient/tooth/site/care pathway), con pgvector per retrieval e modelli ML distinti dall'LLM. Tutti i suggerimenti su complicanze, piani e richiami richiedono valutazione regolatoria/clinica e approvazione del medico. La Fase 2 resta dedicata al Copilot clinico e alle ortopanoramiche.
+📋 Pianificato, non implementato. [Progetto completo](Progetti/2026-11-12-fase-4-clinical-intelligence.md). I modelli predittivi di CLIPS (in origine «Fase 4») utilizzano il Clinical Event Model derivato dalla cartella (patient/tooth/site/care pathway), con pgvector per retrieval e modelli ML distinti dall'LLM. Tutti i suggerimenti su complicanze, piani e richiami richiedono valutazione regolatoria/clinica e approvazione del medico. La Fase 2 del prodotto resta dedicata al Copilot clinico e alle ortopanoramiche. Il componente di consultazione delle fonti cliniche (Clinical Knowledge, Fase 2 di CLIPS) è descritto in [CLIPS — AnalysisFunctionLLM](Progetti/CLIPS-AnalysisFunctionLLM.md).

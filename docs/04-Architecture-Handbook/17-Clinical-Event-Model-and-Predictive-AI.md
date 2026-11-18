@@ -1,7 +1,7 @@
-# 17 — Clinical Event Model, FHIR e Predictive AI (Fase 4)
+# 17 — Clinical Event Model, FHIR e Predictive AI (CLIPS)
 
 **Data:** 12 novembre 2026 · **Versione:** 1.0 · **Stato:** 📋 specifica target, NON implementata  
-**Documento di progetto:** [Fase 4 — DentalCare Clinical Intelligence](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md)
+**Documento di progetto:** [CLIPS — Clinical Intelligence Predictive System](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md)
 
 > Questo documento propone un'estensione futura della piattaforma e non descrive nuove funzioni già disponibili. Resta applicabile il [12 — Modello cartella clinica](12-Clinical-Record-Model.md) per la fotografia dello stato reale. Il database attuale è schema-per-tenant, non una singola tabella clinica multi-tenant condivisa.
 
@@ -329,6 +329,6 @@ Separare ambiente demo/collaudo/produzione, segreti in secret management, subnet
 
 ## 12. Riferimenti
 
-[Progetto Fase 4](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md) · [12 — Clinical Record](12-Clinical-Record-Model.md) · [06 — Multi-tenancy](06-Multitenancy.md) · [13 — Audit](13-Audit-Trail.md) · [14 — LLM Gateway](14-LLM-NER-Gateway.md).
+[Progetto CLIPS](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md) · [12 — Clinical Record](12-Clinical-Record-Model.md) · [06 — Multi-tenancy](06-Multitenancy.md) · [13 — Audit](13-Audit-Trail.md) · [14 — LLM Gateway](14-LLM-NER-Gateway.md).
 
 [HL7 FHIR R4](https://hl7.org/fhir/R4/) · [pgvector](https://github.com/pgvector/pgvector) · [HAPI FHIR JPA Starter](https://github.com/hapifhir/hapi-fhir-jpaserver-starter) · [Linee guida MDCG](https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en).

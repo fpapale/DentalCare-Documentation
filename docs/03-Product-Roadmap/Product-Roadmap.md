@@ -326,6 +326,6 @@ raggiungibile è una sola: che il nucleo clinico costruito nel 2026-2027 sia
 
 ---
 
-## Addendum — Fase 4 Clinical Intelligence (12/11/2026)
+## Addendum — CLIPS, Clinical Intelligence Predictive System (12/11/2026, rinominato il 18/11/2026)
 
-📋 È stata definita la [Fase 4 — Clinical Intelligence](Progetti/2026-11-12-fase-4-clinical-intelligence.md), con DC-CEM longitudinale, RAG su pgvector, possibilità FHIR R4/HAPI PoC e modelli prognostici ML. **Non è implementata né autorizzata per uso clinico**. La Fase 2 resta Copilot clinico + analisi ortopanoramiche soggetti ai gate vigenti. Fase 4 (programma funzionale) e Release 4.x (visione commerciale) sono nomenclature distinte. [Specifica tecnica](../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md).
+📋 È stato definito il progetto [CLIPS — Clinical Intelligence Predictive System, in origine «Fase 4»](Progetti/2026-11-12-fase-4-clinical-intelligence.md), con DC-CEM longitudinale, RAG su pgvector, possibilità FHIR R4/HAPI PoC e modelli prognostici ML. **Non è implementato né autorizzato per uso clinico**. La Fase 2 del prodotto resta Copilot clinico + analisi ortopanoramiche soggetti ai gate vigenti. CLIPS (programma funzionale) e Release 4.x (visione commerciale) sono nomenclature distinte. [Specifica tecnica](../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md).

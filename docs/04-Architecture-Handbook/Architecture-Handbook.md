@@ -87,4 +87,4 @@ percorso MDR ([Release 2.x](../03-Product-Roadmap/Release-2.x.md)). Il piano com
 
 ## Estensione 17 — Clinical Event Model, FHIR e Predictive AI
 
-📋 [17 — Specifica architetturale Fase 4](17-Clinical-Event-Model-and-Predictive-AI.md): schema-per-tenant, Clinical Event Model a granularità anatomica, Care Pathway distinto dagli episodi visita/contatto già implementati, pgvector, adapter FHIR R4/HAPI PoC, ML predittivo validato e controllo umano. **Solo progetto**; non descrive componenti già rilasciati.
+📋 [17 — Specifica architetturale di CLIPS](17-Clinical-Event-Model-and-Predictive-AI.md): schema-per-tenant, Clinical Event Model a granularità anatomica, Care Pathway distinto dagli episodi visita/contatto già implementati, pgvector, adapter FHIR R4/HAPI PoC, ML predittivo validato e controllo umano. **Solo progetto**; non descrive componenti già rilasciati. Il componente Clinical Knowledge della Fase 2 di CLIPS è descritto in [CLIPS — AnalysisFunctionLLM](../03-Product-Roadmap/Progetti/CLIPS-AnalysisFunctionLLM.md).

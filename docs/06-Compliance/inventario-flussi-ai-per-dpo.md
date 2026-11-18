@@ -307,6 +307,6 @@ sopra è stata modificata nel codice per anticiparne il parere.
 
 ---
 
-## Addendum — Flussi Fase 4 NON in esercizio
+## Addendum — Flussi di CLIPS NON in esercizio
 
-Questo inventario descrive i flussi correnti documentati; il [progetto Fase 4](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md) introduce solo **flussi futuri**, non ancora attivati: proiezioni storiche degli eventi clinici, embeddings di referti per account/paziente, retrieval con pgvector, eventuale server HAPI FHIR isolato, dataset derivati per ML e proposte di richiami. Vedere [D-105..D-109](Fase-4-Clinical-Intelligence-DPIA-Addendum.md). Nessun uso cross-tenant per training autorizzato da questa specifica.
+Questo inventario descrive i flussi correnti documentati; il [progetto CLIPS](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md) introduce solo **flussi futuri**, non ancora attivati: proiezioni storiche degli eventi clinici, embeddings di referti per account/paziente, retrieval con pgvector, eventuale server HAPI FHIR isolato, dataset derivati per ML e proposte di richiami. Vedere [D-105..D-109](Fase-4-Clinical-Intelligence-DPIA-Addendum.md). Nessun uso cross-tenant per training autorizzato da questa specifica.

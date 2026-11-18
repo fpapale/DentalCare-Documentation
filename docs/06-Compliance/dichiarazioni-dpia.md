@@ -144,9 +144,9 @@ Fonte: decisioni del committente del 04/11/2026 sul [progetto di #18 Blocco 1](.
 
 ---
 
-## 11. Fase 4 — Clinical Intelligence (proposta 12/11/2026)
+## 11. CLIPS — Clinical Intelligence Predictive System (proposta 12/11/2026)
 
-Fonte: [Progetto Fase 4](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md) e [addendum di dettaglio](Fase-4-Clinical-Intelligence-DPIA-Addendum.md). **Valgono solo dopo eventuale sviluppo e rilascio**, previa revisione DPO. Non sono funzioni già in esercizio.
+Fonte: [Progetto CLIPS](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md) e [addendum di dettaglio](Fase-4-Clinical-Intelligence-DPIA-Addendum.md). **Valgono solo dopo eventuale sviluppo e rilascio**, previa revisione DPO. Non sono funzioni già in esercizio.
 
 | ID | Scelta/rischio da valutare | Mitigazione progettuale | Stato |
 |---|---|---|---|

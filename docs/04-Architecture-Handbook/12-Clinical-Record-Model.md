@@ -335,6 +335,6 @@ questa distanza prima che il primo paziente reale entri nel sistema.
 
 ---
 
-## Estensione futura — DC-CEM Fase 4
+## Estensione futura — DC-CEM (modello dati di CLIPS)
 
 📋 [17 — Clinical Event Model, FHIR e Predictive AI](17-Clinical-Event-Model-and-Predictive-AI.md). Il progetto introduce siti anatomici e Care Pathway longitudinali e deriva eventi dagli oggetti esistenti. **Non** ridefinisce gli episodi #67 (visita/contatto e snapshot entry/exit); fonte originale e workflow probatori restano immutati.

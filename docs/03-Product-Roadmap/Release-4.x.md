@@ -66,4 +66,4 @@ Release-4.md
 
 ## Nota di perimetro: CLIPS (Clinical Intelligence Predictive System)
 
-Il progetto [CLIPS — Clinical Intelligence Predictive System, in origine «Fase 4»](Progetti/2026-11-12-fase-4-clinical-intelligence.md) è una specifica evolutiva funzionale datata 12/11/2026 e non implica la programmazione o il rilascio della **Release 4.x** delineata in questo documento. Ne approfondisce gli aspetti di odontoiatria predittiva, eventi clinici e decision intelligence, ma non sostituisce la visione della release. Stato: 📋 non implementata.
+Il progetto [CLIPS — Clinical Intelligence Predictive System, in origine «Fase 4»](Progetti/2026-11-12-fase-4-clinical-intelligence.md) è collocato nella **Fase 3 del prodotto** (Release 3.x); la Release 4.x delineata in questo documento non lo comprende più. È una specifica evolutiva funzionale datata 12/11/2026 di odontoiatria predittiva, eventi clinici e decision intelligence. Stato: 📋 non implementata.

@@ -1,6 +1,7 @@
 # 17 — Clinical Event Model, FHIR e Predictive AI (CLIPS)
 
 **Data:** 12 novembre 2026 · **Versione:** 1.0 · **Stato:** 📋 specifica target, NON implementata  
+**Collocazione:** Fase 3 del prodotto (Release 3.x)  
 **Documento di progetto:** [CLIPS — Clinical Intelligence Predictive System](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md)
 
 > Questo documento propone un'estensione futura della piattaforma e non descrive nuove funzioni già disponibili. Resta applicabile il [12 — Modello cartella clinica](12-Clinical-Record-Model.md) per la fotografia dello stato reale. Il database attuale è schema-per-tenant, non una singola tabella clinica multi-tenant condivisa.

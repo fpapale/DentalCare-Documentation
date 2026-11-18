@@ -5,7 +5,7 @@
 **Ambito:** DentalCare Pro SaaS multi-tenant; supporto decisionale odontoiatrico, evoluzione clinica e richiami  
 **Specifica tecnica:** [17 — Clinical Event Model, FHIR e Predictive AI](../../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md).
 
-> **Nomenclatura:** il progetto, chiamato in origine «Fase 4 — DentalCare Clinical Intelligence (DC-CI)», dal 18/11/2026 si chiama **CLIPS — Clinical Intelligence Predictive System**. Il nome del file resta quello storico, per non rompere i link. CLIPS non coincide automaticamente con la **Release 4.x** del catalogo, che ad oggi descrive una visione più ampia non pianificata. Il **modello dati** dentro CLIPS si chiama ancora DC-CEM (Clinical Event Model). **Attenzione ai numeri:** le «Fasi» di CLIPS (1, 2, 3, descritte nella sezione 12) sono interne al progetto; la **Fase 2 del prodotto** resta dedicata all'AI Copilot clinico e all'analisi delle ortopanoramiche, con i gate regolatori previsti. CLIPS riutilizza gli output della Fase 2 del prodotto e non ne anticipa la messa in uso clinico. La collocazione funzionale della Fase 3 del prodotto non è ridefinita in questo documento.
+> **Nomenclatura:** il progetto, chiamato in origine «Fase 4 — DentalCare Clinical Intelligence (DC-CI)», dal 18/11/2026 si chiama **CLIPS — Clinical Intelligence Predictive System** ed è la **Fase 3 del prodotto** (Release 3.x). Il nome del file resta quello storico, per non rompere i link. CLIPS viene dopo la **Fase 2 del prodotto** (AI Copilot clinico e OrtopanoramicheAI, analisi delle ortopanoramiche), ne riutilizza gli output e non ne anticipa la messa in uso clinico. Il **modello dati** dentro CLIPS si chiama ancora DC-CEM (Clinical Event Model). **Attenzione ai numeri:** i gruppi di gate interni a CLIPS (1, 2, 3, descritti nella sezione 12) si chiamano **stadi**, per non confonderli con le fasi del prodotto. Una parte di CLIPS è già in uso: la gestione semantica dei documenti ([AnalysisFunctionLLM](CLIPS-AnalysisFunctionLLM.md)), che oggi serve l'accesso alla documentazione dell'Academy. Il resto è pianificato, non implementato.
 
 ## 1. Executive summary
 
@@ -92,7 +92,7 @@ flowchart TB
 | Core e Clinical Event API | Spring Boot + SQL-first | Verifica identità, autorizzazione, lettura/scrittura dei dati autorevoli |
 | Proiezioni temporali | PostgreSQL, transactional outbox, worker | Ricostruzione degli eventi senza alterare la fonte, replay e idempotenza |
 | Corpus/RAG | pgvector + full-text PostgreSQL | Retrieval di testi con filtri server-side e citazioni |
-| Clinical Knowledge | [AnalysisFunctionLLM](CLIPS-AnalysisFunctionLLM.md) (servizio «DentalCare Support») | Consultazione di guide e **Clinical Pathway** con citazioni, a supporto del RAG (Fase 2 di CLIPS) |
+| Clinical Knowledge | [AnalysisFunctionLLM](CLIPS-AnalysisFunctionLLM.md) (servizio «DentalCare Support») | Consultazione di guide e **Clinical Pathway** con citazioni, a supporto del RAG (Stadio 2 di CLIPS). La parte di gestione semantica dei documenti è già in uso per l'Academy |
 | Originali | MinIO | Documenti, ortopanoramiche e file clinici |
 | ML | Python, scikit-learn / boosting / survival | Training, stime e controllo scientifico del modello |
 | Clinical Orchestrator | Python FastAPI o Spring Boot (scelta al design review) | Compone risultati ML, contesto paziente ed evidenze RAG |
@@ -206,16 +206,16 @@ Vedi [proposta voci DPIA D-105..D-109](../../06-Compliance/Fase-4-Clinical-Intel
 
 ## 12. Roadmap per milestone/gate (nessuna data promessa)
 
-I gate M0-M8 sono raggruppati in tre **fasi di CLIPS**. La corrispondenza non cambia i gate: **Fase 1 — Dati clinici strutturati** = M0-M2 (audit, CEM, timeline); **Fase 2 — Conoscenza clinica** = M3-M4 (RAG clinico e scientifico, FHIR PoC); **Fase 3 — Predizione e operatività** = M5-M8 (dati ML, validazione, UI clinica, operations). Il componente [AnalysisFunctionLLM](CLIPS-AnalysisFunctionLLM.md) appartiene alla Fase 2. Le «Fasi» di CLIPS non vanno confuse con le fasi del prodotto.
+I gate M0-M8 sono raggruppati in tre **stadi di CLIPS**. La corrispondenza non cambia i gate: **Stadio 1 — Dati clinici strutturati** = M0-M2 (audit, CEM, timeline); **Stadio 2 — Conoscenza clinica** = M3-M4 (RAG clinico e scientifico, FHIR PoC); **Stadio 3 — Predizione e operatività** = M5-M8 (dati ML, validazione, UI clinica, operations). Il componente [AnalysisFunctionLLM](CLIPS-AnalysisFunctionLLM.md) appartiene allo Stadio 2. Gli stadi di CLIPS non vanno confusi con le fasi del prodotto: CLIPS è la Fase 3 del prodotto.
 
 | Gate | Attività principali | Deliverable | Criterio di uscita |
 |---|---|---|---|
-| M0 — Audit (Fase 1) | Inventario tabelle, volumi, flussi, legittimità dei dati | Data dictionary e gap analysis | Nessuna sovrapposizione con clinical_episodes; ruoli documentati |
+| M0 — Audit (Stadio 1) | Inventario tabelle, volumi, flussi, legittimità dei dati | Data dictionary e gap analysis | Nessuna sovrapposizione con clinical_episodes; ruoli documentati |
 | M1 — CEM | Anatomia, siti, percorsi, eventi, esiti, vincoli | ERD, migrazioni per tenant, test | Isolamento e provenienza verificati |
 | M2 — Timeline | Proiezioni, outbox, backfill, Temporal Odontogram | API temporali, UI lettura, riconciliazione | Ricostruzioni coerenti con sorgenti e snapshot |
-| M3 — RAG (Fase 2) | Corpus, pgvector, ACL, citazioni, prompt-injection tests | Retrieval clinico e scientifico | Accessi autorizzati, nessun dato cross-tenant |
+| M3 — RAG (Stadio 2) | Corpus, pgvector, ACL, citazioni, prompt-injection tests | Retrieval clinico e scientifico | Accessi autorizzati, nessun dato cross-tenant |
 | M4 — FHIR PoC | Mapping, profili, HAPI isolato, validator | Bundle sintetici, mapping spec | No dati reali esposti, scelta go/no-go |
-| M5 — ML Data (Fase 3) | Target, coorte, feature, etichette, missingness, consenso/diritti | Dataset/versioni, report qualità | Follow-up ed esiti sufficienti, altrimenti stop |
+| M5 — ML Data (Stadio 3) | Target, coorte, feature, etichette, missingness, consenso/diritti | Dataset/versioni, report qualità | Follow-up ed esiti sufficienti, altrimenti stop |
 | M6 — Model validation | Baseline, boosting/survival, split e calibrazione | Model card, validation report, shadow mode | Soglie predefinite superate e verifiche cliniche |
 | M7 — Clinical UI | Piani/richiami, override, spiegazioni, audit | Interfaccia e flussi di approvazione | Gate MDR/AI Act/GDPR e test end-to-end soddisfatti |
 | M8 — Operations | Drift, revalidation, incidenti, rollback | SOP, dashboard, procedure retraining | Monitoraggio continuo governato |

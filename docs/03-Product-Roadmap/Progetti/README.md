@@ -16,4 +16,6 @@ Documenti collegati in `06-Compliance`: [proposta per il DPO sul piano Freelance
 
 ## CLIPS — Clinical Intelligence Predictive System
 
-📋 [Specifica funzionale, architettura, ADR, roadmap e acceptance criteria](2026-11-12-fase-4-clinical-intelligence.md) — pianificata, non implementata. [Specifica tecnica DC-CEM/FHIR/ML](../../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md). Componente Clinical Knowledge (Fase 2 di CLIPS): [AnalysisFunctionLLM](CLIPS-AnalysisFunctionLLM.md).
+Fase 3 del prodotto (Release 3.x). Una parte è già in uso: la gestione semantica dei documenti per l'Academy.
+
+📋 [Specifica funzionale, architettura, ADR, roadmap e acceptance criteria](2026-11-12-fase-4-clinical-intelligence.md) — pianificata, non implementata. [Specifica tecnica DC-CEM/FHIR/ML](../../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md). Componente Clinical Knowledge (Stadio 2 di CLIPS, Fase 3 del prodotto): [AnalysisFunctionLLM](CLIPS-AnalysisFunctionLLM.md).

@@ -65,3 +65,9 @@ Release-3.md
 32. Roadmap verso Release 4
 
 33. Vision 2035
+
+---
+
+## CLIPS — Fase 3 del prodotto
+
+La parte predittiva della Release 3 è il progetto [CLIPS — Clinical Intelligence Predictive System](Progetti/2026-11-12-fase-4-clinical-intelligence.md). La gestione semantica dei documenti ([AnalysisFunctionLLM](Progetti/CLIPS-AnalysisFunctionLLM.md)) è già in uso per l'accesso alla documentazione dell'Academy. Il resto di CLIPS è pianificato, non implementato, e soggetto ai gate MDR, AI Act e DPIA.

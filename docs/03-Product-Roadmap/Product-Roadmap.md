@@ -22,6 +22,8 @@ data:
 | **Fine prevista** | **gennaio 2027** | **2029** |
 | **Vincolo dominante** | disponibilità di un DPO | organismo notificato + evidenza clinica |
 
+Dopo la Fase 2 viene la **Fase 3 (Release 3.x), CLIPS**: l'AI clinica predittiva descritta nel [progetto CLIPS](Progetti/2026-11-12-fase-4-clinical-intelligence.md). Non è pianificata e resta soggetta ai gate regolatori.
+
 **Le tre cose da sapere su questa roadmap:**
 
 1. **La scadenza non è una data, è un evento.** L'AI Act si applica quando un sistema è
@@ -216,7 +218,8 @@ scala: la scala funziona.
 |---|---|---|
 | **1.x** | Fase 1 — gestionale + AI amministrativa, conforme e vendibile | gennaio 2027 |
 | **2.x** | Fase 2 — AI radiologica CE + DICOM | 2029 |
-| 3.x-5.x | visione a lungo termine | non pianificate |
+| **3.x** | Fase 3 — CLIPS, AI clinica predittiva (dopo la Fase 2); già in uso la gestione semantica dei documenti per l'Academy | non pianificata |
+| 4.x-5.x | visione a lungo termine | non pianificate |
 
 ---
 
@@ -328,4 +331,4 @@ raggiungibile è una sola: che il nucleo clinico costruito nel 2026-2027 sia
 
 ## Addendum — CLIPS, Clinical Intelligence Predictive System (12/11/2026, rinominato il 18/11/2026)
 
-📋 È stato definito il progetto [CLIPS — Clinical Intelligence Predictive System, in origine «Fase 4»](Progetti/2026-11-12-fase-4-clinical-intelligence.md), con DC-CEM longitudinale, RAG su pgvector, possibilità FHIR R4/HAPI PoC e modelli prognostici ML. **Non è implementato né autorizzato per uso clinico**. La Fase 2 del prodotto resta Copilot clinico + analisi ortopanoramiche soggetti ai gate vigenti. CLIPS (programma funzionale) e Release 4.x (visione commerciale) sono nomenclature distinte. [Specifica tecnica](../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md).
+📋 È stato definito il progetto, collocato nella **Fase 3 del prodotto** (Release 3.x), [CLIPS — Clinical Intelligence Predictive System, in origine «Fase 4»](Progetti/2026-11-12-fase-4-clinical-intelligence.md), con DC-CEM longitudinale, RAG su pgvector, possibilità FHIR R4/HAPI PoC e modelli prognostici ML. **Non è implementato né autorizzato per uso clinico**. La Fase 2 del prodotto resta Copilot clinico + analisi ortopanoramiche soggetti ai gate vigenti. [Specifica tecnica](../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md).

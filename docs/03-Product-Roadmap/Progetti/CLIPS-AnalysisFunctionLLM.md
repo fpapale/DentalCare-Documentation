@@ -2,14 +2,16 @@
 
 **Versione:** 1.0 · **Data:** 18 novembre 2026  
 **Progetto:** [CLIPS — Clinical Intelligence Predictive System](2026-11-12-fase-4-clinical-intelligence.md)  
-**Fase di CLIPS:** Fase 2 — Conoscenza clinica (gate M3-M4)  
-**Stato:** in uso per la chat dell'Academy · per CLIPS 📋 pianificato, **non implementato**
+**Collocazione:** Fase 3 del prodotto (CLIPS), Stadio 2 — Conoscenza clinica (gate M3-M4)  
+**Stato:** in uso (gestione semantica dei documenti per l'Academy) · Clinical Knowledge 📋 pianificato, **non implementato**
 
-> **Nota sui numeri.** «Fase 2 di CLIPS» indica il gruppo di gate M3-M4 del progetto CLIPS. Non è la «Fase 2 del prodotto» (AI Copilot clinico e ortopanoramiche).
+> **Nota.** CLIPS è la Fase 3 del prodotto. Gli stadi sono gruppi di gate interni a CLIPS: lo «Stadio 2» è il gruppo M3-M4. La Fase 2 del prodotto è Copilot clinico e OrtopanoramicheAI.
 
 ## 1. Cos'è
 
-AnalysisFunctionLLM è il servizio che nell'interfaccia si chiama **DentalCare Support**. Gira in un contenitore Docker (`analysisfunctionllm-analysis-function-llm-1`) su un host dedicato della rete interna, separato dall'applicazione DentalCare.
+AnalysisFunctionLLM è la **parte di CLIPS già in funzione**: la gestione semantica dei documenti. Oggi serve l'accesso alla documentazione (chat «Chiedi all'Academy»); domani diventerà il componente Clinical Knowledge. È l'unica parte di CLIPS in uso; il resto è pianificato, non implementato.
+
+Nell'interfaccia il servizio si chiama **DentalCare Support**. Gira in un contenitore Docker (`analysisfunctionllm-analysis-function-llm-1`) su un host dedicato della rete interna, separato dall'applicazione DentalCare.
 
 Il servizio risponde a domande in italiano consultando **guide documentali** già trasformate in grafi di conoscenza. Non cerca sul web e non usa i dati dei pazienti. Ogni risposta riporta le citazioni delle fonti usate.
 
@@ -67,7 +69,7 @@ flowchart LR
 
 Oggi il servizio lavora **solo sulla guida del prodotto**. Nessun dato di pazienti, clinica o tenant arriva al servizio.
 
-## 4. Domani: Clinical Knowledge nella Fase 2 di CLIPS
+## 4. Domani: Clinical Knowledge nello Stadio 2 di CLIPS
 
 Il progetto CLIPS prevede due domini separati per il RAG: il **corpus scientifico** (senza dati identificativi) e il **corpus documentale clinico autorizzato** (dati del paziente). AnalysisFunctionLLM è il candidato per il **primo dominio**: la consultazione dei **Clinical Pathway**, cioè dei percorsi clinici e delle raccomandazioni delle linee guida, con citazione della fonte.
 
@@ -87,7 +89,7 @@ flowchart TB
     N1 --> S1[AnalysisFunctionLLM]
     S1 --> F1[(Guida del prodotto)]
   end
-  subgraph DOMANI[Domani: CLIPS Fase 2]
+  subgraph DOMANI[Domani: CLIPS Stadio 2]
     CEM[Care Pathway del CEM] --> ORC[Orchestratore clinico]
     ORC --> RAG[Clinical RAG Service]
     RAG -- solo tema e tipo di percorso --> S2[AnalysisFunctionLLM: Clinical Knowledge]

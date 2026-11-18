@@ -2,7 +2,7 @@
 
 **Data:** 12/11/2026 · **Stato:** 📋 decisioni progettuali, **non in esercizio**  
 **Destinazione:** da incorporare, previa revisione DPO, nel registro ufficiale [dichiarazioni-dpia.md](dichiarazioni-dpia.md).  
-**Progetto:** [CLIPS, in origine «Fase 4»](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md).
+**Progetto:** [CLIPS, Fase 3 del prodotto, in origine «Fase 4»](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinical-intelligence.md).
 
 > Le voci D-105..D-109 sono **proposte per la DPIA**, non valutazioni giuridiche già concluse e non autorizzano trattamento ulteriore di dati reali. Non implicano che gli strumenti indicati siano stati sviluppati o rilasciati.
 

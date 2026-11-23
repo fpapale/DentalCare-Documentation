@@ -133,4 +133,4 @@ flowchart TB
 
 ## 7. Riferimenti
 
-[Progetto CLIPS](2026-11-12-fase-4-clinical-intelligence.md) · [Specifica 17 — CEM, FHIR e Predictive AI](../../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md) · [04 — AI](../../04-Architecture-Handbook/04-AI.md) · [AI Roadmap](../AI-Roadmap.md) · [Addendum DPIA](../../06-Compliance/Fase-4-Clinical-Intelligence-DPIA-Addendum.md) · [Inventario flussi AI per il DPO](../../06-Compliance/inventario-flussi-ai-per-dpo.md).
+[Progetto CLIPS](2026-11-12-fase-4-clinical-intelligence.md) · [Specifica 17 — CEM, FHIR e Predictive AI](../../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md) · [04 — AI](../../04-Architecture-Handbook/04-AI.md) · [AI Roadmap](../AI-Roadmap.md) · [Addendum DPIA](../../06-Compliance/Fase-4-Clinical-Intelligence-DPIA-Addendum.md) · [Inventario flussi AI per il DPO](../../06-Compliance/inventario-flussi-ai-per-dpo.md) · [#136 — lezioni apprese, ricerca ibrida e percorsi clinici strutturati](2026-11-23-136-dck-ricerca-ibrida-e-percorsi-clinici.md).

@@ -155,3 +155,17 @@ Fonte: [Progetto CLIPS](../03-Product-Roadmap/Progetti/2026-11-12-fase-4-clinica
 | D-107 | Embedding/referti e retrieval semantico possono esporre dati tra pazienti | Separazione per account, filtri clinica/paziente/ruolo, audit e test di leakage | da dichiarare |
 | D-108 | FHIR/HAPI potrebbe duplicare dati o ampliare le superfici di accesso | PoC con dati sintetici, rete privata e governance delle repliche | da dichiarare |
 | D-109 | Richiami e supporto decisionale possono generare falsi allarmi o decisioni inique | Conferma medica, override, monitoraggio e separazione del rischio clinico dal no-show | da dichiarare |
+
+---
+
+## 12. DentalCare Clinical Knowledge: ricerca per significato (#136)
+
+Fonte: [nota #136](../03-Product-Roadmap/Progetti/2026-11-23-136-dck-ricerca-ibrida-e-percorsi-clinici.md) e documento di progetto della logica RAG nel repo di DCK (`docs/plans/2026-11-23-logica-rag-design.md`), decisioni del committente del 23/11/2026. **Valgono dal rilascio della logica RAG** (oggi in sviluppo). Il modo predefinito di ogni fonte resta la logica classica, che non invia nulla all'esterno. DCK oggi non tratta dati di pazienti (gate di CLIPS, §11).
+
+Prova del 23/11/2026: una chiave Cohere di prova, usata tramite un workflow n8n di prova, ha ricevuto le pagine delle fonti e le domande del banco di prova, senza dati personali. Workflow e credenziale sono stati cancellati lo stesso giorno.
+
+| ID | Cosa dichiarare | Perché conta | Misura collegata | Stato |
+|---|---|---|---|---|
+| D-113 | Con la logica RAG i **brani delle fonti** (linee guida, molte con licenza `commercial_use: not_cleared`) e le **domande degli utenti** vanno a un fornitore esterno che ne calcola i vettori: **Cohere** (`embed-v4.0`) oppure **Voyage AI** di MongoDB (`voyage-4-large`). Uno solo alla volta, scelto dall'amministratore | Nuovo responsabile del trattamento (art. 28). Le domande le scrivono i clinici e potrebbero contenere dati di pazienti | Solo la chat e solo le fonti impostate su RAG o Automatica. Un cambio di fornitore aggiorna questa voce prima di diventare effettivo. Nessun dato di pazienti fino ai gate di CLIPS | da dichiarare |
+| D-114 | **Addestramento e conservazione presso il fornitore.** Voyage AI: l'uso dei dati per migliorare i modelli si spegne nelle impostazioni dell'organizzazione, solo con un metodo di pagamento registrato; il valore predefinito e la conservazione non sono documentati. Cohere: l'uso si spegne nelle impostazioni dell'organizzazione; secondo gli impegni pubblicati i log si cancellano dopo 30 giorni e la conservazione zero si ottiene su richiesta | Senza la disattivazione le domande possono entrare nei dati di addestramento del fornitore | Uso per l'addestramento spento e verificato prima della prima chiamata con una chiave vera. Conservazione da confermare nel DPA. **[DPO]** | da dichiarare |
+| D-115 | **Luogo del trattamento.** Le API dirette dei due fornitori non dichiarano un trattamento nell'UE. Voyage AI offre un endpoint con geografia Europa (`eu.ai.mongodb.com`, chiave dedicata, +10% sul prezzo). Per Cohere le alternative sono AWS Bedrock in UE o un endpoint dedicato | Trasferimento extra UE delle domande | Indirizzo del fornitore configurabile. Scelta da rifare prima di qualsiasi uso clinico | da dichiarare |

@@ -3,9 +3,9 @@
 **Versione:** 1.0 · **Data:** 23 novembre 2026  
 **Proposta:** #136 del registro delle proposte  
 **Progetto:** [CLIPS — AnalysisFunctionLLM, il componente Clinical Knowledge](CLIPS-AnalysisFunctionLLM.md)  
-**Stato:** 📋 proposta · decisioni del 23/11 in §8 · misura fatta (§3) · documento di progetto in approvazione
+**Stato:** logica RAG ✅ realizzata e pubblicata il 24/11/2026 · percorsi clinici strutturati 📋 proposta · decisioni del 23/11 in §8 · misura in §3
 
-> **Nome.** «DentalCare Clinical Knowledge» (DCK) è il nome deciso il 21/11/2026 per AnalysisFunctionLLM. Nell'interfaccia resta «DentalCare Support» fino alla chiusura del rilascio.
+> **Nome.** «DentalCare Clinical Knowledge» (DCK) è il nome deciso il 21/11/2026 per AnalysisFunctionLLM. Dal rilascio del 24/11/2026 (PR #35) lo usa anche l'interfaccia; prima era «DentalCare Support».
 
 ## 1. In breve
 

@@ -1,29 +1,33 @@
-# CLIPS — AnalysisFunctionLLM, il componente Clinical Knowledge
+# CLIPS — DentalCare Clinical Knowledge, il componente Clinical Knowledge
 
-**Versione:** 1.0 · **Data:** 18 novembre 2026  
+**Versione:** 1.1 · **Data:** 24 novembre 2026 (prima versione: 18 novembre 2026)  
 **Progetto:** [CLIPS — Clinical Intelligence Predictive System](2026-11-12-fase-4-clinical-intelligence.md)  
 **Collocazione:** Fase 3 del prodotto (CLIPS), Stadio 2 — Conoscenza clinica (gate M3-M4)  
-**Stato:** in uso (gestione semantica dei documenti per l'Academy) · Clinical Knowledge 📋 pianificato, **non implementato**
+**Stato:** in uso in collaudo e prova (gestione semantica dei documenti per l'Academy) · base di conoscenza clinica 🔧 in sviluppo (fonti cliniche, apprendimento, logiche di ricerca Classica e RAG) · collegamento a CLIPS 📋 pianificato, **non implementato**
 
 > **Nota.** CLIPS è la Fase 3 del prodotto. Gli stadi sono gruppi di gate interni a CLIPS: lo «Stadio 2» è il gruppo M3-M4. La Fase 2 del prodotto è Copilot clinico e OrtopanoramicheAI.
 
 ## 1. Cos'è
 
-AnalysisFunctionLLM è la **parte di CLIPS già in funzione**: la gestione semantica dei documenti. Oggi serve l'accesso alla documentazione (chat «Chiedi all'Academy»); domani diventerà il componente Clinical Knowledge. È l'unica parte di CLIPS in uso; il resto è pianificato, non implementato.
+DentalCare Clinical Knowledge (DCK; cartella e repository `AnalysisFunctionLLM`) è la **parte di CLIPS già in funzione**. È un sistema per la creazione della base di conoscenza clinica, pensato per apprendere i percorsi clinici odontoiatrici a supporto di CLIPS. Oggi serve anche l'accesso alla documentazione (chat «Chiedi all'Academy»); diventerà il componente Clinical Knowledge. È l'unica parte di CLIPS in uso; il resto è pianificato, non implementato.
 
-Nell'interfaccia il servizio si chiama **DentalCare Support**. Gira in un contenitore Docker (`analysisfunctionllm-analysis-function-llm-1`) su un host dedicato della rete interna, separato dall'applicazione DentalCare.
+Nell'interfaccia il servizio si chiama **DentalCare Clinical Knowledge**; fino al 21/11/2026 si chiamava «DentalCare Support». Gira in un contenitore Docker (`analysisfunctionllm-analysis-function-llm-1`) su un host dedicato della rete interna, separato dall'applicazione DentalCare.
 
 Il servizio risponde a domande in italiano consultando **guide documentali** già trasformate in grafi di conoscenza. Non cerca sul web e non usa i dati dei pazienti. Ogni risposta riporta le citazioni delle fonti usate.
 
-Il componente deriva da NotebookLLM. In più offre la raccolta dei requisiti dalla chat (proposte degli utenti, riviste da un amministratore) e un visualizzatore dei grafi riservato agli amministratori.
+Il componente deriva da NotebookLLM. In più offre la raccolta dei requisiti dalla chat (proposte degli utenti, riviste da un amministratore), un visualizzatore dei grafi riservato agli amministratori e un ciclo di apprendimento che migliora la ricerca su ogni fonte.
 
 ## 2. Come funziona
 
-1. **Fonti.** Ogni guida è una cartella con il suo grafo e i documenti originali. Le guide sono montate in sola lettura. Oggi sono cinque, tra cui la guida del prodotto e due guide cliniche (parodontologia ed endodonzia).
-2. **Modello canonico (CKM).** Un provider legge il grafo di una fonte e lo traduce in un formato comune, il *Canonical Knowledge Model*. Il testo, il codice originale e la posizione nella guida restano associati. Ogni revisione è verificata con SHA-256 e le revisioni precedenti si conservano. Un provider legge un solo tipo di fonte; oggi esiste quello per i grafi JSON. Il motore di consultazione non conosce il formato originale.
-3. **Ricerca.** La domanda viene scomposta in parole chiave. Il servizio cerca nel grafo e allarga il contesto ai nodi vicini, in ampiezza (`bfs`, predefinito) o in profondità (`dfs`, modalità approfondita). Ogni fonte riceve un budget di contesto.
+1. **Fonti.** Ogni fonte è una cartella con i documenti originali e, secondo il tipo, il grafo o le pagine Markdown. Oggi in locale sono sette: la guida del prodotto, le guide cliniche di parodontologia ed endodonzia, una raccolta di linee guida odontoiatriche convertite da PDF e due fonti riservate che restano solo in locale. Una fonte nuova si importa dall'interfaccia, anche da una cartella di PDF.
+2. **Modello canonico (CKM).** Un provider legge una fonte e la traduce in un formato comune, il *Canonical Knowledge Model*. Il testo, il codice originale e la posizione nella guida restano associati. Ogni revisione è verificata con SHA-256 e le revisioni precedenti si conservano. Oggi esistono i provider per i grafi JSON di Graphify e per i documenti Markdown; i PDF si convertono prima in pagine. Il motore di consultazione non conosce il formato originale.
+3. **Ricerca.** Per ogni fonte si sceglie la logica di ricerca. Ogni fonte riceve un budget di contesto.
+   - **Classica:** parole chiave, regole apprese e sezioni del documento.
+   - **RAG:** ricerca per significato, con vettori calcolati da un fornitore esterno (Cohere o Voyage AI) e contesto composto con le sezioni del CKM.
+   - **Automatica:** una domanda con un codice di raccomandazione va alla classica, le altre alla logica principale della fonte.
 4. **Risposta.** Un modello linguistico scrive la risposta **solo** sul contesto recuperato. Se il grafo non contiene evidenze pertinenti, il servizio lo dice e non inventa.
 5. **Memoria.** Le conversazioni restano in un database SQLite nel volume del servizio. La cache è volatile (Redis nel contenitore).
+6. **Apprendimento.** Un ciclo automatico genera domande di prova dalla fonte e misura se la ricerca trova i brani giusti. Promuove solo le correzioni generali che non peggiorano i casi già risolti.
 
 Una relazione riportata da un grafo non è una validazione clinica: il servizio conserva la semantica dichiarata dalla fonte e non la rafforza.
 
@@ -125,7 +129,9 @@ flowchart TB
 |---|---|
 | Chat dell'Academy su guida del prodotto | ✅ in uso in collaudo e prova; spenta di default |
 | Tool `ask_academy` del servizio documentazione | ✅ disponibile; spento di default |
-| Modello canonico e provider Graph JSON | ✅ disponibili |
+| Modello canonico, provider Graph JSON e documenti, conversione dei PDF | ✅ disponibili |
+| Ciclo di apprendimento con pilota automatico | ✅ realizzato; in uso in sviluppo sulle fonti cliniche |
+| Logiche di ricerca Classica, RAG e Automatica | ✅ realizzate il 23–24/11/2026 ([#136](2026-11-23-136-dck-ricerca-ibrida-e-percorsi-clinici.md)); RAG con fornitore esterno, voci DPIA D-113…D-115 |
 | Guide cliniche nel catalogo del servizio | 🔶 presenti per prova, non validate clinicamente |
 | Contratto «evidenze per Clinical Pathway» | 📋 da definire |
 | Collegamento al Clinical RAG Service e al Care Pathway | 📋 pianificato, non implementato |
@@ -134,3 +140,5 @@ flowchart TB
 ## 7. Riferimenti
 
 [Progetto CLIPS](2026-11-12-fase-4-clinical-intelligence.md) · [Specifica 17 — CEM, FHIR e Predictive AI](../../04-Architecture-Handbook/17-Clinical-Event-Model-and-Predictive-AI.md) · [04 — AI](../../04-Architecture-Handbook/04-AI.md) · [AI Roadmap](../AI-Roadmap.md) · [Addendum DPIA](../../06-Compliance/Fase-4-Clinical-Intelligence-DPIA-Addendum.md) · [Inventario flussi AI per il DPO](../../06-Compliance/inventario-flussi-ai-per-dpo.md) · [#136 — lezioni apprese, ricerca ibrida e percorsi clinici strutturati](2026-11-23-136-dck-ricerca-ibrida-e-percorsi-clinici.md).
+
+Documentazione funzionale e tecnica di DCK, nel suo repository (privato): `docs/analisi-funzionale.md` e `docs/progettazione-tecnica.md`.

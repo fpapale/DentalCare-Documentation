@@ -1,6 +1,6 @@
 # DentalCare Pro — Guida per la segreteria
 
-> Versione 28 ottobre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
+> Versione 25 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
 
 Il percorso dice cosa fare e in che ordine; le lezioni che richiama seguono, nell'ordine in cui compaiono. Il resto è nel [manuale integrale](MANUALE_UTENTE.md).
 
@@ -17,11 +17,12 @@ Il percorso dice cosa fare e in che ordine; le lezioni che richiama seguono, nel
 - [Dal paziente in sala alla visita in corso](#lezione-inizia-visita)
 - [Preventivi e avanzamento](#lezione-preventivi)
 - [Fatture, acconti e storni](#lezione-fatturazione)
-- [I richiami](#lezione-richiami)
+- [Le visite di controllo](#lezione-richiami)
 - [Il magazzino](#lezione-magazzino)
 - [Paziente non presentato](#lezione-paziente-non-presentato)
 - [Spostare o annullare un appuntamento collegato](#lezione-spostare-appuntamento-collegato)
 - [I vincoli dell'agenda](#lezione-vincoli-agenda)
+- [Medico, segreteria o amministratore](#lezione-punto-di-vista)
 - [Chiedere al Copilot](#lezione-copilot)
 
 ---
@@ -30,9 +31,9 @@ Il percorso dice cosa fare e in che ordine; le lezioni che richiama seguono, nel
 
 ## 2.1 Percorso della segreteria
 
-*Agenda, accoglienza, preventivi, incassi e richiami, giorno per giorno.*
+*Agenda, accoglienza, preventivi, incassi e visite di controllo, giorno per giorno.*
 
-Il percorso di chi organizza lo studio: telefono, agenda, accoglienza, preventivi, incassi e richiami. Segui le tappe nell'ordine: ogni tappa rimanda alla lezione che la spiega.
+Il percorso di chi organizza lo studio: telefono, agenda, accoglienza, preventivi, incassi e visite di controllo. Segui le tappe nell'ordine: ogni tappa rimanda alla lezione che la spiega.
 
 **Per:** segreteria. Nell'ambiente di prova scegli **Segreteria** nel menu in alto.
 
@@ -51,23 +52,39 @@ Il percorso di chi organizza lo studio: telefono, agenda, accoglienza, preventiv
 | Arrivo del paziente | lo segni **Presente**: il medico sa che è in sala | [Dal paziente in sala alla visita](#lezione-inizia-visita) |
 | Telefonate | nuovi appuntamenti, spostamenti, annullamenti; dopo ognuno, *Avvisa il paziente* (WhatsApp o e-mail) | [Gestire gli appuntamenti](#lezione-gestire-appuntamenti) |
 | Uscita del paziente | preventivo, acconto o fattura | [Preventivi](#lezione-preventivi), [Fatture](#lezione-fatturazione) |
-| Pomeriggio | richiami da contattare: telefono, oppure il testo pronto per e-mail o WhatsApp | [I richiami](#lezione-richiami) |
+| Pomeriggio | visite di controllo da contattare: telefono, oppure il testo pronto per e-mail o WhatsApp | [Le visite di controllo](#lezione-richiami) |
 
 #### 3. La settimana e il mese
 
 - Preventivi **inviati** senza risposta e preventivi **fatturabili** (lavoro finito, non ancora fatturato): [Preventivi e avanzamento](#lezione-preventivi).
 - Documenti da emettere, acconti, note di credito: [Fatture, acconti e storni](#lezione-fatturazione).
-- Generazione dei richiami e contatti: [I richiami](#lezione-richiami).
+- Generazione delle visite di controllo e contatti: [Le visite di controllo](#lezione-richiami).
 - Scorte e carichi di magazzino: [Il magazzino](#lezione-magazzino).
 
 #### 4. I casi particolari
 
 - Il paziente non si presenta: [Paziente non presentato](#lezione-paziente-non-presentato).
 - Spostare un appuntamento legato a un piano di cura, o cambiare medico: [Spostare o annullare un appuntamento collegato](#lezione-spostare-appuntamento-collegato).
-- L'orario chiesto non è libero, è fuori orario o non è sulla griglia: [I vincoli dell'agenda](#lezione-vincoli-agenda).
+- L'orario chiesto non è libero, è fuori orario, non è sulla griglia o l'ultimo orario della giornata è indicato: [I vincoli dell'agenda](#lezione-vincoli-agenda).
 - Una fattura da correggere: [Fatture, acconti e storni](#lezione-fatturazione).
 
-#### 5. Il Copilot come aiuto
+#### 5. Cosa vede la segreteria, e cosa no
+
+La segreteria organizza lo studio, non legge la cartella clinica.
+
+- **Allerte**: dove il medico vede il dettaglio, tu vedi solo un'icona neutra, **Allerta clinica**, senza dire di cosa si tratta. Se l'ultimo orario della giornata è indicato, il programma dice solo *«Si può prenotare solo l'ultimo orario della giornata (dalle HH:mm).»*: [I vincoli dell'agenda](#lezione-vincoli-agenda).
+- **Documenti**: solo **Consenso informato** e **Documento amministrativo**.
+- **Niente cartella**: non vedi piani di cura, diario, odontogramma né note.
+- **Prenotare dal piano**: nella scheda **Prestazioni da pianificare** il pulsante **Pianifica** fissa un appuntamento per una prestazione ancora da pianificare.
+- **Preventivo**: con **Importa dal Piano di Cura** parti senza voci selezionate; scegli le prestazioni una per una oppure usa **Seleziona tutte**.
+- **Stati dell'appuntamento**: puoi segnare *Presente*, ma non portare un appuntamento a *In corso* o *Completato*, e non puoi nemmeno toglierlo da questi stati: lo fa il medico in seduta.
+- **Avanzamento**: vedi il conteggio, per esempio *2/4 eseguite*, ma non lo segni tu.
+
+Nell'ambiente di prova scegliere *Segreteria* cambia l'interfaccia, non i permessi: [Medico, segreteria o amministratore](#lezione-punto-di-vista).
+
+L'**assistente alla poltrona** ha ancora meno: vede solo la seduta in corso, con le prestazioni previste e le allerte, e non può scrivere nulla.
+
+#### 6. Il Copilot come aiuto
 
 Per te il Copilot è **amministrativo**: trova orari liberi, sposta appuntamenti (con conferma), dice chi richiamare. Non dà indicazioni cliniche. [Chiedere al Copilot](#lezione-copilot).
 
@@ -91,9 +108,9 @@ Ogni schermata di DentalCare Pro ha la stessa struttura: dopo cinque minuti sai 
 
 #### Le tre zone
 
-- **Menu a sinistra**: Academy, Dashboard, Copilot AI, Agenda, Pazienti, Preventivi, Fatturazione, Richiami, Magazzino, Prestazioni e Impostazioni (per medici e igienisti solo le schede personali: tariffe, richiami, fatturazione e calendario). Le voci cambiano con il ruolo: la segreteria non vede ciò che è solo clinico.
+- **Menu a sinistra**: Academy, Dashboard, Copilot AI, Agenda, Pazienti, Preventivi, Fatturazione, Visite di controllo, Magazzino, Prestazioni e Impostazioni (per medici e igienisti solo le schede personali: tariffe, visite di controllo, fatturazione e calendario). Le voci cambiano con il ruolo: la segreteria non vede ciò che è solo clinico.
 - **Contenuto al centro**: la sezione in cui stai lavorando.
-- **Pannello a destra**, sugli schermi larghi: indicatori e scorciatoie della sezione (per esempio i richiami urgenti o le scorte in esaurimento).
+- **Pannello a destra**, sugli schermi larghi: indicatori e scorciatoie della sezione (per esempio le visite di controllo urgenti o le scorte in esaurimento).
 
 In alto trovi il nome dello studio, la data di oggi, il menu del punto di vista (nell'ambiente di prova) e, a destra, il tuo nome: cliccandolo puoi uscire.
 
@@ -145,9 +162,9 @@ Compare solo quando c'è qualcosa da fare: i pazienti a cui va comunicata una **
 
 #### Prossimi appuntamenti
 
-L'elenco degli appuntamenti da ora in poi, con orario, paziente, prestazione, poltrona e stato. Le icone avvisano di un'**allerta clinica** (⚠), di una terapia in corso o di un **richiamo scaduto**. I pulsanti *Programmato*, *Confermato*, *Presente* filtrano l'elenco per stato.
+L'elenco degli appuntamenti da ora in poi, con orario, paziente, prestazione, poltrona e stato. Le icone avvisano di un'**allerta clinica** (⚠), di una terapia in corso o di una **visita di controllo scaduta**. I pulsanti *Programmato*, *Confermato*, *Presente* filtrano l'elenco per stato.
 
-Cliccando un appuntamento, a destra compare la sua scheda: motivo, trattamento, orario e poltrona, **alert clinici**, contatti del paziente e **scadenze** (richiami scaduti, preventivi in attesa). È il riassunto da leggere prima di chiamare il paziente o di farlo accomodare.
+Cliccando un appuntamento, a destra compare la sua scheda: motivo, trattamento, orario e poltrona, **alert clinici**, contatti del paziente e **scadenze** (visite di controllo scadute, preventivi in attesa). È il riassunto da leggere prima di chiamare il paziente o di farlo accomodare.
 
 #### Da sapere
 
@@ -162,7 +179,7 @@ Apri la dashboard, clicca il primo appuntamento della giornata e controlla se il
 
 ## 3.1 Trovare un paziente
 
-*Ricerca, filtri e cosa dice ogni riga dell'elenco.*
+*Ricerca, pazienti archiviati o eliminati e cosa dice ogni riga dell'elenco.*
 
 ![L'elenco dei pazienti.](img/academy/04-segreteria-pazienti.png)
 
@@ -176,7 +193,16 @@ La sezione **Pazienti** è l'elenco di tutte le persone seguite dallo studio.
 
 Scrivi nome o cognome nella barra in alto: l'elenco si aggiorna mentre digiti. Puoi cercare anche per **codice fiscale**, scritto per intero: è cifrato nel database, e la ricerca lo confronta in modo esatto.
 
-I filtri rapidi dividono i pazienti in **Tutti**, **Attivi** (con appuntamenti recenti) e **Archiviati**.
+L'elenco mostra i pazienti in uso. Spunta **Mostra archiviati** per vedere anche quelli archiviati, segnati con l'etichetta **Archiviato**; un paziente archiviato si trova comunque con la ricerca. Per riportarlo nell'elenco usa l'icona **Riattiva paziente** sulla sua riga.
+
+#### Archiviare o eliminare
+
+Per più pazienti insieme spunta le **caselle** a sinistra delle righe e usa **Archivia selezionati**: il programma chiede conferma nella stessa pagina. Con **Mostra archiviati** attivo le caselle servono a **Ripristina selezionati**. Archiviati e cancellati restano due cose distinte.
+
+- L'icona **Archivia paziente** toglie il paziente dall'elenco senza perdere nulla;
+- L'icona **Elimina paziente** è la cancellazione logica: il paziente sparisce da elenchi, agenda e visite di controllo, ma resta registrato e il titolare può ripristinarlo; i dati clinici già cancellati prima restano cancellati. Se il paziente ha dati clinici, solo un clinico o il titolare può eliminarlo (la segreteria no), e serve un motivo. Se il paziente ha appuntamenti futuri, il programma non lo elimina: prima vanno **cancellati**, spostarli non basta.
+
+Solo il **titolare** vede **Pazienti cancellati**, l'elenco dei pazienti eliminati, con **Ripristina** per riportarli negli elenchi.
 
 #### Cosa dice ogni riga
 
@@ -194,21 +220,23 @@ Apri l'elenco, cerca **Rossi** e apri la scheda di *Marco Rossi*: lo ritroverai 
 
 Registrare un paziente richiede un minuto, in tre passi.
 
-**Per:** segreteria e amministratore.
+**Per:** segreteria, amministratore e personale clinico.
 
 #### Prima di cominciare
 
-La registrazione è un compito della **segreteria**: se stai guardando lo studio come medico, scegli **Segreteria** (o **Amministratore**) nel menu in alto. Il pulsante **+ Nuovo paziente** compare in alto nell'elenco dei pazienti.
+Di solito registra la **segreteria**, ma possono farlo anche medici e igienisti. Chi registra da un ruolo clinico senza indicare un medico di riferimento lo diventa lui: così il paziente compare nel suo elenco anche quando la sede ha la visibilità «per medico». Il pulsante **+ Nuovo paziente** compare in alto nell'elenco dei pazienti.
 
 #### I tre passi
 
-1. **Dati anagrafici** — cognome, nome, data di nascita, sesso e codice fiscale. Il codice fiscale viene controllato mentre lo scrivi; per un paziente straniero senza codice italiano c'è l'apposita opzione.
-2. **Contatti** — telefono (obbligatorio), e-mail e indirizzo.
+1. **Dati anagrafici** — per registrare il paziente bastano **cognome, nome e telefono**; data di nascita, sesso e codice fiscale si possono completare dopo (utile alla prima visita, quando i dati non sono ancora tutti a portata di mano). Il codice fiscale, se lo scrivi, viene controllato mentre digiti; per un paziente straniero senza codice italiano c'è l'apposita opzione.
+2. **Contatti** — il telefono è obbligatorio; e-mail e indirizzo sono facoltativi.
 3. **Dati clinici** — note e le allergie principali. L'anamnesi completa si compila dopo, dalla scheda.
 
-Premi **Salva** nell'ultimo passo.
+**Avanti** controlla i campi del passo e segnala quelli mancanti o non validi. Premi **Salva** nell'ultimo passo: se manca ancora qualcosa, il programma torna al passo da completare e dice cosa manca.
 
 #### Da sapere
+
+Senza codice fiscale il paziente si registra e si cura normalmente, ma **la fattura non si può emettere**: il programma ti invita a completare l'anagrafica. Anche la modifica dell'anagrafica si salva senza codice fiscale.
 
 Data di nascita e codice fiscale sono **cifrati** nel database, con una chiave diversa per ogni studio: sono i dati personali più delicati dell'anagrafica.
 
@@ -226,14 +254,14 @@ Registra un paziente inventato (per esempio *Mario Prova*, nato il 1° gennaio 1
 
 *La vista Giorno: una colonna per poltrona, i pulsanti per scegliere le poltrone mostrate, una riga tratteggiata per ogni slot.*
 
-L'agenda mostra gli appuntamenti dello studio in quattro modi, scelti dalla barra in alto.
+L'agenda mostra gli appuntamenti della sede in quattro modi, scelti dalla barra in alto.
 
-**Per:** tutti. Il medico e l'igienista vedono i propri appuntamenti; segreteria e amministratore l'intero studio.
+**Per:** tutti. Il medico e l'igienista vedono i propri appuntamenti; segreteria e amministratore tutta la sede.
 
 #### Le viste
 
 - **Prossimi** — gli appuntamenti da ora in poi, in ordine di orario, con il pulsante **Seduta** per i ruoli clinici. In fondo, **Già trascorsi oggi** raccoglie quelli finiti: è il posto dove registrare le sedute a fine mattinata.
-- **Giorno** — la griglia oraria, una colonna per poltrona. Le ore sono quelle di lavoro dello studio e una linea tratteggiata segna ogni **slot** (per esempio ogni 15 minuti). La linea rossa è l'ora attuale. Le poltrone sono quelle attive della clinica, nell'ordine e con i colori dell'anagrafica ([Impostazioni → Anagrafiche → Poltrone](MANUALE_UTENTE.md#lezione-impostazioni-studio)). Se non ci stanno tutte, l'agenda scorre in orizzontale e la colonna degli orari resta ferma; con i pulsanti **Poltrone** sopra la griglia scegli quali mostrare (la scelta resta su quel computer o tablet).
+- **Giorno** — la griglia oraria, una colonna per poltrona. Le ore sono quelle di lavoro della sede e una linea tratteggiata segna ogni **slot** (per esempio ogni 15 minuti). La linea rossa è l'ora attuale. Le poltrone sono quelle attive della clinica, nell'ordine e con i colori dell'anagrafica ([Impostazioni → Anagrafiche → Poltrone](MANUALE_UTENTE.md#lezione-impostazioni-studio)). Se non ci stanno tutte, l'agenda scorre in orizzontale e la colonna degli orari resta ferma; con i pulsanti **Poltrone** sopra la griglia scegli quali mostrare (la scelta resta su quel computer o tablet).
 - **Settimana** — i giorni della settimana affiancati, con la stessa griglia oraria; un clic sull'intestazione di un giorno lo apre in vista Giorno.
 - **Mese** — il calendario con gli appuntamenti di ogni giorno; un clic apre quel giorno.
 
@@ -242,6 +270,10 @@ L'agenda mostra gli appuntamenti dello studio in quattro modi, scelti dalla barr
 - Le frecce ◀ ▶ spostano avanti e indietro di un giorno, una settimana o un mese, secondo la vista.
 - L'icona del calendario apre un selettore di date, con **Oggi** in fondo; quando non sei su oggi compare anche il pulsante **Oggi** accanto alle frecce.
 - **+ Appuntamento**, in alto a destra, apre la [prenotazione](#lezione-nuovo-appuntamento).
+
+#### Di chi è l'agenda
+
+In alto il selettore **Medico** sceglie quale agenda guardare, oppure **Tutte le agende** per la panoramica di tutta la sede. Lo trovano segreteria e titolare; medici e igienisti lo trovano solo se la visibilità della sede è «condivisa» (partono comunque dalla propria agenda). Con visibilità «per medico» il medico vede soltanto la sua agenda e il selettore non compare. La dashboard del medico mostra i suoi appuntamenti di oggi e domani.
 
 #### Stati e filtri
 
@@ -259,7 +291,7 @@ Un ⚠ accanto al nome segnala un'**allerta clinica** del paziente.
 
 #### Da sapere
 
-- L'agenda segue le impostazioni dello studio: **orario di lavoro**, **giorni lavorativi** e **durata dello slot** (Impostazioni → Agenda). Cambiandoli cambia la griglia.
+- L'agenda segue le impostazioni della sede: **orario di lavoro**, **giorni lavorativi** e **durata dello slot** (Impostazioni → Agenda). Cambiandoli cambia la griglia.
 - I giorni festivi sono evidenziati: non si possono prenotare.
 - Gli appuntamenti non si spostano trascinandoli: si modificano dalla scheda del paziente o con il Copilot. Lo spiega [Gestire gli appuntamenti](#lezione-gestire-appuntamenti).
 
@@ -277,7 +309,7 @@ Apri l'agenda, passa alla vista **Settimana** e trova il giorno più pieno. Apri
 
 *Un nuovo appuntamento: orari a passi di slot e primi orari liberi proposti.*
 
-Un appuntamento si fissa da **+ Appuntamento** in agenda, da **+ Nuovo** nella scheda del paziente o, meglio ancora, dal piano di cura con l'icona **Pianifica appuntamento** (il calendario con la spunta) accanto alla prestazione.
+Un appuntamento si fissa da **+ Appuntamento** in agenda, da **+ Nuovo** nella scheda del paziente o, meglio ancora, dal piano di cura con l'icona **Pianifica appuntamento** (il calendario con la spunta) accanto alla prestazione. La segreteria parte dalla scheda **Prestazioni da pianificare**.
 
 **Per:** segreteria, medici, igienisti. Un medico prenota per sé: il suo nome è già scelto.
 
@@ -300,12 +332,12 @@ Il pulsante **Proponi orario** cerca il **primo slot libero** con medico e poltr
 
 #### Meglio partire dal piano di cura
 
-Un appuntamento creato con **Pianifica appuntamento** dal dettaglio di un piano di cura resta **collegato** a quella prestazione: il giorno della visita la ritrovi nella scheda di seduta, pronta da registrare, e nel piano la prestazione risulta *Appuntamento fissato*. Un appuntamento creato dall'agenda non porta con sé la prestazione: nella seduta dovrai aggiungerla a mano.
+Un appuntamento creato con **Pianifica appuntamento** dal dettaglio di un piano di cura (per la segreteria: dalla scheda **Prestazioni da pianificare**) resta **collegato** a quella prestazione: il giorno della visita la ritrovi nella scheda di seduta, pronta da registrare, e nel piano la prestazione risulta *Appuntamento fissato*. Un appuntamento creato dall'agenda non porta con sé la prestazione: nella seduta dovrai aggiungerla a mano.
 
 #### Casi particolari
 
 - **L'orario è occupato** (stesso medico o stessa poltrona), **cade in un festivo** o **non è sulla griglia degli slot**: il programma non salva e spiega perché. Vedi [I vincoli dell'agenda](#lezione-vincoli-agenda).
-- **Paziente con una condizione a rischio infettivo**: sono prenotabili solo gli ultimi slot della giornata, e *Proponi orario* propone solo quelli.
+- **Paziente con un'indicazione clinica** per l'ultimo orario: si può prenotare solo l'ultimo orario della giornata, e *Proponi orario* propone solo quello. Alla segreteria il programma dice *«Si può prenotare solo l'ultimo orario della giornata (dalle HH:mm).»*, senza il motivo; il medico vede anche il motivo clinico.
 
 #### Da sapere
 
@@ -360,14 +392,14 @@ Modifica e cancellazione non compaiono su un appuntamento già *Cancellato* o *C
 | **Presente** | segreteria | è arrivato, è in sala d'attesa |
 | **In corso** | medico (anche con *Inizia visita*) | è in poltrona: si apre l'episodio della visita |
 | **Completato** | medico, chiudendo la seduta | la visita è finita |
-| **Cancellato** | segreteria | l'appuntamento non si terrà |
+| **Cancellato** | segreteria | l'appuntamento non si terrà; riportandolo a *Programmato* il programma ricontrolla medico e poltrona, perché nel frattempo il posto può essere stato occupato |
 | **Non presentato** | segreteria | il paziente non è venuto |
 
 #### Spostare un appuntamento
 
 1. **Modifica** sulla riga.
 2. Scegli data, inizio e fine fra gli orari a slot (l'elenco della fine parte dopo l'inizio); cambia la poltrona se serve.
-3. **Salva**. Se il nuovo orario si sovrappone a un altro appuntamento dello stesso medico o della stessa poltrona, il programma non salva e lo dice.
+3. **Salva**. Se il nuovo orario si sovrappone a un altro appuntamento dello stesso medico o della stessa poltrona, il programma non salva e lo dice. Valgono gli stessi vincoli della prenotazione: niente sabati, domeniche e festivi, e niente orari fuori dall'orario di lavoro della sede ([I vincoli dell'agenda](#lezione-vincoli-agenda)).
 
 Un appuntamento vecchio con un orario fuori griglia (per esempio 10:10) si può modificare lasciando invariato l'orario: lo ritrovi in elenco così com'è.
 
@@ -437,20 +469,27 @@ Il preventivo è l'offerta economica al paziente. In DentalCare Pro nasce di sol
 
 #### Creare un preventivo
 
-Da **Preventivi → + Nuovo preventivo**: paziente, titolo, piano di cura collegato, validità. Con **Importa da piano** scegli le prestazioni del piano da includere; ogni riga porta il prezzo di listino, modificabile, con sconto e IVA. Le righe aggiunte a mano sono **righe libere**.
+Da **Preventivi → + Nuovo preventivo**: paziente, titolo, piano di cura collegato, validità. Con **Importa dal Piano di Cura** scegli le prestazioni del piano da includere: le voci partono non selezionate, **Seleziona tutte** le sceglie in blocco, e il riquadro compare solo se il preventivo ha un piano collegato; ogni riga porta il prezzo di listino, modificabile, con sconto e IVA. Le righe aggiunte a mano sono **righe libere**.
+
+#### Descrizione delle righe
+
+Quando aggiungi una riga puoi scrivere una **Descrizione (facoltativa)**, per esempio tipo e marca dell'allineatore. La descrizione di una riga già inserita si cambia con la **matita**, finché il preventivo è in *Bozza* o *Inviato*; dopo l'accettazione resta il testo approvato dal paziente.
 
 #### Gli stati
 
 *Bozza → Inviato → Accettato* (oppure *Rifiutato*); oltre la data di validità diventa *Scaduto*. Solo un preventivo **accettato** si può fatturare.
 
+Un preventivo accettato è quello approvato dal paziente: le sue righe non si aggiungono né si tolgono più, e **Aggiungi**, **Importa dal Piano di Cura** e il cestino non compaiono. Se ha documenti fiscali non annullati, non torna nemmeno a *Bozza*, *Inviato* o *Rifiutato*: prima si storna il documento con una nota di credito.
+
 #### L'avanzamento
 
-Il preventivo sa quante delle sue prestazioni sono state eseguite in seduta (per esempio *2 di 4 eseguite*). Quando lo sono tutte compare l'etichetta **Fatturabile**: è il lavoro finito e non ancora fatturato, il denaro fermo perché nessuno se n'è accorto.
+Il preventivo sa quante delle sue prestazioni sono state eseguite in seduta (per esempio *2 di 4 eseguite*). Quando un preventivo accettato ha righe eseguite, o righe libere, non ancora fatturate, nell'elenco e nel dettaglio compare l'etichetta **Fatturabile**: è il lavoro fatto e non ancora fatturato, il denaro fermo perché nessuno se n'è accorto.
 
 #### Da sapere
 
 - L'esecuzione si registra nella scheda di seduta, non qui.
 - Le righe libere non hanno un'esecuzione e non entrano nel conteggio: un preventivo di 3 righe può dire *1 di 2 eseguite*.
+- Il pulsante **Vai all'emissione** compare, nell'elenco e nel dettaglio, con la stessa regola di «Fatturabile», e apre la fatturazione già collegata a quel preventivo.
 - «Fatturabile» è un'informazione, non un permesso: al momento dell'emissione il programma ricontrolla.
 
 #### Prova nel programma
@@ -471,22 +510,28 @@ La fatturazione parte da un preventivo **accettato** e ne ricopia le voci.
 
 **Per:** segreteria e amministratore.
 
+#### Quali prestazioni fatturare
+
+In fatturazione scegli tu le **prestazioni del preventivo** da includere: all'apertura nessuna è spuntata, e **Seleziona tutte le fatturabili** le sceglie in blocco. Si possono fatturare solo prestazioni **eseguite**, e ognuna una volta sola; il resto resta per la fattura successiva. Gli acconti già emessi si scalano fino all'importo della fattura e l'eventuale resto passa alla fattura seguente. Dal preventivo, o dalla sua riga nell'elenco dei preventivi, il pulsante **Vai all'emissione** apre la fatturazione direttamente su quel preventivo. I preventivi già saldati prima di questa versione restano saldati.
+
 #### Saldo o acconto
 
 | Documento | Quando | Vincolo |
 |-----------|--------|---------|
-| **Fattura, ricevuta, parcella** (a saldo) | il lavoro è stato eseguito | tutte le prestazioni del preventivo devono risultare completate |
+| **Fattura, ricevuta, parcella** (a saldo) | il lavoro è stato eseguito | le prestazioni scelte devono risultare eseguite |
 | **Acconto** | incassi un anticipo su lavoro da fare (tipico in implantologia) | non supera il residuo del preventivo |
 
 Se provi a emettere un documento a saldo su prestazioni non ancora eseguite, il programma rifiuta e **elenca quali mancano**: le registri in seduta, oppure emetti un acconto.
 
 **L'acconto è un importo.** In *Nuova Fattura* scegli *Acconto* e scrivi quanto incassi, IVA compresa: la finestra mostra il totale del preventivo, gli acconti già fatti e il residuo. Il documento ha una riga «Acconto su preventivo …» (una per aliquota, se il preventivo ne ha più d'una, ripartita come nel preventivo).
 
-**Il saldo scala gli acconti.** La fattura a saldo riporta tutte le prestazioni del preventivo e, sotto, una riga negativa «Storno acconto … del …» per ogni acconto emesso: il totale è quello che il paziente deve ancora pagare. Non devi ricalcolare niente. Se c'è un acconto ancora in bozza, il saldo aspetta: emettilo o eliminalo prima. Un preventivo si salda una volta sola: per rifare il saldo elimina la bozza, oppure storna il documento emesso con una nota di credito.
+**Il saldo scala gli acconti.** La fattura a saldo riporta le prestazioni scelte e, sotto, una riga negativa «Storno acconto … del …» per ogni acconto emesso: il totale è quello che il paziente deve ancora pagare. Non devi ricalcolare niente. Se c'è un acconto ancora in bozza, il saldo aspetta: emettilo o eliminalo prima. Ogni prestazione si fattura una volta sola: un preventivo può avere più fatture a saldo, ciascuna sulle prestazioni scelte. Per rifare un saldo elimina la bozza, oppure storna il documento emesso con una nota di credito.
 
 #### La vita di un documento
 
-*Bozza → Emessa → Pagata.* Una bozza si modifica e si elimina liberamente. Un documento **emesso** no: il suo numero è entrato nella sequenza, e un buco nella numerazione è un problema.
+*Bozza → Emessa → Pagata.* Una bozza si modifica e si elimina liberamente. Un documento **emesso** no: il suo numero è entrato nella sequenza, e un buco nella numerazione è un problema. Di un documento emesso non cambiano più tipo, data e righe: per correggerlo c'è la nota di credito.
+
+Se hai premuto **Segna Pagata** per errore, **Riporta a Emessa** annulla il passaggio. Una nota di credito non si segna pagata.
 
 #### Inviare il documento al paziente
 
@@ -494,11 +539,11 @@ Dal dettaglio di un documento emesso, **Email** invia il PDF all'e-mail del pazi
 
 #### Correggere un errore: la nota di credito
 
-Dal dettaglio di un documento emesso, **Storna con nota di credito**: il programma crea una nota di pari importo con segno opposto, collegata all'originale e con numerazione propria, e porta il documento originale ad *Annullato* conservandolo in archivio. Lo storno è sempre totale, e ogni documento si storna una volta sola.
+Dal dettaglio di un documento emesso, **Storna con nota di credito**: il programma crea una nota di pari importo con segno opposto, collegata all'originale e con numerazione propria, e porta il documento originale ad *Annullato* conservandolo in archivio. Lo storno è sempre totale, e ogni documento si storna una volta sola. La nota di credito nasce solo così: in *Nuova Fattura* non è fra i tipi.
 
 #### A chi è intestata la fattura
 
-Dipende dalla **modalità di fatturazione** scelta dall'amministratore (Impostazioni → Clinica):
+Dipende dalla **modalità di fatturazione** scelta dall'amministratore (Impostazioni → Clinica), non da chi emette il documento. In *Nuova Fattura* la riga **Intestata a** la mostra, senza scelta:
 
 - **Studio** (predefinita) — i documenti sono intestati allo studio, con la sua numerazione.
 - **Medico** — i documenti sono intestati al medico del preventivo (parcella), con i suoi dati di fatturazione; i preventivi propongono le sue tariffe: [Le tariffe del medico](MANUALE_UTENTE.md#lezione-tariffe-medico).
@@ -511,51 +556,53 @@ Apri la fatturazione, filtra i documenti **Emessi** e aprine uno: prova **Storna
 
 <a id="lezione-richiami"></a>
 
-## 7.3 I richiami
+## 7.3 Le visite di controllo
 
 *Chi ricontattare e quando; registrare i contatti.*
 
-![Registra contatto: il testo del richiamo, da copiare o da inviare per e-mail o WhatsApp.](img/academy/07-richiami.png)
+![Registra contatto: il testo del promemoria, da copiare o da inviare per e-mail o WhatsApp.](img/academy/07-richiami.png)
 
-*Registra contatto: il testo del richiamo, da copiare o da inviare per e-mail o WhatsApp.*
+*Registra contatto: il testo del promemoria, da copiare o da inviare per e-mail o WhatsApp.*
 
-I richiami ricordano allo studio **chi** va ricontattato e **quando**: controlli semestrali, igiene, terapie da completare.
+Le visite di controllo ricordano allo studio **chi** va ricontattato e **quando**: controlli semestrali, igiene, terapie da completare.
 
 **Per:** segreteria, igienisti.
 
 #### L'elenco
 
-Ogni richiamo ha paziente, tipo, data prevista, **priorità** (alta, media, bassa) e **stato**:
+Ogni visita di controllo ha paziente, tipo, scadenza, **priorità** (alta, media, bassa) e **stato**:
 
 | Stato | Significato |
 |-------|-------------|
 | Da contattare | nessun contatto ancora |
-| Contattato | c'è stato un tentativo |
+| Contattata | c'è stato un tentativo |
 | In attesa | si aspetta una risposta |
-| Confermato | l'appuntamento è fissato |
-| Chiuso / Annullato | concluso |
+| Confermata | l'appuntamento è fissato |
+| Chiusa / Annullata | conclusa |
 
-Il pannello a destra elenca i richiami urgenti.
+Quando la data prevista è passata, la visita di controllo può comparire anche come *Scaduta*: è un avviso sulla data, non uno stato.
+
+Il pannello a destra elenca le visite di controllo urgenti.
 
 #### Registrare un contatto
 
-Dal menu del richiamo, **Registra contatto**: canale (telefono, e-mail, WhatsApp), esito (risposto, non risposto, messaggio lasciato, confermato, rifiutato) e note. Lo storico dei contatti resta nel richiamo: chi chiama dopo di te sa cosa è già stato detto. Passando il mouse su una riga, il pannello a destra mostra lo storico di quel richiamo (esito, data e ora, note, chi ha chiamato); un clic sulla riga lo tiene fermo, comodo sul tablet. Dopo il salvataggio il nuovo contatto compare lì e la colonna Contatti mostra il numero e la data dell'ultimo. Il primo contatto porta il richiamo da «Da contattare» a «Contattato» da solo; gli altri passaggi (in attesa, confermato, chiuso) li fai tu dal menu della colonna Stato.
+Dal menu della visita di controllo, **Registra contatto**: canale (telefono, e-mail, WhatsApp), esito (risposto, non risponde, messaggio lasciato, confermato, rifiutato) e note. Lo storico dei contatti resta nella visita di controllo: chi chiama dopo di te sa cosa è già stato detto. Passando il mouse su una riga, il pannello a destra mostra lo storico di quella visita di controllo (esito, data e ora, note, chi ha chiamato); un clic sulla riga lo tiene fermo, comodo sul tablet. Dopo il salvataggio il nuovo contatto compare lì e la colonna Contatti mostra il numero e la data dell'ultimo. Il primo contatto porta la visita di controllo da «Da contattare» a «Contattata» da sola; gli altri passaggi (in attesa, confermata, chiusa) li fai tu dal menu della colonna Stato.
 
-Nella stessa finestra c'è il **testo del richiamo** con il nome del paziente già inserito, e tre modi per mandarlo:
+Nella stessa finestra c'è il **testo del promemoria** con il nome del paziente già inserito, e tre modi per mandarlo:
 
 - **Invia per e-mail** — parte dal programma, all'indirizzo del paziente; le risposte arrivano all'e-mail dello studio;
 - **Apri in WhatsApp** — si apre WhatsApp (app o WhatsApp Web dello studio) con il testo pronto: lo invii tu dal vostro WhatsApp Business;
 - **Copia** — per incollarlo dove vuoi.
 
-Con e-mail e WhatsApp il contatto si registra da solo (canale e «messaggio lasciato») e compare nello storico; se l'e-mail non parte, il programma lo dice e non registra niente. Il testo si cambia in [Impostazioni → Richiami](MANUALE_UTENTE.md#lezione-impostazioni-documenti).
+Con e-mail e WhatsApp il contatto si registra da solo (canale e «messaggio lasciato») e compare nello storico; se l'e-mail non parte, il programma lo dice e non registra niente. Il testo si cambia in [Impostazioni → Visite di controllo](MANUALE_UTENTE.md#lezione-impostazioni-documenti).
 
 #### Da sapere
 
-**Genera richiami** crea i richiami per i pazienti senza un controllo recente, con l'intervallo impostato dallo studio (sei mesi, se non è cambiato). Se un paziente ha già un richiamo aperto e ha superato anche il secondo intervallo, il richiamo diventa *Secondo richiamo* ad alta priorità. Nell'ambiente di prova nessun messaggio parte davvero verso i pazienti: l'e-mail arriva a te, e in WhatsApp scegli tu a chi mandarlo (i numeri dei pazienti sono fittizi).
+**Genera visite di controllo** crea le visite di controllo per i pazienti senza un controllo recente, con l'intervallo impostato dallo studio (sei mesi, se non è cambiato). Se un paziente ha già una visita di controllo aperta e ha superato anche il secondo intervallo, la visita di controllo diventa *Secondo richiamo* ad alta priorità. Nell'ambiente di prova nessun messaggio parte davvero verso i pazienti: l'e-mail arriva a te, e in WhatsApp scegli tu a chi mandarlo (i numeri dei pazienti sono fittizi).
 
 #### Prova nel programma
 
-Apri i richiami, prendi il primo *da contattare* ad alta priorità e registra una telefonata con esito *messaggio lasciato*.
+Apri le visite di controllo, prendi la prima *da contattare* ad alta priorità e registra una telefonata con esito *messaggio lasciato*.
 
 <a id="lezione-magazzino"></a>
 
@@ -624,7 +671,7 @@ Allo stesso modo, quando registri gli esiti di una seduta senza aver premuto *In
 
 - **Il paziente arriva in ritardo, dopo che lo hai segnato Non presentato.** Riporta lo stato a *Presente* o *In corso*: la seduta torna registrabile.
 - **Ha avvisato all'ultimo momento.** Se l'appuntamento non si terrà, è *Cancellato*: la prestazione torna *Da pianificare* e si riprenota normalmente. Vedi [Spostare o annullare un appuntamento collegato](#lezione-spostare-appuntamento-collegato).
-- **Vuoi ricontattarlo.** Crea un richiamo o fissa subito il nuovo appuntamento: [I richiami](#lezione-richiami).
+- **Vuoi ricontattarlo.** Crea una visita di controllo o fissa subito il nuovo appuntamento: [Le visite di controllo](#lezione-richiami).
 
 #### Da sapere
 
@@ -679,7 +726,7 @@ Apri il piano di *Silvia Conti*, fissa una seduta con **Pianifica appuntamento**
 
 ## 5.6 I vincoli dell'agenda
 
-*Festivi, orari, griglia degli slot, conflitti, pazienti a rischio infettivo.*
+*Festivi, orari, griglia degli slot, conflitti, ultimo orario della giornata.*
 
 Il programma rifiuta alcuni appuntamenti, e lo dice con un messaggio chiaro. Conoscere i vincoli evita sorprese al telefono.
 
@@ -689,17 +736,18 @@ Il programma rifiuta alcuni appuntamenti, e lo dice con un messaggio chiaro. Con
 
 | Vincolo | Cosa succede | Cosa fare |
 |---|---|---|
-| **Sabato, domenica, festivo** | non si prenota | scegli un giorno lavorativo |
+| **Sabato, domenica, festivo** | non si prenota e non ci si sposta | scegli un giorno lavorativo |
 | **Giorno non lavorativo** dello studio | *Proponi orario* e il Copilot lo saltano | Impostazioni → Agenda, giorni lavorativi |
-| **Fuori orario** di lavoro | l'orario non compare nell'elenco | Impostazioni → Agenda, orario di lavoro |
+| **Fuori orario** di lavoro | l'orario non compare nell'elenco; un orario fuori (per esempio alle 23:00) è rifiutato, con l'orario della sede | Impostazioni → Agenda, orario di lavoro |
 | **Fuori dalla griglia degli slot** (per esempio 14:10 con slot da 15 minuti) | rifiutato, con i due slot più vicini (14:00 o 14:15) | scegli uno slot |
 | **Stesso medico** già occupato | rifiutato | altro orario o altro medico |
 | **Stessa poltrona** già occupata | rifiutato | altra poltrona: il Copilot elenca quelle libere |
-| **Paziente con condizione a rischio infettivo** attiva in anamnesi | solo gli ultimi slot della giornata | *Proponi orario* propone solo quelli |
+| **Agenda di un collega**, con visibilità «per medico» | medici e igienisti prenotano e spostano solo nella propria agenda | chiedi alla segreteria |
+| **Ultimo orario della giornata** indicato per il paziente | si può prenotare solo l'ultimo orario della giornata | *Proponi orario* propone solo quello |
 
-#### Perché la fine giornata per il rischio infettivo
+#### L'ultimo orario della giornata
 
-Un paziente con una condizione infettiva attiva va visitato per ultimo, così la sanificazione dello studio non ritarda gli altri. Il vincolo nasce dall'anamnesi: quando la condizione non è più attiva, il vincolo sparisce.
+Per alcuni pazienti l'anamnesi porta un'**indicazione clinica** che chiede di fissare la visita a fine giornata. Il programma mostra il vincolo con questo messaggio: *«Si può prenotare solo l'ultimo orario della giornata (dalle HH:mm).»* La segreteria vede solo questo messaggio, senza il motivo; il medico vede anche il motivo, nella cartella e nel messaggio. Quando l'indicazione non è più attiva, il vincolo sparisce.
 
 #### Il Copilot
 
@@ -708,6 +756,43 @@ Anche il Copilot rispetta gli stessi vincoli. A una richiesta come *«alle 14:10
 #### Prova nel programma
 
 Apri **+ Appuntamento**, scegli un sabato: il programma lo segnala. Poi scegli un giorno feriale e guarda l'elenco degli orari: sono solo quelli della griglia.
+
+<a id="lezione-punto-di-vista"></a>
+
+## 1.4 Medico, segreteria o amministratore
+
+*Guardare la clinica con gli occhi degli altri ruoli; il Copilot segue la persona.*
+
+In uno studio vero medico, igienista, segreteria e amministratore usano lo stesso programma in modo diverso. Nell'ambiente di prova li provi tutti senza cambiare utente.
+
+**Per:** chi usa l'ambiente di prova o lo studio dimostrativo.
+
+#### Il menu in alto
+
+In alto, accanto alla campanella, c'è un menu a tendina con il ruolo di ognuno tra parentesi:
+
+- **Il tuo nome — Dentista**: la vista del medico, con agenda, pazienti e cartella clinica.
+- **Gli altri professionisti** (ortodontista, chirurgo, igienista): lo studio dal loro punto di vista.
+- **Segreteria**: l'intero studio, tutti gli appuntamenti e i pazienti, preventivi e fatture di tutti.
+- **Il tuo nome — Amministratore**: le **Impostazioni** dello studio (orari, slot, professionisti, fatturazione, Copilot). Solo nel tuo studio di prova.
+
+Il cambio è immediato e non richiede di uscire.
+
+#### Cosa cambia davvero
+
+- **Le schermate**: ogni ruolo vede le sue voci di menu e i suoi dati. La **scheda di seduta** e lo **storico degli episodi** sono clinici; la **registrazione di un nuovo paziente** è di solito della segreteria, ma la possono fare anche i ruoli clinici.
+- **Il Copilot**: risponde come la persona scelta. Con un medico è **clinico** (legge anamnesi, odontogramma, piani); con igienista e segreteria è **amministrativo** (agenda, anagrafica, preventivi, fatture, visite di controllo). Lo spiega la lezione [Copilot clinico](MANUALE_UTENTE.md#lezione-copilot-clinico).
+- **Con Amministratore** compaiono le Impostazioni, e il server ti riconosce come amministratore del solo studio di prova, o del solo ambiente di prova del tuo studio.
+
+#### Da sapere
+
+La persona cambia l'interfaccia, **non i permessi**: fuori dalla chat del Copilot l'account di prova vede tutti i dati come il titolare, anche scegliendo *Segreteria*. In uno studio vero i limiti del ruolo (per esempio niente cartella clinica per la segreteria e l'assistente) li applica il server.
+
+Il menu cambia **cosa vedi e come risponde il Copilot**, non **chi firma**: ciò che registri (una seduta, una nota) resta a tuo nome. In uno studio vero ognuno entra con le proprie credenziali.
+
+#### Prova nel programma
+
+Apri l'agenda, scegli **Segreteria** e guarda come cambiano gli appuntamenti mostrati. Poi passa a **Amministratore** e apri le Impostazioni dal menu. Torna infine al tuo nome.
 
 <a id="lezione-copilot"></a>
 
@@ -723,7 +808,7 @@ Il **Copilot AI** è l'assistente dello studio: legge i dati di DentalCare Pro e
 
 | Modalità | Per chi | Cosa legge |
 |---|---|---|
-| **Amministrativa** | segreteria, igienisti; tutti, se lo studio non ha attivato il clinico | agenda, anagrafica (senza dati sanitari), preventivi, fatture, richiami, magazzino |
+| **Amministrativa** | segreteria, igienisti; tutti, se lo studio non ha attivato il clinico | agenda, anagrafica (senza dati sanitari), preventivi, fatture, visite di controllo, magazzino |
 | **Clinica** | medici (dentista, ortodontista, chirurgo), se lo studio l'ha attivata | in più anamnesi, allerte, odontogramma, diagnosi, prescrizioni, piani di cura |
 
 Il messaggio di apertura dice in quale modalità sei. Nell'ambiente di prova la modalità segue la persona scelta nel menu in alto. La modalità clinica ha una sua lezione: [Copilot clinico](MANUALE_UTENTE.md#lezione-copilot-clinico).
@@ -732,7 +817,7 @@ Il messaggio di apertura dice in quale modalità sei. Nell'ambiente di prova la 
 
 - *Quali appuntamenti ho domani?*
 - *Trova il primo orario libero per un'igiene con Gentili la prossima settimana.*
-- *Quali pazienti sono in attesa di richiamo?*
+- *Quali pazienti sono in attesa di una visita di controllo?*
 - *Sposta l'appuntamento di Silvia Conti a giovedì alle 10.*
 - *Prepara un preventivo per Marco Rossi con una igiene professionale.*
 
@@ -740,13 +825,15 @@ Sotto la casella di scrittura ci sono domande già pronte.
 
 #### Quando deve cambiare qualcosa
 
-Se la richiesta comporta una modifica (creare, spostare o annullare un appuntamento, un preventivo, un richiamo), il Copilot **non la fa da solo**: mostra un'**anteprima** di cosa farà e aspetta la tua conferma (*«sì, conferma»*). Se l'orario chiesto è occupato o fuori dagli slot, propone le alternative invece dell'anteprima.
+Se la richiesta comporta una modifica (creare, spostare o annullare un appuntamento, un preventivo, una visita di controllo), il Copilot **non la fa da solo**: mostra un'**anteprima** di cosa farà e aspetta la tua conferma (*«sì, conferma»*). Se l'orario chiesto è occupato o fuori dagli slot, propone le alternative invece dell'anteprima.
+
+Vale la visibilità della sede: con «per medico» un medico o un igienista chiede, sposta e prenota solo nella propria agenda, e se chiedi quella di un collega il Copilot te lo dice; con «condivisa» la mostra, con il nome del collega.
 
 Dopo aver prenotato, spostato o annullato un appuntamento, la risposta porta il pulsante **Avvisa** con il nome del paziente: apre la finestra [Avvisa il paziente](#lezione-gestire-appuntamenti) (WhatsApp, e-mail o «non serve»). Se non lo usi, l'avviso resta nella Dashboard.
 
 #### Suggerimenti e cronologia
 
-- Ogni mattina il Copilot prepara **suggerimenti** (per esempio i richiami scaduti da contattare): li trovi in alto nella pagina, e puoi usarli o scartarli.
+- Ogni mattina il Copilot prepara **suggerimenti** (per esempio le visite di controllo scadute da contattare): li trovi in alto nella pagina, e puoi usarli o scartarli.
 - **Nuova chat** ricomincia da capo; **Cronologia** riapre le conversazioni precedenti.
 
 #### Prova nel programma

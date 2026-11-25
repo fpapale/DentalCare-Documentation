@@ -1,6 +1,6 @@
 # DentalCare Pro — Sintesi del manuale
 
-> Versione 28 ottobre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
+> Versione 25 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
 
 Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo completo è nel [manuale integrale](MANUALE_UTENTE.md).
 
@@ -13,6 +13,7 @@ Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo c
 - **[La dashboard](MANUALE_UTENTE.md#lezione-dashboard)** — Indicatori, prossimi appuntamenti, allerte e scadenze.
 - **[Medico, segreteria o amministratore](MANUALE_UTENTE.md#lezione-punto-di-vista)** — Guardare la clinica con gli occhi degli altri ruoli; il Copilot segue la persona.
 - **[Accesso e password](MANUALE_UTENTE.md#lezione-accesso-e-password)** — Primo accesso, password temporanea, password dimenticata.
+- **[Blocco dello schermo e PIN](MANUALE_UTENTE.md#lezione-blocco-schermo-pin)** — Perché lo schermo si blocca, il PIN di 4 cifre, «Blocca ora», sessione di una giornata e impostazioni per ruolo.
 
 ![La segnalazione di un errore: cosa, perché e cosa fare.](img/academy/20-pannello-errori.png)
 
@@ -26,17 +27,17 @@ Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo c
 
 *Le tappe per ruolo, dalle basi ai casi particolari: da qui si sceglie cosa studiare.*
 
-- **[Percorso della segreteria](MANUALE_UTENTE.md#lezione-percorso-segreteria)** — Agenda, accoglienza, preventivi, incassi e richiami, giorno per giorno.
+- **[Percorso della segreteria](MANUALE_UTENTE.md#lezione-percorso-segreteria)** — Agenda, accoglienza, preventivi, incassi e visite di controllo, giorno per giorno.
 - **[Percorso del medico](MANUALE_UTENTE.md#lezione-percorso-medico)** — Dalla prima visita alla fine della cura, con le sedute e i loro casi particolari.
-- **[Percorso dell'igienista](MANUALE_UTENTE.md#lezione-percorso-igienista)** — Sedute di igiene, mantenimento, richiami e collaborazione con il medico.
+- **[Percorso dell'igienista](MANUALE_UTENTE.md#lezione-percorso-igienista)** — Sedute di igiene, mantenimento, visite di controllo e collaborazione con il medico.
 - **[Percorso del titolare](MANUALE_UTENTE.md#lezione-percorso-titolare)** — Avvio dell'account e delle cliniche, configurazione, controllo dell'andamento, cura dei dati.
-- **[Il viaggio del paziente](MANUALE_UTENTE.md#lezione-percorso-paziente)** — Dal primo contatto al richiamo di controllo: chi fa cosa, e dove.
+- **[Il viaggio del paziente](MANUALE_UTENTE.md#lezione-percorso-paziente)** — Dal primo contatto alla visita di controllo: chi fa cosa, e dove.
 
 ## 3. Pazienti
 
 *Trovare, registrare e conoscere un paziente, anamnesi compresa.*
 
-- **[Trovare un paziente](MANUALE_UTENTE.md#lezione-cercare-paziente)** — Ricerca, filtri e cosa dice ogni riga dell'elenco.
+- **[Trovare un paziente](MANUALE_UTENTE.md#lezione-cercare-paziente)** — Ricerca, pazienti archiviati o eliminati e cosa dice ogni riga dell'elenco.
 - **[Registrare un nuovo paziente](MANUALE_UTENTE.md#lezione-nuovo-paziente)** — I tre passi dell'anagrafica e il codice fiscale.
 - **[La scheda paziente](MANUALE_UTENTE.md#lezione-scheda-paziente)** — Le schede della cartella e gli appuntamenti del paziente.
 - **[L'anamnesi e le allerte](MANUALE_UTENTE.md#lezione-anamnesi)** — Compilare l'anamnesi e far comparire le allerte dove servono.
@@ -84,7 +85,7 @@ Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo c
 - **[Seduta fuori programma](MANUALE_UTENTE.md#lezione-seduta-fuori-programma)** — Prestazioni non previste e la seduta di un collega.
 - **[Seduta dimenticata o già chiusa](MANUALE_UTENTE.md#lezione-seduta-dimenticata)** — Ingresso tardivo, registrazione a fine giornata, seduta da riaprire.
 - **[Spostare o annullare un appuntamento collegato](MANUALE_UTENTE.md#lezione-spostare-appuntamento-collegato)** — Cosa succede alle prestazioni del piano, e perché il medico non si cambia.
-- **[I vincoli dell'agenda](MANUALE_UTENTE.md#lezione-vincoli-agenda)** — Festivi, orari, griglia degli slot, conflitti, pazienti a rischio infettivo.
+- **[I vincoli dell'agenda](MANUALE_UTENTE.md#lezione-vincoli-agenda)** — Festivi, orari, griglia degli slot, conflitti, ultimo orario della giornata.
 
 ![Un piano con prestazioni in sospeso.](img/academy/09-piano-cura-in-sospeso.png)
 
@@ -106,7 +107,7 @@ Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo c
 - **[Dal dente al piano: «Genera piano di cura»](MANUALE_UTENTE.md#lezione-genera-piano)** — Cosa viene proposto, cosa no e perché.
 - **[Il piano di cura](MANUALE_UTENTE.md#lezione-piano-di-cura)** — Stati, prestazioni, Pianifica appuntamento e prestazioni in sospeso.
 - **[Lo storico degli episodi](MANUALE_UTENTE.md#lezione-storico-episodi)** — Com'era il paziente prima di una visita, e cosa è cambiato.
-- **[Diagnosi, prescrizioni e documenti](MANUALE_UTENTE.md#lezione-diagnosi-prescrizioni-documenti)** — Il diario clinico, le terapie in corso e i documenti del paziente.
+- **[Diagnosi, prescrizioni e documenti](MANUALE_UTENTE.md#lezione-diagnosi-prescrizioni-documenti)** — Il diario clinico con firma e integrazioni, le terapie in corso e i documenti del paziente.
 - **[Analisi AI delle radiografie](MANUALE_UTENTE.md#lezione-analisi-ai-radiografie)** — Lanciare l'analisi di un'ortopanoramica e rivederla da medico.
 
 ![L'odontogramma con la legenda: da curare, già curato, assente.](img/academy/22-odontogramma.png)
@@ -123,11 +124,11 @@ Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo c
 
 ## 7. Amministrazione
 
-*Preventivi, fatture, richiami, magazzino, listino e tariffe.*
+*Preventivi, fatture, visite di controllo, magazzino, listino e tariffe.*
 
 - **[Preventivi e avanzamento](MANUALE_UTENTE.md#lezione-preventivi)** — Dal piano al preventivo, stati e lavoro fatturabile.
 - **[Fatture, acconti e storni](MANUALE_UTENTE.md#lezione-fatturazione)** — Saldo e acconto, vita di un documento, note di credito, intestazione.
-- **[I richiami](MANUALE_UTENTE.md#lezione-richiami)** — Chi ricontattare e quando; registrare i contatti.
+- **[Le visite di controllo](MANUALE_UTENTE.md#lezione-richiami)** — Chi ricontattare e quando; registrare i contatti.
 - **[Il magazzino](MANUALE_UTENTE.md#lezione-magazzino)** — Prodotti, soglie, movimenti e fornitori.
 - **[Prestazioni e listino](MANUALE_UTENTE.md#lezione-prestazioni-listino)** — Prezzi, durate, denti ammessi, effetto sul dente e default per condizione.
 - **[Le tariffe del medico](MANUALE_UTENTE.md#lezione-tariffe-medico)** — Prezzi personali diversi dal listino, quando si fattura a nome del medico.
@@ -140,9 +141,9 @@ Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo c
 
 *L'elenco dei documenti fiscali.*
 
-![Registra contatto: il testo del richiamo, da copiare o da inviare per e-mail o WhatsApp.](img/academy/07-richiami.png)
+![Registra contatto: il testo del promemoria, da copiare o da inviare per e-mail o WhatsApp.](img/academy/07-richiami.png)
 
-*Registra contatto: il testo del richiamo, da copiare o da inviare per e-mail o WhatsApp.*
+*Registra contatto: il testo del promemoria, da copiare o da inviare per e-mail o WhatsApp.*
 
 ![Il listino, con categorie, prezzi, durate e default per condizione.](img/academy/33-prestazioni.png)
 
@@ -167,7 +168,7 @@ Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo c
 - **[Clinica e professionisti](MANUALE_UTENTE.md#lezione-impostazioni-studio)** — Dati della clinica, modalità di fatturazione, professionisti, poltrone e catalogo dell'anamnesi.
 - **[Agenda e visibilità](MANUALE_UTENTE.md#lezione-impostazioni-agenda)** — Slot, orario e giorni di lavoro, chi vede quali pazienti.
 - **[Calendario delle presenze](MANUALE_UTENTE.md#lezione-calendario-presenze)** — Orario di ogni professionista, assenze e appuntamenti da spostare.
-- **[Preventivi, fatture, richiami e sistema](MANUALE_UTENTE.md#lezione-impostazioni-documenti)** — Valori predefiniti dei documenti, intervalli dei richiami, preferenze.
+- **[Preventivi, fatture, visite di controllo e sistema](MANUALE_UTENTE.md#lezione-impostazioni-documenti)** — Valori predefiniti dei documenti, intervalli delle visite di controllo, preferenze, scheda Sicurezza.
 - **[Copilot e AI](MANUALE_UTENTE.md#lezione-impostazioni-ai)** — Modo del Copilot (spento, amministrativo, clinico) e istruzioni.
 - **[Ambiente di prova e amministrazione dell'account](MANUALE_UTENTE.md#lezione-ambiente-prova-studio)** — Esercitarsi senza toccare i dati veri; sedi, esportazione, chiusura.
 

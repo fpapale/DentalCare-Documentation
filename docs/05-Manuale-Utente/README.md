@@ -6,7 +6,7 @@ Guida all'uso di **DentalCare Pro** per i ruoli di una clinica: **medico e igien
 > **Fonte unica: l'Academy.** Dal 22/10/2026 il manuale ufficiale è l'Academy dentro il programma (48 lezioni in
 > 10 moduli). I documenti di questa cartella si **generano** dalle lezioni con
 > `python tools/genera_manuale.py <repo dentalcare>`: per correggerli si corregge la lezione e si rigenera.
-> Ultima generazione: 26 novembre 2026 (versione 0.4.5 del programma).
+> Ultima generazione: 26 novembre 2026 (versione 0.4.6 del programma).
 
 ## Indice
 

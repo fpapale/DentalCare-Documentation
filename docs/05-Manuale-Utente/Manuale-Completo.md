@@ -1,6 +1,6 @@
 # DentalCare Pro — Sintesi del manuale
 
-> Versione 25 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
+> Versione 26 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
 
 Ogni modulo con le sue lezioni in una riga e le schermate principali. Il testo completo è nel [manuale integrale](MANUALE_UTENTE.md).
 

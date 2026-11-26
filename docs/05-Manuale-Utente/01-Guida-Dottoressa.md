@@ -1,6 +1,6 @@
 # DentalCare Pro — Guida per il medico e l'igienista
 
-> Versione 25 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
+> Versione 26 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
 
 Il percorso dice cosa fare e in che ordine; le lezioni che richiama seguono, nell'ordine in cui compaiono. Il resto è nel [manuale integrale](MANUALE_UTENTE.md).
 
@@ -555,7 +555,7 @@ Quando aggiungi una riga puoi scrivere una **Descrizione (facoltativa)**, per es
 
 #### Gli stati
 
-*Bozza → Inviato → Accettato* (oppure *Rifiutato*); oltre la data di validità diventa *Scaduto*. Solo un preventivo **accettato** si può fatturare.
+*Bozza → Inviato → Accettato* (oppure *Rifiutato*); oltre la data di validità diventa *Scaduto*. Solo un preventivo **accettato** si può fatturare. Lo stato si cambia dal menu a tendina in alto nel dettaglio del preventivo.
 
 Un preventivo accettato è quello approvato dal paziente: le sue righe non si aggiungono né si tolgono più, e **Aggiungi**, **Importa dal Piano di Cura** e il cestino non compaiono. Se ha documenti fiscali non annullati, non torna nemmeno a *Bozza*, *Inviato* o *Rifiutato*: prima si storna il documento con una nota di credito.
 
@@ -611,7 +611,7 @@ Un appuntamento creato con **Pianifica appuntamento** dal dettaglio di un piano 
 
 #### Casi particolari
 
-- **L'orario è occupato** (stesso medico o stessa poltrona), **cade in un festivo** o **non è sulla griglia degli slot**: il programma non salva e spiega perché. Vedi [I vincoli dell'agenda](#lezione-vincoli-agenda).
+- **L'orario è occupato** (stesso medico o stessa poltrona), **cade in un festivo**, **è fuori dall'orario di lavoro della sede** (per esempio alle 23:00) o **non è sulla griglia degli slot**: il programma non salva e spiega perché. Vedi [I vincoli dell'agenda](#lezione-vincoli-agenda).
 - **Paziente con un'indicazione clinica** per l'ultimo orario: si può prenotare solo l'ultimo orario della giornata, e *Proponi orario* propone solo quello. Alla segreteria il programma dice *«Si può prenotare solo l'ultimo orario della giornata (dalle HH:mm).»*, senza il motivo; il medico vede anche il motivo clinico.
 
 #### Da sapere
@@ -964,6 +964,7 @@ Se il nuovo orario si sovrappone a un altro appuntamento, cade in un giorno fest
 |---|---|
 | sposti | restano *Appuntamento fissato* |
 | annulli | tornano *Da pianificare* |
+| riporti un annullato a *Programmato* | tornano *Appuntamento fissato*; se nel frattempo le hai fissate in un altro appuntamento, il programma rifiuta e dice dove |
 | segni Non presentato | diventano *In sospeso* |
 | cambi medico | non consentito se legato a piano o preventivo |
 

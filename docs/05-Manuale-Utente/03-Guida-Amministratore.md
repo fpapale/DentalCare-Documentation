@@ -1,6 +1,6 @@
 # DentalCare Pro — Guida per il titolare e l'amministratore
 
-> Versione 25 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
+> Versione 26 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
 
 Il percorso dice cosa fare e in che ordine; le lezioni che richiama seguono, nell'ordine in cui compaiono. Il resto è nel [manuale integrale](MANUALE_UTENTE.md).
 
@@ -404,7 +404,7 @@ Quando aggiungi una riga puoi scrivere una **Descrizione (facoltativa)**, per es
 
 #### Gli stati
 
-*Bozza → Inviato → Accettato* (oppure *Rifiutato*); oltre la data di validità diventa *Scaduto*. Solo un preventivo **accettato** si può fatturare.
+*Bozza → Inviato → Accettato* (oppure *Rifiutato*); oltre la data di validità diventa *Scaduto*. Solo un preventivo **accettato** si può fatturare. Lo stato si cambia dal menu a tendina in alto nel dettaglio del preventivo.
 
 Un preventivo accettato è quello approvato dal paziente: le sue righe non si aggiungono né si tolgono più, e **Aggiungi**, **Importa dal Piano di Cura** e il cestino non compaiono. Se ha documenti fiscali non annullati, non torna nemmeno a *Bozza*, *Inviato* o *Rifiutato*: prima si storna il documento con una nota di credito.
 
@@ -506,9 +506,9 @@ Se provi a emettere un documento a saldo su prestazioni non ancora eseguite, il 
 
 #### La vita di un documento
 
-*Bozza → Emessa → Pagata.* Una bozza si modifica e si elimina liberamente. Un documento **emesso** no: il suo numero è entrato nella sequenza, e un buco nella numerazione è un problema. Di un documento emesso non cambiano più tipo, data e righe: per correggerlo c'è la nota di credito.
+*Bozza → Emessa → Pagata.* Una bozza si modifica e si elimina liberamente. Un documento **emesso** no: il suo numero è entrato nella sequenza, e un buco nella numerazione è un problema. Di un documento emesso non cambia più nulla: né tipo, data e righe, né scadenza, note e metodo di pagamento. Per correggerlo c'è la nota di credito.
 
-Se hai premuto **Segna Pagata** per errore, **Riporta a Emessa** annulla il passaggio. Una nota di credito non si segna pagata.
+Se hai premuto **Segna Pagata** per errore, **Riporta a Emessa**, nel dettaglio del documento, annulla il passaggio. Una nota di credito non si segna pagata.
 
 #### Inviare il documento al paziente
 
@@ -516,7 +516,7 @@ Dal dettaglio di un documento emesso, **Email** invia il PDF all'e-mail del pazi
 
 #### Correggere un errore: la nota di credito
 
-Dal dettaglio di un documento emesso, **Storna con nota di credito**: il programma crea una nota di pari importo con segno opposto, collegata all'originale e con numerazione propria, e porta il documento originale ad *Annullato* conservandolo in archivio. Lo storno è sempre totale, e ogni documento si storna una volta sola. La nota di credito nasce solo così: in *Nuova Fattura* non è fra i tipi.
+Dal dettaglio di un documento emesso o già pagato, **Storna con nota di credito**: il programma crea una nota di pari importo con segno opposto, collegata all'originale e con numerazione propria, e porta il documento originale ad *Annullato* conservandolo in archivio. Lo storno è sempre totale, e ogni documento si storna una volta sola. La nota di credito nasce solo così: in *Nuova Fattura* non è fra i tipi.
 
 #### A chi è intestata la fattura
 

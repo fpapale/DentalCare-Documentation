@@ -1,6 +1,6 @@
 # DentalCare Pro — Guida per la segreteria
 
-> Versione 25 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
+> Versione 26 novembre 2026. Generato dalle lezioni dell'**Academy**, il manuale ufficiale dentro il programma (`tools/genera_manuale.py`): per correggerlo si corregge la lezione e si rigenera. Le schermate vengono dall'ambiente dimostrativo: nomi e dati dei pazienti sono fittizi.
 
 Il percorso dice cosa fare e in che ordine; le lezioni che richiama seguono, nell'ordine in cui compaiono. Il resto è nel [manuale integrale](MANUALE_UTENTE.md).
 
@@ -336,7 +336,7 @@ Un appuntamento creato con **Pianifica appuntamento** dal dettaglio di un piano 
 
 #### Casi particolari
 
-- **L'orario è occupato** (stesso medico o stessa poltrona), **cade in un festivo** o **non è sulla griglia degli slot**: il programma non salva e spiega perché. Vedi [I vincoli dell'agenda](#lezione-vincoli-agenda).
+- **L'orario è occupato** (stesso medico o stessa poltrona), **cade in un festivo**, **è fuori dall'orario di lavoro della sede** (per esempio alle 23:00) o **non è sulla griglia degli slot**: il programma non salva e spiega perché. Vedi [I vincoli dell'agenda](#lezione-vincoli-agenda).
 - **Paziente con un'indicazione clinica** per l'ultimo orario: si può prenotare solo l'ultimo orario della giornata, e *Proponi orario* propone solo quello. Alla segreteria il programma dice *«Si può prenotare solo l'ultimo orario della giornata (dalle HH:mm).»*, senza il motivo; il medico vede anche il motivo clinico.
 
 #### Da sapere
@@ -379,7 +379,7 @@ Ogni volta che un appuntamento viene **prenotato**, **spostato** (giorno, ora o 
 - **Non serve avvisarlo**: per esempio se l'hai concordato al telefono con lui;
 - **Più tardi**: l'avviso resta nell'elenco **Da avvisare** della [Dashboard](#lezione-dashboard).
 
-Conta solo l'ultimo avviso: se sposti un appuntamento prima di aver comunicato la prenotazione, il paziente riceve la conferma con l'orario nuovo, non due messaggi.
+Conta solo l'ultimo avviso: se sposti un appuntamento prima di aver comunicato la prenotazione, il paziente riceve la conferma con l'orario nuovo, non due messaggi. Se riporti un appuntamento *Cancellato* a *Programmato* o *Confermato*, il programma prepara l'avviso di prenotazione, che prende il posto di quello di cancellazione; se lo porti direttamente a *Presente*, l'avviso di cancellazione non ancora inviato si chiude da solo.
 
 Modifica e cancellazione non compaiono su un appuntamento già *Cancellato* o *Completato*. Anche il [Copilot](#lezione-copilot) sposta e annulla appuntamenti, sempre con un'anteprima da confermare.
 
@@ -392,7 +392,7 @@ Modifica e cancellazione non compaiono su un appuntamento già *Cancellato* o *C
 | **Presente** | segreteria | è arrivato, è in sala d'attesa |
 | **In corso** | medico (anche con *Inizia visita*) | è in poltrona: si apre l'episodio della visita |
 | **Completato** | medico, chiudendo la seduta | la visita è finita |
-| **Cancellato** | segreteria | l'appuntamento non si terrà; riportandolo a *Programmato* il programma ricontrolla medico e poltrona, perché nel frattempo il posto può essere stato occupato |
+| **Cancellato** | segreteria | l'appuntamento non si terrà; riportandolo a *Programmato* il programma ricontrolla medico e poltrona, perché nel frattempo il posto può essere stato occupato, e rifiuta se le sue prestazioni sono già fissate in un altro appuntamento |
 | **Non presentato** | segreteria | il paziente non è venuto |
 
 #### Spostare un appuntamento
@@ -477,7 +477,7 @@ Quando aggiungi una riga puoi scrivere una **Descrizione (facoltativa)**, per es
 
 #### Gli stati
 
-*Bozza → Inviato → Accettato* (oppure *Rifiutato*); oltre la data di validità diventa *Scaduto*. Solo un preventivo **accettato** si può fatturare.
+*Bozza → Inviato → Accettato* (oppure *Rifiutato*); oltre la data di validità diventa *Scaduto*. Solo un preventivo **accettato** si può fatturare. Lo stato si cambia dal menu a tendina in alto nel dettaglio del preventivo.
 
 Un preventivo accettato è quello approvato dal paziente: le sue righe non si aggiungono né si tolgono più, e **Aggiungi**, **Importa dal Piano di Cura** e il cestino non compaiono. Se ha documenti fiscali non annullati, non torna nemmeno a *Bozza*, *Inviato* o *Rifiutato*: prima si storna il documento con una nota di credito.
 
@@ -529,9 +529,9 @@ Se provi a emettere un documento a saldo su prestazioni non ancora eseguite, il 
 
 #### La vita di un documento
 
-*Bozza → Emessa → Pagata.* Una bozza si modifica e si elimina liberamente. Un documento **emesso** no: il suo numero è entrato nella sequenza, e un buco nella numerazione è un problema. Di un documento emesso non cambiano più tipo, data e righe: per correggerlo c'è la nota di credito.
+*Bozza → Emessa → Pagata.* Una bozza si modifica e si elimina liberamente. Un documento **emesso** no: il suo numero è entrato nella sequenza, e un buco nella numerazione è un problema. Di un documento emesso non cambia più nulla: né tipo, data e righe, né scadenza, note e metodo di pagamento. Per correggerlo c'è la nota di credito.
 
-Se hai premuto **Segna Pagata** per errore, **Riporta a Emessa** annulla il passaggio. Una nota di credito non si segna pagata.
+Se hai premuto **Segna Pagata** per errore, **Riporta a Emessa**, nel dettaglio del documento, annulla il passaggio. Una nota di credito non si segna pagata.
 
 #### Inviare il documento al paziente
 
@@ -539,7 +539,7 @@ Dal dettaglio di un documento emesso, **Email** invia il PDF all'e-mail del pazi
 
 #### Correggere un errore: la nota di credito
 
-Dal dettaglio di un documento emesso, **Storna con nota di credito**: il programma crea una nota di pari importo con segno opposto, collegata all'originale e con numerazione propria, e porta il documento originale ad *Annullato* conservandolo in archivio. Lo storno è sempre totale, e ogni documento si storna una volta sola. La nota di credito nasce solo così: in *Nuova Fattura* non è fra i tipi.
+Dal dettaglio di un documento emesso o già pagato, **Storna con nota di credito**: il programma crea una nota di pari importo con segno opposto, collegata all'originale e con numerazione propria, e porta il documento originale ad *Annullato* conservandolo in archivio. Lo storno è sempre totale, e ogni documento si storna una volta sola. La nota di credito nasce solo così: in *Nuova Fattura* non è fra i tipi.
 
 #### A chi è intestata la fattura
 
@@ -715,6 +715,7 @@ Se il nuovo orario si sovrappone a un altro appuntamento, cade in un giorno fest
 |---|---|
 | sposti | restano *Appuntamento fissato* |
 | annulli | tornano *Da pianificare* |
+| riporti un annullato a *Programmato* | tornano *Appuntamento fissato*; se nel frattempo le hai fissate in un altro appuntamento, il programma rifiuta e dice dove |
 | segni Non presentato | diventano *In sospeso* |
 | cambi medico | non consentito se legato a piano o preventivo |
 

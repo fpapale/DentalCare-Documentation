@@ -67,12 +67,17 @@ def convert(text, local, target_doc):
     return text
 
 
+def image_name(url):
+    """Nome del file della schermata: dalla 0.4.5 il catalogo aggiunge «?v=…» all'indirizzo (cache del browser)."""
+    return url.split('?', 1)[0].rsplit('/', 1)[1]
+
+
 def lesson_block(slug, local, target_doc, heading='###'):
     l = lessons[slug]
     parts = [f'<a id="lezione-{slug}"></a>', '', f'{heading} {number[slug]} {l["title"]}', '',
              f'*{l["summary"]}*', '']
     if l.get('imageUrl'):
-        name = l['imageUrl'].rsplit('/', 1)[1]
+        name = image_name(l['imageUrl'])
         caption = l.get('imageCaption') or l['title']
         parts += [f'![{caption}](img/academy/{name})', '', f'*{caption}*', '']
     parts += [convert(body(slug), local, target_doc), '']
@@ -90,7 +95,7 @@ def write(name, text):
 
 # ── schermate ─────────────────────────────────────────────────────────────
 IMG_OUT.mkdir(parents=True, exist_ok=True)
-used = {l['imageUrl'].rsplit('/', 1)[1] for l in lessons.values() if l.get('imageUrl')}
+used = {image_name(l['imageUrl']) for l in lessons.values() if l.get('imageUrl')}
 for slug in lessons:
     used |= set(re.findall(r'\]\(/academy/([^)]+\.png)\)', body(slug)))
 for name in sorted(used):
@@ -148,7 +153,7 @@ for i, m in enumerate(modules, 1):
     c.append('')
     for l in m['lessons']:
         if l.get('imageUrl'):
-            n = l['imageUrl'].rsplit('/', 1)[1]
+            n = image_name(l['imageUrl'])
             cap = l.get('imageCaption') or l['title']
             c += [f'![{cap}](img/academy/{n})', '', f'*{cap}*', '']
 write('Manuale-Completo.md', '\n'.join(c))

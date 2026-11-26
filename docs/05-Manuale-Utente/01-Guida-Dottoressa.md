@@ -206,7 +206,7 @@ Compare solo quando c'è qualcosa da fare: i pazienti a cui va comunicata una **
 
 #### Prossimi appuntamenti
 
-L'elenco degli appuntamenti da ora in poi, con orario, paziente, prestazione, poltrona e stato. Le icone avvisano di un'**allerta clinica** (⚠), di una terapia in corso o di una **visita di controllo scaduta**. I pulsanti *Programmato*, *Confermato*, *Presente* filtrano l'elenco per stato.
+L'elenco degli appuntamenti da ora in poi, con orario, paziente, prestazione, poltrona e stato. Le icone avvisano di un'**allerta clinica** (⚠; la segreteria vede solo l'icona neutra *Allerta clinica*, senza dettagli), di una terapia in corso o di una **visita di controllo scaduta**. I pulsanti *Programmato*, *Confermato*, *Presente* filtrano l'elenco per stato.
 
 Cliccando un appuntamento, a destra compare la sua scheda: motivo, trattamento, orario e poltrona, **alert clinici**, contatti del paziente e **scadenze** (visite di controllo scadute, preventivi in attesa). È il riassunto da leggere prima di chiamare il paziente o di farlo accomodare.
 
@@ -512,11 +512,11 @@ Ogni piano ha uno **stato** (bozza, proposto, accettato, in corso, completato, r
 
 #### Le prestazioni
 
-Nel dettaglio trovi, per ogni prestazione, dente e superfici, stato (*Da pianificare*, *Appuntamento fissato*, *Completato*, *Annullato*…), professionista e note. L'icona **Pianifica appuntamento** (il calendario con la spunta) crea un appuntamento **collegato** alla prestazione: il giorno della visita la ritrovi nella scheda di seduta.
+Nel dettaglio trovi, per ogni prestazione, dente e superfici, stato (*Da pianificare*, *Completato*, *Annullato*…; una prestazione prenotata mostra data e ora della seduta), professionista e note. L'icona **Pianifica appuntamento** (il calendario con la spunta) crea un appuntamento **collegato** alla prestazione: il giorno della visita la ritrovi nella scheda di seduta.
 
 #### Le prestazioni in sospeso
 
-Se una seduta viene chiusa senza dare un esito a una prestazione, quella non sparisce: diventa **In sospeso dal …**, e in testa al piano compare un avviso. Hai due strade:
+Se una seduta viene chiusa senza dare un esito a una prestazione, quella non sparisce: diventa **In sospeso · seduta del …**, e in testa al piano compare un avviso. Hai due strade:
 
 - **Riprogramma** — fissi una nuova seduta;
 - **Togli dal piano** — con un **motivo obbligatorio** (il paziente ha rinunciato, non più necessaria, sostituita, inserita per errore, o un motivo tuo).
@@ -529,7 +529,7 @@ Un piano collegato a una fattura emessa non si elimina: si **archivia**. Cancell
 
 #### Prova nel programma
 
-Apri il piano di *Silvia Conti* e prenota una delle prestazioni da fare. Poi torna al piano: la prestazione è *Appuntamento fissato*.
+Apri il piano di *Silvia Conti* e prenota una delle prestazioni da fare. Poi torna al piano: la prestazione mostra data e ora della seduta.
 
 <a id="lezione-preventivi"></a>
 
@@ -709,7 +709,7 @@ All'apertura il programma salva la **situazione d'ingresso** (anamnesi e allerte
 - l'elenco degli episodi, filtrabile per visite o contatti, con il numero di cambiamenti;
 - per l'episodio scelto, **cosa è cambiato** area per area e l'**odontogramma prima e dopo** affiancati;
 - il **riepilogo**, una riga per cambiamento (per esempio *36 O, M, D: carie → otturazione*), composto dal programma a partire dai dati;
-- **Confronta**, per mettere a confronto due episodi qualsiasi.
+- **Confronta**, quando gli episodi sono almeno due, per metterne a confronto due qualsiasi.
 
 #### Quando il programma ti chiede di aprire un episodio
 
